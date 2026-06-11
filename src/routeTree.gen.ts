@@ -9,13 +9,103 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as TermsRouteImport } from './routes/terms'
+import { Route as ServicesRouteImport } from './routes/services'
+import { Route as SellRouteImport } from './routes/sell'
+import { Route as ReviewsRouteImport } from './routes/reviews'
+import { Route as NewsRouteImport } from './routes/news'
+import { Route as FinancingRouteImport } from './routes/financing'
+import { Route as FaqsRouteImport } from './routes/faqs'
+import { Route as DealershipsRouteImport } from './routes/dealerships'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as CompareRouteImport } from './routes/compare'
+import { Route as ComingSoonRouteImport } from './routes/coming-soon'
+import { Route as CalculatorRouteImport } from './routes/calculator'
 import { Route as BuyRouteImport } from './routes/buy'
+import { Route as AgentsRouteImport } from './routes/agents'
+import { Route as AboutRouteImport } from './routes/about'
+import { Route as R404RouteImport } from './routes/404'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ListingsIdRouteImport } from './routes/listings.$id'
 
+const TermsRoute = TermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesRoute = ServicesRouteImport.update({
+  id: '/services',
+  path: '/services',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SellRoute = SellRouteImport.update({
+  id: '/sell',
+  path: '/sell',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReviewsRoute = ReviewsRouteImport.update({
+  id: '/reviews',
+  path: '/reviews',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NewsRoute = NewsRouteImport.update({
+  id: '/news',
+  path: '/news',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FinancingRoute = FinancingRouteImport.update({
+  id: '/financing',
+  path: '/financing',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FaqsRoute = FaqsRouteImport.update({
+  id: '/faqs',
+  path: '/faqs',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DealershipsRoute = DealershipsRouteImport.update({
+  id: '/dealerships',
+  path: '/dealerships',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CompareRoute = CompareRouteImport.update({
+  id: '/compare',
+  path: '/compare',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ComingSoonRoute = ComingSoonRouteImport.update({
+  id: '/coming-soon',
+  path: '/coming-soon',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CalculatorRoute = CalculatorRouteImport.update({
+  id: '/calculator',
+  path: '/calculator',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const BuyRoute = BuyRouteImport.update({
   id: '/buy',
   path: '/buy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AgentsRoute = AgentsRouteImport.update({
+  id: '/agents',
+  path: '/agents',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const R404Route = R404RouteImport.update({
+  id: '/404',
+  path: '/404',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -31,41 +121,261 @@ const ListingsIdRoute = ListingsIdRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/404': typeof R404Route
+  '/about': typeof AboutRoute
+  '/agents': typeof AgentsRoute
   '/buy': typeof BuyRoute
+  '/calculator': typeof CalculatorRoute
+  '/coming-soon': typeof ComingSoonRoute
+  '/compare': typeof CompareRoute
+  '/contact': typeof ContactRoute
+  '/dealerships': typeof DealershipsRoute
+  '/faqs': typeof FaqsRoute
+  '/financing': typeof FinancingRoute
+  '/news': typeof NewsRoute
+  '/reviews': typeof ReviewsRoute
+  '/sell': typeof SellRoute
+  '/services': typeof ServicesRoute
+  '/terms': typeof TermsRoute
   '/listings/$id': typeof ListingsIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/404': typeof R404Route
+  '/about': typeof AboutRoute
+  '/agents': typeof AgentsRoute
   '/buy': typeof BuyRoute
+  '/calculator': typeof CalculatorRoute
+  '/coming-soon': typeof ComingSoonRoute
+  '/compare': typeof CompareRoute
+  '/contact': typeof ContactRoute
+  '/dealerships': typeof DealershipsRoute
+  '/faqs': typeof FaqsRoute
+  '/financing': typeof FinancingRoute
+  '/news': typeof NewsRoute
+  '/reviews': typeof ReviewsRoute
+  '/sell': typeof SellRoute
+  '/services': typeof ServicesRoute
+  '/terms': typeof TermsRoute
   '/listings/$id': typeof ListingsIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/404': typeof R404Route
+  '/about': typeof AboutRoute
+  '/agents': typeof AgentsRoute
   '/buy': typeof BuyRoute
+  '/calculator': typeof CalculatorRoute
+  '/coming-soon': typeof ComingSoonRoute
+  '/compare': typeof CompareRoute
+  '/contact': typeof ContactRoute
+  '/dealerships': typeof DealershipsRoute
+  '/faqs': typeof FaqsRoute
+  '/financing': typeof FinancingRoute
+  '/news': typeof NewsRoute
+  '/reviews': typeof ReviewsRoute
+  '/sell': typeof SellRoute
+  '/services': typeof ServicesRoute
+  '/terms': typeof TermsRoute
   '/listings/$id': typeof ListingsIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/buy' | '/listings/$id'
+  fullPaths:
+    | '/'
+    | '/404'
+    | '/about'
+    | '/agents'
+    | '/buy'
+    | '/calculator'
+    | '/coming-soon'
+    | '/compare'
+    | '/contact'
+    | '/dealerships'
+    | '/faqs'
+    | '/financing'
+    | '/news'
+    | '/reviews'
+    | '/sell'
+    | '/services'
+    | '/terms'
+    | '/listings/$id'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/buy' | '/listings/$id'
-  id: '__root__' | '/' | '/buy' | '/listings/$id'
+  to:
+    | '/'
+    | '/404'
+    | '/about'
+    | '/agents'
+    | '/buy'
+    | '/calculator'
+    | '/coming-soon'
+    | '/compare'
+    | '/contact'
+    | '/dealerships'
+    | '/faqs'
+    | '/financing'
+    | '/news'
+    | '/reviews'
+    | '/sell'
+    | '/services'
+    | '/terms'
+    | '/listings/$id'
+  id:
+    | '__root__'
+    | '/'
+    | '/404'
+    | '/about'
+    | '/agents'
+    | '/buy'
+    | '/calculator'
+    | '/coming-soon'
+    | '/compare'
+    | '/contact'
+    | '/dealerships'
+    | '/faqs'
+    | '/financing'
+    | '/news'
+    | '/reviews'
+    | '/sell'
+    | '/services'
+    | '/terms'
+    | '/listings/$id'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  R404Route: typeof R404Route
+  AboutRoute: typeof AboutRoute
+  AgentsRoute: typeof AgentsRoute
   BuyRoute: typeof BuyRoute
+  CalculatorRoute: typeof CalculatorRoute
+  ComingSoonRoute: typeof ComingSoonRoute
+  CompareRoute: typeof CompareRoute
+  ContactRoute: typeof ContactRoute
+  DealershipsRoute: typeof DealershipsRoute
+  FaqsRoute: typeof FaqsRoute
+  FinancingRoute: typeof FinancingRoute
+  NewsRoute: typeof NewsRoute
+  ReviewsRoute: typeof ReviewsRoute
+  SellRoute: typeof SellRoute
+  ServicesRoute: typeof ServicesRoute
+  TermsRoute: typeof TermsRoute
   ListingsIdRoute: typeof ListingsIdRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/terms': {
+      id: '/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof TermsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services': {
+      id: '/services'
+      path: '/services'
+      fullPath: '/services'
+      preLoaderRoute: typeof ServicesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sell': {
+      id: '/sell'
+      path: '/sell'
+      fullPath: '/sell'
+      preLoaderRoute: typeof SellRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reviews': {
+      id: '/reviews'
+      path: '/reviews'
+      fullPath: '/reviews'
+      preLoaderRoute: typeof ReviewsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/news': {
+      id: '/news'
+      path: '/news'
+      fullPath: '/news'
+      preLoaderRoute: typeof NewsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/financing': {
+      id: '/financing'
+      path: '/financing'
+      fullPath: '/financing'
+      preLoaderRoute: typeof FinancingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/faqs': {
+      id: '/faqs'
+      path: '/faqs'
+      fullPath: '/faqs'
+      preLoaderRoute: typeof FaqsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dealerships': {
+      id: '/dealerships'
+      path: '/dealerships'
+      fullPath: '/dealerships'
+      preLoaderRoute: typeof DealershipsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/compare': {
+      id: '/compare'
+      path: '/compare'
+      fullPath: '/compare'
+      preLoaderRoute: typeof CompareRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/coming-soon': {
+      id: '/coming-soon'
+      path: '/coming-soon'
+      fullPath: '/coming-soon'
+      preLoaderRoute: typeof ComingSoonRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/calculator': {
+      id: '/calculator'
+      path: '/calculator'
+      fullPath: '/calculator'
+      preLoaderRoute: typeof CalculatorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/buy': {
       id: '/buy'
       path: '/buy'
       fullPath: '/buy'
       preLoaderRoute: typeof BuyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/agents': {
+      id: '/agents'
+      path: '/agents'
+      fullPath: '/agents'
+      preLoaderRoute: typeof AgentsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/404': {
+      id: '/404'
+      path: '/404'
+      fullPath: '/404'
+      preLoaderRoute: typeof R404RouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -87,7 +397,22 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  R404Route: R404Route,
+  AboutRoute: AboutRoute,
+  AgentsRoute: AgentsRoute,
   BuyRoute: BuyRoute,
+  CalculatorRoute: CalculatorRoute,
+  ComingSoonRoute: ComingSoonRoute,
+  CompareRoute: CompareRoute,
+  ContactRoute: ContactRoute,
+  DealershipsRoute: DealershipsRoute,
+  FaqsRoute: FaqsRoute,
+  FinancingRoute: FinancingRoute,
+  NewsRoute: NewsRoute,
+  ReviewsRoute: ReviewsRoute,
+  SellRoute: SellRoute,
+  ServicesRoute: ServicesRoute,
+  TermsRoute: TermsRoute,
   ListingsIdRoute: ListingsIdRoute,
 }
 export const routeTree = rootRouteImport
