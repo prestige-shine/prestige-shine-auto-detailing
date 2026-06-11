@@ -1,19 +1,20 @@
 import { useState, type ReactNode } from "react";
+import { Link } from "@tanstack/react-router";
 import { X, ChevronDown, Phone } from "lucide-react";
 import { Logo } from "./Logo";
 
 type Props = { open: boolean; onClose: () => void };
 
-type Node = { label: string; children?: Node[] };
+type Node = { label: string; to?: string; children?: Node[] };
 
 const tree: Node[] = [
-  { label: "Home" },
+  { label: "Home", to: "/" },
   {
     label: "Buy Car",
     children: [
-      { label: "All Vehicles" },
-      { label: "New Arrivals" },
-      { label: "Featured" },
+      { label: "All Vehicles", to: "/buy" },
+      { label: "New Arrivals", to: "/buy" },
+      { label: "Featured", to: "/buy" },
     ],
   },
   {
@@ -22,75 +23,95 @@ const tree: Node[] = [
       {
         label: "Listing Layout",
         children: [
-          { label: "Listing Grid 2 Columns" },
-          { label: "Listing Grid 3 Columns" },
-          { label: "Listing Grid 4 Columns" },
-          { label: "Listing Half Map Left" },
-          { label: "Listing List Style Half Map" },
-          { label: "Listing ListStyle Sidebar" },
+          { label: "Listing Grid 2 Columns", to: "/buy" },
+          { label: "Listing Grid 3 Columns", to: "/buy" },
+          { label: "Listing Grid 4 Columns", to: "/buy" },
+          { label: "Listing Half Map Left", to: "/buy" },
+          { label: "Listing List Style Half Map", to: "/buy" },
+          { label: "Listing ListStyle Sidebar", to: "/buy" },
         ],
       },
       {
         label: "Features",
         children: [
-          { label: "Listing Sidebar Left" },
-          { label: "Listing Sidebar Right" },
-          { label: "Listing Top Map" },
-          { label: "Listing Filter Canvas" },
+          { label: "Listing Sidebar Left", to: "/buy" },
+          { label: "Listing Sidebar Right", to: "/buy" },
+          { label: "Listing Top Map", to: "/buy" },
+          { label: "Listing Filter Canvas", to: "/buy" },
         ],
       },
       {
         label: "Listing Style",
-        children: [{ label: "Listing Grid" }, { label: "Listing List" }],
+        children: [
+          { label: "Listing Grid", to: "/buy" },
+          { label: "Listing List", to: "/buy" },
+        ],
       },
       {
         label: "Listing Details",
-        children: [
-          { label: "Listing Details 1" },
-          { label: "Listing Details 2" },
-          { label: "Listing Details 3" },
-          { label: "Listing Details 4" },
-          { label: "Listing Details 5" },
-          { label: "Listing Details 6" },
-        ],
+        children: Array.from({ length: 6 }, (_, i) => ({
+          label: `Listing Details ${i + 1}`,
+          to: "/listings/$id",
+        })),
       },
     ],
   },
   {
     label: "News",
     children: [
-      { label: "Blog Standard" },
-      { label: "Blog List" },
-      { label: "Blog Grid Style 1" },
-      { label: "Blog Grid Style 2" },
-      { label: "Blog Grid Style 3" },
-      { label: "Single News 01" },
-      { label: "Single News 02" },
+      { label: "Blog Standard", to: "/news" },
+      { label: "Blog List", to: "/news" },
+      { label: "Blog Grid Style 1", to: "/news" },
+      { label: "Blog Grid Style 2", to: "/news" },
+      { label: "Blog Grid Style 3", to: "/news" },
+      { label: "Single News 01", to: "/news" },
+      { label: "Single News 02", to: "/news" },
     ],
   },
   {
     label: "Pages",
     children: [
-      { label: "Sale Agents" },
-      { label: "Car Dealerships" },
-      { label: "About us" },
-      { label: "Calculator" },
-      { label: "Compare" },
-      { label: "Clients Reviews" },
-      { label: "Financing" },
-      { label: "Services Center" },
-      { label: "FAQs" },
-      { label: "404 Error" },
-      { label: "Sell Your Car" },
-      { label: "Terms of use" },
-      { label: "Coming Soon" },
+      { label: "Sale Agents", to: "/agents" },
+      { label: "Car Dealerships", to: "/dealerships" },
+      { label: "About us", to: "/about" },
+      { label: "Calculator", to: "/calculator" },
+      { label: "Compare", to: "/compare" },
+      { label: "Clients Reviews", to: "/reviews" },
+      { label: "Financing", to: "/financing" },
+      { label: "Services Center", to: "/services" },
+      { label: "FAQs", to: "/faqs" },
+      { label: "404 Error", to: "/404" },
+      { label: "Sell Your Car", to: "/sell" },
+      { label: "Terms of use", to: "/terms" },
+      { label: "Coming Soon", to: "/coming-soon" },
     ],
   },
 ];
 
-function TreeItem({ node, depth = 0 }: { node: Node; depth?: number }): ReactNode {
+function TreeItem({
+  node,
+  depth = 0,
+  onNavigate,
+}: {
+  node: Node;
+  depth?: number;
+  onNavigate: () => void;
+}): ReactNode {
   const [open, setOpen] = useState(false);
   const hasChildren = !!node.children?.length;
+
+  if (!hasChildren && node.to) {
+    return (
+      <Link
+        to={node.to}
+        onClick={onNavigate}
+        className="flex w-full items-center py-3 text-white/85 hover:text-white text-sm"
+        style={{ paddingLeft: depth * 14 }}
+      >
+        {node.label}
+      </Link>
+    );
+  }
 
   return (
     <div>
@@ -111,7 +132,7 @@ function TreeItem({ node, depth = 0 }: { node: Node; depth?: number }): ReactNod
       {hasChildren && open && (
         <div className="border-l border-white/10 ml-2">
           {node.children!.map((c) => (
-            <TreeItem key={c.label} node={c} depth={depth + 1} />
+            <TreeItem key={c.label} node={c} depth={depth + 1} onNavigate={onNavigate} />
           ))}
         </div>
       )}
@@ -146,7 +167,7 @@ export function NavDrawer({ open, onClose }: Props) {
 
         <div className="flex-1 overflow-y-auto px-5 py-4 divide-y divide-white/10">
           {tree.map((n) => (
-            <TreeItem key={n.label} node={n} />
+            <TreeItem key={n.label} node={n} onNavigate={onClose} />
           ))}
         </div>
 

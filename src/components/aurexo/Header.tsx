@@ -1,3 +1,4 @@
+import { Link } from "@tanstack/react-router";
 import { Logo } from "./Logo";
 
 type Props = { onMenuClick: () => void };
@@ -6,7 +7,9 @@ export function Header({ onMenuClick }: Props) {
   return (
     <header className="sticky top-0 z-40 w-full border-b border-border bg-background/95 backdrop-blur">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4">
-        <Logo />
+        <Link to="/">
+          <Logo />
+        </Link>
         <div className="flex items-center gap-3">
           <button
             type="button"
