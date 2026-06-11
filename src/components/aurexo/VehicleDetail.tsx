@@ -87,7 +87,11 @@ const related = [
   { img: carBlue, title: "2026 Hyundai Tucson SUV", price: "$36,400", km: "1" },
 ];
 
-export function VehicleDetail() {
+import type { Vehicle } from "@/lib/aurexo-data";
+
+export function VehicleDetail({ vehicle }: { vehicle?: Vehicle } = {}) {
+  const heroImage = vehicle?.img ?? fordGT;
+  const heroTitle = vehicle?.title ?? "2022 Ford GT White";
   const [tab, setTab] = useState<Tab>("Overview");
   const [featTab, setFeatTab] = useState<(typeof featureCats)[number]>("Safety");
   const [favorite, setFavorite] = useState(false);
