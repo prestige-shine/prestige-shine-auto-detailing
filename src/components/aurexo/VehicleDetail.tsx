@@ -87,7 +87,11 @@ const related = [
   { img: carBlue, title: "2026 Hyundai Tucson SUV", price: "$36,400", km: "1" },
 ];
 
-export function VehicleDetail() {
+import type { Vehicle } from "@/lib/aurexo-data";
+
+export function VehicleDetail({ vehicle }: { vehicle?: Vehicle } = {}) {
+  const heroImage = vehicle?.img ?? fordGT;
+  const heroTitle = vehicle?.title ?? "2022 Ford GT White";
   const [tab, setTab] = useState<Tab>("Overview");
   const [featTab, setFeatTab] = useState<(typeof featureCats)[number]>("Safety");
   const [favorite, setFavorite] = useState(false);
@@ -132,7 +136,7 @@ export function VehicleDetail() {
       {/* Identity + actions */}
       <section className="mx-auto max-w-6xl px-4 pt-6">
         <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-ink">
-          2022 Ford GT White
+          {heroTitle}
         </h1>
         <p className="mt-1 text-sm text-muted-foreground">
           Premium supercar · Stock #001 · Atlanta, GA
@@ -166,8 +170,8 @@ export function VehicleDetail() {
         {/* Hero image */}
         <div className="mt-6 overflow-hidden rounded-2xl bg-white border border-border">
           <img
-            src={fordGT}
-            alt="2022 Ford GT White"
+            src={heroImage}
+            alt={heroTitle}
             width={1280}
             height={800}
             className="w-full h-auto object-cover"
@@ -338,13 +342,13 @@ export function VehicleDetail() {
             {/* floating summary card */}
             <div className="absolute bottom-3 left-3 right-3 sm:right-auto sm:w-80 rounded-xl bg-white shadow-xl border border-border p-3 flex gap-3">
               <img
-                src={fordGT}
+                src={heroImage}
                 alt=""
                 className="h-16 w-20 rounded-lg object-cover shrink-0"
                 loading="lazy"
               />
               <div className="min-w-0 flex-1">
-                <p className="truncate text-sm font-bold text-ink">2022 Ford GT White</p>
+                <p className="truncate text-sm font-bold text-ink">{heroTitle}</p>
                 <p className="mt-0.5 text-[11px] text-muted-foreground">
                   2 Odo · Gasoline · Automatic
                 </p>

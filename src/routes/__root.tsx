@@ -7,10 +7,13 @@ import {
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
-import { useEffect, type ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { Header } from "@/components/aurexo/Header";
+import { Footer } from "@/components/aurexo/Footer";
+import { NavDrawer } from "@/components/aurexo/NavDrawer";
 
 function NotFoundComponent() {
   return (
@@ -115,11 +118,23 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
-
   return (
     <QueryClientProvider client={queryClient}>
-      {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-      <Outlet />
+      <SiteShell />
     </QueryClientProvider>
+  );
+}
+
+function SiteShell() {
+  const [menuOpen, setMenuOpen] = useState(false);
+  return (
+    <div className="bg-surface min-h-screen flex flex-col">
+      <Header onMenuClick={() => setMenuOpen(true)} />
+      <NavDrawer open={menuOpen} onClose={() => setMenuOpen(false)} />
+      <div className="flex-1">
+        <Outlet />
+      </div>
+      <Footer />
+    </div>
   );
 }
