@@ -1,0 +1,65 @@
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { Check, Banknote, ShieldCheck, Clock, ArrowRight } from "lucide-react";
+import { PageHeader } from "@/components/aurexo/PageHeader";
+
+export const Route = createFileRoute("/financing")({
+  head: () => ({
+    meta: [
+      { title: "Financing — Aurexo" },
+      { name: "description", content: "Get pre-approved in minutes. Competitive rates from 4.5% APR with no impact to your credit score." },
+      { property: "og:title", content: "Financing — Aurexo" },
+      { property: "og:description", content: "Get pre-approved in minutes with rates from 4.5% APR." },
+    ],
+  }),
+  component: Financing,
+});
+
+function Financing() {
+  return (
+    <main>
+      <PageHeader eyebrow="Financing" title="Pre-approved in minutes. Zero hit to your credit." subtitle="We work with 22 lenders to get you the lowest rate — fast." />
+
+      <section className="mx-auto max-w-6xl px-4 py-12 grid grid-cols-1 lg:grid-cols-3 gap-4">
+        {[
+          { i: Banknote, t: "Rates from 4.5% APR", d: "Competitive financing for new and used cars." },
+          { i: ShieldCheck, t: "Soft credit pull only", d: "Check your rate without affecting your score." },
+          { i: Clock, t: "Instant decisions", d: "Most applicants are approved in under 3 minutes." },
+        ].map(({ i: Icon, t, d }) => (
+          <div key={t} className="rounded-2xl bg-white border border-border p-5">
+            <Icon className="h-6 w-6 text-brand" />
+            <h3 className="mt-3 font-bold text-ink">{t}</h3>
+            <p className="mt-1 text-sm text-muted-foreground">{d}</p>
+          </div>
+        ))}
+      </section>
+
+      <section className="mx-auto max-w-3xl px-4 pb-16">
+        <div className="rounded-2xl bg-white border border-border p-6">
+          <h2 className="text-2xl font-bold text-ink">Apply now</h2>
+          <form onSubmit={(e) => e.preventDefault()} className="mt-5 grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <input className="rounded-xl border border-border px-4 py-3 text-sm" placeholder="Full Name" />
+            <input className="rounded-xl border border-border px-4 py-3 text-sm" type="email" placeholder="Email" />
+            <input className="rounded-xl border border-border px-4 py-3 text-sm" placeholder="Phone" />
+            <input className="rounded-xl border border-border px-4 py-3 text-sm" placeholder="Annual Income" />
+            <input className="rounded-xl border border-border px-4 py-3 text-sm sm:col-span-2" placeholder="Loan Amount Requested" />
+            <button className="sm:col-span-2 rounded-xl bg-brand py-3.5 text-sm font-semibold text-ink">Check my rate</button>
+          </form>
+          <p className="mt-4 text-xs text-muted-foreground text-center">No impact to credit. Takes about 2 minutes.</p>
+        </div>
+
+        <ul className="mt-8 space-y-3">
+          {["No application fees","Refinance options up to 84 months","Co-signers welcome","Loans for any credit profile"].map((p) => (
+            <li key={p} className="flex items-center gap-3 rounded-xl bg-white border border-border p-4 text-sm text-ink">
+              <span className="grid h-6 w-6 place-items-center rounded-full bg-brand text-ink"><Check className="h-3.5 w-3.5" strokeWidth={3} /></span>
+              {p}
+            </li>
+          ))}
+        </ul>
+
+        <Link to="/calculator" className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-ink">
+          Estimate your monthly payment <ArrowRight className="h-4 w-4" />
+        </Link>
+      </section>
+    </main>
+  );
+}
