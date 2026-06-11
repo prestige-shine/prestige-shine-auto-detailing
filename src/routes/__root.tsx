@@ -7,10 +7,13 @@ import {
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
-import { useEffect, type ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { Header } from "@/components/aurexo/Header";
+import { Footer } from "@/components/aurexo/Footer";
+import { NavDrawer } from "@/components/aurexo/NavDrawer";
 
 function NotFoundComponent() {
   return (
