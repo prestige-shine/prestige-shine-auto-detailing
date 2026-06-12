@@ -52,7 +52,7 @@ function BlogPost() {
         </div>
         <img src={article.cover} alt={article.title} className="mt-6 aspect-video w-full rounded-2xl object-cover" />
         <div className="mt-6 space-y-5 text-base leading-relaxed text-foreground">
-          {article.body.map((p, i) => <p key={i}>{p}</p>)}
+          {article.body.map((p: string, i: number) => <p key={i}>{p}</p>)}
         </div>
       </article>
 

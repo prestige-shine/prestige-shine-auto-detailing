@@ -14,7 +14,9 @@ import { Route as ServicesRouteImport } from './routes/services'
 import { Route as SellRouteImport } from './routes/sell'
 import { Route as ReviewsRouteImport } from './routes/reviews'
 import { Route as NewsRouteImport } from './routes/news'
+import { Route as NewArrivalsRouteImport } from './routes/new-arrivals'
 import { Route as FinancingRouteImport } from './routes/financing'
+import { Route as FeaturedRouteImport } from './routes/featured'
 import { Route as FaqsRouteImport } from './routes/faqs'
 import { Route as DealershipsRouteImport } from './routes/dealerships'
 import { Route as ContactRouteImport } from './routes/contact'
@@ -27,6 +29,7 @@ import { Route as AboutRouteImport } from './routes/about'
 import { Route as R404RouteImport } from './routes/404'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ListingsIdRouteImport } from './routes/listings.$id'
+import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
 
 const TermsRoute = TermsRouteImport.update({
   id: '/terms',
@@ -53,9 +56,19 @@ const NewsRoute = NewsRouteImport.update({
   path: '/news',
   getParentRoute: () => rootRouteImport,
 } as any)
+const NewArrivalsRoute = NewArrivalsRouteImport.update({
+  id: '/new-arrivals',
+  path: '/new-arrivals',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const FinancingRoute = FinancingRouteImport.update({
   id: '/financing',
   path: '/financing',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FeaturedRoute = FeaturedRouteImport.update({
+  id: '/featured',
+  path: '/featured',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FaqsRoute = FaqsRouteImport.update({
@@ -118,6 +131,11 @@ const ListingsIdRoute = ListingsIdRouteImport.update({
   path: '/listings/$id',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BlogSlugRoute = BlogSlugRouteImport.update({
+  id: '/blog/$slug',
+  path: '/blog/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -131,12 +149,15 @@ export interface FileRoutesByFullPath {
   '/contact': typeof ContactRoute
   '/dealerships': typeof DealershipsRoute
   '/faqs': typeof FaqsRoute
+  '/featured': typeof FeaturedRoute
   '/financing': typeof FinancingRoute
+  '/new-arrivals': typeof NewArrivalsRoute
   '/news': typeof NewsRoute
   '/reviews': typeof ReviewsRoute
   '/sell': typeof SellRoute
   '/services': typeof ServicesRoute
   '/terms': typeof TermsRoute
+  '/blog/$slug': typeof BlogSlugRoute
   '/listings/$id': typeof ListingsIdRoute
 }
 export interface FileRoutesByTo {
@@ -151,12 +172,15 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/dealerships': typeof DealershipsRoute
   '/faqs': typeof FaqsRoute
+  '/featured': typeof FeaturedRoute
   '/financing': typeof FinancingRoute
+  '/new-arrivals': typeof NewArrivalsRoute
   '/news': typeof NewsRoute
   '/reviews': typeof ReviewsRoute
   '/sell': typeof SellRoute
   '/services': typeof ServicesRoute
   '/terms': typeof TermsRoute
+  '/blog/$slug': typeof BlogSlugRoute
   '/listings/$id': typeof ListingsIdRoute
 }
 export interface FileRoutesById {
@@ -172,12 +196,15 @@ export interface FileRoutesById {
   '/contact': typeof ContactRoute
   '/dealerships': typeof DealershipsRoute
   '/faqs': typeof FaqsRoute
+  '/featured': typeof FeaturedRoute
   '/financing': typeof FinancingRoute
+  '/new-arrivals': typeof NewArrivalsRoute
   '/news': typeof NewsRoute
   '/reviews': typeof ReviewsRoute
   '/sell': typeof SellRoute
   '/services': typeof ServicesRoute
   '/terms': typeof TermsRoute
+  '/blog/$slug': typeof BlogSlugRoute
   '/listings/$id': typeof ListingsIdRoute
 }
 export interface FileRouteTypes {
@@ -194,12 +221,15 @@ export interface FileRouteTypes {
     | '/contact'
     | '/dealerships'
     | '/faqs'
+    | '/featured'
     | '/financing'
+    | '/new-arrivals'
     | '/news'
     | '/reviews'
     | '/sell'
     | '/services'
     | '/terms'
+    | '/blog/$slug'
     | '/listings/$id'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -214,12 +244,15 @@ export interface FileRouteTypes {
     | '/contact'
     | '/dealerships'
     | '/faqs'
+    | '/featured'
     | '/financing'
+    | '/new-arrivals'
     | '/news'
     | '/reviews'
     | '/sell'
     | '/services'
     | '/terms'
+    | '/blog/$slug'
     | '/listings/$id'
   id:
     | '__root__'
@@ -234,12 +267,15 @@ export interface FileRouteTypes {
     | '/contact'
     | '/dealerships'
     | '/faqs'
+    | '/featured'
     | '/financing'
+    | '/new-arrivals'
     | '/news'
     | '/reviews'
     | '/sell'
     | '/services'
     | '/terms'
+    | '/blog/$slug'
     | '/listings/$id'
   fileRoutesById: FileRoutesById
 }
@@ -255,12 +291,15 @@ export interface RootRouteChildren {
   ContactRoute: typeof ContactRoute
   DealershipsRoute: typeof DealershipsRoute
   FaqsRoute: typeof FaqsRoute
+  FeaturedRoute: typeof FeaturedRoute
   FinancingRoute: typeof FinancingRoute
+  NewArrivalsRoute: typeof NewArrivalsRoute
   NewsRoute: typeof NewsRoute
   ReviewsRoute: typeof ReviewsRoute
   SellRoute: typeof SellRoute
   ServicesRoute: typeof ServicesRoute
   TermsRoute: typeof TermsRoute
+  BlogSlugRoute: typeof BlogSlugRoute
   ListingsIdRoute: typeof ListingsIdRoute
 }
 
@@ -301,11 +340,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof NewsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/new-arrivals': {
+      id: '/new-arrivals'
+      path: '/new-arrivals'
+      fullPath: '/new-arrivals'
+      preLoaderRoute: typeof NewArrivalsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/financing': {
       id: '/financing'
       path: '/financing'
       fullPath: '/financing'
       preLoaderRoute: typeof FinancingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/featured': {
+      id: '/featured'
+      path: '/featured'
+      fullPath: '/featured'
+      preLoaderRoute: typeof FeaturedRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/faqs': {
@@ -392,6 +445,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ListingsIdRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/blog/$slug': {
+      id: '/blog/$slug'
+      path: '/blog/$slug'
+      fullPath: '/blog/$slug'
+      preLoaderRoute: typeof BlogSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -407,24 +467,17 @@ const rootRouteChildren: RootRouteChildren = {
   ContactRoute: ContactRoute,
   DealershipsRoute: DealershipsRoute,
   FaqsRoute: FaqsRoute,
+  FeaturedRoute: FeaturedRoute,
   FinancingRoute: FinancingRoute,
+  NewArrivalsRoute: NewArrivalsRoute,
   NewsRoute: NewsRoute,
   ReviewsRoute: ReviewsRoute,
   SellRoute: SellRoute,
   ServicesRoute: ServicesRoute,
   TermsRoute: TermsRoute,
+  BlogSlugRoute: BlogSlugRoute,
   ListingsIdRoute: ListingsIdRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
