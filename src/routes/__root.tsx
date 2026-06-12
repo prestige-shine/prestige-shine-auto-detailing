@@ -14,6 +14,10 @@ import { reportLovableError } from "../lib/lovable-error-reporting";
 import { Header } from "@/components/aurexo/Header";
 import { Footer } from "@/components/aurexo/Footer";
 import { NavDrawer } from "@/components/aurexo/NavDrawer";
+import { CompareProvider } from "@/contexts/CompareContext";
+import { AuthModalProvider } from "@/contexts/AuthModalContext";
+import { CompareBar } from "@/components/aurexo/CompareBar";
+import { AuthModal } from "@/components/aurexo/AuthModal";
 
 function NotFoundComponent() {
   return (
@@ -80,14 +84,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "Aurexo — Premium Automotive Marketplace" },
+      { name: "description", content: "Buy, sell and finance premium vehicles with verified dealers across the country." },
+      { name: "author", content: "Aurexo" },
+      { property: "og:title", content: "Aurexo — Premium Automotive Marketplace" },
+      { property: "og:description", content: "Buy, sell and finance premium vehicles with verified dealers." },
       { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [
       {
@@ -120,7 +123,11 @@ function RootComponent() {
   const { queryClient } = Route.useRouteContext();
   return (
     <QueryClientProvider client={queryClient}>
-      <SiteShell />
+      <AuthModalProvider>
+        <CompareProvider>
+          <SiteShell />
+        </CompareProvider>
+      </AuthModalProvider>
     </QueryClientProvider>
   );
 }
@@ -128,13 +135,15 @@ function RootComponent() {
 function SiteShell() {
   const [menuOpen, setMenuOpen] = useState(false);
   return (
-    <div className="bg-surface min-h-screen flex flex-col">
+    <div className="bg-surface min-h-screen flex flex-col overflow-x-hidden">
       <Header onMenuClick={() => setMenuOpen(true)} />
       <NavDrawer open={menuOpen} onClose={() => setMenuOpen(false)} />
-      <div className="flex-1">
+      <div className="flex-1 pb-24">
         <Outlet />
       </div>
       <Footer />
+      <CompareBar />
+      <AuthModal />
     </div>
   );
 }

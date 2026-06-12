@@ -1,48 +1,47 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { Calendar, ArrowRight } from "lucide-react";
-import { vehicles } from "@/lib/aurexo-data";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { PageHeader } from "@/components/aurexo/PageHeader";
+import { articles } from "@/lib/articles";
+import { ArrowRight } from "lucide-react";
 
 export const Route = createFileRoute("/news")({
   head: () => ({
     meta: [
-      { title: "News — Aurexo" },
-      { name: "description", content: "Reviews, buying guides, and industry news from the Aurexo editorial team." },
-      { property: "og:title", content: "News — Aurexo" },
-      { property: "og:description", content: "Reviews, guides, and news." },
+      { title: "News & Blog — Aurexo" },
+      { name: "description", content: "Buying guides, EV news, financing advice and reviews from the Aurexo editorial team." },
+      { property: "og:title", content: "News & Blog — Aurexo" },
+      { property: "og:description", content: "Latest automotive articles from Aurexo." },
     ],
   }),
-  component: News,
+  component: NewsList,
 });
 
-const posts = vehicles.slice(0, 6).map((v, i) => ({
-  id: v.id,
-  title: `${v.title}: First Drive Review`,
-  excerpt: `We took the ${v.title} on a 400-mile loop to find out what's really new — and what's worth the price tag.`,
-  date: ["Jun 02, 2026", "May 28, 2026", "May 21, 2026", "May 14, 2026", "May 09, 2026", "Apr 30, 2026"][i],
-  img: v.img,
-  category: ["Review", "Guide", "News", "Review", "Guide", "Opinion"][i],
-}));
-
-function News() {
+function NewsList() {
   return (
     <main>
-      <PageHeader eyebrow="Editorial" title="News & buying guides." subtitle="Fresh reviews, comparisons, and industry insight from our auto journalists." />
-      <section className="mx-auto max-w-6xl px-4 py-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-        {posts.map((p) => (
-          <article key={p.id} className="rounded-2xl bg-white border border-border overflow-hidden">
-            <div className="relative">
-              <img src={p.img} alt={p.title} className="w-full h-48 object-cover" loading="lazy" />
-              <span className="absolute top-3 left-3 rounded-full bg-brand px-2.5 py-1 text-[11px] font-bold text-ink">{p.category}</span>
-            </div>
-            <div className="p-5">
-              <p className="inline-flex items-center gap-1 text-xs text-muted-foreground"><Calendar className="h-3 w-3"/> {p.date}</p>
-              <h3 className="mt-2 font-bold text-ink leading-snug">{p.title}</h3>
-              <p className="mt-2 text-sm text-muted-foreground line-clamp-2">{p.excerpt}</p>
-              <button className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-ink">Read more <ArrowRight className="h-3.5 w-3.5"/></button>
-            </div>
-          </article>
-        ))}
+      <PageHeader eyebrow="Editorial" title="News & Blog" subtitle="Buying advice, deep-dive reviews and the stories shaping how we drive." />
+      <section className="mx-auto max-w-6xl px-4 py-10">
+        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {articles.map((a) => (
+            <article key={a.slug} className="flex flex-col overflow-hidden rounded-2xl border border-border bg-white">
+              <div className="relative">
+                <img src={a.cover} alt={a.title} className="h-48 w-full object-cover" loading="lazy" />
+                <span className="absolute left-3 top-3 rounded-full bg-ink/90 px-2.5 py-1 text-[11px] font-bold text-white">{a.date}</span>
+              </div>
+              <div className="flex flex-1 flex-col p-5">
+                <p className="text-xs font-bold uppercase tracking-wide text-brand">{a.category}</p>
+                <h3 className="mt-1 text-lg font-bold text-ink">{a.title}</h3>
+                <p className="mt-2 text-sm text-muted-foreground line-clamp-3">{a.excerpt}</p>
+                <Link
+                  to="/blog/$slug"
+                  params={{ slug: a.slug }}
+                  className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-ink"
+                >
+                  Read Article <ArrowRight className="h-3.5 w-3.5" />
+                </Link>
+              </div>
+            </article>
+          ))}
+        </div>
       </section>
     </main>
   );

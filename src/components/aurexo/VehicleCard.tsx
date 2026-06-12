@@ -1,24 +1,23 @@
 import { Link } from "@tanstack/react-router";
-import { Heart, Plus, Camera, Video, ChevronRight } from "lucide-react";
+import { Heart, Plus, Check, Camera, Video, ChevronRight } from "lucide-react";
 import type { Vehicle } from "@/lib/aurexo-data";
+import { useCompare } from "@/contexts/CompareContext";
 
 const tagColors: Record<NonNullable<Vehicle["tag"]>, string> = {
   "Great Price": "#4338CA",
   "Low Mileage": "#0EA5E9",
   "New Arrival": "#84CC16",
+  "Staff Pick": "#F59E0B",
 };
 
 export function VehicleCard({ v }: { v: Vehicle }) {
+  const { has, toggle } = useCompare();
+  const inCompare = has(v.id);
   const tagBg = v.tag ? tagColors[v.tag] : undefined;
   return (
-    <article className="rounded-2xl bg-white border border-border overflow-hidden flex flex-col">
+    <article className="flex flex-col overflow-hidden rounded-2xl border border-border bg-white">
       <div className="relative">
-        <img
-          src={v.img}
-          alt={v.title}
-          className="h-44 w-full object-cover"
-          loading="lazy"
-        />
+        <img src={v.img} alt={v.title} className="h-44 w-full object-cover" loading="lazy" />
         {v.tag && (
           <span
             className="absolute left-3 top-3 rounded-full px-2.5 py-1 text-[11px] font-bold text-white"
@@ -29,7 +28,7 @@ export function VehicleCard({ v }: { v: Vehicle }) {
         )}
         <button
           aria-label="Save"
-          className="absolute right-3 top-3 grid h-9 w-9 place-items-center rounded-full bg-white/95 border border-border text-ink"
+          className="absolute right-3 top-3 grid h-9 w-9 place-items-center rounded-full border border-border bg-white/95 text-ink"
         >
           <Heart className="h-4 w-4" />
         </button>
@@ -42,15 +41,22 @@ export function VehicleCard({ v }: { v: Vehicle }) {
           </span>
         </div>
       </div>
-      <div className="p-4 flex flex-col flex-1">
-        <h3 className="font-bold text-ink truncate">{v.title}</h3>
-        <p className="mt-1 text-xs text-muted-foreground">
-          {v.km} km · {v.year} · {v.fuel}
+      <div className="flex flex-1 flex-col p-4">
+        <h3 className="truncate font-bold text-ink">{v.title}</h3>
+        <p className="mt-1 truncate text-xs text-muted-foreground">
+          {v.km} km · {v.year} · {v.fuel} · {v.transmission}
         </p>
         <p className="mt-2 text-lg font-extrabold text-ink">{v.price}</p>
-        <div className="mt-auto pt-3 flex items-center justify-between border-t border-border">
-          <button className="inline-flex items-center gap-1 rounded-full border border-border px-3 py-1.5 text-xs font-medium text-ink">
-            <Plus className="h-3 w-3" /> Compare
+        <div className="mt-auto flex items-center justify-between gap-2 border-t border-border pt-3">
+          <button
+            onClick={() => toggle(v.id)}
+            aria-pressed={inCompare}
+            className={`inline-flex items-center gap-1 rounded-full border px-3 py-1.5 text-xs font-medium transition ${
+              inCompare ? "border-brand bg-brand text-ink" : "border-border text-ink hover:border-ink"
+            }`}
+          >
+            {inCompare ? <Check className="h-3 w-3" /> : <Plus className="h-3 w-3" />}
+            {inCompare ? "Added" : "Compare"}
           </button>
           <Link
             to="/listings/$id"

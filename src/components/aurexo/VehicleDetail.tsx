@@ -88,10 +88,14 @@ const related = [
 ];
 
 import type { Vehicle } from "@/lib/aurexo-data";
+import { useCompare } from "@/contexts/CompareContext";
 
 export function VehicleDetail({ vehicle }: { vehicle?: Vehicle } = {}) {
   const heroImage = vehicle?.img ?? fordGT;
   const heroTitle = vehicle?.title ?? "2022 Ford GT White";
+  const vehicleId = vehicle?.id ?? "2022-ford-gt-white";
+  const { has, toggle } = useCompare();
+  const inCompare = has(vehicleId);
   const [tab, setTab] = useState<Tab>("Overview");
   const [featTab, setFeatTab] = useState<(typeof featureCats)[number]>("Safety");
   const [favorite, setFavorite] = useState(false);
@@ -143,8 +147,15 @@ export function VehicleDetail({ vehicle }: { vehicle?: Vehicle } = {}) {
         </p>
 
         <div className="mt-4 flex flex-wrap items-center gap-3">
-          <button className="inline-flex items-center gap-2 rounded-full border border-border bg-white px-4 py-2 text-sm font-medium text-ink hover:border-ink">
-            <Plus className="h-4 w-4" /> Compare
+          <button
+            onClick={() => toggle(vehicleId)}
+            aria-pressed={inCompare}
+            className={`inline-flex items-center gap-2 rounded-full border px-4 py-2 text-sm font-medium transition ${
+              inCompare ? "border-brand bg-brand text-ink" : "border-border bg-white text-ink hover:border-ink"
+            }`}
+          >
+            {inCompare ? <Check className="h-4 w-4" /> : <Plus className="h-4 w-4" />}
+            {inCompare ? "Added to compare" : "Compare"}
           </button>
           {[
             { icon: Heart, label: "Favorite", active: favorite, onClick: () => setFavorite(!favorite) },
@@ -539,10 +550,12 @@ function Row({ label, value }: { label: string; value: string }) {
 }
 
 function InquirySheet({ open, onClose }: { open: boolean; onClose: () => void }) {
+  const [sent, setSent] = useState(false);
+
   return (
     <>
       <div
-        onClick={onClose}
+        onClick={() => { onClose(); setTimeout(() => setSent(false), 300); }}
         className={`fixed inset-0 z-50 bg-black/50 transition-opacity ${
           open ? "opacity-100" : "pointer-events-none opacity-0"
         }`}
@@ -553,39 +566,56 @@ function InquirySheet({ open, onClose }: { open: boolean; onClose: () => void })
         }`}
       >
         <div className="mx-auto mb-4 h-1.5 w-12 rounded-full bg-border" />
-        <h3 className="text-xl font-bold text-ink">Send Inquiry About Vehicle</h3>
-        <p className="mt-1 text-sm text-muted-foreground">
-          The dealer typically responds in under 2 hours.
-        </p>
-
-        <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            onClose();
-          }}
-          className="mt-5 space-y-3"
-        >
-          <input className="calc-input" placeholder="Name" />
-          <input className="calc-input" type="email" placeholder="Email" />
-          <input className="calc-input" placeholder="Phone (Optional)" />
-          <select className="calc-input" defaultValue="avail">
-            <option value="avail">This Vehicle's Availability</option>
-            <option>Price negotiation</option>
-            <option>Test drive booking</option>
-            <option>Financing options</option>
-          </select>
-          <textarea
-            className="calc-input"
-            rows={4}
-            defaultValue="Hi, I'm interested in the 2022 Ford GT White. Could you let me know if it's still available and if a test drive can be arranged this week?"
-          />
-          <button
-            type="submit"
-            className="w-full rounded-xl bg-ink py-3.5 text-sm font-semibold text-white"
-          >
-            Send Inquiry
-          </button>
-        </form>
+        {sent ? (
+          <div className="py-10 text-center">
+            <div className="mx-auto grid h-16 w-16 animate-[pop_0.4s_ease-out] place-items-center rounded-full bg-brand text-ink">
+              <Check className="h-8 w-8" strokeWidth={3} />
+            </div>
+            <h3 className="mt-4 text-xl font-bold text-ink">Message sent</h3>
+            <p className="mt-1 text-sm text-muted-foreground">
+              The dealer will reach out within 2 hours. We'll email you a copy too.
+            </p>
+            <button
+              onClick={() => { onClose(); setTimeout(() => setSent(false), 300); }}
+              className="mt-5 rounded-xl bg-ink px-5 py-2.5 text-sm font-semibold text-white"
+            >
+              Done
+            </button>
+            <style>{`@keyframes pop{0%{transform:scale(.6);opacity:0}60%{transform:scale(1.1);opacity:1}100%{transform:scale(1)}}`}</style>
+          </div>
+        ) : (
+          <>
+            <h3 className="text-xl font-bold text-ink">Send Inquiry About Vehicle</h3>
+            <p className="mt-1 text-sm text-muted-foreground">
+              The dealer typically responds in under 2 hours.
+            </p>
+            <form
+              onSubmit={(e) => { e.preventDefault(); setSent(true); }}
+              className="mt-5 space-y-3"
+            >
+              <input required className="calc-input" placeholder="Name" />
+              <input required className="calc-input" type="email" placeholder="Email" />
+              <input className="calc-input" placeholder="Phone (Optional)" />
+              <select className="calc-input" defaultValue="avail">
+                <option value="avail">This Vehicle's Availability</option>
+                <option>Price negotiation</option>
+                <option>Test drive booking</option>
+                <option>Financing options</option>
+              </select>
+              <textarea
+                className="calc-input"
+                rows={4}
+                defaultValue="Hi, I'm interested in this vehicle. Could you let me know if it's still available and if a test drive can be arranged this week?"
+              />
+              <button
+                type="submit"
+                className="w-full rounded-xl bg-ink py-3.5 text-sm font-semibold text-white"
+              >
+                Send Inquiry
+              </button>
+            </form>
+          </>
+        )}
       </div>
     </>
   );

@@ -1,19 +1,22 @@
 import { Link } from "@tanstack/react-router";
 import { Logo } from "./Logo";
+import { useAuthModal } from "@/contexts/AuthModalContext";
 
 type Props = { onMenuClick: () => void };
 
 export function Header({ onMenuClick }: Props) {
+  const auth = useAuthModal();
   return (
     <header className="sticky top-0 z-40 w-full border-b border-border bg-background/95 backdrop-blur">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4">
         <Link to="/">
           <Logo />
         </Link>
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2 sm:gap-3">
           <button
             type="button"
-            className="rounded-full border border-ink/80 px-5 py-2 text-sm font-semibold text-ink transition hover:bg-ink hover:text-white"
+            onClick={auth.open}
+            className="rounded-full border border-ink/80 px-4 py-2 text-sm font-semibold text-ink transition hover:bg-ink hover:text-white sm:px-5"
           >
             Sign In
           </button>
