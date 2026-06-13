@@ -79,7 +79,7 @@ function BuyPage() {
 
   const updateFilters = (next: Partial<Search>) => {
     setPage(1);
-    navigate({ to: "/buy", search: (current) => ({ ...current, ...next }) });
+    navigate({ to: "/buy", search: { ...search, ...next } });
   };
 
   const setBrands = (values: string[]) => { setBrandSel(values); updateFilters({ brand: values.length ? values.join(",") : undefined }); };
