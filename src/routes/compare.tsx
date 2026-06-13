@@ -66,7 +66,7 @@ function Compare() {
     <main>
       <PageHeader eyebrow="Tools" title="Compare Vehicles" subtitle="Stack up to three cars side by side. Specs, prices, the works." />
       <section className="mx-auto max-w-6xl px-4 py-10">
-        <div className="grid min-w-[720px] grid-cols-3 gap-3 sm:gap-4">
+        <div className="overflow-x-auto pb-2"><div className="grid min-w-[720px] grid-cols-3 gap-3 sm:gap-4">
           {cars.map((c, i) => (
             <div key={i} className="rounded-2xl border border-border bg-white p-3 sm:p-4">
               {c ? (
@@ -95,7 +95,7 @@ function Compare() {
               )}
             </div>
           ))}
-        </div>
+        </div></div>
 
         <div className="mt-8 overflow-x-auto rounded-2xl border border-border bg-white">
           <div className="min-w-[760px]">
