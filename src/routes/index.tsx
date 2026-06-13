@@ -10,9 +10,10 @@ import { VehicleCard } from "@/components/aurexo/VehicleCard";
 import { FinanceCalculator } from "@/components/aurexo/FinanceCalculator";
 import { team } from "@/lib/team";
 import { articles } from "@/lib/articles";
-import { siFord, siBmw, siToyota, siHyundai, siHonda, siChevrolet, siRivian, siMercedes, siAudi, siTesla } from "simple-icons/icons";
+import { siFord, siBmw, siToyota, siHyundai, siHonda, siChevrolet, siAudi, siTesla } from "simple-icons/icons";
 
-const brandIcons = { Ford: siFord, BMW: siBmw, Toyota: siToyota, Hyundai: siHyundai, Honda: siHonda, Chevrolet: siChevrolet, Rivian: siRivian, Mercedes: siMercedes, Audi: siAudi, Tesla: siTesla };
+const fallbackBrandIcon = { path: "M12 2 3 7v10l9 5 9-5V7l-9-5Zm0 4 5 2.8v6.4L12 18l-5-2.8V8.8L12 6Z" };
+const brandIcons = { Ford: siFord, BMW: siBmw, Toyota: siToyota, Hyundai: siHyundai, Honda: siHonda, Chevrolet: siChevrolet, Rivian: fallbackBrandIcon, Mercedes: fallbackBrandIcon, Audi: siAudi, Tesla: siTesla };
 
 const HERO_VIDEO =
   "https://assets.mixkit.co/videos/preview/mixkit-luxury-car-on-a-road-31976-large.mp4";
