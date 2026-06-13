@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { useState, type SVGProps } from "react";
 import {
   Search, Car, ShieldCheck, Banknote, Headphones, ArrowRight, MapPin, Star,
   Linkedin, Mail, Calendar,
@@ -9,6 +10,10 @@ import { VehicleCard } from "@/components/aurexo/VehicleCard";
 import { FinanceCalculator } from "@/components/aurexo/FinanceCalculator";
 import { team } from "@/lib/team";
 import { articles } from "@/lib/articles";
+import { siFord, siBmw, siToyota, siHyundai, siHonda, siChevrolet, siAudi, siTesla } from "simple-icons/icons";
+
+const fallbackBrandIcon = { path: "M12 2 3 7v10l9 5 9-5V7l-9-5Zm0 4 5 2.8v6.4L12 18l-5-2.8V8.8L12 6Z" };
+const brandIcons = { Ford: siFord, BMW: siBmw, Toyota: siToyota, Hyundai: siHyundai, Honda: siHonda, Chevrolet: siChevrolet, Rivian: fallbackBrandIcon, Mercedes: fallbackBrandIcon, Audi: siAudi, Tesla: siTesla };
 
 const HERO_VIDEO =
   "https://assets.mixkit.co/videos/preview/mixkit-luxury-car-on-a-road-31976-large.mp4";
@@ -30,6 +35,10 @@ export const Route = createFileRoute("/")({
 function Home() {
   const featured = vehicles.filter((v) => v.featured).slice(0, 6);
   const latest = articles.slice(0, 3);
+  const [heroBrand, setHeroBrand] = useState("");
+  const [heroBody, setHeroBody] = useState("");
+  const [heroPrice, setHeroPrice] = useState("");
+  const priceSearch = heroPrice === "under-20" ? { minPrice: 0, maxPrice: 20000 } : heroPrice === "20-50" ? { minPrice: 20000, maxPrice: 50000 } : heroPrice === "50-plus" ? { minPrice: 50000, maxPrice: 500000 } : {};
 
   return (
     <main>
@@ -63,21 +72,21 @@ function Home() {
 
           <div className="mt-8 rounded-2xl bg-white p-3 text-ink shadow-2xl sm:p-4">
             <div className="grid grid-cols-1 gap-2 sm:grid-cols-4">
-              <select className="rounded-xl border border-border px-3 py-3 text-sm">
+              <select value={heroBrand} onChange={(event) => setHeroBrand(event.target.value)} className="min-h-12 rounded-xl border border-border px-3 py-3 text-sm">
                 <option>Any Make</option>
-                {brands.map((b) => <option key={b}>{b}</option>)}
+                {brands.map((b) => <option key={b} value={b}>{b}</option>)}
               </select>
-              <select className="rounded-xl border border-border px-3 py-3 text-sm">
+              <select value={heroBody} onChange={(event) => setHeroBody(event.target.value)} className="min-h-12 rounded-xl border border-border px-3 py-3 text-sm">
                 <option>Any Body Type</option>
-                {bodyTypes.map((b) => <option key={b.label}>{b.label}</option>)}
+                {bodyTypes.filter((b) => b.count > 0).map((b) => <option key={b.label} value={b.label}>{b.label}</option>)}
               </select>
-              <select className="rounded-xl border border-border px-3 py-3 text-sm">
+              <select value={heroPrice} onChange={(event) => setHeroPrice(event.target.value)} className="min-h-12 rounded-xl border border-border px-3 py-3 text-sm">
                 <option>Any Price</option>
-                <option>Under $20k</option>
-                <option>$20k – $50k</option>
-                <option>$50k+</option>
+                <option value="under-20">Under $20k</option>
+                <option value="20-50">$20k – $50k</option>
+                <option value="50-plus">$50k+</option>
               </select>
-              <Link to="/buy" className="inline-flex items-center justify-center gap-2 rounded-xl bg-brand py-3 text-sm font-semibold text-ink">
+              <Link to="/buy" search={{ brand: heroBrand || undefined, body: heroBody || undefined, ...priceSearch }} className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-brand py-3 text-sm font-semibold text-ink">
                 <Search className="h-4 w-4" /> Search
               </Link>
             </div>
@@ -101,15 +110,17 @@ function Home() {
           <Link to="/buy" className="text-sm font-medium text-muted-foreground">View all</Link>
         </div>
         <div className="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
-          {bodyTypes.map((b) => (
-            <Link key={b.label} to="/buy" className="group rounded-2xl border border-border bg-white p-5 text-center transition hover:border-ink">
+          {bodyTypes.filter((b) => b.count > 0).map((b) => {
+            const BodyIcon = bodyIconFor(b.label);
+            return (
+            <Link key={b.label} to="/inventory/$body" params={{ body: b.label.toLowerCase() }} className="group rounded-2xl border border-border bg-white p-5 text-center transition hover:border-ink">
               <div className="mx-auto grid h-14 w-14 place-items-center rounded-full bg-surface group-hover:bg-brand/15">
-                <Car className="h-7 w-7 text-ink" />
+                <BodyIcon className="h-9 w-9 text-ink" />
               </div>
               <p className="mt-3 font-semibold text-ink">{b.label}</p>
               <p className="text-xs text-muted-foreground">{b.count} cars</p>
             </Link>
-          ))}
+          )})}
         </div>
       </section>
 
@@ -240,11 +251,14 @@ function Home() {
       <section className="mx-auto max-w-6xl px-4 py-8">
         <h2 className="text-2xl font-bold text-ink">Top Brands</h2>
         <div className="mt-5 grid grid-cols-3 gap-3 sm:grid-cols-5">
-          {brands.slice(0, 10).map((b) => (
-            <Link to="/buy" key={b} className="rounded-xl border border-border bg-white py-5 text-center text-sm font-semibold text-ink hover:border-ink">
-              {b}
+          {brands.slice(0, 10).map((b) => {
+            const icon = brandIcons[b as keyof typeof brandIcons];
+            return (
+            <Link to="/buy" search={{ brand: b }} key={b} className="group flex min-h-32 flex-col items-center justify-center rounded-2xl border border-border bg-white px-3 py-5 text-center text-sm font-semibold text-ink transition hover:-translate-y-0.5 hover:border-brand hover:shadow-lg">
+              <svg viewBox="0 0 24 24" aria-hidden="true" className="h-10 w-10 text-ink transition group-hover:text-brand"><path d={icon.path} fill="currentColor" /></svg>
+              <span className="mt-3">{b}</span>
             </Link>
-          ))}
+          )})}
         </div>
       </section>
 
@@ -296,4 +310,17 @@ function XLogo() {
       <path d="M18.244 2H21.5l-7.5 8.57L23 22h-6.844l-5.36-7.01L4.6 22H1.34l8.04-9.18L1 2h7.02l4.84 6.4L18.24 2zm-2.4 18h1.86L7.26 4h-1.97l10.55 16z" />
     </svg>
   );
+}
+
+function bodyIconFor(body: string) {
+  const paths: Record<string, string> = {
+    Sedan: "M3 15h18l-1.5-4-4-2H8l-3.5 2L3 15Zm3 0a2 2 0 1 0 4 0m6 0a2 2 0 1 0 4 0",
+    SUV: "M3 15h18l-1-6H7l-3 3-1 3Zm3 0a2 2 0 1 0 4 0m7 0a2 2 0 1 0 4 0M9 9V6h7l3 3",
+    Coupe: "M3 15h18l-2-4-5-3H9l-5 4-1 3Zm3 0a2 2 0 1 0 4 0m7 0a2 2 0 1 0 4 0",
+    Hatchback: "M3 15h18l-1-7H9l-5 4-1 3Zm3 0a2 2 0 1 0 4 0m8 0a2 2 0 1 0 4 0M16 8l4 4",
+    Truck: "M2 15h20v-4l-3-3h-5v7M3 8h11v7H3V8Zm2 7a2 2 0 1 0 4 0m8 0a2 2 0 1 0 4 0",
+  };
+  return function BodyIcon(props: SVGProps<SVGSVGElement>) {
+    return <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" {...props}><path d={paths[body]} /></svg>;
+  };
 }

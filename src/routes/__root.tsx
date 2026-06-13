@@ -18,6 +18,7 @@ import { CompareProvider } from "@/contexts/CompareContext";
 import { AuthModalProvider } from "@/contexts/AuthModalContext";
 import { CompareBar } from "@/components/aurexo/CompareBar";
 import { AuthModal } from "@/components/aurexo/AuthModal";
+import { FavoritesProvider } from "@/contexts/FavoritesContext";
 
 function NotFoundComponent() {
   return (
@@ -124,9 +125,11 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       <AuthModalProvider>
-        <CompareProvider>
-          <SiteShell />
-        </CompareProvider>
+        <FavoritesProvider>
+          <CompareProvider>
+            <SiteShell />
+          </CompareProvider>
+        </FavoritesProvider>
       </AuthModalProvider>
     </QueryClientProvider>
   );

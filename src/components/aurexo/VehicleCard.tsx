@@ -2,6 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { Heart, Plus, Check, Camera, Video, ChevronRight } from "lucide-react";
 import type { Vehicle } from "@/lib/aurexo-data";
 import { useCompare } from "@/contexts/CompareContext";
+import { useFavorites } from "@/contexts/FavoritesContext";
 
 const tagColors: Record<NonNullable<Vehicle["tag"]>, string> = {
   "Great Price": "#4338CA",
@@ -12,7 +13,9 @@ const tagColors: Record<NonNullable<Vehicle["tag"]>, string> = {
 
 export function VehicleCard({ v }: { v: Vehicle }) {
   const { has, toggle } = useCompare();
+  const favorites = useFavorites();
   const inCompare = has(v.id);
+  const isSaved = favorites.has(v.id);
   const tagBg = v.tag ? tagColors[v.tag] : undefined;
   return (
     <article className="flex flex-col overflow-hidden rounded-2xl border border-border bg-white">
@@ -27,10 +30,12 @@ export function VehicleCard({ v }: { v: Vehicle }) {
           </span>
         )}
         <button
-          aria-label="Save"
-          className="absolute right-3 top-3 grid h-9 w-9 place-items-center rounded-full border border-border bg-white/95 text-ink"
+          onClick={() => favorites.toggle(v.id)}
+          aria-label={isSaved ? `Remove ${v.title} from saved vehicles` : `Save ${v.title}`}
+          aria-pressed={isSaved}
+          className={`absolute right-3 top-3 grid h-11 w-11 place-items-center rounded-full border bg-background/95 transition ${isSaved ? "border-brand text-brand" : "border-border text-ink"}`}
         >
-          <Heart className="h-4 w-4" />
+          <Heart className="h-5 w-5" fill={isSaved ? "currentColor" : "none"} />
         </button>
         <div className="absolute bottom-3 left-3 flex items-center gap-2">
           <span className="flex items-center gap-1 rounded-md bg-black/55 px-2 py-1 text-[11px] font-medium text-white backdrop-blur">
