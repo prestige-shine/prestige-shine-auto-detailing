@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as SellRouteImport } from './routes/sell'
+import { Route as SavedRouteImport } from './routes/saved'
 import { Route as ReviewsRouteImport } from './routes/reviews'
 import { Route as NewsRouteImport } from './routes/news'
 import { Route as NewArrivalsRouteImport } from './routes/new-arrivals'
@@ -29,6 +30,7 @@ import { Route as AboutRouteImport } from './routes/about'
 import { Route as R404RouteImport } from './routes/404'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ListingsIdRouteImport } from './routes/listings.$id'
+import { Route as InventoryBodyRouteImport } from './routes/inventory.$body'
 import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
 
 const TermsRoute = TermsRouteImport.update({
@@ -44,6 +46,11 @@ const ServicesRoute = ServicesRouteImport.update({
 const SellRoute = SellRouteImport.update({
   id: '/sell',
   path: '/sell',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SavedRoute = SavedRouteImport.update({
+  id: '/saved',
+  path: '/saved',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ReviewsRoute = ReviewsRouteImport.update({
@@ -131,6 +138,11 @@ const ListingsIdRoute = ListingsIdRouteImport.update({
   path: '/listings/$id',
   getParentRoute: () => rootRouteImport,
 } as any)
+const InventoryBodyRoute = InventoryBodyRouteImport.update({
+  id: '/inventory/$body',
+  path: '/inventory/$body',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const BlogSlugRoute = BlogSlugRouteImport.update({
   id: '/blog/$slug',
   path: '/blog/$slug',
@@ -154,10 +166,12 @@ export interface FileRoutesByFullPath {
   '/new-arrivals': typeof NewArrivalsRoute
   '/news': typeof NewsRoute
   '/reviews': typeof ReviewsRoute
+  '/saved': typeof SavedRoute
   '/sell': typeof SellRoute
   '/services': typeof ServicesRoute
   '/terms': typeof TermsRoute
   '/blog/$slug': typeof BlogSlugRoute
+  '/inventory/$body': typeof InventoryBodyRoute
   '/listings/$id': typeof ListingsIdRoute
 }
 export interface FileRoutesByTo {
@@ -177,10 +191,12 @@ export interface FileRoutesByTo {
   '/new-arrivals': typeof NewArrivalsRoute
   '/news': typeof NewsRoute
   '/reviews': typeof ReviewsRoute
+  '/saved': typeof SavedRoute
   '/sell': typeof SellRoute
   '/services': typeof ServicesRoute
   '/terms': typeof TermsRoute
   '/blog/$slug': typeof BlogSlugRoute
+  '/inventory/$body': typeof InventoryBodyRoute
   '/listings/$id': typeof ListingsIdRoute
 }
 export interface FileRoutesById {
@@ -201,10 +217,12 @@ export interface FileRoutesById {
   '/new-arrivals': typeof NewArrivalsRoute
   '/news': typeof NewsRoute
   '/reviews': typeof ReviewsRoute
+  '/saved': typeof SavedRoute
   '/sell': typeof SellRoute
   '/services': typeof ServicesRoute
   '/terms': typeof TermsRoute
   '/blog/$slug': typeof BlogSlugRoute
+  '/inventory/$body': typeof InventoryBodyRoute
   '/listings/$id': typeof ListingsIdRoute
 }
 export interface FileRouteTypes {
@@ -226,10 +244,12 @@ export interface FileRouteTypes {
     | '/new-arrivals'
     | '/news'
     | '/reviews'
+    | '/saved'
     | '/sell'
     | '/services'
     | '/terms'
     | '/blog/$slug'
+    | '/inventory/$body'
     | '/listings/$id'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -249,10 +269,12 @@ export interface FileRouteTypes {
     | '/new-arrivals'
     | '/news'
     | '/reviews'
+    | '/saved'
     | '/sell'
     | '/services'
     | '/terms'
     | '/blog/$slug'
+    | '/inventory/$body'
     | '/listings/$id'
   id:
     | '__root__'
@@ -272,10 +294,12 @@ export interface FileRouteTypes {
     | '/new-arrivals'
     | '/news'
     | '/reviews'
+    | '/saved'
     | '/sell'
     | '/services'
     | '/terms'
     | '/blog/$slug'
+    | '/inventory/$body'
     | '/listings/$id'
   fileRoutesById: FileRoutesById
 }
@@ -296,10 +320,12 @@ export interface RootRouteChildren {
   NewArrivalsRoute: typeof NewArrivalsRoute
   NewsRoute: typeof NewsRoute
   ReviewsRoute: typeof ReviewsRoute
+  SavedRoute: typeof SavedRoute
   SellRoute: typeof SellRoute
   ServicesRoute: typeof ServicesRoute
   TermsRoute: typeof TermsRoute
   BlogSlugRoute: typeof BlogSlugRoute
+  InventoryBodyRoute: typeof InventoryBodyRoute
   ListingsIdRoute: typeof ListingsIdRoute
 }
 
@@ -324,6 +350,13 @@ declare module '@tanstack/react-router' {
       path: '/sell'
       fullPath: '/sell'
       preLoaderRoute: typeof SellRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/saved': {
+      id: '/saved'
+      path: '/saved'
+      fullPath: '/saved'
+      preLoaderRoute: typeof SavedRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/reviews': {
@@ -445,6 +478,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ListingsIdRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/inventory/$body': {
+      id: '/inventory/$body'
+      path: '/inventory/$body'
+      fullPath: '/inventory/$body'
+      preLoaderRoute: typeof InventoryBodyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/blog/$slug': {
       id: '/blog/$slug'
       path: '/blog/$slug'
@@ -472,10 +512,12 @@ const rootRouteChildren: RootRouteChildren = {
   NewArrivalsRoute: NewArrivalsRoute,
   NewsRoute: NewsRoute,
   ReviewsRoute: ReviewsRoute,
+  SavedRoute: SavedRoute,
   SellRoute: SellRoute,
   ServicesRoute: ServicesRoute,
   TermsRoute: TermsRoute,
   BlogSlugRoute: BlogSlugRoute,
+  InventoryBodyRoute: InventoryBodyRoute,
   ListingsIdRoute: ListingsIdRoute,
 }
 export const routeTree = rootRouteImport

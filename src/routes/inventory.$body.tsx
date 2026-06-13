@@ -1,6 +1,6 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { VehicleCard } from "@/components/aurexo/VehicleCard";
-import { vehicles } from "@/lib/aurexo-data";
+import { vehicles, type Vehicle } from "@/lib/aurexo-data";
 
 const bodies = ["sedan", "suv", "coupe", "hatchback", "truck"] as const;
 
@@ -9,7 +9,7 @@ export const Route = createFileRoute("/inventory/$body")({
     const slug = params.body.toLowerCase();
     if (!bodies.includes(slug as typeof bodies[number])) throw notFound();
     const body = slug === "suv" ? "SUV" : slug.charAt(0).toUpperCase() + slug.slice(1);
-    return { body, inventory: vehicles.filter((vehicle) => vehicle.body === body) };
+    return { body, inventory: vehicles.filter((vehicle: Vehicle) => vehicle.body === body) };
   },
   head: ({ loaderData }) => ({ meta: loaderData ? [
     { title: `${loaderData.body} Cars for Sale — Aurexo` },

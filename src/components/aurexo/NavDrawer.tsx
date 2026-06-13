@@ -15,6 +15,7 @@ const tree: Node[] = [
       { label: "All Vehicles", to: "/buy" },
       { label: "New Arrivals", to: "/new-arrivals" },
       { label: "Featured", to: "/featured" },
+      { label: "Saved Vehicles", to: "/saved" },
     ],
   },
   {
