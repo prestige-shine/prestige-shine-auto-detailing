@@ -10,12 +10,26 @@ const PER_PAGE = 12;
 type Search = {
   preset?: "new" | "featured";
   q?: string;
+  brand?: string;
+  body?: string;
+  condition?: string;
+  fuel?: string;
+  transmission?: string;
+  minPrice?: number;
+  maxPrice?: number;
 };
 
 export const Route = createFileRoute("/buy")({
   validateSearch: (s: Record<string, unknown>): Search => ({
     preset: s.preset === "new" || s.preset === "featured" ? s.preset : undefined,
     q: typeof s.q === "string" ? s.q : undefined,
+    brand: typeof s.brand === "string" ? s.brand : undefined,
+    body: typeof s.body === "string" ? s.body : undefined,
+    condition: typeof s.condition === "string" ? s.condition : undefined,
+    fuel: typeof s.fuel === "string" ? s.fuel : undefined,
+    transmission: typeof s.transmission === "string" ? s.transmission : undefined,
+    minPrice: typeof s.minPrice === "number" ? s.minPrice : undefined,
+    maxPrice: typeof s.maxPrice === "number" ? s.maxPrice : undefined,
   }),
   head: () => ({
     meta: [
@@ -32,14 +46,14 @@ function BuyPage() {
   const search = Route.useSearch();
   const navigate = useNavigate();
 
-  const [brandSel, setBrandSel] = useState<string[]>([]);
-  const [bodySel, setBodySel] = useState<string[]>([]);
-  const [fuelSel, setFuelSel] = useState<string[]>([]);
-  const [transSel, setTransSel] = useState<string[]>([]);
+  const [brandSel, setBrandSel] = useState<string[]>(search.brand?.split(",").filter(Boolean) ?? []);
+  const [bodySel, setBodySel] = useState<string[]>(search.body?.split(",").filter(Boolean) ?? []);
+  const [fuelSel, setFuelSel] = useState<string[]>(search.fuel?.split(",").filter(Boolean) ?? []);
+  const [transSel, setTransSel] = useState<string[]>(search.transmission?.split(",").filter(Boolean) ?? []);
   const [condSel, setCondSel] = useState<string[]>(
-    search.preset === "new" ? ["New Car"] : [],
+    search.preset === "new" ? ["New Car"] : search.condition?.split(",").filter(Boolean) ?? [],
   );
-  const [price, setPrice] = useState<[number, number]>([priceMin, priceMax]);
+  const [price, setPrice] = useState<[number, number]>([search.minPrice ?? priceMin, search.maxPrice ?? priceMax]);
   const [sort, setSort] = useState("relevance");
   const [page, setPage] = useState(1);
   const [filtersOpen, setFiltersOpen] = useState(false);
@@ -53,6 +67,7 @@ function BuyPage() {
       if (condSel.length && !condSel.includes(v.condition)) return false;
       if (v.priceNum < price[0] || v.priceNum > price[1]) return false;
       if (search.preset === "featured" && !v.featured) return false;
+      if (search.q && !`${v.title} ${v.brand} ${v.body} ${v.fuel}`.toLowerCase().includes(search.q.toLowerCase())) return false;
       return true;
     });
     if (sort === "price-asc") r = [...r].sort((a, b) => a.priceNum - b.priceNum);
@@ -60,7 +75,19 @@ function BuyPage() {
     if (sort === "year") r = [...r].sort((a, b) => b.year - a.year);
     if (sort === "km") r = [...r].sort((a, b) => a.kmNum - b.kmNum);
     return r;
-  }, [brandSel, bodySel, fuelSel, transSel, condSel, price, sort, search.preset]);
+  }, [brandSel, bodySel, fuelSel, transSel, condSel, price, sort, search.preset, search.q]);
+
+  const updateFilters = (next: Partial<Search>) => {
+    setPage(1);
+    navigate({ to: "/buy", search: (current) => ({ ...current, ...next }) });
+  };
+
+  const setBrands = (values: string[]) => { setBrandSel(values); updateFilters({ brand: values.length ? values.join(",") : undefined }); };
+  const setBodies = (values: string[]) => { setBodySel(values); updateFilters({ body: values.length ? values.join(",") : undefined }); };
+  const setFuels = (values: string[]) => { setFuelSel(values); updateFilters({ fuel: values.length ? values.join(",") : undefined }); };
+  const setTransmissions = (values: string[]) => { setTransSel(values); updateFilters({ transmission: values.length ? values.join(",") : undefined }); };
+  const setConditions = (values: string[]) => { setCondSel(values); updateFilters({ condition: values.length ? values.join(",") : undefined }); };
+  const setPriceRange = (values: [number, number]) => { setPrice(values); updateFilters({ minPrice: values[0], maxPrice: values[1] }); };
 
   const pages = Math.max(1, Math.ceil(list.length / PER_PAGE));
   const safePage = Math.min(page, pages);
@@ -107,12 +134,12 @@ function BuyPage() {
       <div className="mt-6 grid grid-cols-1 gap-6 lg:grid-cols-[280px_1fr]">
         <aside className="hidden lg:block">
           <FiltersPanel
-            brandSel={brandSel} setBrandSel={setBrandSel}
-            bodySel={bodySel} setBodySel={setBodySel}
-            fuelSel={fuelSel} setFuelSel={setFuelSel}
-            transSel={transSel} setTransSel={setTransSel}
-            condSel={condSel} setCondSel={setCondSel}
-            price={price} setPrice={setPrice}
+            brandSel={brandSel} setBrandSel={setBrands}
+            bodySel={bodySel} setBodySel={setBodies}
+            fuelSel={fuelSel} setFuelSel={setFuels}
+            transSel={transSel} setTransSel={setTransmissions}
+            condSel={condSel} setCondSel={setConditions}
+            price={price} setPrice={setPriceRange}
             onReset={reset}
           />
         </aside>
@@ -144,12 +171,12 @@ function BuyPage() {
             </div>
             <div className="mt-4">
               <FiltersPanel
-                brandSel={brandSel} setBrandSel={setBrandSel}
-                bodySel={bodySel} setBodySel={setBodySel}
-                fuelSel={fuelSel} setFuelSel={setFuelSel}
-                transSel={transSel} setTransSel={setTransSel}
-                condSel={condSel} setCondSel={setCondSel}
-                price={price} setPrice={setPrice}
+                brandSel={brandSel} setBrandSel={setBrands}
+                bodySel={bodySel} setBodySel={setBodies}
+                fuelSel={fuelSel} setFuelSel={setFuels}
+                transSel={transSel} setTransSel={setTransmissions}
+                condSel={condSel} setCondSel={setConditions}
+                price={price} setPrice={setPriceRange}
                 onReset={reset}
               />
             </div>
