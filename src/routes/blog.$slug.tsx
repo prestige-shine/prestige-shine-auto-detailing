@@ -16,8 +16,12 @@ export const Route = createFileRoute("/blog/$slug")({
           { property: "og:title", content: loaderData.article.title },
           { property: "og:description", content: loaderData.article.excerpt },
           { property: "og:image", content: loaderData.article.cover },
+          { property: "og:type", content: "article" },
+          { property: "og:url", content: `/blog/${loaderData.article.slug}` },
         ]
       : [],
+    links: loaderData ? [{ rel: "canonical", href: `/blog/${loaderData.article.slug}` }] : [],
+    scripts: loaderData ? [{ type: "application/ld+json", children: JSON.stringify({ "@context": "https://schema.org", "@type": "Article", headline: loaderData.article.title, description: loaderData.article.excerpt, image: loaderData.article.cover, datePublished: loaderData.article.date, author: { "@type": "Person", name: loaderData.article.author }, publisher: { "@type": "Organization", name: "Aurexo" } }) }] : [],
   }),
   errorComponent: ({ error }) => (
     <div className="mx-auto max-w-md px-4 py-20 text-center">
@@ -51,8 +55,8 @@ function BlogPost() {
           <span className="inline-flex items-center gap-1"><Calendar className="h-3.5 w-3.5" /> {article.date}</span>
         </div>
         <img src={article.cover} alt={article.title} className="mt-6 aspect-video w-full rounded-2xl object-cover" />
-        <div className="mt-6 space-y-5 text-base leading-relaxed text-foreground">
-          {article.body.map((p: string, i: number) => <p key={i}>{p}</p>)}
+        <div className="mt-8 space-y-5 text-base leading-relaxed text-foreground">
+          {article.body.map((block: string, i: number) => block.startsWith("## ") ? <h2 key={i} className="pt-4 text-2xl font-bold text-ink">{block.slice(3)}</h2> : block.startsWith("- ") ? <ul key={i} className="list-disc space-y-2 pl-6 text-muted-foreground">{block.slice(2).split(" | ").map((item) => <li key={item}>{item}</li>)}</ul> : <p key={i}>{block}</p>)}
         </div>
       </article>
 
