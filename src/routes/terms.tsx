@@ -6,6 +6,8 @@ export const Route = createFileRoute("/terms")({
     meta: [
       { title: "Terms of Use — Aurexo" },
       { name: "description", content: "The terms governing your use of the Aurexo platform." },
+      { property: "og:title", content: "Terms of Use — Aurexo" },
+      { property: "og:description", content: "Terms for using the Aurexo automotive marketplace, listings, financing, and services." },
     ],
   }),
   component: Terms,
