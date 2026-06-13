@@ -85,13 +85,17 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Aurexo — Premium Automotive Marketplace" },
+      { title: "Premium Automotive Marketplace" },
       { name: "description", content: "Buy, sell and finance premium vehicles with verified dealers across the country." },
       { name: "author", content: "Aurexo" },
-      { property: "og:title", content: "Aurexo — Premium Automotive Marketplace" },
-      { property: "og:description", content: "Buy, sell and finance premium vehicles with verified dealers." },
+      { property: "og:title", content: "Premium Automotive Marketplace" },
+      { property: "og:description", content: "Buy, sell and finance premium vehicles with verified dealers across the country." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Premium Automotive Marketplace" },
+      { name: "twitter:description", content: "Buy, sell and finance premium vehicles with verified dealers across the country." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/14e7aa40-936e-4025-9e56-fc55ef5aadcd/id-preview-e431ff1f--1a2ce5ba-1b9e-4ee7-844c-6168cd4a55ec.lovable.app-1781337765085.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/14e7aa40-936e-4025-9e56-fc55ef5aadcd/id-preview-e431ff1f--1a2ce5ba-1b9e-4ee7-844c-6168cd4a55ec.lovable.app-1781337765085.png" },
     ],
     links: [
       {
