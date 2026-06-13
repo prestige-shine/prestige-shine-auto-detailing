@@ -55,13 +55,12 @@ const specs = [
 ];
 
 const featureCats = ["Safety", "Interior", "Exterior", "Mechanical"] as const;
-const safetyList = [
-  "Fabric Upholstery",
-  "Glove Compartment",
-  "Halogen Headlamps",
-  "Heater",
-  "Function Steering Wheel",
-];
+const featureLists: Record<(typeof featureCats)[number], string[]> = {
+  Safety: ["Blind-spot monitoring with cross-traffic alert", "Forward collision warning and automatic emergency braking", "Lane-keeping assistance with driver attention monitoring", "Full-length curtain and side-impact airbags", "Rear parking sensors with high-definition camera"],
+  Interior: ["Hand-finished leather and microfiber sport seats", "Dual-zone automatic climate control", "Wireless Apple CarPlay and Android Auto", "Configurable digital instrument cluster", "Premium audio with cabin-noise compensation"],
+  Exterior: ["Lightweight forged alloy wheels", "Adaptive LED headlamps with automatic high beam", "Aerodynamic rear diffuser and active spoiler", "Heated power-folding mirrors", "Factory metallic paint with ceramic protection"],
+  Mechanical: ["Performance-tuned engine management", "Adaptive suspension with selectable drive modes", "Limited-slip differential and launch control", "High-performance ventilated braking system", "Electronic stability and traction management"],
+};
 
 const reviews = [
   {
@@ -89,16 +88,18 @@ const related = [
 
 import type { Vehicle } from "@/lib/aurexo-data";
 import { useCompare } from "@/contexts/CompareContext";
+import { useFavorites } from "@/contexts/FavoritesContext";
 
 export function VehicleDetail({ vehicle }: { vehicle?: Vehicle } = {}) {
   const heroImage = vehicle?.img ?? fordGT;
   const heroTitle = vehicle?.title ?? "2022 Ford GT White";
   const vehicleId = vehicle?.id ?? "2022-ford-gt-white";
   const { has, toggle } = useCompare();
+  const favorites = useFavorites();
   const inCompare = has(vehicleId);
   const [tab, setTab] = useState<Tab>("Overview");
   const [featTab, setFeatTab] = useState<(typeof featureCats)[number]>("Safety");
-  const [favorite, setFavorite] = useState(false);
+  const favorite = favorites.has(vehicleId);
   const [inquiryOpen, setInquiryOpen] = useState(false);
 
   // Calculator
@@ -158,7 +159,7 @@ export function VehicleDetail({ vehicle }: { vehicle?: Vehicle } = {}) {
             {inCompare ? "Added to compare" : "Compare"}
           </button>
           {[
-            { icon: Heart, label: "Favorite", active: favorite, onClick: () => setFavorite(!favorite) },
+            { icon: Heart, label: favorite ? "Remove from saved vehicles" : "Save vehicle", active: favorite, onClick: () => favorites.toggle(vehicleId) },
             { icon: Share2, label: "Share" },
             { icon: Printer, label: "Print" },
           ].map((b, i) => {
@@ -252,7 +253,7 @@ export function VehicleDetail({ vehicle }: { vehicle?: Vehicle } = {}) {
             ))}
           </div>
           <ul className="mt-5 grid sm:grid-cols-2 gap-3">
-            {safetyList.map((f) => (
+            {featureLists[featTab].map((f) => (
               <li key={f} className="flex items-center gap-3 text-sm text-ink">
                 <span className="grid h-6 w-6 place-items-center rounded-full bg-brand text-ink">
                   <Check className="h-3.5 w-3.5" strokeWidth={3} />
