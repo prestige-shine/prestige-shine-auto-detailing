@@ -100,6 +100,20 @@ export function VehicleDetail({ vehicle }: { vehicle?: Vehicle } = {}) {
   const [tab, setTab] = useState<Tab>("Overview");
   const [featTab, setFeatTab] = useState<(typeof featureCats)[number]>("Safety");
   const favorite = favorites.has(vehicleId);
+  const dynamicSpecs = specs.map((spec) => {
+    if (!vehicle) return spec;
+    const values: Record<string, string> = {
+      Mileage: vehicle.km,
+      Year: String(vehicle.year),
+      "Fuel Type": vehicle.fuel,
+      Transmission: vehicle.transmission,
+      Condition: vehicle.condition,
+      Doors: vehicle.body === "Coupe" ? "2" : vehicle.body === "Truck" ? "4" : "4–5",
+      Seat: vehicle.body === "Coupe" ? "2–4" : vehicle.body === "SUV" ? "5–7" : "5",
+      "Drive Type": vehicle.body === "SUV" || vehicle.body === "Truck" ? "AWD" : "RWD",
+    };
+    return { ...spec, value: values[spec.label] ?? spec.value };
+  });
   const [inquiryOpen, setInquiryOpen] = useState(false);
 
   // Calculator
@@ -195,7 +209,7 @@ export function VehicleDetail({ vehicle }: { vehicle?: Vehicle } = {}) {
       <section className="mx-auto max-w-6xl px-4 mt-8">
         <h2 className="text-xl font-bold text-ink">Car Overview</h2>
         <div className="mt-4 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
-          {specs.map((s) => {
+          {dynamicSpecs.map((s) => {
             const Icon = s.icon;
             return (
               <div
