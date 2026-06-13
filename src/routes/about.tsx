@@ -44,6 +44,12 @@ function About() {
               <li key={p} className="flex items-center gap-2 rounded-xl bg-surface p-3"><span className="h-2 w-2 rounded-full bg-brand"/> {p}</li>
             ))}
           </ul>
+          <div className="mt-10 grid gap-8 border-t border-border pt-10 lg:grid-cols-2">
+            <div><h3 className="text-lg font-bold text-ink">How our marketplace works</h3><p className="mt-3 text-sm leading-relaxed text-muted-foreground">Aurexo brings verified inventory, vehicle history, lender options, trade-in estimates, and delivery coordination into one guided automotive marketplace. Buyers can filter exact vehicle data, compare candidates side by side, save a shortlist, and contact accountable dealers without repeating the same information at every step.</p></div>
+            <div><h3 className="text-lg font-bold text-ink">Dealer quality standards</h3><p className="mt-3 text-sm leading-relaxed text-muted-foreground">Dealers are reviewed for licensing, customer-service history, listing accuracy, pricing clarity, and response quality. Vehicle listings must identify condition, mileage, drivetrain, fuel type, and material fees so shoppers can make informed comparisons before visiting a showroom.</p></div>
+            <div><h3 className="text-lg font-bold text-ink">Transparent car buying</h3><p className="mt-3 text-sm leading-relaxed text-muted-foreground">Our product is designed around the total decision—not just the advertised payment. Calculators expose principal, rate, down payment, term, and estimated total loan cost. Educational guides explain inspections, warranties, electric vehicles, certified pre-owned programs, leasing, and ownership expenses in plain language.</p></div>
+            <div><h3 className="text-lg font-bold text-ink">Support after the sale</h3><p className="mt-3 text-sm leading-relaxed text-muted-foreground">The relationship continues through delivery, title coordination, warranty guidance, and access to service professionals. Our customer team helps resolve documentation questions and connects owners with the correct dealer or lender when specialized support is required.</p></div>
+          </div>
         </div>
       </section>
     </main>

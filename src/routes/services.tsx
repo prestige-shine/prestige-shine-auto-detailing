@@ -39,6 +39,14 @@ function Services() {
           </article>
         ))}
       </section>
+      <section className="mx-auto max-w-6xl px-4 pb-16">
+        <div className="grid gap-8 border-t border-border pt-10 lg:grid-cols-2">
+          <div><h2 className="text-2xl font-bold text-ink">Complete automotive maintenance</h2><p className="mt-3 text-sm leading-relaxed text-muted-foreground">Every appointment starts with a documented inspection and clear estimate. Factory-recommended maintenance may include oil and filter service, brake inspection, tire rotation, fluid testing, cabin filtration, battery testing, and software or recall checks appropriate to the model and mileage.</p></div>
+          <div><h2 className="text-2xl font-bold text-ink">Repair authorization you control</h2><p className="mt-3 text-sm leading-relaxed text-muted-foreground">Technicians explain the concern, diagnostic evidence, parts options, labor, taxes, and expected completion time before additional work begins. Urgent safety repairs are separated from maintenance that can be planned for a later visit.</p></div>
+          <div><h3 className="text-lg font-bold text-ink">EV and hybrid expertise</h3><p className="mt-3 text-sm leading-relaxed text-muted-foreground">High-voltage certified specialists perform battery health checks, thermal-system service, charging diagnostics, software updates, brake service, tire replacement, and pre-purchase inspections for electric and hybrid vehicles.</p></div>
+          <div><h3 className="text-lg font-bold text-ink">Warranty-backed workmanship</h3><p className="mt-3 text-sm leading-relaxed text-muted-foreground">Eligible repairs include written parts-and-labor coverage. Your digital service record documents completed work, measurements, future recommendations, and maintenance timing to support reliability and resale value.</p></div>
+        </div>
+      </section>
     </main>
   );
 }

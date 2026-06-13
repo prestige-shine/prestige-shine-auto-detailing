@@ -59,6 +59,12 @@ function Financing() {
         <Link to="/calculator" className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-ink">
           Estimate your monthly payment <ArrowRight className="h-4 w-4" />
         </Link>
+        <div className="mt-12 space-y-8 border-t border-border pt-10">
+          <div><h2 className="text-2xl font-bold text-ink">How Aurexo auto financing works</h2><p className="mt-3 text-sm leading-relaxed text-muted-foreground">Pre-qualification collects basic identity, income, housing, and requested loan information to estimate eligible offers. A soft credit inquiry does not change your score. If you select a lender and proceed, the lender may complete identity verification, income review, and a hard credit inquiry before final approval.</p></div>
+          <div><h3 className="text-lg font-bold text-ink">Compare the complete loan—not just the payment</h3><p className="mt-3 text-sm leading-relaxed text-muted-foreground">Review annual percentage rate, term, amount financed, down payment, taxes, fees, total interest, and total of payments. A longer loan can reduce the monthly bill while increasing interest expense and the period in which the balance may exceed the vehicle's value.</p></div>
+          <div><h3 className="text-lg font-bold text-ink">Documents that may be required</h3><ul className="mt-3 list-disc space-y-2 pl-5 text-sm text-muted-foreground"><li>Government-issued identification and proof of residence</li><li>Recent pay statements, tax returns, or bank statements</li><li>Insurance binder for the selected vehicle</li><li>Trade-in title, registration, and payoff information when applicable</li></ul></div>
+          <p className="text-xs leading-relaxed text-muted-foreground">Rates and approvals vary by lender, credit profile, vehicle, loan-to-value ratio, residence, and market conditions. Advertised rates are not guaranteed. Aurexo is not a lender and does not make credit decisions.</p>
+        </div>
       </section>
     </main>
   );
