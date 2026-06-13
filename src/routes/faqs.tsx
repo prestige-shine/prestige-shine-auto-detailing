@@ -11,6 +11,7 @@ export const Route = createFileRoute("/faqs")({
       { property: "og:title", content: "FAQs — Aurexo" },
       { property: "og:description", content: "Answers to common Aurexo questions." },
     ],
+    scripts: [{ type: "application/ld+json", children: JSON.stringify({ "@context": "https://schema.org", "@type": "FAQPage", mainEntity: groups.flatMap((group) => group.items.map(([question, answer]) => ({ "@type": "Question", name: question, acceptedAnswer: { "@type": "Answer", text: answer } }))) }) }],
   }),
   component: Faqs,
 });
@@ -22,6 +23,9 @@ const groups = [
       ["How do I reserve a vehicle?", "Hit the green 'Reserve' button on any listing. A refundable $500 hold pulls the car off the market for 48 hours."],
       ["Can I test drive before buying?", "Yes — every Aurexo car ships with a 7-day money-back test period after delivery."],
       ["Are vehicle histories included?", "Every listing includes a free Carfax-equivalent report with accident, service, and title history."],
+      ["How do I compare vehicles?", "Tap Compare on up to three listings. The comparison page aligns price, condition, mileage, powertrain, warranty, seating, cargo profile, and financing details."],
+      ["Can I arrange an independent inspection?", "Yes. For used vehicles, request a pre-purchase inspection before final paperwork. The dealer will coordinate reasonable access and timing."],
+      ["What is included in the advertised price?", "The listing price is the vehicle price. Taxes, title, registration, transport, documentation charges, optional products, and financing costs are itemized separately."],
     ],
   },
   {
@@ -29,6 +33,8 @@ const groups = [
     items: [
       ["What credit score do I need?", "We work with all credit profiles. Approvals start at FICO 540, with the best rates at 700+."],
       ["Will checking my rate hurt my credit?", "No — pre-approval uses a soft pull only. Hard inquiry happens only when you accept an offer."],
+      ["Can I use my own bank or credit union?", "Yes. Bring outside financing and compare its APR, term, amount financed, fees, and total payments with marketplace lender offers."],
+      ["How much should I put down?", "The right down payment depends on budget, approval, trade equity, and depreciation. More money down generally reduces principal, interest, and negative-equity risk."],
     ],
   },
   {
@@ -36,6 +42,16 @@ const groups = [
     items: [
       ["How is my instant offer calculated?", "We pull live auction data, regional demand, and your vehicle's spec to give a fair, transparent number."],
       ["When do I get paid?", "Funds clear via ACH within 1 business day of vehicle handover."],
+      ["Can I sell a financed vehicle?", "Usually. Provide payoff details so the lien can be satisfied during closing. Remaining positive equity is paid after payoff confirmation."],
+      ["What documents do sellers need?", "Prepare identification, title or payoff statement, registration, all keys, service records, and state-required transfer documents."],
+    ],
+  },
+  {
+    title: "Delivery and support",
+    items: [
+      ["How does delivery work?", "After payment, insurance, and documents are complete, the dealer confirms a delivery window. Timing and fees depend on distance, carrier capacity, and vehicle type."],
+      ["What should I check at delivery?", "Confirm VIN, mileage, keys, accessories, visible condition, and paperwork. Photograph shipping damage before accepting the carrier condition report."],
+      ["How do I contact support?", "Use the Contact page or call 1-866-288-6868. Keep your listing, reservation, or application reference ready for faster routing."],
     ],
   },
 ];
