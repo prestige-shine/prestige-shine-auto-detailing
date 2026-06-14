@@ -130,7 +130,7 @@ export function VehicleDetail({ vehicle }: { vehicle?: Vehicle } = {}) {
   const [inquiryOpen, setInquiryOpen] = useState(false);
 
   return (
-    <main className="bg-surface min-h-screen pb-20">
+    <main className="bg-surface min-h-screen min-w-0 overflow-x-clip pb-20">
       {/* Sticky segmented tab header */}
       <div className="sticky top-16 z-30 bg-surface/95 backdrop-blur border-b border-border">
         <div className="mx-auto max-w-6xl px-4 py-3">
@@ -511,11 +511,15 @@ function VehicleGallery({ heroImage, heroTitle }: { heroImage: string; heroTitle
   }, [api]);
 
   return (
-    <div className="mt-6" aria-label={`${heroTitle} media gallery`}>
-      <Carousel setApi={setApi} opts={{ loop: true, dragFree: false }} className="group">
-        <CarouselContent className="ml-0 touch-pan-y">
+    <div className="mt-6 min-w-0 max-w-full overflow-hidden" aria-label={`${heroTitle} media gallery`}>
+      <Carousel
+        setApi={setApi}
+        opts={{ loop: true, dragFree: false, containScroll: "trimSnaps" }}
+        className="group min-w-0 max-w-full overflow-hidden overscroll-x-contain"
+      >
+        <CarouselContent className="ml-0 touch-pan-y select-none">
           {gallery.map((image, index) => (
-            <CarouselItem key={image.label} className="pl-0">
+            <CarouselItem key={image.label} className="min-w-0 pl-0">
               <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-border bg-ink sm:aspect-[16/9]">
                 <img
                   src={image.src}
@@ -536,7 +540,7 @@ function VehicleGallery({ heroImage, heroTitle }: { heroImage: string; heroTitle
         <CarouselNext className="right-3 hidden h-11 w-11 border-0 bg-white/90 text-ink shadow-lg hover:bg-white sm:inline-flex" />
       </Carousel>
 
-      <div className="mt-3 flex gap-2 overflow-x-auto pb-1" role="tablist" aria-label="Choose gallery image">
+       <div className="mt-3 flex max-w-full gap-2 overflow-x-auto overscroll-x-contain pb-1" role="tablist" aria-label="Choose gallery image">
         {gallery.map((image, index) => (
           <Button
             key={image.label}
