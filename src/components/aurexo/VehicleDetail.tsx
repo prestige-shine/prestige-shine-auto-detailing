@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Heart,
   Share2,
@@ -32,6 +32,18 @@ import fordGT from "@/assets/ford-gt-white.jpg";
 import carSilver from "@/assets/car-silver.jpg";
 import carBlack from "@/assets/car-black.jpg";
 import carBlue from "@/assets/car-blue.jpg";
+import galleryInterior from "@/assets/gallery-interior.jpg";
+import galleryDashboard from "@/assets/gallery-dashboard.jpg";
+import galleryCabin from "@/assets/gallery-cabin.jpg";
+import { FinanceCalculator } from "@/components/aurexo/FinanceCalculator";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+  type CarouselApi,
+} from "@/components/ui/carousel";
 
 const tabs = ["Overview", "Description", "Features"] as const;
 type Tab = (typeof tabs)[number];
@@ -116,19 +128,6 @@ export function VehicleDetail({ vehicle }: { vehicle?: Vehicle } = {}) {
   });
   const [inquiryOpen, setInquiryOpen] = useState(false);
 
-  // Calculator
-  const [price, setPrice] = useState(10000);
-  const [rate, setRate] = useState(5);
-  const [term, setTerm] = useState(60);
-  const [down, setDown] = useState(3000);
-  const principal = Math.max(price - down, 0);
-  const r = rate / 100 / 12;
-  const monthly =
-    r === 0
-      ? principal / term
-      : (principal * r * Math.pow(1 + r, term)) / (Math.pow(1 + r, term) - 1);
-  const totalLoan = monthly * term;
-
   return (
     <main className="bg-surface min-h-screen pb-20">
       {/* Sticky segmented tab header */}
@@ -193,16 +192,7 @@ export function VehicleDetail({ vehicle }: { vehicle?: Vehicle } = {}) {
           })}
         </div>
 
-        {/* Hero image */}
-        <div className="mt-6 overflow-hidden rounded-2xl bg-white border border-border">
-          <img
-            src={heroImage}
-            alt={heroTitle}
-            width={1280}
-            height={800}
-            className="w-full h-auto object-cover"
-          />
-        </div>
+        <VehicleGallery heroImage={heroImage} heroTitle={heroTitle} />
       </section>
 
       {/* Car Overview spec grid */}
@@ -281,56 +271,8 @@ export function VehicleDetail({ vehicle }: { vehicle?: Vehicle } = {}) {
 
       {/* Financing Calculator */}
       <section className="mx-auto max-w-6xl px-4 mt-6">
-        <div className="rounded-2xl bg-white border border-border p-5">
-          <h2 className="text-xl font-bold text-ink">Financing Calculator</h2>
-          <div className="mt-4 grid sm:grid-cols-2 gap-4">
-            <CalcField label="Total Price">
-              <input
-                type="number"
-                value={price}
-                onChange={(e) => setPrice(Number(e.target.value))}
-                className="calc-input"
-              />
-            </CalcField>
-            <CalcField label="Interest rate (%)">
-              <input
-                type="number"
-                value={rate}
-                onChange={(e) => setRate(Number(e.target.value))}
-                className="calc-input"
-              />
-            </CalcField>
-            <CalcField label="Loan Term (months)">
-              <select
-                value={term}
-                onChange={(e) => setTerm(Number(e.target.value))}
-                className="calc-input"
-              >
-                {[12, 24, 36, 48, 60, 72].map((m) => (
-                  <option key={m} value={m}>
-                    {m} Month
-                  </option>
-                ))}
-              </select>
-            </CalcField>
-            <CalcField label="Down payment">
-              <input
-                type="number"
-                value={down}
-                onChange={(e) => setDown(Number(e.target.value))}
-                className="calc-input"
-              />
-            </CalcField>
-          </div>
-          <button className="mt-5 w-full rounded-xl bg-ink py-3.5 text-sm font-semibold text-white hover:bg-ink/90">
-            Calculate
-          </button>
-          <div className="mt-5 divide-y divide-border rounded-xl border border-border bg-surface">
-            <Row label="Monthly Payment" value={`$${monthly.toFixed(2)}`} />
-            <Row label="Down Payment Amount" value={`$${down.toLocaleString()}`} />
-            <Row label="Est. Total Loan" value={`$${totalLoan.toFixed(2)}`} />
-          </div>
-        </div>
+        <h2 className="mb-4 text-xl font-bold text-ink">Financing Calculator</h2>
+        <FinanceCalculator defaultPrice={vehicle?.priceNum ?? 425000} />
       </section>
 
       {/* Map module */}
