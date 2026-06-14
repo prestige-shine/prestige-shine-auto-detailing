@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Heart,
   Share2,
@@ -32,6 +32,19 @@ import fordGT from "@/assets/ford-gt-white.jpg";
 import carSilver from "@/assets/car-silver.jpg";
 import carBlack from "@/assets/car-black.jpg";
 import carBlue from "@/assets/car-blue.jpg";
+import galleryInterior from "@/assets/gallery-interior.jpg";
+import galleryDashboard from "@/assets/gallery-dashboard.jpg";
+import galleryCabin from "@/assets/gallery-cabin.jpg";
+import { FinanceCalculator } from "@/components/aurexo/FinanceCalculator";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+  type CarouselApi,
+} from "@/components/ui/carousel";
+import { Button } from "@/components/ui/button";
 
 const tabs = ["Overview", "Description", "Features"] as const;
 type Tab = (typeof tabs)[number];
@@ -116,19 +129,6 @@ export function VehicleDetail({ vehicle }: { vehicle?: Vehicle } = {}) {
   });
   const [inquiryOpen, setInquiryOpen] = useState(false);
 
-  // Calculator
-  const [price, setPrice] = useState(10000);
-  const [rate, setRate] = useState(5);
-  const [term, setTerm] = useState(60);
-  const [down, setDown] = useState(3000);
-  const principal = Math.max(price - down, 0);
-  const r = rate / 100 / 12;
-  const monthly =
-    r === 0
-      ? principal / term
-      : (principal * r * Math.pow(1 + r, term)) / (Math.pow(1 + r, term) - 1);
-  const totalLoan = monthly * term;
-
   return (
     <main className="bg-surface min-h-screen pb-20">
       {/* Sticky segmented tab header */}
@@ -193,16 +193,7 @@ export function VehicleDetail({ vehicle }: { vehicle?: Vehicle } = {}) {
           })}
         </div>
 
-        {/* Hero image */}
-        <div className="mt-6 overflow-hidden rounded-2xl bg-white border border-border">
-          <img
-            src={heroImage}
-            alt={heroTitle}
-            width={1280}
-            height={800}
-            className="w-full h-auto object-cover"
-          />
-        </div>
+        <VehicleGallery heroImage={heroImage} heroTitle={heroTitle} />
       </section>
 
       {/* Car Overview spec grid */}
@@ -281,56 +272,8 @@ export function VehicleDetail({ vehicle }: { vehicle?: Vehicle } = {}) {
 
       {/* Financing Calculator */}
       <section className="mx-auto max-w-6xl px-4 mt-6">
-        <div className="rounded-2xl bg-white border border-border p-5">
-          <h2 className="text-xl font-bold text-ink">Financing Calculator</h2>
-          <div className="mt-4 grid sm:grid-cols-2 gap-4">
-            <CalcField label="Total Price">
-              <input
-                type="number"
-                value={price}
-                onChange={(e) => setPrice(Number(e.target.value))}
-                className="calc-input"
-              />
-            </CalcField>
-            <CalcField label="Interest rate (%)">
-              <input
-                type="number"
-                value={rate}
-                onChange={(e) => setRate(Number(e.target.value))}
-                className="calc-input"
-              />
-            </CalcField>
-            <CalcField label="Loan Term (months)">
-              <select
-                value={term}
-                onChange={(e) => setTerm(Number(e.target.value))}
-                className="calc-input"
-              >
-                {[12, 24, 36, 48, 60, 72].map((m) => (
-                  <option key={m} value={m}>
-                    {m} Month
-                  </option>
-                ))}
-              </select>
-            </CalcField>
-            <CalcField label="Down payment">
-              <input
-                type="number"
-                value={down}
-                onChange={(e) => setDown(Number(e.target.value))}
-                className="calc-input"
-              />
-            </CalcField>
-          </div>
-          <button className="mt-5 w-full rounded-xl bg-ink py-3.5 text-sm font-semibold text-white hover:bg-ink/90">
-            Calculate
-          </button>
-          <div className="mt-5 divide-y divide-border rounded-xl border border-border bg-surface">
-            <Row label="Monthly Payment" value={`$${monthly.toFixed(2)}`} />
-            <Row label="Down Payment Amount" value={`$${down.toLocaleString()}`} />
-            <Row label="Est. Total Loan" value={`$${totalLoan.toFixed(2)}`} />
-          </div>
-        </div>
+        <h2 className="mb-4 text-xl font-bold text-ink">Financing Calculator</h2>
+        <FinanceCalculator defaultPrice={vehicle?.priceNum ?? 425000} />
       </section>
 
       {/* Map module */}
@@ -542,6 +485,74 @@ export function VehicleDetail({ vehicle }: { vehicle?: Vehicle } = {}) {
 
       <InquirySheet open={inquiryOpen} onClose={() => setInquiryOpen(false)} />
     </main>
+  );
+}
+
+function VehicleGallery({ heroImage, heroTitle }: { heroImage: string; heroTitle: string }) {
+  const gallery = [
+    { src: heroImage, label: "Exterior" },
+    { src: galleryInterior, label: "Interior" },
+    { src: galleryDashboard, label: "Dashboard" },
+    { src: galleryCabin, label: "Cabin" },
+  ];
+  const [api, setApi] = useState<CarouselApi>();
+  const [active, setActive] = useState(0);
+
+  useEffect(() => {
+    if (!api) return;
+    const updateActive = () => setActive(api.selectedScrollSnap());
+    updateActive();
+    api.on("select", updateActive);
+    api.on("reInit", updateActive);
+    return () => {
+      api.off("select", updateActive);
+      api.off("reInit", updateActive);
+    };
+  }, [api]);
+
+  return (
+    <div className="mt-6" aria-label={`${heroTitle} media gallery`}>
+      <Carousel setApi={setApi} opts={{ loop: true, dragFree: false }} className="group">
+        <CarouselContent className="ml-0 touch-pan-y">
+          {gallery.map((image, index) => (
+            <CarouselItem key={image.label} className="pl-0">
+              <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-border bg-ink sm:aspect-[16/9]">
+                <img
+                  src={image.src}
+                  alt={`${heroTitle} ${image.label.toLowerCase()} view`}
+                  width={1536}
+                  height={1024}
+                  loading={index === 0 ? "eager" : "lazy"}
+                  className="h-full w-full object-cover"
+                />
+                <div className="absolute bottom-3 left-3 rounded-full bg-ink/75 px-3 py-1.5 text-xs font-semibold text-white backdrop-blur">
+                  {image.label} · {index + 1}/{gallery.length}
+                </div>
+              </div>
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+        <CarouselPrevious className="left-3 hidden h-11 w-11 border-0 bg-white/90 text-ink shadow-lg hover:bg-white sm:inline-flex" />
+        <CarouselNext className="right-3 hidden h-11 w-11 border-0 bg-white/90 text-ink shadow-lg hover:bg-white sm:inline-flex" />
+      </Carousel>
+
+      <div className="mt-3 flex gap-2 overflow-x-auto pb-1" role="tablist" aria-label="Choose gallery image">
+        {gallery.map((image, index) => (
+          <Button
+            key={image.label}
+            type="button"
+            variant="outline"
+            onClick={() => api?.scrollTo(index)}
+            aria-selected={active === index}
+            className={`h-auto min-w-24 shrink-0 rounded-xl p-1.5 ${active === index ? "border-brand ring-2 ring-brand/25" : "border-border"}`}
+          >
+            <img src={image.src} alt="" width={120} height={80} loading="lazy" className="h-14 w-20 rounded-lg object-cover" />
+            <span className="sr-only">Show {image.label.toLowerCase()} view</span>
+          </Button>
+        ))}
+      </div>
+      <p className="mt-2 text-center text-xs text-muted-foreground sm:hidden">Swipe to explore all views</p>
+    </div>
   );
 }
 
