@@ -44,6 +44,7 @@ import {
   CarouselPrevious,
   type CarouselApi,
 } from "@/components/ui/carousel";
+import { Button } from "@/components/ui/button";
 
 const tabs = ["Overview", "Description", "Features"] as const;
 type Tab = (typeof tabs)[number];
@@ -484,6 +485,74 @@ export function VehicleDetail({ vehicle }: { vehicle?: Vehicle } = {}) {
 
       <InquirySheet open={inquiryOpen} onClose={() => setInquiryOpen(false)} />
     </main>
+  );
+}
+
+function VehicleGallery({ heroImage, heroTitle }: { heroImage: string; heroTitle: string }) {
+  const gallery = [
+    { src: heroImage, label: "Exterior" },
+    { src: galleryInterior, label: "Interior" },
+    { src: galleryDashboard, label: "Dashboard" },
+    { src: galleryCabin, label: "Cabin" },
+  ];
+  const [api, setApi] = useState<CarouselApi>();
+  const [active, setActive] = useState(0);
+
+  useEffect(() => {
+    if (!api) return;
+    const updateActive = () => setActive(api.selectedScrollSnap());
+    updateActive();
+    api.on("select", updateActive);
+    api.on("reInit", updateActive);
+    return () => {
+      api.off("select", updateActive);
+      api.off("reInit", updateActive);
+    };
+  }, [api]);
+
+  return (
+    <div className="mt-6" aria-label={`${heroTitle} media gallery`}>
+      <Carousel setApi={setApi} opts={{ loop: true, dragFree: false }} className="group">
+        <CarouselContent className="ml-0 touch-pan-y">
+          {gallery.map((image, index) => (
+            <CarouselItem key={image.label} className="pl-0">
+              <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-border bg-ink sm:aspect-[16/9]">
+                <img
+                  src={image.src}
+                  alt={`${heroTitle} ${image.label.toLowerCase()} view`}
+                  width={1536}
+                  height={1024}
+                  loading={index === 0 ? "eager" : "lazy"}
+                  className="h-full w-full object-cover"
+                />
+                <div className="absolute bottom-3 left-3 rounded-full bg-ink/75 px-3 py-1.5 text-xs font-semibold text-white backdrop-blur">
+                  {image.label} · {index + 1}/{gallery.length}
+                </div>
+              </div>
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+        <CarouselPrevious className="left-3 hidden h-11 w-11 border-0 bg-white/90 text-ink shadow-lg hover:bg-white sm:inline-flex" />
+        <CarouselNext className="right-3 hidden h-11 w-11 border-0 bg-white/90 text-ink shadow-lg hover:bg-white sm:inline-flex" />
+      </Carousel>
+
+      <div className="mt-3 flex gap-2 overflow-x-auto pb-1" role="tablist" aria-label="Choose gallery image">
+        {gallery.map((image, index) => (
+          <Button
+            key={image.label}
+            type="button"
+            variant="outline"
+            onClick={() => api?.scrollTo(index)}
+            aria-selected={active === index}
+            className={`h-auto min-w-24 shrink-0 rounded-xl p-1.5 ${active === index ? "border-brand ring-2 ring-brand/25" : "border-border"}`}
+          >
+            <img src={image.src} alt="" width={120} height={80} loading="lazy" className="h-14 w-20 rounded-lg object-cover" />
+            <span className="sr-only">Show {image.label.toLowerCase()} view</span>
+          </Button>
+        ))}
+      </div>
+      <p className="mt-2 text-center text-xs text-muted-foreground sm:hidden">Swipe to explore all views</p>
+    </div>
   );
 }
 
