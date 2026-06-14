@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Check, Banknote, ShieldCheck, Clock, ArrowRight } from "lucide-react";
 import { PageHeader } from "@/components/aurexo/PageHeader";
+import { FinanceCalculator } from "@/components/aurexo/FinanceCalculator";
 
 export const Route = createFileRoute("/financing")({
   head: () => ({
@@ -31,6 +32,15 @@ function Financing() {
             <p className="mt-1 text-sm text-muted-foreground">{d}</p>
           </div>
         ))}
+      </section>
+
+      <section className="mx-auto max-w-6xl px-4 pb-12">
+        <div className="mb-6">
+          <p className="text-xs font-bold uppercase tracking-wide text-brand">Payment planner</p>
+          <h2 className="mt-1 text-2xl font-bold text-ink">Build a loan around your budget</h2>
+          <p className="mt-2 max-w-2xl text-sm text-muted-foreground">Change your price, down payment, APR, and term to compare the complete cost in real time.</p>
+        </div>
+        <FinanceCalculator />
       </section>
 
       <section className="mx-auto max-w-3xl px-4 pb-16">

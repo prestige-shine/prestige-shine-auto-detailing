@@ -33,7 +33,11 @@ export const Route = createFileRoute("/")({
 });
 
 function Home() {
-  const featured = vehicles.filter((v) => v.featured).slice(0, 6);
+  const featuredIds = new Set(vehicles.filter((vehicle) => vehicle.featured).map((vehicle) => vehicle.id));
+  const featured = [
+    ...vehicles.filter((vehicle) => featuredIds.has(vehicle.id)),
+    ...vehicles.filter((vehicle) => !featuredIds.has(vehicle.id)),
+  ].slice(0, 10);
   const latest = articles.slice(0, 3);
   const [heroBrand, setHeroBrand] = useState("");
   const [heroBody, setHeroBody] = useState("");
