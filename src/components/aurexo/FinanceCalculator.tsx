@@ -1,4 +1,5 @@
 import { useMemo, useState } from "react";
+import { Slider } from "@/components/ui/slider";
 
 export function FinanceCalculator({ defaultPrice = 35000 }: { defaultPrice?: number }) {
   const [price, setPrice] = useState(defaultPrice);
@@ -9,11 +10,14 @@ export function FinanceCalculator({ defaultPrice = 35000 }: { defaultPrice?: num
   const { principal, monthly, total, interest } = useMemo(() => {
     const principal = Math.max(price - down, 0);
     const r = rate / 100 / 12;
-    const n = term;
+    const n = Math.max(term, 1);
     const monthly = r === 0 ? principal / n : (principal * r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
     const total = monthly * n;
     return { principal, monthly, total, interest: total - principal };
   }, [price, rate, term, down]);
+
+  const principalShare = total > 0 ? (principal / total) * 100 : 0;
+  const interestShare = total > 0 ? (interest / total) * 100 : 0;
 
   const fmt = (n: number) =>
     n.toLocaleString("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 2 });
@@ -23,9 +27,23 @@ export function FinanceCalculator({ defaultPrice = 35000 }: { defaultPrice?: num
       <div className="rounded-2xl border border-border bg-white p-5 sm:p-6">
         <h3 className="text-lg font-bold text-ink">Estimate your payment</h3>
         <div className="mt-4 grid sm:grid-cols-2 gap-4">
-          <Field label="Total Price" value={price} onChange={setPrice} prefix="$" />
-          <Field label="Down Payment" value={down} onChange={setDown} prefix="$" />
-          <Field label="Interest Rate (%)" value={rate} onChange={setRate} step={0.1} />
+          <Field label="Vehicle Price" value={price} onChange={(value) => setPrice(Math.max(value, 0))} prefix="$" />
+          <Field label="Down Payment" value={down} onChange={(value) => setDown(Math.min(Math.max(value, 0), price))} prefix="$" />
+          <label className="block sm:col-span-2">
+            <span className="flex items-center justify-between text-xs font-medium text-muted-foreground">
+              Interest Rate <strong className="text-sm text-ink">{rate.toFixed(1)}% APR</strong>
+            </span>
+            <Slider
+              value={[rate]}
+              onValueChange={([value]) => setRate(value ?? 0)}
+              min={0}
+              max={20}
+              step={0.1}
+              aria-label="Interest rate"
+              className="mt-4 min-h-8"
+            />
+            <span className="flex justify-between text-[11px] text-muted-foreground"><span>0%</span><span>20%</span></span>
+          </label>
           <label className="block">
             <span className="text-xs font-medium text-muted-foreground">Loan Term</span>
             <select
@@ -33,7 +51,7 @@ export function FinanceCalculator({ defaultPrice = 35000 }: { defaultPrice?: num
               onChange={(e) => setTerm(Number(e.target.value))}
               className="mt-1.5 w-full rounded-xl border border-border px-4 py-3 text-sm"
             >
-              {[24, 36, 48, 60, 72, 84].map((m) => (
+              {[36, 48, 60, 72].map((m) => (
                 <option key={m} value={m}>{m} months</option>
               ))}
             </select>
@@ -48,6 +66,16 @@ export function FinanceCalculator({ defaultPrice = 35000 }: { defaultPrice?: num
           <Row label="Total Interest" value={fmt(interest)} />
           <Row label="Total Cost" value={fmt(total + down)} />
         </dl>
+        <div className="mt-6" aria-label="Principal and interest breakdown">
+          <div className="flex h-3 overflow-hidden rounded-full bg-white/10">
+            <span className="bg-brand" style={{ width: `${principalShare}%` }} />
+            <span className="bg-indigo" style={{ width: `${interestShare}%` }} />
+          </div>
+          <div className="mt-3 grid grid-cols-2 gap-3 text-xs">
+            <div><span className="inline-block h-2 w-2 rounded-full bg-brand" /> <span className="text-white/65">Principal</span><strong className="mt-1 block text-white">{fmt(principal)}</strong></div>
+            <div><span className="inline-block h-2 w-2 rounded-full bg-indigo" /> <span className="text-white/65">Interest</span><strong className="mt-1 block text-white">{fmt(interest)}</strong></div>
+          </div>
+        </div>
       </div>
     </div>
   );
