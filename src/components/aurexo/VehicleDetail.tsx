@@ -193,8 +193,8 @@ export function VehicleDetail({ vehicle }: { vehicle?: Vehicle } = {}) {
           </button>
           {[
             { icon: Heart, label: favorite ? "Remove from saved vehicles" : "Save vehicle", active: favorite, onClick: () => favorites.toggle(vehicleId) },
-            { icon: Share2, label: "Share" },
-            { icon: Printer, label: "Print" },
+            { icon: Share2, label: "Share", onClick: handleShare },
+            { icon: Printer, label: "Print", onClick: handlePrint },
           ].map((b, i) => {
             const Icon = b.icon;
             return (
