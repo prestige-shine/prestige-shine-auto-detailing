@@ -3,7 +3,7 @@ import { useMemo, useState } from "react";
 import { SlidersHorizontal, X, ChevronLeft, ChevronRight } from "lucide-react";
 import { vehicles, brands, bodyTypes, fuelTypes, transmissions, conditions, priceMax, priceMin } from "@/lib/aurexo-data";
 import { VehicleCard } from "@/components/aurexo/VehicleCard";
-
+import { Slider } from "@/components/ui/slider";
 
 const PER_PAGE = 12;
 
@@ -207,37 +207,18 @@ function FiltersPanel(props: {
       </div>
 
       <Group title="Price">
-        <div className="flex items-center gap-2">
-          <label className="flex-1">
-            <span className="block text-[11px] font-medium text-muted-foreground">Min</span>
-            <div className="mt-1 flex items-center rounded-lg border border-border bg-white px-2.5 py-2">
-              <span className="text-xs text-muted-foreground mr-1">$</span>
-              <input
-                type="number"
-                min={priceMin}
-                max={props.price[1]}
-                step={1000}
-                value={props.price[0]}
-                onChange={(e) => props.setPrice([Math.max(priceMin, Number(e.target.value)), props.price[1]])}
-                className="w-full bg-transparent text-sm outline-none"
-              />
-            </div>
-          </label>
-          <label className="flex-1">
-            <span className="block text-[11px] font-medium text-muted-foreground">Max</span>
-            <div className="mt-1 flex items-center rounded-lg border border-border bg-white px-2.5 py-2">
-              <span className="text-xs text-muted-foreground mr-1">$</span>
-              <input
-                type="number"
-                min={props.price[0]}
-                max={priceMax}
-                step={1000}
-                value={props.price[1]}
-                onChange={(e) => props.setPrice([props.price[0], Math.min(priceMax, Number(e.target.value))])}
-                className="w-full bg-transparent text-sm outline-none"
-              />
-            </div>
-          </label>
+        <div className="px-1">
+          <Slider
+            value={props.price}
+            min={priceMin}
+            max={priceMax}
+            step={1000}
+            onValueChange={(v) => props.setPrice([v[0], v[1]] as [number, number])}
+          />
+          <div className="mt-2 flex justify-between text-xs text-muted-foreground">
+            <span>${props.price[0].toLocaleString()}</span>
+            <span>${props.price[1].toLocaleString()}</span>
+          </div>
         </div>
       </Group>
 

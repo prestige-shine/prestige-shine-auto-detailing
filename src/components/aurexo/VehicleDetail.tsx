@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Heart,
   Share2,
@@ -36,6 +36,15 @@ import galleryInterior from "@/assets/gallery-interior.jpg";
 import galleryDashboard from "@/assets/gallery-dashboard.jpg";
 import galleryCabin from "@/assets/gallery-cabin.jpg";
 import { FinanceCalculator } from "@/components/aurexo/FinanceCalculator";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+  type CarouselApi,
+} from "@/components/ui/carousel";
+import { Button } from "@/components/ui/button";
 
 const tabs = ["Overview", "Description", "Features"] as const;
 type Tab = (typeof tabs)[number];
@@ -486,37 +495,67 @@ function VehicleGallery({ heroImage, heroTitle }: { heroImage: string; heroTitle
     { src: galleryDashboard, label: "Dashboard" },
     { src: galleryCabin, label: "Cabin" },
   ];
+  const [api, setApi] = useState<CarouselApi>();
   const [active, setActive] = useState(0);
-  const current = gallery[active];
+
+  useEffect(() => {
+    if (!api) return;
+    const updateActive = () => setActive(api.selectedScrollSnap());
+    updateActive();
+    api.on("select", updateActive);
+    api.on("reInit", updateActive);
+    return () => {
+      api.off("select", updateActive);
+      api.off("reInit", updateActive);
+    };
+  }, [api]);
 
   return (
-    <div className="mt-6 w-full" aria-label={`${heroTitle} media gallery`}>
-      <div className="relative w-full overflow-hidden rounded-2xl border border-border bg-ink aspect-[4/3] sm:aspect-[16/9]">
-        <img
-          src={current.src}
-          alt={`${heroTitle} ${current.label.toLowerCase()} view`}
-          loading="eager"
-          className="h-full w-full object-cover"
-        />
-        <div className="absolute bottom-3 left-3 rounded-full bg-ink/75 px-3 py-1.5 text-xs font-semibold text-white backdrop-blur">
-          {current.label} · {active + 1}/{gallery.length}
-        </div>
-      </div>
+    <div className="mt-6 min-w-0 max-w-full overflow-hidden" aria-label={`${heroTitle} media gallery`}>
+      <Carousel
+        setApi={setApi}
+        opts={{ loop: true, dragFree: false, containScroll: "trimSnaps" }}
+        className="group min-w-0 max-w-full overflow-hidden overscroll-x-contain"
+      >
+        <CarouselContent className="ml-0 touch-pan-y select-none">
+          {gallery.map((image, index) => (
+            <CarouselItem key={image.label} className="min-w-0 pl-0">
+              <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-border bg-ink sm:aspect-[16/9]">
+                <img
+                  src={image.src}
+                  alt={`${heroTitle} ${image.label.toLowerCase()} view`}
+                  width={1536}
+                  height={1024}
+                  loading={index === 0 ? "eager" : "lazy"}
+                  className="h-full w-full object-cover"
+                />
+                <div className="absolute bottom-3 left-3 rounded-full bg-ink/75 px-3 py-1.5 text-xs font-semibold text-white backdrop-blur">
+                  {image.label} · {index + 1}/{gallery.length}
+                </div>
+              </div>
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+        <CarouselPrevious className="left-3 hidden h-11 w-11 border-0 bg-white/90 text-ink shadow-lg hover:bg-white sm:inline-flex" />
+        <CarouselNext className="right-3 hidden h-11 w-11 border-0 bg-white/90 text-ink shadow-lg hover:bg-white sm:inline-flex" />
+      </Carousel>
 
-      <div className="mt-3 grid grid-cols-4 gap-2" role="tablist" aria-label="Choose gallery image">
+       <div className="mt-3 flex max-w-full gap-2 overflow-x-auto overscroll-x-contain pb-1" role="tablist" aria-label="Choose gallery image">
         {gallery.map((image, index) => (
-          <button
+          <Button
             key={image.label}
             type="button"
-            onClick={() => setActive(index)}
+            variant="outline"
+            onClick={() => api?.scrollTo(index)}
             aria-selected={active === index}
-            aria-label={`Show ${image.label.toLowerCase()} view`}
-            className={`overflow-hidden rounded-xl border bg-white p-1 ${active === index ? "border-brand ring-2 ring-brand/25" : "border-border"}`}
+            className={`h-auto min-w-24 shrink-0 rounded-xl p-1.5 ${active === index ? "border-brand ring-2 ring-brand/25" : "border-border"}`}
           >
-            <img src={image.src} alt="" loading="lazy" className="aspect-[4/3] w-full rounded-lg object-cover" />
-          </button>
+            <img src={image.src} alt="" width={120} height={80} loading="lazy" className="h-14 w-20 rounded-lg object-cover" />
+            <span className="sr-only">Show {image.label.toLowerCase()} view</span>
+          </Button>
         ))}
       </div>
+      <p className="mt-2 text-center text-xs text-muted-foreground sm:hidden">Swipe to explore all views</p>
     </div>
   );
 }

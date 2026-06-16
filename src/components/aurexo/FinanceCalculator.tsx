@@ -1,4 +1,5 @@
 import { useMemo, useState } from "react";
+import { Slider } from "@/components/ui/slider";
 
 export function FinanceCalculator({ defaultPrice = 35000 }: { defaultPrice?: number }) {
   const [price, setPrice] = useState(defaultPrice);
@@ -28,20 +29,20 @@ export function FinanceCalculator({ defaultPrice = 35000 }: { defaultPrice?: num
         <div className="mt-4 grid sm:grid-cols-2 gap-4">
           <Field label="Vehicle Price" value={price} onChange={(value) => setPrice(Math.max(value, 0))} prefix="$" />
           <Field label="Down Payment" value={down} onChange={(value) => setDown(Math.min(Math.max(value, 0), price))} prefix="$" />
-          <label className="block">
-            <span className="text-xs font-medium text-muted-foreground">Interest Rate (% APR)</span>
-            <div className="mt-1.5 flex items-center rounded-xl border border-border bg-white px-4 py-3">
-              <input
-                type="number"
-                min={0}
-                max={30}
-                step={0.1}
-                value={rate}
-                onChange={(e) => setRate(Math.max(0, Math.min(30, Number(e.target.value))))}
-                className="flex-1 bg-transparent text-sm outline-none"
-              />
-              <span className="text-sm text-muted-foreground ml-1">%</span>
-            </div>
+          <label className="block sm:col-span-2">
+            <span className="flex items-center justify-between text-xs font-medium text-muted-foreground">
+              Interest Rate <strong className="text-sm text-ink">{rate.toFixed(1)}% APR</strong>
+            </span>
+            <Slider
+              value={[rate]}
+              onValueChange={([value]) => setRate(value ?? 0)}
+              min={0}
+              max={20}
+              step={0.1}
+              aria-label="Interest rate"
+              className="mt-4 min-h-8"
+            />
+            <span className="flex justify-between text-[11px] text-muted-foreground"><span>0%</span><span>20%</span></span>
           </label>
           <label className="block">
             <span className="text-xs font-medium text-muted-foreground">Loan Term</span>
