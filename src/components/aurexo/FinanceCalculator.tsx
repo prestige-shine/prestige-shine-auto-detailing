@@ -1,5 +1,4 @@
 import { useMemo, useState } from "react";
-import { Slider } from "@/components/ui/slider";
 
 export function FinanceCalculator({ defaultPrice = 35000 }: { defaultPrice?: number }) {
   const [price, setPrice] = useState(defaultPrice);
