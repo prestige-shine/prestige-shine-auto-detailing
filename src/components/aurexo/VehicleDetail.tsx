@@ -22,8 +22,6 @@ import {
   ArrowRight,
   Star,
   Check,
-  Camera,
-  Video,
   ChevronRight,
   Phone,
   MessageCircle,
