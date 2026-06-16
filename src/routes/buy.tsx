@@ -3,7 +3,7 @@ import { useMemo, useState } from "react";
 import { SlidersHorizontal, X, ChevronLeft, ChevronRight } from "lucide-react";
 import { vehicles, brands, bodyTypes, fuelTypes, transmissions, conditions, priceMax, priceMin } from "@/lib/aurexo-data";
 import { VehicleCard } from "@/components/aurexo/VehicleCard";
-import { Slider } from "@/components/ui/slider";
+
 
 const PER_PAGE = 12;
 
