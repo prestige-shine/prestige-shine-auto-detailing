@@ -129,6 +129,24 @@ export function VehicleDetail({ vehicle }: { vehicle?: Vehicle } = {}) {
     return { ...spec, value: values[spec.label] ?? spec.value };
   });
   const [inquiryOpen, setInquiryOpen] = useState(false);
+  const authModal = useAuthModal();
+  const related = allVehicles.filter((x) => x.id !== vehicleId).slice(0, 6);
+
+  const handleShare = async () => {
+    const url = typeof window !== "undefined" ? window.location.href : "";
+    try {
+      if (typeof navigator !== "undefined" && (navigator as any).share) {
+        await (navigator as any).share({ title: heroTitle, url });
+      } else if (typeof navigator !== "undefined" && navigator.clipboard) {
+        await navigator.clipboard.writeText(url);
+      }
+    } catch {
+      /* user cancelled */
+    }
+  };
+  const handlePrint = () => {
+    if (typeof window !== "undefined") window.print();
+  };
 
   return (
     <main className="bg-surface min-h-screen min-w-0 overflow-x-clip pb-20">
