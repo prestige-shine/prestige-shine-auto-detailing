@@ -395,7 +395,13 @@ export function VehicleDetail({ vehicle }: { vehicle?: Vehicle } = {}) {
 
           <div className="mt-5 rounded-xl border border-dashed border-border bg-surface p-4 text-center text-sm text-muted-foreground">
             You need to{" "}
-            <a className="font-semibold text-ink underline underline-offset-2">login</a>{" "}
+            <button
+              type="button"
+              onClick={() => authModal.open()}
+              className="font-semibold text-ink underline underline-offset-2 hover:text-brand"
+            >
+              login
+            </button>{" "}
             in order to post a review
           </div>
         </div>
