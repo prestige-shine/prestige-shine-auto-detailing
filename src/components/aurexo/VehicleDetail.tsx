@@ -97,11 +97,8 @@ const reviews = [
   },
 ];
 
-const related = [
-  { img: carSilver, title: "2026 BMW 5 Series", price: "$32,600", km: "2" },
-  { img: carBlack, title: "2025 Toyota GT 86 Coupe", price: "$28,900", km: "5" },
-  { img: carBlue, title: "2026 Hyundai Tucson SUV", price: "$36,400", km: "1" },
-];
+
+
 
 import type { Vehicle } from "@/lib/aurexo-data";
 import { useCompare } from "@/contexts/CompareContext";
