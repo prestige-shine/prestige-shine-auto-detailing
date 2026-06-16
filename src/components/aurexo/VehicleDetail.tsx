@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import {
   Heart,
   Share2,
@@ -36,15 +36,6 @@ import galleryInterior from "@/assets/gallery-interior.jpg";
 import galleryDashboard from "@/assets/gallery-dashboard.jpg";
 import galleryCabin from "@/assets/gallery-cabin.jpg";
 import { FinanceCalculator } from "@/components/aurexo/FinanceCalculator";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-  type CarouselApi,
-} from "@/components/ui/carousel";
-import { Button } from "@/components/ui/button";
 
 const tabs = ["Overview", "Description", "Features"] as const;
 type Tab = (typeof tabs)[number];
