@@ -22,16 +22,15 @@ import {
   ArrowRight,
   Star,
   Check,
-  Camera,
-  Video,
   ChevronRight,
   Phone,
   MessageCircle,
 } from "lucide-react";
+import { Link } from "@tanstack/react-router";
+import { vehicles as allVehicles } from "@/lib/aurexo-data";
+import { useAuthModal } from "@/contexts/AuthModalContext";
+import { VehicleCard } from "@/components/aurexo/VehicleCard";
 import fordGT from "@/assets/ford-gt-white.jpg";
-import carSilver from "@/assets/car-silver.jpg";
-import carBlack from "@/assets/car-black.jpg";
-import carBlue from "@/assets/car-blue.jpg";
 import galleryInterior from "@/assets/gallery-interior.jpg";
 import galleryDashboard from "@/assets/gallery-dashboard.jpg";
 import galleryCabin from "@/assets/gallery-cabin.jpg";
@@ -93,11 +92,8 @@ const reviews = [
   },
 ];
 
-const related = [
-  { img: carSilver, title: "2026 BMW 5 Series", price: "$32,600", km: "2" },
-  { img: carBlack, title: "2025 Toyota GT 86 Coupe", price: "$28,900", km: "5" },
-  { img: carBlue, title: "2026 Hyundai Tucson SUV", price: "$36,400", km: "1" },
-];
+
+
 
 import type { Vehicle } from "@/lib/aurexo-data";
 import { useCompare } from "@/contexts/CompareContext";
@@ -128,6 +124,24 @@ export function VehicleDetail({ vehicle }: { vehicle?: Vehicle } = {}) {
     return { ...spec, value: values[spec.label] ?? spec.value };
   });
   const [inquiryOpen, setInquiryOpen] = useState(false);
+  const authModal = useAuthModal();
+  const related = allVehicles.filter((x) => x.id !== vehicleId).slice(0, 6);
+
+  const handleShare = async () => {
+    const url = typeof window !== "undefined" ? window.location.href : "";
+    try {
+      if (typeof navigator !== "undefined" && (navigator as any).share) {
+        await (navigator as any).share({ title: heroTitle, url });
+      } else if (typeof navigator !== "undefined" && navigator.clipboard) {
+        await navigator.clipboard.writeText(url);
+      }
+    } catch {
+      /* user cancelled */
+    }
+  };
+  const handlePrint = () => {
+    if (typeof window !== "undefined") window.print();
+  };
 
   return (
     <main className="bg-surface min-h-screen min-w-0 overflow-x-clip pb-20">
@@ -174,8 +188,8 @@ export function VehicleDetail({ vehicle }: { vehicle?: Vehicle } = {}) {
           </button>
           {[
             { icon: Heart, label: favorite ? "Remove from saved vehicles" : "Save vehicle", active: favorite, onClick: () => favorites.toggle(vehicleId) },
-            { icon: Share2, label: "Share" },
-            { icon: Printer, label: "Print" },
+            { icon: Share2, label: "Share", onClick: handleShare },
+            { icon: Printer, label: "Print", onClick: handlePrint },
           ].map((b, i) => {
             const Icon = b.icon;
             return (
@@ -259,11 +273,11 @@ export function VehicleDetail({ vehicle }: { vehicle?: Vehicle } = {}) {
           </div>
           <ul className="mt-5 grid sm:grid-cols-2 gap-3">
             {featureLists[featTab].map((f) => (
-              <li key={f} className="flex items-center gap-3 text-sm text-ink">
-                <span className="grid h-6 w-6 place-items-center rounded-full bg-brand text-ink">
+              <li key={f} className="flex items-start gap-3 text-sm text-ink">
+                <span className="grid h-6 w-6 shrink-0 aspect-square place-items-center rounded-full bg-brand text-ink">
                   <Check className="h-3.5 w-3.5" strokeWidth={3} />
                 </span>
-                {f}
+                <span className="leading-6">{f}</span>
               </li>
             ))}
           </ul>
@@ -376,7 +390,13 @@ export function VehicleDetail({ vehicle }: { vehicle?: Vehicle } = {}) {
 
           <div className="mt-5 rounded-xl border border-dashed border-border bg-surface p-4 text-center text-sm text-muted-foreground">
             You need to{" "}
-            <a className="font-semibold text-ink underline underline-offset-2">login</a>{" "}
+            <button
+              type="button"
+              onClick={() => authModal.open()}
+              className="font-semibold text-ink underline underline-offset-2 hover:text-brand"
+            >
+              login
+            </button>{" "}
             in order to post a review
           </div>
         </div>
@@ -418,58 +438,21 @@ export function VehicleDetail({ vehicle }: { vehicle?: Vehicle } = {}) {
       <section className="mx-auto max-w-6xl px-4 mt-8">
         <div className="flex items-baseline justify-between">
           <h2 className="text-xl font-bold text-ink">You Might Also Like</h2>
-          <a className="text-sm font-medium text-muted-foreground">See all</a>
+          <Link
+            to="/buy"
+            className="text-sm font-medium text-muted-foreground hover:text-ink underline-offset-2 hover:underline"
+          >
+            See all
+          </Link>
         </div>
         <div className="mt-4 flex gap-4 overflow-x-auto pb-3 -mx-4 px-4 snap-x snap-mandatory">
           {related.map((c) => (
-            <article
-              key={c.title}
-              className="snap-start w-[280px] sm:w-[320px] shrink-0 rounded-2xl bg-white border border-border overflow-hidden"
+            <div
+              key={c.id}
+              className="snap-start w-[280px] sm:w-[320px] shrink-0"
             >
-              <div className="relative">
-                <img
-                  src={c.img}
-                  alt={c.title}
-                  className="h-44 w-full object-cover"
-                  loading="lazy"
-                />
-                <span
-                  className="absolute left-3 top-3 rounded-full px-2.5 py-1 text-[11px] font-bold text-white"
-                  style={{ background: "#4338CA" }}
-                >
-                  Great Price
-                </span>
-                <button
-                  aria-label="Save"
-                  className="absolute right-3 top-3 grid h-9 w-9 place-items-center rounded-full bg-white/95 border border-border text-ink"
-                >
-                  <Heart className="h-4 w-4" />
-                </button>
-                <div className="absolute bottom-3 left-3 flex items-center gap-2">
-                  <span className="flex items-center gap-1 rounded-md bg-black/55 px-2 py-1 text-[11px] font-medium text-white backdrop-blur">
-                    <Camera className="h-3 w-3" /> 7
-                  </span>
-                  <span className="flex items-center gap-1 rounded-md bg-black/55 px-2 py-1 text-[11px] font-medium text-white backdrop-blur">
-                    <Video className="h-3 w-3" /> 2
-                  </span>
-                </div>
-              </div>
-              <div className="p-4">
-                <h3 className="font-bold text-ink truncate">{c.title}</h3>
-                <p className="mt-1 text-xs text-muted-foreground">
-                  {c.km} km · 2026 · Gasoline
-                </p>
-                <p className="mt-2 text-lg font-extrabold text-ink">{c.price}</p>
-                <div className="mt-3 flex items-center justify-between border-t border-border pt-3">
-                  <button className="inline-flex items-center gap-1 rounded-full border border-border px-3 py-1.5 text-xs font-medium text-ink">
-                    <Plus className="h-3 w-3" /> Compare
-                  </button>
-                  <a className="inline-flex items-center gap-1 text-xs font-semibold text-ink">
-                    View details <ChevronRight className="h-3 w-3" />
-                  </a>
-                </div>
-              </div>
-            </article>
+              <VehicleCard v={c} />
+            </div>
           ))}
         </div>
       </section>

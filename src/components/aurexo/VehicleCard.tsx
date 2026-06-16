@@ -18,8 +18,15 @@ export function VehicleCard({ v }: { v: Vehicle }) {
   const isSaved = favorites.has(v.id);
   const tagBg = v.tag ? tagColors[v.tag] : undefined;
   return (
-    <article className="flex flex-col overflow-hidden rounded-2xl border border-border bg-white">
-      <div className="relative">
+    <article className="group relative flex flex-col overflow-hidden rounded-2xl border border-border bg-white transition hover:border-ink/40 hover:shadow-md">
+      {/* Full-card click target — sits behind interactive controls */}
+      <Link
+        to="/listings/$id"
+        params={{ id: v.id }}
+        aria-label={`View ${v.title}`}
+        className="absolute inset-0 z-0"
+      />
+      <div className="relative z-10 pointer-events-none">
         <img src={v.img} alt={v.title} className="h-44 w-full object-cover" loading="lazy" />
         {v.tag && (
           <span
@@ -30,10 +37,10 @@ export function VehicleCard({ v }: { v: Vehicle }) {
           </span>
         )}
         <button
-          onClick={() => favorites.toggle(v.id)}
+          onClick={(e) => { e.preventDefault(); e.stopPropagation(); favorites.toggle(v.id); }}
           aria-label={isSaved ? `Remove ${v.title} from saved vehicles` : `Save ${v.title}`}
           aria-pressed={isSaved}
-          className={`absolute right-3 top-3 grid h-11 w-11 place-items-center rounded-full border bg-background/95 transition ${isSaved ? "border-brand text-brand" : "border-border text-ink"}`}
+          className={`pointer-events-auto absolute right-3 top-3 grid h-11 w-11 place-items-center rounded-full border bg-background/95 transition ${isSaved ? "border-brand text-brand" : "border-border text-ink"}`}
         >
           <Heart className="h-5 w-5" fill={isSaved ? "currentColor" : "none"} />
         </button>
@@ -46,15 +53,15 @@ export function VehicleCard({ v }: { v: Vehicle }) {
           </span>
         </div>
       </div>
-      <div className="flex flex-1 flex-col p-4">
+      <div className="relative z-10 flex flex-1 flex-col p-4 pointer-events-none">
         <h3 className="truncate font-bold text-ink">{v.title}</h3>
         <p className="mt-1 truncate text-xs text-muted-foreground">
           {v.km} km · {v.year} · {v.fuel} · {v.transmission}
         </p>
         <p className="mt-2 text-lg font-extrabold text-ink">{v.price}</p>
-        <div className="mt-auto flex items-center justify-between gap-2 border-t border-border pt-3">
+        <div className="mt-auto flex items-center justify-between gap-2 border-t border-border pt-3 pointer-events-auto">
           <button
-            onClick={() => toggle(v.id)}
+            onClick={(e) => { e.preventDefault(); e.stopPropagation(); toggle(v.id); }}
             aria-pressed={inCompare}
             className={`inline-flex items-center gap-1 rounded-full border px-3 py-1.5 text-xs font-medium transition ${
               inCompare ? "border-brand bg-brand text-ink" : "border-border text-ink hover:border-ink"
@@ -66,7 +73,7 @@ export function VehicleCard({ v }: { v: Vehicle }) {
           <Link
             to="/listings/$id"
             params={{ id: v.id }}
-            className="inline-flex items-center gap-1 text-xs font-semibold text-ink"
+            className="inline-flex items-center gap-1 text-xs font-semibold text-ink hover:text-brand"
           >
             View details <ChevronRight className="h-3 w-3" />
           </Link>
