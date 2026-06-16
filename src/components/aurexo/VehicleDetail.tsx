@@ -28,6 +28,10 @@ import {
   Phone,
   MessageCircle,
 } from "lucide-react";
+import { Link } from "@tanstack/react-router";
+import { vehicles as allVehicles } from "@/lib/aurexo-data";
+import { useAuthModal } from "@/contexts/AuthModalContext";
+import { VehicleCard } from "@/components/aurexo/VehicleCard";
 import fordGT from "@/assets/ford-gt-white.jpg";
 import carSilver from "@/assets/car-silver.jpg";
 import carBlack from "@/assets/car-black.jpg";
