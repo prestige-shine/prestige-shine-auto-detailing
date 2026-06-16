@@ -278,11 +278,11 @@ export function VehicleDetail({ vehicle }: { vehicle?: Vehicle } = {}) {
           </div>
           <ul className="mt-5 grid sm:grid-cols-2 gap-3">
             {featureLists[featTab].map((f) => (
-              <li key={f} className="flex items-center gap-3 text-sm text-ink">
-                <span className="grid h-6 w-6 place-items-center rounded-full bg-brand text-ink">
+              <li key={f} className="flex items-start gap-3 text-sm text-ink">
+                <span className="grid h-6 w-6 shrink-0 aspect-square place-items-center rounded-full bg-brand text-ink">
                   <Check className="h-3.5 w-3.5" strokeWidth={3} />
                 </span>
-                {f}
+                <span className="leading-6">{f}</span>
               </li>
             ))}
           </ul>
