@@ -16,7 +16,7 @@ export const Route = createFileRoute("/featured")({
 });
 
 function Featured() {
-  const list = vehicles.filter((v) => v.featured || v.tag === "Staff Pick");
+  const list = vehicles.filter((v) => v.featured || v.tag === "Studio Pick");
   return (
     <main>
       <PageHeader eyebrow="Editor's Pick" title="Featured Vehicles" subtitle="Hand-selected listings our team is shouting about this week." />

@@ -5,7 +5,7 @@ import { Logo } from "./Logo";
 
 const groups: Record<string, { label: string; to: string }[]> = {
   "Quick Links": [{ label: "Home", to: "/" }, { label: "About Us", to: "/about" }, { label: "Services", to: "/services" }, { label: "Blog", to: "/news" }, { label: "Contact", to: "/contact" }],
-  "Buying & Selling": [{ label: "Sell Your Car", to: "/sell" }, { label: "Buy a Car", to: "/buy" }, { label: "Car Dealerships", to: "/dealerships" }, { label: "Financing", to: "/financing" }, { label: "Compare", to: "/compare" }],
+  "Projects & Resources": [{ label: "Request Estimate", to: "/sell" }, { label: "Recent Projects", to: "/buy" }, { label: "Service Areas", to: "/dealerships" }, { label: "Financing", to: "/financing" }, { label: "Compare Materials", to: "/compare" }],
 };
 
 function AccordionRow({ title, items }: { title: string; items: { label: string; to: string }[] }) {
@@ -71,11 +71,11 @@ export function Footer() {
         <div className="mt-8 space-y-4 border-t border-white/10 pt-8">
           <div className="flex items-center gap-3 text-sm text-white/85">
             <Phone className="h-4 w-4 text-brand shrink-0" />
-            <span>1-866-288-6868</span>
+            <a href="tel:+15615550199" className="hover:text-white">+1 (561) 555-0199</a>
           </div>
           <div className="flex items-start gap-3 text-sm text-white/85">
             <MapPin className="h-4 w-4 text-brand shrink-0 mt-0.5" />
-            <span>6205 Peachtree Dunwoody Rd, Atlanta, GA 30328</span>
+            <span>Aurexo Roofing Studio — Serving all of Ohio, USA</span>
           </div>
         </div>
 
@@ -83,10 +83,10 @@ export function Footer() {
           <Social href="https://www.facebook.com" label="Facebook"><Facebook className="h-4 w-4" /></Social>
           <Social href="https://x.com" label="X"><XLogo /></Social>
           <Social href="https://www.instagram.com" label="Instagram"><Instagram className="h-4 w-4" /></Social>
-          <Social href="https://wa.me/18662886868" label="WhatsApp"><MessageCircle className="h-4 w-4" /></Social>
+          <Social href="https://wa.me/15615550199" label="WhatsApp"><MessageCircle className="h-4 w-4" /></Social>
         </div>
 
-        <p className="mt-10 text-xs text-white/40">© 2026 Aurexo. All rights reserved.</p>
+        <p className="mt-10 text-xs text-white/40">© 2026 Aurexo Roofing Studio · Ohio, USA. All rights reserved.</p>
       </div>
     </footer>
   );

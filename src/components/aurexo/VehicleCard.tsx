@@ -5,10 +5,10 @@ import { useCompare } from "@/contexts/CompareContext";
 import { useFavorites } from "@/contexts/FavoritesContext";
 
 const tagColors: Record<NonNullable<Vehicle["tag"]>, string> = {
-  "Great Price": "#4338CA",
-  "Low Mileage": "#0EA5E9",
-  "New Arrival": "#84CC16",
-  "Staff Pick": "#F59E0B",
+  "Best Value": "#4338CA",
+  "Premium Build": "#0EA5E9",
+  "New Project": "#84CC16",
+  "Studio Pick": "#F59E0B",
 };
 
 export function VehicleCard({ v }: { v: Vehicle }) {
@@ -56,7 +56,7 @@ export function VehicleCard({ v }: { v: Vehicle }) {
       <div className="relative z-10 flex flex-1 flex-col p-4 pointer-events-none">
         <h3 className="truncate font-bold text-ink">{v.title}</h3>
         <p className="mt-1 truncate text-xs text-muted-foreground">
-          {v.km} km · {v.year} · {v.fuel} · {v.transmission}
+          {v.km} sqft · {v.year} · {v.fuel} · {v.transmission}
         </p>
         <p className="mt-2 text-lg font-extrabold text-ink">{v.price}</p>
         <div className="mt-auto flex items-center justify-between gap-2 border-t border-border pt-3 pointer-events-auto">

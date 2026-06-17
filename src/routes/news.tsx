@@ -6,10 +6,10 @@ import { ArrowRight } from "lucide-react";
 export const Route = createFileRoute("/news")({
   head: () => ({
     meta: [
-      { title: "News & Blog — Aurexo" },
-      { name: "description", content: "Buying guides, EV news, financing advice and reviews from the Aurexo editorial team." },
-      { property: "og:title", content: "News & Blog — Aurexo" },
-      { property: "og:description", content: "Latest automotive articles from Aurexo." },
+      { title: "News & Guides — Aurexo Roofing Studio" },
+      { name: "description", content: "Premium roofing buyer's guides, Ohio budgeting benchmarks, and Midwest durability deep-dives from the Aurexo editorial desk." },
+      { property: "og:title", content: "News & Guides — Aurexo Roofing Studio" },
+      { property: "og:description", content: "Editorial guides from the Aurexo Roofing Studio." },
     ],
   }),
   component: NewsList,
@@ -18,7 +18,7 @@ export const Route = createFileRoute("/news")({
 function NewsList() {
   return (
     <main>
-      <PageHeader eyebrow="Editorial" title="News & Blog" subtitle="Buying advice, deep-dive reviews and the stories shaping how we drive." />
+      <PageHeader eyebrow="Editorial" title="News & Guides" subtitle="Buyer's guides, material deep-dives, and the stories shaping premium roofing across Ohio." />
       <section className="mx-auto max-w-6xl px-4 py-10">
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {articles.map((a) => (

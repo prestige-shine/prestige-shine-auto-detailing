@@ -33,10 +33,10 @@ export const Route = createFileRoute("/buy")({
   }),
   head: () => ({
     meta: [
-      { title: "Buy a Car — Aurexo" },
-      { name: "description", content: "Browse our full inventory of verified vehicles. Filter by brand, body, fuel, transmission, condition and price." },
-      { property: "og:title", content: "Buy a Car — Aurexo" },
-      { property: "og:description", content: "Browse verified vehicles from trusted dealers." },
+      { title: "Recent Projects — Aurexo Roofing Studio" },
+      { name: "description", content: "Browse Aurexo Roofing Studio's recent architectural transformations across Ohio. Filter by material, roof profile, finish, service type, and budget." },
+      { property: "og:title", content: "Recent Projects — Aurexo Roofing Studio" },
+      { property: "og:description", content: "Premium roofing projects across Ohio." },
     ],
   }),
   component: BuyPage,
@@ -51,7 +51,7 @@ function BuyPage() {
   const [fuelSel, setFuelSel] = useState<string[]>(search.fuel?.split(",").filter(Boolean) ?? []);
   const [transSel, setTransSel] = useState<string[]>(search.transmission?.split(",").filter(Boolean) ?? []);
   const [condSel, setCondSel] = useState<string[]>(
-    search.preset === "new" ? ["New Car"] : search.condition?.split(",").filter(Boolean) ?? [],
+    search.preset === "new" ? ["New Install"] : search.condition?.split(",").filter(Boolean) ?? [],
   );
   const [price, setPrice] = useState<[number, number]>([search.minPrice ?? priceMin, search.maxPrice ?? priceMax]);
   const [sort, setSort] = useState("relevance");
@@ -100,15 +100,15 @@ function BuyPage() {
   };
 
   const titleByPreset =
-    search.preset === "new" ? "New Arrivals" :
-    search.preset === "featured" ? "Featured Vehicles" :
-    "All Vehicles";
+    search.preset === "new" ? "New Projects" :
+    search.preset === "featured" ? "Featured Projects" :
+    "All Projects";
 
   return (
     <main className="mx-auto max-w-6xl px-4 py-8">
       <h1 className="text-3xl font-extrabold text-ink">{titleByPreset}</h1>
       <p className="mt-1 text-sm text-muted-foreground">
-        Showing {pageItems.length} of {list.length} matching vehicles
+        Showing {pageItems.length} of {list.length} matching projects
       </p>
 
       <div className="mt-5 flex flex-wrap items-center justify-between gap-3">
@@ -124,10 +124,10 @@ function BuyPage() {
           className="rounded-full border border-border bg-white px-4 py-2 text-sm text-ink"
         >
           <option value="relevance">Sort: Relevance</option>
-          <option value="price-asc">Price: Low to High</option>
-          <option value="price-desc">Price: High to Low</option>
-          <option value="year">Newest Year</option>
-          <option value="km">Lowest Mileage</option>
+          <option value="price-asc">Budget: Low to High</option>
+          <option value="price-desc">Budget: High to Low</option>
+          <option value="year">Newest Project</option>
+          <option value="km">Smallest Square Footage</option>
         </select>
       </div>
 
@@ -147,7 +147,7 @@ function BuyPage() {
         <div>
           {pageItems.length === 0 ? (
             <div className="rounded-2xl border border-dashed border-border bg-white p-10 text-center text-muted-foreground">
-              No vehicles match your filters.
+              No projects match your filters.
               <button onClick={reset} className="ml-2 font-semibold text-ink underline">Clear all</button>
             </div>
           ) : (
@@ -206,7 +206,7 @@ function FiltersPanel(props: {
         <button onClick={props.onReset} className="text-xs font-medium text-muted-foreground hover:text-ink">Reset</button>
       </div>
 
-      <Group title="Price">
+      <Group title="Project Budget">
         <div className="px-1">
           <Slider
             value={props.price}
@@ -222,13 +222,13 @@ function FiltersPanel(props: {
         </div>
       </Group>
 
-      <Group title="Condition">
+      <Group title="Service Type">
         {conditions.map((c) => (
           <Check key={c} label={c} checked={props.condSel.includes(c)} onChange={() => toggle(props.condSel, c, props.setCondSel)} />
         ))}
       </Group>
 
-      <Group title="Brand">
+      <Group title="Material Brand">
         <div className="max-h-52 space-y-2 overflow-y-auto pr-1">
           {brands.map((b) => (
             <Check key={b} label={b} checked={props.brandSel.includes(b)} onChange={() => toggle(props.brandSel, b, props.setBrandSel)} />
@@ -236,19 +236,19 @@ function FiltersPanel(props: {
         </div>
       </Group>
 
-      <Group title="Body Type">
+      <Group title="Roof Profile">
         {bodyTypes.map((b) => (
           <Check key={b.label} label={`${b.label} (${b.count})`} checked={props.bodySel.includes(b.label)} onChange={() => toggle(props.bodySel, b.label, props.setBodySel)} />
         ))}
       </Group>
 
-      <Group title="Fuel">
+      <Group title="Material Family">
         {fuelTypes.map((f) => (
           <Check key={f} label={f} checked={props.fuelSel.includes(f)} onChange={() => toggle(props.fuelSel, f, props.setFuelSel)} />
         ))}
       </Group>
 
-      <Group title="Transmission">
+      <Group title="Finish">
         {transmissions.map((t) => (
           <Check key={t} label={t} checked={props.transSel.includes(t)} onChange={() => toggle(props.transSel, t, props.setTransSel)} />
         ))}

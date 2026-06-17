@@ -51,7 +51,7 @@ const groups = [
     items: [
       ["How does delivery work?", "After payment, insurance, and documents are complete, the dealer confirms a delivery window. Timing and fees depend on distance, carrier capacity, and vehicle type."],
       ["What should I check at delivery?", "Confirm VIN, mileage, keys, accessories, visible condition, and paperwork. Photograph shipping damage before accepting the carrier condition report."],
-      ["How do I contact support?", "Use the Contact page or call 1-866-288-6868. Keep your listing, reservation, or application reference ready for faster routing."],
+      ["How do I contact support?", "Use the Contact page or call +1 (561) 555-0199. Keep your project number or estimate reference ready for faster routing to the studio handling your work."],
     ],
   },
 ];

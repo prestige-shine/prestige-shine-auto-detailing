@@ -49,46 +49,46 @@ const tabs = ["Overview", "Description", "Features"] as const;
 type Tab = (typeof tabs)[number];
 
 const specs = [
-  { icon: Gauge, label: "Mileage", value: "2" },
-  { icon: Calendar, label: "Year", value: "2026" },
-  { icon: Fuel, label: "Fuel Type", value: "Gasoline" },
-  { icon: Palette, label: "Color", value: "Black" },
-  { icon: Cog, label: "Engine Size", value: "5.0" },
-  { icon: Settings2, label: "Transmission", value: "Automatic" },
-  { icon: Hash, label: "Vin Number", value: "1" },
-  { icon: Boxes, label: "Stock Number", value: "001" },
-  { icon: BadgeCheck, label: "Condition", value: "New Car" },
-  { icon: Cylinder, label: "Cylinders", value: "10" },
-  { icon: DoorOpen, label: "Doors", value: "4" },
-  { icon: Users, label: "Seat", value: "6" },
-  { icon: Building2, label: "City MPG", value: "2" },
-  { icon: Route, label: "Highway MPG", value: "4" },
-  { icon: Settings2, label: "Drive Type", value: "FWD - ..." },
+  { icon: Gauge, label: "Square Footage", value: "—" },
+  { icon: Calendar, label: "Completed", value: "2025" },
+  { icon: Fuel, label: "Material Family", value: "Asphalt" },
+  { icon: Palette, label: "Color / Finish", value: "Charcoal" },
+  { icon: Cog, label: "Pitch", value: "6:12" },
+  { icon: Settings2, label: "Profile", value: "Architectural" },
+  { icon: Hash, label: "Project No.", value: "AX-001" },
+  { icon: Boxes, label: "Crew Size", value: "6" },
+  { icon: BadgeCheck, label: "Service Type", value: "New Install" },
+  { icon: Cylinder, label: "Layers Removed", value: "1" },
+  { icon: DoorOpen, label: "Roof Profile", value: "Gable" },
+  { icon: Users, label: "Stories", value: "2" },
+  { icon: Building2, label: "Wind Rating", value: "130 mph" },
+  { icon: Route, label: "Fire Rating", value: "Class A" },
+  { icon: Settings2, label: "Underlayment", value: "Synthetic + Ice & Water" },
 ];
 
-const featureCats = ["Safety", "Interior", "Exterior", "Mechanical"] as const;
+const featureCats = ["Material Composition", "Wind & Fire Resistance", "Warranty Details", "Workmanship"] as const;
 const featureLists: Record<(typeof featureCats)[number], string[]> = {
-  Safety: ["Blind-spot monitoring with cross-traffic alert", "Forward collision warning and automatic emergency braking", "Lane-keeping assistance with driver attention monitoring", "Full-length curtain and side-impact airbags", "Rear parking sensors with high-definition camera"],
-  Interior: ["Hand-finished leather and microfiber sport seats", "Dual-zone automatic climate control", "Wireless Apple CarPlay and Android Auto", "Configurable digital instrument cluster", "Premium audio with cabin-noise compensation"],
-  Exterior: ["Lightweight forged alloy wheels", "Adaptive LED headlamps with automatic high beam", "Aerodynamic rear diffuser and active spoiler", "Heated power-folding mirrors", "Factory metallic paint with ceramic protection"],
-  Mechanical: ["Performance-tuned engine management", "Adaptive suspension with selectable drive modes", "Limited-slip differential and launch control", "High-performance ventilated braking system", "Electronic stability and traction management"],
+  "Material Composition": ["SBS-modified asphalt with copper-granule UV blend", "Synthetic underlayment across the full deck", "Ice-and-water shield extending past warm-wall line", "Copper or lead-coated copper valley flashing", "G90 galvanised drip edge and step flashing"],
+  "Wind & Fire Resistance": ["ASTM D7158 Class H — rated to 150 mph uplift", "Six-nail fastening pattern on every shingle course", "Class 4 impact rating eligible for Ohio insurance discounts", "Class A fire rating per ASTM E108", "Sealed-deck construction limits wind-driven rain"],
+  "Warranty Details": ["Lifetime limited material warranty from the manufacturer", "25-year non-prorated Aurexo workmanship warranty", "Transferable once at no cost to the next owner", "Warranty registered in your name on completion day", "Annual inspections logged to your digital project file"],
+  Workmanship: ["Manufacturer Master Elite certified crew", "Dedicated finish carpenter for valleys and penetrations", "Balanced intake and exhaust ventilation engineered to spec", "Daily clean-up with magnetic nail sweep", "Photographic documentation at every project phase"],
 };
 
 const reviews = [
   {
     name: "Dy Randynox",
     date: "May 19, 2026",
-    body: "Absolutely incredible driving experience. The acceleration is jaw-dropping and the interior feels like a spaceship. Worth every penny.",
+    body: "Aurexo replaced our 1920s slate mansard with a synthetic system that looks identical to the original. Two days ahead of schedule and immaculate clean-up.",
   },
   {
     name: "Robert Fox",
     date: "May 19, 2026",
-    body: "Service from the dealer was outstanding. They walked me through every option, financing was painless, and delivery was on time.",
+    body: "Walked us through every line item before signing — underlayment, ice shield, copper valley flashing. No surprises on invoice day.",
   },
   {
     name: "Mista Nyroom",
     date: "May 19, 2026",
-    body: "Build quality is top tier. The carbon fiber details are stunning in person. Highway MPG could be better but you don't buy this car for economy.",
+    body: "Our standing-seam aluminium roof survived the May derecho without a single panel lifting. Aurexo was on-site for a post-storm inspection within 24 hours.",
   },
 ];
 
@@ -101,25 +101,25 @@ import { useFavorites } from "@/contexts/FavoritesContext";
 
 export function VehicleDetail({ vehicle }: { vehicle?: Vehicle } = {}) {
   const heroImage = vehicle?.img ?? fordGT;
-  const heroTitle = vehicle?.title ?? "2022 Ford GT White";
-  const vehicleId = vehicle?.id ?? "2022-ford-gt-white";
+  const heroTitle = vehicle?.title ?? "Aurexo Roofing Project";
+  const vehicleId = vehicle?.id ?? "aurexo-project-001";
   const { has, toggle } = useCompare();
   const favorites = useFavorites();
   const inCompare = has(vehicleId);
   const [tab, setTab] = useState<Tab>("Overview");
-  const [featTab, setFeatTab] = useState<(typeof featureCats)[number]>("Safety");
+  const [featTab, setFeatTab] = useState<(typeof featureCats)[number]>("Material Composition");
   const favorite = favorites.has(vehicleId);
   const dynamicSpecs = specs.map((spec) => {
     if (!vehicle) return spec;
     const values: Record<string, string> = {
-      Mileage: vehicle.km,
-      Year: String(vehicle.year),
-      "Fuel Type": vehicle.fuel,
-      Transmission: vehicle.transmission,
-      Condition: vehicle.condition,
-      Doors: vehicle.body === "Coupe" ? "2" : vehicle.body === "Truck" ? "4" : "4–5",
-      Seat: vehicle.body === "Coupe" ? "2–4" : vehicle.body === "SUV" ? "5–7" : "5",
-      "Drive Type": vehicle.body === "SUV" || vehicle.body === "Truck" ? "AWD" : "RWD",
+      "Square Footage": `${vehicle.km} sqft`,
+      Completed: String(vehicle.year),
+      "Material Family": vehicle.fuel,
+      Profile: vehicle.transmission,
+      "Service Type": vehicle.condition,
+      "Roof Profile": vehicle.body,
+      Stories: vehicle.body === "Mansard" ? "3" : vehicle.body === "Shed" ? "1" : "2",
+      "Wind Rating": vehicle.fuel === "Metal" ? "150 mph" : vehicle.fuel === "Slate" ? "110 mph" : "130 mph",
     };
     return { ...spec, value: values[spec.label] ?? spec.value };
   });
@@ -172,7 +172,7 @@ export function VehicleDetail({ vehicle }: { vehicle?: Vehicle } = {}) {
           {heroTitle}
         </h1>
         <p className="mt-1 text-sm text-muted-foreground">
-          Premium supercar · Stock #001 · Atlanta, GA
+          Premium roofing system · Project #{vehicleId.slice(0, 6).toUpperCase()} · Ohio, USA
         </p>
 
         <div className="mt-4 flex flex-wrap items-center gap-3">
@@ -236,25 +236,25 @@ export function VehicleDetail({ vehicle }: { vehicle?: Vehicle } = {}) {
       <section className="mx-auto max-w-6xl px-4 mt-8">
         {tab === "Description" && (
           <div className="rounded-2xl bg-white border border-border p-5">
-            <h2 className="text-xl font-bold text-ink">Description</h2>
+            <h2 className="text-xl font-bold text-ink">Project Description</h2>
             <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-              The 2022 Ford GT White is a masterclass in mid-engine engineering,
-              priced from <span className="font-semibold text-ink">RM 115,900</span> to{" "}
-              <span className="font-semibold text-ink">RM 141,900</span> depending on
-              configuration. Crafted with a carbon fiber monocoque, twin-turbo
-              EcoBoost V6 power, and active aerodynamics, this is a track-bred
-              machine refined for the open road.
+              {heroTitle} is a complete premium roofing system engineered for Ohio's full
+              four-season climate. The assembly includes a documented deck inspection,
+              continuous ice-and-water shield to code height, synthetic underlayment,
+              copper-flashed valleys and penetrations, balanced intake and exhaust
+              ventilation, and a finish material specified to the home's architectural
+              language.
             </p>
             <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-              Includes a limited factory warranty, complimentary first service,
-              and access to Aurexo's certified maintenance network across the
-              region.
+              Every Aurexo installation is backed by a 25-year non-prorated workmanship
+              warranty in addition to the manufacturer's lifetime material coverage, with
+              registration filed in the homeowner's name on completion day.
             </p>
           </div>
         )}
 
         <div className="mt-6 rounded-2xl bg-white border border-border p-5">
-          <h2 className="text-xl font-bold text-ink">Get To Know This Car</h2>
+          <h2 className="text-xl font-bold text-ink">Get to Know Your Roof</h2>
           <div className="mt-4 flex gap-6 border-b border-border overflow-x-auto">
             {featureCats.map((c) => (
               <button
@@ -286,8 +286,8 @@ export function VehicleDetail({ vehicle }: { vehicle?: Vehicle } = {}) {
 
       {/* Financing Calculator */}
       <section className="mx-auto max-w-6xl px-4 mt-6">
-        <h2 className="mb-4 text-xl font-bold text-ink">Financing Calculator</h2>
-        <FinanceCalculator defaultPrice={vehicle?.priceNum ?? 425000} />
+        <h2 className="mb-4 text-xl font-bold text-ink">Project Financing Calculator</h2>
+        <FinanceCalculator defaultPrice={vehicle?.priceNum ?? 78400} />
       </section>
 
       {/* Map module */}
@@ -295,7 +295,7 @@ export function VehicleDetail({ vehicle }: { vehicle?: Vehicle } = {}) {
         <div className="rounded-2xl bg-white border border-border p-5">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2 font-semibold text-ink">
-              <MapPin className="h-4 w-4 text-brand" /> Paris, France
+              <MapPin className="h-4 w-4 text-brand" /> Ohio, USA
             </div>
             <a className="text-sm font-medium text-ink underline-offset-2 hover:underline">
               Get Directions
@@ -333,7 +333,7 @@ export function VehicleDetail({ vehicle }: { vehicle?: Vehicle } = {}) {
               <div className="min-w-0 flex-1">
                 <p className="truncate text-sm font-bold text-ink">{heroTitle}</p>
                 <p className="mt-0.5 text-[11px] text-muted-foreground">
-                  2 Odo · Gasoline · Automatic
+                  {vehicle ? `${vehicle.km} sqft · ${vehicle.fuel} · ${vehicle.transmission}` : "Premium roofing system"}
                 </p>
                 <a className="mt-1 inline-flex items-center gap-1 text-xs font-semibold text-ink">
                   View Details <ChevronRight className="h-3 w-3" />
@@ -402,33 +402,38 @@ export function VehicleDetail({ vehicle }: { vehicle?: Vehicle } = {}) {
         </div>
       </section>
 
-      {/* Dealer profile */}
+      {/* Studio contact */}
       <section className="mx-auto max-w-6xl px-4 mt-6">
         <div className="rounded-2xl bg-white border border-border p-5">
           <div className="flex items-center gap-3">
             <div className="grid h-12 w-12 place-items-center rounded-full bg-ink text-sm font-bold text-white">
-              RF
+              AR
             </div>
             <div className="min-w-0 flex-1">
-              <p className="font-semibold text-ink">Robert Fox</p>
+              <p className="font-semibold text-ink">Aurexo Roofing Studio</p>
               <span className="mt-1 inline-flex items-center gap-1 rounded-full bg-brand/15 px-2 py-0.5 text-[11px] font-semibold text-ink">
                 <BadgeCheck className="h-3 w-3 text-brand" fill="currentColor" />
-                Verified Dealer
+                Certified Studio · Ohio
               </span>
             </div>
           </div>
           <div className="mt-4 space-y-3">
-            <button className="flex w-full items-center justify-center gap-2 rounded-xl bg-brand py-3.5 text-sm font-semibold text-ink hover:bg-brand/90">
-              <Phone className="h-4 w-4" /> Call To Dealer
-            </button>
-            <button className="flex w-full items-center justify-center gap-2 rounded-xl bg-indigo py-3.5 text-sm font-semibold text-white hover:bg-indigo/90">
-              <MessageCircle className="h-4 w-4" /> Chat Via WhatsApp
-            </button>
+            <a href="tel:+15615550199" className="flex w-full items-center justify-center gap-2 rounded-xl bg-brand py-3.5 text-sm font-semibold text-ink hover:bg-brand/90">
+              <Phone className="h-4 w-4" /> Call the Studio
+            </a>
+            <a
+              href={`https://wa.me/15615550199?text=${encodeURIComponent(`Hi Aurexo, I'm interested in a project similar to: ${heroTitle}.`)}`}
+              target="_blank"
+              rel="noreferrer"
+              className="flex w-full items-center justify-center gap-2 rounded-xl bg-indigo py-3.5 text-sm font-semibold text-white hover:bg-indigo/90"
+            >
+              <MessageCircle className="h-4 w-4" /> Chat on WhatsApp
+            </a>
             <button
               onClick={() => setInquiryOpen(true)}
               className="flex w-full items-center justify-center gap-2 rounded-xl border border-border py-3.5 text-sm font-semibold text-ink"
             >
-              Send Inquiry About Vehicle
+              Request Free Estimate
             </button>
           </div>
         </div>
@@ -598,9 +603,9 @@ function InquirySheet({ open, onClose }: { open: boolean; onClose: () => void })
           </div>
         ) : (
           <>
-            <h3 className="text-xl font-bold text-ink">Send Inquiry About Vehicle</h3>
+            <h3 className="text-xl font-bold text-ink">Request a Free Estimate</h3>
             <p className="mt-1 text-sm text-muted-foreground">
-              The dealer typically responds in under 2 hours.
+              The Aurexo studio typically responds within 2 hours during Ohio business hours.
             </p>
             <form
               onSubmit={(e) => { e.preventDefault(); setSent(true); }}
@@ -609,16 +614,16 @@ function InquirySheet({ open, onClose }: { open: boolean; onClose: () => void })
               <input required className="calc-input" placeholder="Name" />
               <input required className="calc-input" type="email" placeholder="Email" />
               <input className="calc-input" placeholder="Phone (Optional)" />
-              <select className="calc-input" defaultValue="avail">
-                <option value="avail">This Vehicle's Availability</option>
-                <option>Price negotiation</option>
-                <option>Test drive booking</option>
-                <option>Financing options</option>
+              <select className="calc-input" defaultValue="estimate">
+                <option value="estimate">Free site inspection & estimate</option>
+                <option>Storm restoration</option>
+                <option>Material consultation</option>
+                <option>Warranty service</option>
               </select>
               <textarea
                 className="calc-input"
                 rows={4}
-                defaultValue="Hi, I'm interested in this vehicle. Could you let me know if it's still available and if a test drive can be arranged this week?"
+                defaultValue="Hi Aurexo, I'd like to schedule a free site inspection for a roofing project on my Ohio home. Please reach out with your next available appointment."
               />
               <button
                 type="submit"

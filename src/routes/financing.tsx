@@ -6,10 +6,10 @@ import { FinanceCalculator } from "@/components/aurexo/FinanceCalculator";
 export const Route = createFileRoute("/financing")({
   head: () => ({
     meta: [
-      { title: "Financing — Aurexo" },
-      { name: "description", content: "Get pre-approved in minutes. Competitive rates from 4.5% APR with no impact to your credit score." },
-      { property: "og:title", content: "Financing — Aurexo" },
-      { property: "og:description", content: "Get pre-approved in minutes with rates from 4.5% APR." },
+      { title: "Project Financing — Aurexo Roofing Studio" },
+      { name: "description", content: "Premium roofing financing from 6.5% APR. Plan your Ohio project budget with line-item transparency and flexible terms up to 84 months." },
+      { property: "og:title", content: "Project Financing — Aurexo Roofing Studio" },
+      { property: "og:description", content: "Roofing project financing from 6.5% APR with terms up to 84 months." },
     ],
   }),
   component: Financing,
@@ -18,13 +18,13 @@ export const Route = createFileRoute("/financing")({
 function Financing() {
   return (
     <main>
-      <PageHeader eyebrow="Financing" title="Pre-approved in minutes. Zero hit to your credit." subtitle="We work with 22 lenders to get you the lowest rate — fast." />
+      <PageHeader eyebrow="Financing" title="Premium roofing, planned around your budget." subtitle="We partner with specialist lenders to finance Ohio roofing projects from $10,000 to $300,000 with transparent line-item pricing." />
 
       <section className="mx-auto max-w-6xl px-4 py-12 grid grid-cols-1 lg:grid-cols-3 gap-4">
         {[
-          { i: Banknote, t: "Rates from 4.5% APR", d: "Competitive financing for new and used cars." },
-          { i: ShieldCheck, t: "Soft credit pull only", d: "Check your rate without affecting your score." },
-          { i: Clock, t: "Instant decisions", d: "Most applicants are approved in under 3 minutes." },
+          { i: Banknote, t: "Rates from 6.5% APR", d: "Competitive financing structured around premium roofing projects." },
+          { i: ShieldCheck, t: "Soft credit pull only", d: "Check your rate without affecting your credit score." },
+          { i: Clock, t: "48-hour decisions", d: "Most homeowners receive a written offer within two business days." },
         ].map(({ i: Icon, t, d }) => (
           <div key={t} className="rounded-2xl bg-white border border-border p-5">
             <Icon className="h-6 w-6 text-brand" />
@@ -70,10 +70,10 @@ function Financing() {
           Estimate your monthly payment <ArrowRight className="h-4 w-4" />
         </Link>
         <div className="mt-12 space-y-8 border-t border-border pt-10">
-          <div><h2 className="text-2xl font-bold text-ink">How Aurexo auto financing works</h2><p className="mt-3 text-sm leading-relaxed text-muted-foreground">Pre-qualification collects basic identity, income, housing, and requested loan information to estimate eligible offers. A soft credit inquiry does not change your score. If you select a lender and proceed, the lender may complete identity verification, income review, and a hard credit inquiry before final approval.</p></div>
-          <div><h3 className="text-lg font-bold text-ink">Compare the complete loan—not just the payment</h3><p className="mt-3 text-sm leading-relaxed text-muted-foreground">Review annual percentage rate, term, amount financed, down payment, taxes, fees, total interest, and total of payments. A longer loan can reduce the monthly bill while increasing interest expense and the period in which the balance may exceed the vehicle's value.</p></div>
-          <div><h3 className="text-lg font-bold text-ink">Documents that may be required</h3><ul className="mt-3 list-disc space-y-2 pl-5 text-sm text-muted-foreground"><li>Government-issued identification and proof of residence</li><li>Recent pay statements, tax returns, or bank statements</li><li>Insurance binder for the selected vehicle</li><li>Trade-in title, registration, and payoff information when applicable</li></ul></div>
-          <p className="text-xs leading-relaxed text-muted-foreground">Rates and approvals vary by lender, credit profile, vehicle, loan-to-value ratio, residence, and market conditions. Advertised rates are not guaranteed. Aurexo is not a lender and does not make credit decisions.</p>
+          <div><h2 className="text-2xl font-bold text-ink">How Aurexo project financing works</h2><p className="mt-3 text-sm leading-relaxed text-muted-foreground">Pre-qualification collects basic identity, household income, and the documented Aurexo estimate to match you with specialist roofing lenders. A soft credit inquiry does not change your score. If you accept a structured offer, the lender completes identity verification, income review, and a hard credit inquiry before final approval.</p></div>
+          <div><h3 className="text-lg font-bold text-ink">Compare the complete loan — not just the payment</h3><p className="mt-3 text-sm leading-relaxed text-muted-foreground">Review annual percentage rate, term, amount financed, taxes, fees, total interest, and total of payments. A longer term reduces the monthly bill while increasing total interest expense. A premium roof is a capital improvement that typically outlasts the loan — match the term to your ownership horizon.</p></div>
+          <div><h3 className="text-lg font-bold text-ink">Documents that may be required</h3><ul className="mt-3 list-disc space-y-2 pl-5 text-sm text-muted-foreground"><li>Government-issued identification and proof of Ohio residence</li><li>Recent pay statements, tax returns, or bank statements</li><li>Property deed or mortgage statement for the project address</li><li>Signed Aurexo Roofing Studio line-item estimate</li></ul></div>
+          <p className="text-xs leading-relaxed text-muted-foreground">Rates and approvals vary by lender, credit profile, property, loan-to-value ratio, residence, and market conditions. Advertised rates are not guaranteed. Aurexo Roofing Studio is not a lender and does not make credit decisions.</p>
         </div>
       </section>
     </main>

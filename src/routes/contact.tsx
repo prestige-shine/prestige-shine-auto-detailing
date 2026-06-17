@@ -31,10 +31,10 @@ function Contact() {
         </div>
         <div className="space-y-3">
           {[
-            { i: Phone, t: "Call us", d: "1-866-288-6868" },
-            { i: Mail, t: "Email", d: "hello@aurexo.com" },
-            { i: MapPin, t: "Visit HQ", d: "6205 Peachtree Dunwoody Rd, Atlanta, GA 30328" },
-            { i: Clock, t: "Hours", d: "Mon–Fri 8AM–8PM · Sat 9AM–6PM EST" },
+            { i: Phone, t: "Call us", d: "+1 (561) 555-0199" },
+            { i: Mail, t: "Email", d: "studio@aurexoroofing.com" },
+            { i: MapPin, t: "Studio HQ", d: "Aurexo Roofing Studio — Ohio, USA" },
+            { i: Clock, t: "Hours", d: "Mon–Fri 7AM–7PM · Sat 8AM–4PM EST" },
           ].map(({ i: Icon, t, d }) => (
             <div key={t} className="flex items-start gap-4 rounded-2xl bg-white border border-border p-5">
               <div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-brand/15 text-ink">
