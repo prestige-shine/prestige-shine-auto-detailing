@@ -89,13 +89,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "description", content: "Aurexo Roofing Studio designs and installs luxury roofing systems across Ohio — architectural shingles, standing-seam metal, premium aluminium, and natural slate." },
       { name: "author", content: "Aurexo Roofing Studio" },
       { property: "og:title", content: "Aurexo Roofing Studio — Premium Roofing Contractor in Ohio" },
-      { property: "og:description", content: "Luxury roofing systems for Ohio residences. Architectural shingles, standing-seam metal, premium aluminium, and natural slate." },
+      { property: "og:description", content: "Aurexo Roofing Studio designs and installs luxury roofing systems across Ohio — architectural shingles, standing-seam metal, premium aluminium, and natural slate." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Aurexo Roofing Studio — Ohio" },
-      { name: "twitter:description", content: "Luxury roofing systems across Ohio." },
-      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/14e7aa40-936e-4025-9e56-fc55ef5aadcd/id-preview-e431ff1f--1a2ce5ba-1b9e-4ee7-844c-6168cd4a55ec.lovable.app-1781337765085.png" },
-      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/14e7aa40-936e-4025-9e56-fc55ef5aadcd/id-preview-e431ff1f--1a2ce5ba-1b9e-4ee7-844c-6168cd4a55ec.lovable.app-1781337765085.png" },
+      { name: "twitter:title", content: "Aurexo Roofing Studio — Premium Roofing Contractor in Ohio" },
+      { name: "twitter:description", content: "Aurexo Roofing Studio designs and installs luxury roofing systems across Ohio — architectural shingles, standing-seam metal, premium aluminium, and natural slate." },
+      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/cd00f54b-2b26-479c-b1b0-f1bd4ab37810" },
+      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/cd00f54b-2b26-479c-b1b0-f1bd4ab37810" },
     ],
     links: [
       {
