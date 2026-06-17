@@ -18,7 +18,7 @@ export const Route = createFileRoute("/new-arrivals")({
 function NewArrivals() {
   const currentYear = Math.max(...vehicles.map(v => v.year));
   const list = vehicles
-    .filter((v) => v.condition === "New Car" || v.year === currentYear)
+    .filter((v) => v.condition === "New Install" || v.year === currentYear)
     .sort((a, b) => b.year - a.year || a.kmNum - b.kmNum);
 
   return (

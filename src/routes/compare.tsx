@@ -45,21 +45,19 @@ function Compare() {
   const cars = picks.map((id) => (id ? vehicles.find((v) => v.id === id) : null));
 
   const rows = [
-    { label: "Price", get: (c: typeof vehicles[number]) => c.price },
-    { label: "Year", get: (c: typeof vehicles[number]) => c.year },
-    { label: "Brand", get: (c: typeof vehicles[number]) => c.brand },
-    { label: "Body", get: (c: typeof vehicles[number]) => c.body },
-    { label: "Condition", get: (c: typeof vehicles[number]) => c.condition },
-    { label: "Fuel", get: (c: typeof vehicles[number]) => c.fuel },
-    { label: "Transmission", get: (c: typeof vehicles[number]) => c.transmission },
-    { label: "Mileage (km)", get: (c: typeof vehicles[number]) => c.km },
-    { label: "Estimated monthly (10% down, 60 mo.)", get: (c: typeof vehicles[number]) => `$${Math.round((c.priceNum * 0.9 * (0.059 / 12) * Math.pow(1 + 0.059 / 12, 60)) / (Math.pow(1 + 0.059 / 12, 60) - 1)).toLocaleString()}` },
-    { label: "Warranty", get: (c: typeof vehicles[number]) => c.condition === "New Car" ? "4 yr / 50,000 mi" : c.condition === "Certified Pre-Owned" ? "CPO limited warranty" : "Dealer warranty available" },
-    { label: "Drivetrain", get: (c: typeof vehicles[number]) => c.body === "SUV" || c.body === "Truck" ? "All-wheel drive" : "Rear-wheel drive" },
-    { label: "Seating", get: (c: typeof vehicles[number]) => c.body === "Coupe" ? "2–4 passengers" : c.body === "SUV" ? "5–7 passengers" : "5 passengers" },
-    { label: "Cargo profile", get: (c: typeof vehicles[number]) => c.body === "Truck" ? "Full pickup bed" : c.body === "SUV" ? "Expandable rear cargo" : "Enclosed trunk" },
-    { label: "Efficiency profile", get: (c: typeof vehicles[number]) => c.fuel === "Electric" ? "Zero tailpipe emissions" : c.fuel === "Hybrid" ? "High efficiency hybrid" : c.fuel === "Diesel" ? "Long-range diesel" : "Gasoline performance" },
-    { label: "Best suited for", get: (c: typeof vehicles[number]) => c.body === "Coupe" ? "Performance driving" : c.body === "Truck" ? "Towing and utility" : c.body === "SUV" ? "Family and all-weather use" : "Daily commuting" },
+    { label: "Project budget", get: (c: typeof vehicles[number]) => c.price },
+    { label: "Year completed", get: (c: typeof vehicles[number]) => c.year },
+    { label: "Material brand", get: (c: typeof vehicles[number]) => c.brand },
+    { label: "Roof profile", get: (c: typeof vehicles[number]) => c.body },
+    { label: "Service type", get: (c: typeof vehicles[number]) => c.condition },
+    { label: "Material family", get: (c: typeof vehicles[number]) => c.fuel },
+    { label: "Finish", get: (c: typeof vehicles[number]) => c.transmission },
+    { label: "Square footage", get: (c: typeof vehicles[number]) => `${c.km} sqft` },
+    { label: "Financed monthly (10% down, 60 mo.)", get: (c: typeof vehicles[number]) => `$${Math.round((c.priceNum * 0.9 * (0.059 / 12) * Math.pow(1 + 0.059 / 12, 60)) / (Math.pow(1 + 0.059 / 12, 60) - 1)).toLocaleString()}` },
+    { label: "Warranty", get: (c: typeof vehicles[number]) => c.condition === "New Install" ? "Lifetime material + 25 yr workmanship" : c.condition === "Restoration" ? "20 yr heritage workmanship" : "25 yr re-roof workmanship" },
+    { label: "Wind rating", get: (c: typeof vehicles[number]) => c.fuel === "Metal" ? "UL 580 Class 90 (≥130 mph)" : c.fuel === "Slate" ? "ASTM D3161 Class F (110 mph)" : "ASTM D7158 Class H (150 mph)" },
+    { label: "Fire rating", get: (_c: typeof vehicles[number]) => "Class A (ASTM E108)" },
+    { label: "Best suited for", get: (c: typeof vehicles[number]) => c.body === "Flat" ? "Modern architectural builds" : c.body === "Mansard" ? "Historic and estate restoration" : c.body === "Hip" ? "All-weather residential" : c.body === "Shed" ? "Outbuildings and pool houses" : "Traditional residential" },
   ];
 
   return (

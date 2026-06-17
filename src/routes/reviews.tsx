@@ -1,45 +1,57 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Star } from "lucide-react";
 import { PageHeader } from "@/components/aurexo/PageHeader";
+import { useAuthModal } from "@/contexts/AuthModalContext";
 
 export const Route = createFileRoute("/reviews")({
   head: () => ({
     meta: [
-      { title: "Clients Reviews — Aurexo" },
-      { name: "description", content: "Real reviews from real Aurexo buyers and sellers across the country." },
-      { property: "og:title", content: "Clients Reviews — Aurexo" },
-      { property: "og:description", content: "Real reviews from real Aurexo buyers and sellers." },
+      { title: "Client Reviews — Aurexo Roofing Studio" },
+      { name: "description", content: "Verified reviews from Ohio homeowners on our premium roofing installations, storm response, and warranty service." },
+      { property: "og:title", content: "Client Reviews — Aurexo Roofing Studio" },
+      { property: "og:description", content: "Verified reviews from Ohio homeowners served by Aurexo Roofing Studio." },
     ],
   }),
   component: Reviews,
 });
 
-const all = [
-  ["Sarah M.","Atlanta, GA","Bought my BMW 5 Series in under 48 hours. The dealer was upfront on every fee — what they quoted was exactly what I paid. Delivery was flawless."],
-  ["Marcus T.","Dallas, TX","Got pre-approved while sitting in traffic. Picked up my F-150 the next morning. The Aurexo app made the paperwork take 10 minutes total."],
-  ["Priya K.","San Francisco, CA","Loved the verified dealer ratings — knew exactly who I was dealing with. Even the financing was 1.2% lower than my bank offered."],
-  ["Jordan A.","Brooklyn, NY","Sold my old Civic in 3 days and used the cash toward a Tesla. The trade-in process was the easiest thing about the whole upgrade."],
-  ["Camille R.","Miami, FL","Beautiful interface, smart filters, and the chat-with-dealer feature actually works. Found my dream car on day one."],
-  ["Liam P.","Seattle, WA","I'm a returning buyer — third car through Aurexo. Quality stays consistent and the customer support team is genuinely helpful."],
+const all: [string, string, string][] = [
+  ["Sarah M.", "Shaker Heights, OH", "Aurexo replaced our 1920s slate mansard with a synthetic system that looks identical to the original. The crew documented every step and finished two days ahead of schedule — through a week of Lake Erie rain."],
+  ["Marcus T.", "Hudson, OH", "Our standing-seam aluminium roof survived the May derecho without a single panel lifting. Aurexo was on-site for a free post-storm inspection within 24 hours. Best capital improvement we've ever made on the house."],
+  ["Priya K.", "Bath Township, OH", "Walked us through every line item — underlayment, ice shield, copper valley flashing — before signing. No surprises on invoice day. The new tile roof completely changed the curb appeal of our villa."],
+  ["Jordan A.", "Westlake, OH", "Re-roofed a 3,400 sqft hip roof in a single working week. The site stayed cleaner than my driveway normally is. Warranty paperwork was registered in my name the same afternoon they finished."],
+  ["Camille R.", "Pepper Pike, OH", "We interviewed four studios. Aurexo was the only one that quoted the ventilation upgrade as a line item instead of an afterthought. Two years in, the attic temperatures are down 18°F and the HVAC bill shows it."],
+  ["Liam P.", "Chagrin Falls, OH", "Premium copper accent roof on our pool house, then a full DaVinci synthetic slate on the main residence. Both projects on time, both immaculate. Already specifying Aurexo for the carriage house next spring."],
 ];
 
 function Reviews() {
+  const auth = useAuthModal();
   return (
     <main>
-      <PageHeader eyebrow="Reviews" title="4.9 / 5 from 12,400+ buyers." subtitle="Honest, unedited feedback from the Aurexo community." />
-      <section className="mx-auto max-w-6xl px-4 py-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        {all.map(([name, loc, body]) => (
-          <article key={name} className="rounded-2xl bg-white border border-border p-5">
-            <div className="flex gap-0.5 text-brand">
-              {Array.from({ length: 5 }).map((_, i) => <Star key={i} className="h-4 w-4" fill="currentColor" strokeWidth={0} />)}
-            </div>
-            <p className="mt-3 text-sm leading-relaxed text-muted-foreground">"{body}"</p>
-            <div className="mt-4 border-t border-border pt-3">
-              <p className="text-sm font-semibold text-ink">{name}</p>
-              <p className="text-xs text-muted-foreground">{loc}</p>
-            </div>
-          </article>
-        ))}
+      <PageHeader eyebrow="Reviews" title="4.9 / 5 from 1,800+ Ohio homeowners." subtitle="Honest, unedited feedback from homes we have re-roofed, restored, and storm-protected across Northeast Ohio." />
+      <section className="mx-auto max-w-6xl px-4 py-12">
+        <div className="columns-1 gap-4 sm:columns-2 lg:columns-3 [column-fill:_balance]">
+          {all.map(([name, loc, body]) => (
+            <article key={name} className="mb-4 break-inside-avoid rounded-2xl bg-white border border-border p-5">
+              <div className="flex gap-0.5 text-brand">
+                {Array.from({ length: 5 }).map((_, i) => <Star key={i} className="h-4 w-4" fill="currentColor" strokeWidth={0} />)}
+              </div>
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">"{body}"</p>
+              <div className="mt-4 border-t border-border pt-3">
+                <p className="text-sm font-semibold text-ink">{name}</p>
+                <p className="text-xs text-muted-foreground">{loc}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+        <div className="mt-10 rounded-2xl border border-border bg-white p-6 text-center">
+          <p className="text-sm text-muted-foreground">
+            Worked with us on a project?{" "}
+            <button type="button" onClick={auth.open} className="font-semibold text-ink underline underline-offset-2 hover:text-brand">
+              Log in to leave a review
+            </button>.
+          </p>
+        </div>
       </section>
     </main>
   );

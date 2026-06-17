@@ -10,16 +10,16 @@ type Node = { label: string; to?: string; search?: Record<string, unknown>; chil
 const tree: Node[] = [
   { label: "Home", to: "/" },
   {
-    label: "Buy Car",
+    label: "Projects",
     children: [
-      { label: "All Vehicles", to: "/buy" },
-      { label: "New Arrivals", to: "/new-arrivals" },
+      { label: "All Projects", to: "/buy" },
+      { label: "New Projects", to: "/new-arrivals" },
       { label: "Featured", to: "/featured" },
-      { label: "Saved Vehicles", to: "/saved" },
+      { label: "Saved Projects", to: "/saved" },
     ],
   },
   {
-    label: "News & Blog",
+    label: "News & Guides",
     children: [
       { label: "All Articles", to: "/news" },
     ],
@@ -28,15 +28,15 @@ const tree: Node[] = [
     label: "Pages",
     children: [
       { label: "About Us", to: "/about" },
-      { label: "Sale Agents", to: "/agents" },
-      { label: "Car Dealerships", to: "/dealerships" },
-      { label: "Calculator", to: "/calculator" },
-      { label: "Compare", to: "/compare" },
-      { label: "Customer Reviews", to: "/reviews" },
+      { label: "Studio Team", to: "/agents" },
+      { label: "Service Areas", to: "/dealerships" },
+      { label: "Estimate Calculator", to: "/calculator" },
+      { label: "Compare Materials", to: "/compare" },
+      { label: "Client Reviews", to: "/reviews" },
       { label: "Financing", to: "/financing" },
-      { label: "Services Center", to: "/services" },
+      { label: "Roofing Services", to: "/services" },
       { label: "FAQs", to: "/faqs" },
-      { label: "Sell Your Car", to: "/sell" },
+      { label: "Request Estimate", to: "/sell" },
       { label: "Contact", to: "/contact" },
       { label: "Terms of Use", to: "/terms" },
     ],
@@ -109,11 +109,11 @@ export function NavDrawer({ open, onClose }: Props) {
         </div>
 
         <a
-          href="tel:18662886868"
+          href="tel:+15615550199"
           className="flex items-center justify-center gap-2 border-t border-white/10 bg-brand py-4 font-semibold text-ink"
         >
           <Phone className="h-4 w-4" />
-          1-866-288-6868
+          +1 (561) 555-0199
         </a>
       </aside>
     </>
