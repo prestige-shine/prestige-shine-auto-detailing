@@ -127,13 +127,11 @@ function RootComponent() {
   const { queryClient } = Route.useRouteContext();
   return (
     <QueryClientProvider client={queryClient}>
-      <AuthModalProvider>
-        <FavoritesProvider>
-          <CompareProvider>
-            <SiteShell />
-          </CompareProvider>
-        </FavoritesProvider>
-      </AuthModalProvider>
+      <FavoritesProvider>
+        <CompareProvider>
+          <SiteShell />
+        </CompareProvider>
+      </FavoritesProvider>
     </QueryClientProvider>
   );
 }
@@ -149,7 +147,7 @@ function SiteShell() {
       </div>
       <Footer />
       <CompareBar />
-      <AuthModal />
+      <ChatWidget />
     </div>
   );
 }
