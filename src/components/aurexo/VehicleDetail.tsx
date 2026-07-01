@@ -28,12 +28,7 @@ import {
 } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import { vehicles as allVehicles } from "@/lib/aurexo-data";
-import { useAuthModal } from "@/contexts/AuthModalContext";
 import { VehicleCard } from "@/components/aurexo/VehicleCard";
-import fordGT from "@/assets/ford-gt-white.jpg";
-import galleryInterior from "@/assets/gallery-interior.jpg";
-import galleryDashboard from "@/assets/gallery-dashboard.jpg";
-import galleryCabin from "@/assets/gallery-cabin.jpg";
 import { FinanceCalculator } from "@/components/aurexo/FinanceCalculator";
 import {
   Carousel,
@@ -44,6 +39,13 @@ import {
   type CarouselApi,
 } from "@/components/ui/carousel";
 import { Button } from "@/components/ui/button";
+import { WHATSAPP_NUMBER, STUDIO_PHONE, STUDIO_TEL, buildLeadMessage } from "@/lib/whatsapp";
+
+// Roofing-specific gallery assets (no automotive imagery)
+const ROOF_GALLERY_INTERIOR = "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=1280&q=70";
+const ROOF_GALLERY_CLOSEUP = "https://images.unsplash.com/photo-1632759145355-8b8f3ab5d6c3?auto=format&fit=crop&w=1280&q=70";
+const ROOF_GALLERY_INSTALL = "https://images.unsplash.com/photo-1621886292650-52c6e73aaa15?auto=format&fit=crop&w=1280&q=70";
+const ROOF_HERO_FALLBACK = "https://images.unsplash.com/photo-1592595896616-c37162298647?auto=format&fit=crop&w=1280&q=70";
 
 const tabs = ["Overview", "Description", "Features"] as const;
 type Tab = (typeof tabs)[number];
