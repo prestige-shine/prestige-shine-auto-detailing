@@ -475,16 +475,14 @@ export function VehicleDetail({ vehicle }: { vehicle?: Vehicle } = {}) {
         </div>
       </section>
 
-      {/* Floating action button */}
-      <button
-        onClick={() => setInquiryOpen(true)}
-        className="fixed bottom-6 right-6 z-30 grid h-14 w-14 place-items-center rounded-full bg-brand text-ink shadow-xl shadow-brand/30 hover:scale-105 transition"
-        aria-label="Quick inquiry"
-      >
-        <MessageCircle className="h-6 w-6" />
-      </button>
+      {/* Share toast */}
+      {shareToast && (
+        <div role="status" aria-live="polite" className="fixed left-1/2 top-20 z-50 -translate-x-1/2 rounded-full bg-ink px-4 py-2 text-xs font-semibold text-white shadow-lg">
+          {shareToast}
+        </div>
+      )}
 
-      <InquirySheet open={inquiryOpen} onClose={() => setInquiryOpen(false)} />
+      <InquirySheet open={inquiryOpen} onClose={() => setInquiryOpen(false)} heroTitle={heroTitle} />
     </main>
   );
 }
