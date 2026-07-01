@@ -360,6 +360,12 @@ function Home() {
         </div>
       </section>
 
+      {/* Partners */}
+      <PartnersMarquee />
+
+      {/* FAQ */}
+      <HomeFAQ />
+
       {/* CTA */}
       <section className="mx-auto max-w-6xl px-4 py-12">
         <div className="relative overflow-hidden rounded-3xl bg-ink p-8 text-white sm:p-12">
@@ -374,8 +380,8 @@ function Home() {
               <a href={whatsappHref} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-full bg-brand px-5 py-3 text-sm font-semibold text-ink">
                 <MessageCircle className="h-4 w-4" /> WhatsApp the Studio
               </a>
-              <a href="tel:+15615550199" className="inline-flex items-center gap-2 rounded-full border border-white/20 px-5 py-3 text-sm font-semibold text-white hover:bg-white/10">
-                <Phone className="h-4 w-4" /> +1 (561) 555-0199
+              <a href={`tel:${STUDIO_TEL}`} className="inline-flex items-center gap-2 rounded-full border border-white/20 px-5 py-3 text-sm font-semibold text-white hover:bg-white/10">
+                <Phone className="h-4 w-4" /> {STUDIO_PHONE}
               </a>
             </div>
           </div>
