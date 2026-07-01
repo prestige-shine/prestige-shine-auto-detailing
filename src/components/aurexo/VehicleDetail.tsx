@@ -403,15 +403,14 @@ export function VehicleDetail({ vehicle }: { vehicle?: Vehicle } = {}) {
           </ul>
 
           <div className="mt-5 rounded-xl border border-dashed border-border bg-surface p-4 text-center text-sm text-muted-foreground">
-            You need to{" "}
-            <button
-              type="button"
-              onClick={() => authModal.open()}
+            Worked with Aurexo on a project?{" "}
+            <Link
+              to="/contact"
               className="font-semibold text-ink underline underline-offset-2 hover:text-brand"
             >
-              login
-            </button>{" "}
-            in order to post a review
+              Get in touch
+            </Link>{" "}
+            to share your review.
           </div>
         </div>
       </section>
