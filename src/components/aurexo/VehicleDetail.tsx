@@ -491,10 +491,10 @@ export function VehicleDetail({ vehicle }: { vehicle?: Vehicle } = {}) {
 
 function VehicleGallery({ heroImage, heroTitle }: { heroImage: string; heroTitle: string }) {
   const gallery = [
-    { src: heroImage, label: "Exterior" },
-    { src: galleryInterior, label: "Interior" },
-    { src: galleryDashboard, label: "Dashboard" },
-    { src: galleryCabin, label: "Cabin" },
+    { src: heroImage, label: "Elevation" },
+    { src: ROOF_GALLERY_INSTALL, label: "Installation" },
+    { src: ROOF_GALLERY_CLOSEUP, label: "Material Detail" },
+    { src: ROOF_GALLERY_INTERIOR, label: "Attic & Deck" },
   ];
   const [api, setApi] = useState<CarouselApi>();
   const [active, setActive] = useState(0);
