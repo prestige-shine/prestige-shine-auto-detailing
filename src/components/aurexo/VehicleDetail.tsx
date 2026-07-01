@@ -28,12 +28,7 @@ import {
 } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import { vehicles as allVehicles } from "@/lib/aurexo-data";
-import { useAuthModal } from "@/contexts/AuthModalContext";
 import { VehicleCard } from "@/components/aurexo/VehicleCard";
-import fordGT from "@/assets/ford-gt-white.jpg";
-import galleryInterior from "@/assets/gallery-interior.jpg";
-import galleryDashboard from "@/assets/gallery-dashboard.jpg";
-import galleryCabin from "@/assets/gallery-cabin.jpg";
 import { FinanceCalculator } from "@/components/aurexo/FinanceCalculator";
 import {
   Carousel,
@@ -44,6 +39,13 @@ import {
   type CarouselApi,
 } from "@/components/ui/carousel";
 import { Button } from "@/components/ui/button";
+import { WHATSAPP_NUMBER, STUDIO_PHONE, STUDIO_TEL, buildLeadMessage } from "@/lib/whatsapp";
+
+// Roofing-specific gallery assets (no automotive imagery)
+const ROOF_GALLERY_INTERIOR = "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=1280&q=70";
+const ROOF_GALLERY_CLOSEUP = "https://images.unsplash.com/photo-1632759145355-8b8f3ab5d6c3?auto=format&fit=crop&w=1280&q=70";
+const ROOF_GALLERY_INSTALL = "https://images.unsplash.com/photo-1621886292650-52c6e73aaa15?auto=format&fit=crop&w=1280&q=70";
+const ROOF_HERO_FALLBACK = "https://images.unsplash.com/photo-1592595896616-c37162298647?auto=format&fit=crop&w=1280&q=70";
 
 const tabs = ["Overview", "Description", "Features"] as const;
 type Tab = (typeof tabs)[number];
@@ -100,7 +102,7 @@ import { useCompare } from "@/contexts/CompareContext";
 import { useFavorites } from "@/contexts/FavoritesContext";
 
 export function VehicleDetail({ vehicle }: { vehicle?: Vehicle } = {}) {
-  const heroImage = vehicle?.img ?? fordGT;
+  const heroImage = vehicle?.img ?? ROOF_HERO_FALLBACK;
   const heroTitle = vehicle?.title ?? "Aurexo Roofing Project";
   const vehicleId = vehicle?.id ?? "aurexo-project-001";
   const { has, toggle } = useCompare();
@@ -124,19 +126,31 @@ export function VehicleDetail({ vehicle }: { vehicle?: Vehicle } = {}) {
     return { ...spec, value: values[spec.label] ?? spec.value };
   });
   const [inquiryOpen, setInquiryOpen] = useState(false);
-  const authModal = useAuthModal();
+  const [shareToast, setShareToast] = useState<string | null>(null);
   const related = allVehicles.filter((x) => x.id !== vehicleId).slice(0, 6);
+
+  const showToast = (msg: string) => {
+    setShareToast(msg);
+    window.setTimeout(() => setShareToast(null), 2400);
+  };
 
   const handleShare = async () => {
     const url = typeof window !== "undefined" ? window.location.href : "";
     try {
       if (typeof navigator !== "undefined" && (navigator as any).share) {
-        await (navigator as any).share({ title: heroTitle, url });
-      } else if (typeof navigator !== "undefined" && navigator.clipboard) {
-        await navigator.clipboard.writeText(url);
+        await (navigator as any).share({ title: heroTitle, url, text: `Aurexo Roofing Studio · ${heroTitle}` });
+        return;
       }
     } catch {
-      /* user cancelled */
+      /* user cancelled — fall through to clipboard */
+    }
+    try {
+      if (typeof navigator !== "undefined" && navigator.clipboard) {
+        await navigator.clipboard.writeText(url);
+        showToast("Link copied to clipboard");
+      }
+    } catch {
+      showToast("Unable to share this project");
     }
   };
   const handlePrint = () => {
@@ -389,15 +403,14 @@ export function VehicleDetail({ vehicle }: { vehicle?: Vehicle } = {}) {
           </ul>
 
           <div className="mt-5 rounded-xl border border-dashed border-border bg-surface p-4 text-center text-sm text-muted-foreground">
-            You need to{" "}
-            <button
-              type="button"
-              onClick={() => authModal.open()}
+            Worked with Aurexo on a project?{" "}
+            <Link
+              to="/contact"
               className="font-semibold text-ink underline underline-offset-2 hover:text-brand"
             >
-              login
-            </button>{" "}
-            in order to post a review
+              Get in touch
+            </Link>{" "}
+            to share your review.
           </div>
         </div>
       </section>
@@ -462,26 +475,24 @@ export function VehicleDetail({ vehicle }: { vehicle?: Vehicle } = {}) {
         </div>
       </section>
 
-      {/* Floating action button */}
-      <button
-        onClick={() => setInquiryOpen(true)}
-        className="fixed bottom-6 right-6 z-30 grid h-14 w-14 place-items-center rounded-full bg-brand text-ink shadow-xl shadow-brand/30 hover:scale-105 transition"
-        aria-label="Quick inquiry"
-      >
-        <MessageCircle className="h-6 w-6" />
-      </button>
+      {/* Share toast */}
+      {shareToast && (
+        <div role="status" aria-live="polite" className="fixed left-1/2 top-20 z-50 -translate-x-1/2 rounded-full bg-ink px-4 py-2 text-xs font-semibold text-white shadow-lg">
+          {shareToast}
+        </div>
+      )}
 
-      <InquirySheet open={inquiryOpen} onClose={() => setInquiryOpen(false)} />
+      <InquirySheet open={inquiryOpen} onClose={() => setInquiryOpen(false)} heroTitle={heroTitle} />
     </main>
   );
 }
 
 function VehicleGallery({ heroImage, heroTitle }: { heroImage: string; heroTitle: string }) {
   const gallery = [
-    { src: heroImage, label: "Exterior" },
-    { src: galleryInterior, label: "Interior" },
-    { src: galleryDashboard, label: "Dashboard" },
-    { src: galleryCabin, label: "Cabin" },
+    { src: heroImage, label: "Elevation" },
+    { src: ROOF_GALLERY_INSTALL, label: "Installation" },
+    { src: ROOF_GALLERY_CLOSEUP, label: "Material Detail" },
+    { src: ROOF_GALLERY_INTERIOR, label: "Attic & Deck" },
   ];
   const [api, setApi] = useState<CarouselApi>();
   const [active, setActive] = useState(0);
@@ -567,8 +578,27 @@ function Row({ label, value }: { label: string; value: string }) {
   );
 }
 
-function InquirySheet({ open, onClose }: { open: boolean; onClose: () => void }) {
+function InquirySheet({ open, onClose, heroTitle }: { open: boolean; onClose: () => void; heroTitle: string }) {
   const [sent, setSent] = useState(false);
+  const [form, setForm] = useState({ name: "", email: "", phone: "", scope: "Free site inspection & estimate", notes: `Hi Aurexo, I'd like an inspection for a project similar to: ${heroTitle}.` });
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const message = buildLeadMessage({
+      name: form.name, email: form.email, phone: form.phone,
+      projectType: form.scope, message: form.notes,
+      source: `project:${heroTitle}`,
+    });
+    const href = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+    try {
+      const key = "aurexo:leads";
+      const prev = JSON.parse(window.localStorage.getItem(key) ?? "[]");
+      prev.push({ ...form, project: heroTitle, submittedAt: new Date().toISOString() });
+      window.localStorage.setItem(key, JSON.stringify(prev.slice(-50)));
+    } catch {}
+    window.open(href, "_blank", "noopener,noreferrer");
+    setSent(true);
+  };
 
   return (
     <>
@@ -589,9 +619,9 @@ function InquirySheet({ open, onClose }: { open: boolean; onClose: () => void })
             <div className="mx-auto grid h-16 w-16 animate-[pop_0.4s_ease-out] place-items-center rounded-full bg-brand text-ink">
               <Check className="h-8 w-8" strokeWidth={3} />
             </div>
-            <h3 className="mt-4 text-xl font-bold text-ink">Message sent</h3>
+            <h3 className="mt-4 text-xl font-bold text-ink">Brief sent to WhatsApp</h3>
             <p className="mt-1 text-sm text-muted-foreground">
-              The dealer will reach out within 2 hours. We'll email you a copy too.
+              An Aurexo estimator will reach out within 2 hours. Your brief is also saved to our lead pipeline.
             </p>
             <button
               onClick={() => { onClose(); setTimeout(() => setSent(false), 300); }}
@@ -605,32 +635,25 @@ function InquirySheet({ open, onClose }: { open: boolean; onClose: () => void })
           <>
             <h3 className="text-xl font-bold text-ink">Request a Free Estimate</h3>
             <p className="mt-1 text-sm text-muted-foreground">
-              The Aurexo studio typically responds within 2 hours during Ohio business hours.
+              Aurexo typically responds within 2 hours during Ohio business hours. Call {STUDIO_PHONE} or use the form below.
             </p>
-            <form
-              onSubmit={(e) => { e.preventDefault(); setSent(true); }}
-              className="mt-5 space-y-3"
-            >
-              <input required className="calc-input" placeholder="Name" />
-              <input required className="calc-input" type="email" placeholder="Email" />
-              <input className="calc-input" placeholder="Phone (Optional)" />
-              <select className="calc-input" defaultValue="estimate">
-                <option value="estimate">Free site inspection & estimate</option>
+            <form onSubmit={handleSubmit} className="mt-5 space-y-3">
+              <input required value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} className="calc-input" placeholder="Name" />
+              <input required value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} className="calc-input" type="email" placeholder="Email" />
+              <input value={form.phone} onChange={(e) => setForm({ ...form, phone: e.target.value })} className="calc-input" placeholder="Phone" />
+              <select value={form.scope} onChange={(e) => setForm({ ...form, scope: e.target.value })} className="calc-input">
+                <option>Free site inspection & estimate</option>
                 <option>Storm restoration</option>
                 <option>Material consultation</option>
                 <option>Warranty service</option>
               </select>
-              <textarea
-                className="calc-input"
-                rows={4}
-                defaultValue="Hi Aurexo, I'd like to schedule a free site inspection for a roofing project on my Ohio home. Please reach out with your next available appointment."
-              />
-              <button
-                type="submit"
-                className="w-full rounded-xl bg-ink py-3.5 text-sm font-semibold text-white"
-              >
-                Send Inquiry
+              <textarea value={form.notes} onChange={(e) => setForm({ ...form, notes: e.target.value })} className="calc-input" rows={4} />
+              <button type="submit" className="w-full rounded-xl bg-ink py-3.5 text-sm font-semibold text-white">
+                Send Brief to WhatsApp
               </button>
+              <a href={`tel:${STUDIO_TEL}`} className="block text-center text-xs text-muted-foreground">
+                or call the studio directly at {STUDIO_PHONE}
+              </a>
             </form>
           </>
         )}

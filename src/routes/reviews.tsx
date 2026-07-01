@@ -1,7 +1,6 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { Star } from "lucide-react";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { Star, MessageCircle } from "lucide-react";
 import { PageHeader } from "@/components/aurexo/PageHeader";
-import { useAuthModal } from "@/contexts/AuthModalContext";
 
 export const Route = createFileRoute("/reviews")({
   head: () => ({
@@ -25,7 +24,6 @@ const all: [string, string, string][] = [
 ];
 
 function Reviews() {
-  const auth = useAuthModal();
   return (
     <main>
       <PageHeader eyebrow="Reviews" title="4.9 / 5 from 1,800+ Ohio homeowners." subtitle="Honest, unedited feedback from homes we have re-roofed, restored, and storm-protected across Northeast Ohio." />
@@ -47,9 +45,9 @@ function Reviews() {
         <div className="mt-10 rounded-2xl border border-border bg-white p-6 text-center">
           <p className="text-sm text-muted-foreground">
             Worked with us on a project?{" "}
-            <button type="button" onClick={auth.open} className="font-semibold text-ink underline underline-offset-2 hover:text-brand">
-              Log in to leave a review
-            </button>.
+            <Link to="/contact" className="inline-flex items-center gap-1 font-semibold text-ink underline underline-offset-2 hover:text-brand">
+              <MessageCircle className="h-3.5 w-3.5" /> Get in touch to share your review
+            </Link>
           </p>
         </div>
       </section>

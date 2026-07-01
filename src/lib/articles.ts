@@ -9,13 +9,15 @@ export type Article = {
   body: string[];
 };
 
+// Distinct editorial imagery — deliberately NOT shared with the /projects gallery.
+// Each cover maps to the article theme (materials close-up, budgeting/blueprints, inspection).
 const stockCovers = [
-  "https://images.unsplash.com/photo-1592595896616-c37162298647?auto=format&fit=crop&w=1200&q=70",
-  "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=70",
-  "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1200&q=70",
-  "https://images.unsplash.com/photo-1568605114967-8130f3a36994?auto=format&fit=crop&w=1200&q=70",
-  "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=1200&q=70",
-  "https://images.unsplash.com/photo-1605114324393-9b3da72ad3c0?auto=format&fit=crop&w=1200&q=70",
+  // Premium roofing material close-up (shingles/tile texture)
+  "https://images.unsplash.com/photo-1632759145355-8b8f3ab5d6c3?auto=format&fit=crop&w=1200&q=70",
+  // Architect / budgeting blueprints and drawings
+  "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1200&q=70",
+  // Roofer inspecting / working with instruments
+  "https://images.unsplash.com/photo-1621886292650-52c6e73aaa15?auto=format&fit=crop&w=1200&q=70",
 ];
 
 export const articles: Article[] = [
