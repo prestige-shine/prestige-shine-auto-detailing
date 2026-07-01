@@ -102,7 +102,7 @@ import { useCompare } from "@/contexts/CompareContext";
 import { useFavorites } from "@/contexts/FavoritesContext";
 
 export function VehicleDetail({ vehicle }: { vehicle?: Vehicle } = {}) {
-  const heroImage = vehicle?.img ?? fordGT;
+  const heroImage = vehicle?.img ?? ROOF_HERO_FALLBACK;
   const heroTitle = vehicle?.title ?? "Aurexo Roofing Project";
   const vehicleId = vehicle?.id ?? "aurexo-project-001";
   const { has, toggle } = useCompare();
@@ -126,19 +126,31 @@ export function VehicleDetail({ vehicle }: { vehicle?: Vehicle } = {}) {
     return { ...spec, value: values[spec.label] ?? spec.value };
   });
   const [inquiryOpen, setInquiryOpen] = useState(false);
-  const authModal = useAuthModal();
+  const [shareToast, setShareToast] = useState<string | null>(null);
   const related = allVehicles.filter((x) => x.id !== vehicleId).slice(0, 6);
+
+  const showToast = (msg: string) => {
+    setShareToast(msg);
+    window.setTimeout(() => setShareToast(null), 2400);
+  };
 
   const handleShare = async () => {
     const url = typeof window !== "undefined" ? window.location.href : "";
     try {
       if (typeof navigator !== "undefined" && (navigator as any).share) {
-        await (navigator as any).share({ title: heroTitle, url });
-      } else if (typeof navigator !== "undefined" && navigator.clipboard) {
-        await navigator.clipboard.writeText(url);
+        await (navigator as any).share({ title: heroTitle, url, text: `Aurexo Roofing Studio · ${heroTitle}` });
+        return;
       }
     } catch {
-      /* user cancelled */
+      /* user cancelled — fall through to clipboard */
+    }
+    try {
+      if (typeof navigator !== "undefined" && navigator.clipboard) {
+        await navigator.clipboard.writeText(url);
+        showToast("Link copied to clipboard");
+      }
+    } catch {
+      showToast("Unable to share this project");
     }
   };
   const handlePrint = () => {
