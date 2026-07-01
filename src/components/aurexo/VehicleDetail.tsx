@@ -578,8 +578,27 @@ function Row({ label, value }: { label: string; value: string }) {
   );
 }
 
-function InquirySheet({ open, onClose }: { open: boolean; onClose: () => void }) {
+function InquirySheet({ open, onClose, heroTitle }: { open: boolean; onClose: () => void; heroTitle: string }) {
   const [sent, setSent] = useState(false);
+  const [form, setForm] = useState({ name: "", email: "", phone: "", scope: "Free site inspection & estimate", notes: `Hi Aurexo, I'd like an inspection for a project similar to: ${heroTitle}.` });
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const message = buildLeadMessage({
+      name: form.name, email: form.email, phone: form.phone,
+      projectType: form.scope, message: form.notes,
+      source: `project:${heroTitle}`,
+    });
+    const href = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+    try {
+      const key = "aurexo:leads";
+      const prev = JSON.parse(window.localStorage.getItem(key) ?? "[]");
+      prev.push({ ...form, project: heroTitle, submittedAt: new Date().toISOString() });
+      window.localStorage.setItem(key, JSON.stringify(prev.slice(-50)));
+    } catch {}
+    window.open(href, "_blank", "noopener,noreferrer");
+    setSent(true);
+  };
 
   return (
     <>
@@ -600,9 +619,9 @@ function InquirySheet({ open, onClose }: { open: boolean; onClose: () => void })
             <div className="mx-auto grid h-16 w-16 animate-[pop_0.4s_ease-out] place-items-center rounded-full bg-brand text-ink">
               <Check className="h-8 w-8" strokeWidth={3} />
             </div>
-            <h3 className="mt-4 text-xl font-bold text-ink">Message sent</h3>
+            <h3 className="mt-4 text-xl font-bold text-ink">Brief sent to WhatsApp</h3>
             <p className="mt-1 text-sm text-muted-foreground">
-              The dealer will reach out within 2 hours. We'll email you a copy too.
+              An Aurexo estimator will reach out within 2 hours. Your brief is also saved to our lead pipeline.
             </p>
             <button
               onClick={() => { onClose(); setTimeout(() => setSent(false), 300); }}
@@ -616,32 +635,25 @@ function InquirySheet({ open, onClose }: { open: boolean; onClose: () => void })
           <>
             <h3 className="text-xl font-bold text-ink">Request a Free Estimate</h3>
             <p className="mt-1 text-sm text-muted-foreground">
-              The Aurexo studio typically responds within 2 hours during Ohio business hours.
+              Aurexo typically responds within 2 hours during Ohio business hours. Call {STUDIO_PHONE} or use the form below.
             </p>
-            <form
-              onSubmit={(e) => { e.preventDefault(); setSent(true); }}
-              className="mt-5 space-y-3"
-            >
-              <input required className="calc-input" placeholder="Name" />
-              <input required className="calc-input" type="email" placeholder="Email" />
-              <input className="calc-input" placeholder="Phone (Optional)" />
-              <select className="calc-input" defaultValue="estimate">
-                <option value="estimate">Free site inspection & estimate</option>
+            <form onSubmit={handleSubmit} className="mt-5 space-y-3">
+              <input required value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} className="calc-input" placeholder="Name" />
+              <input required value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} className="calc-input" type="email" placeholder="Email" />
+              <input value={form.phone} onChange={(e) => setForm({ ...form, phone: e.target.value })} className="calc-input" placeholder="Phone" />
+              <select value={form.scope} onChange={(e) => setForm({ ...form, scope: e.target.value })} className="calc-input">
+                <option>Free site inspection & estimate</option>
                 <option>Storm restoration</option>
                 <option>Material consultation</option>
                 <option>Warranty service</option>
               </select>
-              <textarea
-                className="calc-input"
-                rows={4}
-                defaultValue="Hi Aurexo, I'd like to schedule a free site inspection for a roofing project on my Ohio home. Please reach out with your next available appointment."
-              />
-              <button
-                type="submit"
-                className="w-full rounded-xl bg-ink py-3.5 text-sm font-semibold text-white"
-              >
-                Send Inquiry
+              <textarea value={form.notes} onChange={(e) => setForm({ ...form, notes: e.target.value })} className="calc-input" rows={4} />
+              <button type="submit" className="w-full rounded-xl bg-ink py-3.5 text-sm font-semibold text-white">
+                Send Brief to WhatsApp
               </button>
+              <a href={`tel:${STUDIO_TEL}`} className="block text-center text-xs text-muted-foreground">
+                or call the studio directly at {STUDIO_PHONE}
+              </a>
             </form>
           </>
         )}
