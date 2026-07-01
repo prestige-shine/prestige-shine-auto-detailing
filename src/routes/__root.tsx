@@ -15,10 +15,9 @@ import { Header } from "@/components/aurexo/Header";
 import { Footer } from "@/components/aurexo/Footer";
 import { NavDrawer } from "@/components/aurexo/NavDrawer";
 import { CompareProvider } from "@/contexts/CompareContext";
-import { AuthModalProvider } from "@/contexts/AuthModalContext";
 import { CompareBar } from "@/components/aurexo/CompareBar";
-import { AuthModal } from "@/components/aurexo/AuthModal";
 import { FavoritesProvider } from "@/contexts/FavoritesContext";
+import { ChatWidget } from "@/components/aurexo/ChatWidget";
 
 function NotFoundComponent() {
   return (
