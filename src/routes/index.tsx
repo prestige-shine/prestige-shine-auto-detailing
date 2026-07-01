@@ -10,6 +10,9 @@ import { VehicleCard } from "@/components/aurexo/VehicleCard";
 import { FinanceCalculator } from "@/components/aurexo/FinanceCalculator";
 import { team } from "@/lib/team";
 import { articles } from "@/lib/articles";
+import { PartnersMarquee } from "@/components/aurexo/PartnersMarquee";
+import { HomeFAQ } from "@/components/aurexo/HomeFAQ";
+import { WHATSAPP_NUMBER, STUDIO_PHONE, STUDIO_TEL } from "@/lib/whatsapp";
 
 // Aerial residential drone footage placeholders
 const HERO_VIDEO =
@@ -27,7 +30,7 @@ const MATERIALS = [
 
 type MaterialKey = (typeof MATERIALS)[number]["key"];
 
-const WHATSAPP_NUMBER = "15615550199";
+// WHATSAPP_NUMBER imported from @/lib/whatsapp
 
 const usd = (n: number) =>
   n.toLocaleString("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 });
@@ -190,7 +193,7 @@ function Home() {
                 <MessageCircle className="h-4 w-4" /> Book Free Site Inspection
               </a>
               <Link
-                to="/buy"
+                to="/get-estimate"
                 className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl border border-ink/15 bg-white py-3 text-sm font-semibold text-ink hover:border-ink"
               >
                 Get a Free Estimate <ArrowRight className="h-4 w-4" />
@@ -198,9 +201,9 @@ function Home() {
             </div>
           </div>
 
-          <div className="mt-8 grid max-w-md grid-cols-3 gap-4">
+          <div className="mx-auto mt-10 grid max-w-2xl grid-cols-3 gap-4 text-center">
             {[["1,800+", "Ohio Projects"], ["25 yr", "Workmanship Warranty"], ["4.9/5", "Homeowner Rating"]].map(([n, l]) => (
-              <div key={l}>
+              <div key={l} className="mx-auto">
                 <div className="text-2xl font-extrabold text-brand sm:text-3xl">{n}</div>
                 <div className="text-xs text-white/65">{l}</div>
               </div>
