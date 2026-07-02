@@ -105,7 +105,7 @@ function BuyPage() {
     "All Projects";
 
   return (
-    <main className="mx-auto max-w-6xl px-4 py-8">
+    <main className="mx-auto w-full max-w-6xl overflow-x-hidden px-4 py-8">
       <h1 className="text-3xl font-extrabold text-ink">{titleByPreset}</h1>
       <p className="mt-1 text-sm text-muted-foreground">
         Showing {pageItems.length} of {list.length} matching projects
