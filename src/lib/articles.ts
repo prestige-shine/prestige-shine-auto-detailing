@@ -12,12 +12,12 @@ export type Article = {
 // Distinct editorial imagery — deliberately NOT shared with the /projects gallery.
 // Each cover maps to the article theme (materials close-up, budgeting/blueprints, inspection).
 const stockCovers = [
-  // Premium roofing material close-up (shingles/tile texture)
-  "https://images.unsplash.com/photo-1632759145355-8b8f3ab5d6c3?auto=format&fit=crop&w=1200&q=70",
+  // Premium roofing material close-up
+  "https://images.unsplash.com/photo-1607400201889-565b1ee75f8e?auto=format&fit=crop&w=1200&q=70",
   // Architect / budgeting blueprints and drawings
   "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1200&q=70",
-  // Roofer inspecting / working with instruments
-  "https://images.unsplash.com/photo-1621886292650-52c6e73aaa15?auto=format&fit=crop&w=1200&q=70",
+  // Roofer inspecting / working
+  "https://images.unsplash.com/photo-1416331108676-a22ccb276e35?auto=format&fit=crop&w=1200&q=70",
 ];
 
 export const articles: Article[] = [

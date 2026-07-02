@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import { ArrowRight, Check, MapPin, Phone, MessageCircle, ShieldCheck, Hammer, Ruler } from "lucide-react";
-import { STUDIO_PHONE, STUDIO_TEL, submitLead, formatEstimateRange } from "@/lib/whatsapp";
+import { STUDIO_PHONE, STUDIO_TEL, submitLead, buildWhatsAppHref, formatEstimateRange } from "@/lib/whatsapp";
 
 const MATERIALS = [
   { key: "Architectural Shingles", min: 5.25, max: 7.75, blurb: "30-yr lifecycle · Class A fire · 130 mph wind", eco: "Recyclable granules" },
@@ -54,10 +54,11 @@ function GetEstimate() {
   const [submitting, setSubmitting] = useState(false);
   const [sent, setSent] = useState(false);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    if (submitting) return;
     setSubmitting(true);
-    const href = await submitLead({
+    const payload = {
       name, phone, email, zip,
       projectType: scope,
       material,
@@ -65,10 +66,14 @@ function GetEstimate() {
       estimate: range,
       message: `Roof complexity: ${complexity}. Tear-off included: ${tearoff ? "yes" : "no"}. ${notes}`.trim(),
       source: "get-estimate",
-    });
+    };
+    // Open WhatsApp synchronously (inside the user gesture) so popup blockers don't kill it.
+    const href = buildWhatsAppHref(payload);
+    window.open(href, "_blank", "noopener,noreferrer");
+    // Fire-and-forget logging.
+    submitLead(payload).catch(() => {});
     setSent(true);
     setSubmitting(false);
-    window.open(href, "_blank", "noopener,noreferrer");
   };
 
   return (
