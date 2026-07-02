@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import { ArrowRight, Check, MapPin, Phone, MessageCircle, ShieldCheck, Hammer, Ruler } from "lucide-react";
-import { STUDIO_PHONE, STUDIO_TEL, submitLead, formatEstimateRange } from "@/lib/whatsapp";
+import { STUDIO_PHONE, STUDIO_TEL, submitLead, buildWhatsAppHref, formatEstimateRange } from "@/lib/whatsapp";
 
 const MATERIALS = [
   { key: "Architectural Shingles", min: 5.25, max: 7.75, blurb: "30-yr lifecycle · Class A fire · 130 mph wind", eco: "Recyclable granules" },
