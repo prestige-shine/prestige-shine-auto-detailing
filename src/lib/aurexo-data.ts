@@ -45,7 +45,7 @@ const photos = {
   copperAccent: img("photo-1600585152220-90363fe7e115"),
   farmhouseGable: img("photo-1568605114967-8130f3a36994"),
   contemporaryDark: img("photo-1600596542815-ffad4c1539a9"),
-  slateHistoric: img("photo-1605114324393-9b3da72ad3c0"),
+  slateHistoric: img("photo-1519659528534-7fd733a832a0"),
   woodShake: img("photo-1605276374104-dee2a0ed3cd6"),
   cedarShake: img("photo-1582268611958-ebfd161ef9cf"),
   villaTile: img("photo-1564507592333-c60657eea523"),
