@@ -43,8 +43,8 @@ import { WHATSAPP_NUMBER, STUDIO_PHONE, STUDIO_TEL, buildLeadMessage } from "@/l
 
 // Roofing-specific gallery assets (no automotive imagery)
 const ROOF_GALLERY_INTERIOR = "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=1280&q=70";
-const ROOF_GALLERY_CLOSEUP = "https://images.unsplash.com/photo-1632759145355-8b8f3ab5d6c3?auto=format&fit=crop&w=1280&q=70";
-const ROOF_GALLERY_INSTALL = "https://images.unsplash.com/photo-1621886292650-52c6e73aaa15?auto=format&fit=crop&w=1280&q=70";
+const ROOF_GALLERY_CLOSEUP = "https://images.unsplash.com/photo-1607400201889-565b1ee75f8e?auto=format&fit=crop&w=1280&q=70";
+const ROOF_GALLERY_INSTALL = "https://images.unsplash.com/photo-1416331108676-a22ccb276e35?auto=format&fit=crop&w=1280&q=70";
 const ROOF_HERO_FALLBACK = "https://images.unsplash.com/photo-1592595896616-c37162298647?auto=format&fit=crop&w=1280&q=70";
 
 const tabs = ["Overview", "Description", "Features"] as const;
