@@ -1,9 +1,8 @@
-// Centralized WhatsApp lead routing for Aurexo Roofing Studio.
-// Nigerian country code +234, dropping the leading 0 from 07012307036.
-export const WHATSAPP_NUMBER = "2347012307036";
-export const WHATSAPP_DISPLAY = "+234 701 230 7036";
-export const STUDIO_PHONE = "+1 (561) 555-0199";
-export const STUDIO_TEL = "+15615550199";
+// Centralized WhatsApp lead routing for Aurexo Detailing Studio.
+export const WHATSAPP_NUMBER = "15615550142";
+export const WHATSAPP_DISPLAY = "+1 (561) 555-0142";
+export const STUDIO_PHONE = "+1 (561) 555-0142";
+export const STUDIO_TEL = "+15615550142";
 
 export type LeadPayload = {
   name?: string;
@@ -11,13 +10,19 @@ export type LeadPayload = {
   phone?: string;
   zip?: string;
   county?: string;
+  vehicleClass?: string;   // body: Coupe/Sedan | SUV/Crossover | Truck | Van/3-Row SUV
+  serviceTier?: string;    // fuel: Express | Interior | Ceramic | Correction
+  addOns?: string;
+  appointmentWindow?: string;
+  notes?: string;
+  estimate?: string;
+  source?: string;
+  // Legacy aliases kept so existing callers that pass these still compile
   projectType?: string;
   material?: string;
   sqft?: number | string;
   stories?: string | number;
-  estimate?: string;
   message?: string;
-  source?: string;
 };
 
 const usd = (n: number) =>
@@ -27,13 +32,9 @@ export function formatEstimateRange(low: number, high: number) {
   return `${usd(low)} – ${usd(high)}`;
 }
 
-/**
- * Cleanly packages every provided metric into a legible, spaced paragraph
- * with zero missing objects. Empty fields are simply skipped.
- */
 export function buildLeadMessage(p: LeadPayload) {
   const lines: string[] = [
-    "Hi Aurexo Roofing Studio — I'd like to request a premium roofing consultation.",
+    "Hi Aurexo Detailing Studio — I'd like to book a detailing appointment.",
     "",
     "── Client Details ──",
   ];
@@ -43,18 +44,21 @@ export function buildLeadMessage(p: LeadPayload) {
   if (p.zip) lines.push(`• Ohio Zip: ${p.zip}`);
   if (p.county) lines.push(`• County: ${p.county}`);
 
-  lines.push("", "── Project Specification ──");
-  if (p.projectType) lines.push(`• Project Type: ${p.projectType}`);
-  if (p.material) lines.push(`• Material Preference: ${p.material}`);
-  if (p.sqft) lines.push(`• Roof Size: ${typeof p.sqft === "number" ? p.sqft.toLocaleString() : p.sqft} SqFt`);
-  if (p.stories) lines.push(`• Stories: ${p.stories}`);
+  lines.push("", "── Service Specification ──");
+  const tier = p.serviceTier ?? p.projectType;
+  const vClass = p.vehicleClass ?? p.material;
+  if (vClass) lines.push(`• Vehicle Class: ${vClass}`);
+  if (tier) lines.push(`• Service Tier: ${tier}`);
+  if (p.addOns) lines.push(`• Add-Ons: ${p.addOns}`);
+  if (p.appointmentWindow) lines.push(`• Preferred Appointment: ${p.appointmentWindow}`);
   if (p.estimate) lines.push(`• Estimated Range: ${p.estimate}`);
 
-  if (p.message) {
-    lines.push("", "── Notes ──", p.message);
+  const note = p.notes ?? p.message;
+  if (note) {
+    lines.push("", "── Notes ──", note);
   }
 
-  lines.push("", `Submitted via: ${p.source ?? "aurexo-roofing.lovable.app"}`);
+  lines.push("", `Submitted via: ${p.source ?? "aurexo-detailing.lovable.app"}`);
   return lines.join("\n");
 }
 
@@ -63,18 +67,8 @@ export function buildWhatsAppHref(payload: LeadPayload) {
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${text}`;
 }
 
-/**
- * Dual-action lead submission:
- *   A) POST to a webhook / logging endpoint (fire-and-forget, never blocks)
- *   B) Redirect the user to WhatsApp with the fully-packaged paragraph
- * If no webhook is wired the payload is still journaled to localStorage
- * so no lead is ever dropped when the user leaves the WhatsApp redirect.
- */
 export async function submitLead(payload: LeadPayload) {
-  // Action B (WhatsApp) is computed synchronously.
   const href = buildWhatsAppHref(payload);
-
-  // Action A (DB / webhook logging) — fire and forget.
   try {
     const endpoint = (typeof window !== "undefined" && (window as any).AUREXO_LEAD_WEBHOOK) || "";
     if (endpoint) {
@@ -94,6 +88,5 @@ export async function submitLead(payload: LeadPayload) {
   } catch {
     /* never block the WhatsApp handoff */
   }
-
   return href;
 }

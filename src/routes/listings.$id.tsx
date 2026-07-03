@@ -7,14 +7,14 @@ export const Route = createFileRoute("/listings/$id")({
     const v = vehicles.find((x) => x.id === params.id);
     return {
       meta: [
-        { title: `${v?.title ?? "Listing"} — Aurexo` },
+        { title: `${v?.title ?? "Detailing Package"} — Aurexo Detailing Studio` },
         {
           name: "description",
           content: v
-            ? `${v.title} for ${v.price}. ${v.km} km, ${v.fuel}, ${v.transmission}. Available now on Aurexo.`
-            : "Vehicle listing on Aurexo.",
+            ? `${v.title} · ${v.price}. ${v.fuel} tier for ${v.body} · ~${v.km} min labor. Book with Aurexo Detailing Studio in Ohio.`
+            : "Detailing package at Aurexo Detailing Studio, Ohio.",
         },
-        { property: "og:title", content: `${v?.title ?? "Listing"} — Aurexo` },
+        { property: "og:title", content: `${v?.title ?? "Detailing Package"} — Aurexo` },
         { property: "og:image", content: v?.img ?? "" },
       ],
     };

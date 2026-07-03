@@ -1,52 +1,44 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
-import { MapPin, Star, Phone } from "lucide-react";
+import { createFileRoute } from "@tanstack/react-router";
+import { MapPin, Phone, Clock } from "lucide-react";
 import { PageHeader } from "@/components/aurexo/PageHeader";
+import { STUDIO_PHONE, STUDIO_TEL } from "@/lib/whatsapp";
 
 export const Route = createFileRoute("/dealerships")({
   head: () => ({
     meta: [
-      { title: "Service Areas — Aurexo Roofing Studio" },
-      { name: "description", content: "Aurexo Roofing Studio serves homeowners across every major Ohio metro — Cleveland, Columbus, Cincinnati, Akron, Toledo, Dayton, and surrounding communities." },
-      { property: "og:title", content: "Service Areas — Aurexo Roofing Studio" },
-      { property: "og:description", content: "Premium roofing installations across Ohio." },
+      { title: "Studio Locations — Aurexo Detailing Studio" },
+      { name: "description", content: "Aurexo Detailing Studio locations across Ohio — Cleveland HQ, Columbus, Cincinnati, and Akron. Climate-controlled bays for ceramic coating and paint correction." },
+      { property: "og:title", content: "Studio Locations — Aurexo Detailing Studio" },
+      { property: "og:description", content: "Four Ohio detailing studios: Cleveland, Columbus, Cincinnati, Akron." },
     ],
   }),
-  component: Dealerships,
+  component: Locations,
 });
 
-const dealers = [
-  { name: "Aurexo Cleveland Studio", city: "Cleveland, OH", rating: 4.9, inventory: 142, brand: "Slate · Standing-Seam · Architectural" },
-  { name: "Aurexo Columbus Studio", city: "Columbus, OH", rating: 4.8, inventory: 96, brand: "Architectural · Composite · Metal" },
-  { name: "Aurexo Cincinnati Studio", city: "Cincinnati, OH", rating: 4.7, inventory: 188, brand: "Slate · Synthetic Slate · Copper" },
-  { name: "Aurexo Akron Studio", city: "Akron, OH", rating: 4.9, inventory: 64, brand: "Restoration · Heritage Slate" },
-  { name: "Aurexo Toledo Studio", city: "Toledo, OH", rating: 4.6, inventory: 220, brand: "Architectural · Stone-Coated Steel" },
-  { name: "Aurexo Dayton Studio", city: "Dayton, OH", rating: 4.8, inventory: 78, brand: "Standing-Seam · Premium Aluminium" },
+const STUDIOS = [
+  { city: "Cleveland (HQ)", addr: "1420 Detail Way, Cleveland, OH 44113", hours: "Mon–Sat · 8am–7pm", offers: "Ceramic 9H · Multi-stage correction · Interior extraction · Mobile" },
+  { city: "Columbus", addr: "88 Polish Ave, Columbus, OH 43215", hours: "Mon–Sat · 8am–7pm", offers: "Ceramic 9H · Correction · Interior · Express" },
+  { city: "Cincinnati", addr: "512 Gloss Blvd, Cincinnati, OH 45202", hours: "Tue–Sat · 9am–6pm", offers: "Interior extraction · Express · Mobile · Correction" },
+  { city: "Akron", addr: "205 Foam Lane, Akron, OH 44308", hours: "Tue–Sat · 9am–6pm", offers: "Express · Interior · Mobile" },
 ];
 
-function Dealerships() {
+function Locations() {
   return (
-    <main>
-      <PageHeader eyebrow="Network" title="Six studios across Ohio." subtitle="Manufacturer-certified crews dispatched from the studio closest to your home." />
-      <section className="mx-auto max-w-6xl px-4 py-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        {dealers.map((d) => (
-          <article key={d.name} className="rounded-2xl bg-white border border-border p-5">
-            <div className="flex items-start justify-between gap-3">
-              <div>
-                <h3 className="font-bold text-ink">{d.name}</h3>
-                <p className="mt-0.5 inline-flex items-center gap-1 text-xs text-muted-foreground"><MapPin className="h-3 w-3"/> {d.city}</p>
-              </div>
-              <span className="inline-flex items-center gap-1 rounded-full bg-brand/15 px-2 py-1 text-xs font-semibold text-ink">
-                <Star className="h-3 w-3 text-brand" fill="currentColor" strokeWidth={0}/> {d.rating}
-              </span>
+    <main className="overflow-x-hidden">
+      <PageHeader eyebrow="Ohio Coverage" title="Studio Locations" subtitle="Four Ohio detailing studios plus fully mobile service across the state." />
+      <section className="mx-auto max-w-6xl px-4 py-10">
+        <div className="grid gap-4 sm:grid-cols-2">
+          {STUDIOS.map((s) => (
+            <div key={s.city} className="rounded-2xl border border-border bg-white p-6">
+              <h3 className="text-xl font-bold text-ink">{s.city}</h3>
+              <p className="mt-3 flex items-start gap-2 text-sm text-muted-foreground"><MapPin className="mt-0.5 h-4 w-4 text-brand" />{s.addr}</p>
+              <p className="mt-2 flex items-start gap-2 text-sm text-muted-foreground"><Clock className="mt-0.5 h-4 w-4 text-brand" />{s.hours}</p>
+              <p className="mt-2 flex items-start gap-2 text-sm text-muted-foreground"><Phone className="mt-0.5 h-4 w-4 text-brand" /><a href={`tel:${STUDIO_TEL}`} className="hover:text-ink">{STUDIO_PHONE}</a></p>
+              <p className="mt-4 text-xs font-semibold uppercase tracking-wider text-brand">Services offered</p>
+              <p className="mt-1 text-sm text-ink">{s.offers}</p>
             </div>
-            <p className="mt-3 text-xs text-muted-foreground">{d.brand}</p>
-            <p className="mt-1 text-sm font-semibold text-ink">{d.inventory} completed projects</p>
-            <div className="mt-4 flex gap-2">
-              <Link to="/buy" className="flex-1 rounded-xl bg-ink py-2.5 text-center text-xs font-semibold text-white">View projects</Link>
-              <a href="tel:+15615550199" className="grid h-10 w-10 place-items-center rounded-xl border border-border"><Phone className="h-4 w-4"/></a>
-            </div>
-          </article>
-        ))}
+          ))}
+        </div>
       </section>
     </main>
   );

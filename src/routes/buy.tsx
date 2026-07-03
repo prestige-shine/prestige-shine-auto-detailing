@@ -33,10 +33,10 @@ export const Route = createFileRoute("/buy")({
   }),
   head: () => ({
     meta: [
-      { title: "Recent Projects — Aurexo Roofing Studio" },
-      { name: "description", content: "Browse Aurexo Roofing Studio's recent architectural transformations across Ohio. Filter by material, roof profile, finish, service type, and budget." },
-      { property: "og:title", content: "Recent Projects — Aurexo Roofing Studio" },
-      { property: "og:description", content: "Premium roofing projects across Ohio." },
+      { title: "Browse Detailing Packages — Aurexo Detailing Studio Ohio" },
+      { name: "description", content: "Browse and filter Aurexo's detailing packages by vehicle class, service tier, booking status, price range, and car make." },
+      { property: "og:title", content: "Detailing Packages — Aurexo Detailing Studio" },
+      { property: "og:description", content: "Find the right detailing package for your vehicle." },
     ],
   }),
   component: BuyPage,
@@ -50,9 +50,7 @@ function BuyPage() {
   const [bodySel, setBodySel] = useState<string[]>(search.body?.split(",").filter(Boolean) ?? []);
   const [fuelSel, setFuelSel] = useState<string[]>(search.fuel?.split(",").filter(Boolean) ?? []);
   const [transSel, setTransSel] = useState<string[]>(search.transmission?.split(",").filter(Boolean) ?? []);
-  const [condSel, setCondSel] = useState<string[]>(
-    search.preset === "new" ? ["New Install"] : search.condition?.split(",").filter(Boolean) ?? [],
-  );
+  const [condSel, setCondSel] = useState<string[]>(search.condition?.split(",").filter(Boolean) ?? []);
   const [price, setPrice] = useState<[number, number]>([search.minPrice ?? priceMin, search.maxPrice ?? priceMax]);
   const [sort, setSort] = useState("relevance");
   const [page, setPage] = useState(1);
@@ -73,88 +71,53 @@ function BuyPage() {
     if (sort === "price-asc") r = [...r].sort((a, b) => a.priceNum - b.priceNum);
     if (sort === "price-desc") r = [...r].sort((a, b) => b.priceNum - a.priceNum);
     if (sort === "year") r = [...r].sort((a, b) => b.year - a.year);
-    if (sort === "km") r = [...r].sort((a, b) => a.kmNum - b.kmNum);
     return r;
   }, [brandSel, bodySel, fuelSel, transSel, condSel, price, sort, search.preset, search.q]);
 
-  const updateFilters = (next: Partial<Search>) => {
-    setPage(1);
-    navigate({ to: "/buy", search: { ...search, ...next } });
-  };
-
-  const setBrands = (values: string[]) => { setBrandSel(values); updateFilters({ brand: values.length ? values.join(",") : undefined }); };
-  const setBodies = (values: string[]) => { setBodySel(values); updateFilters({ body: values.length ? values.join(",") : undefined }); };
-  const setFuels = (values: string[]) => { setFuelSel(values); updateFilters({ fuel: values.length ? values.join(",") : undefined }); };
-  const setTransmissions = (values: string[]) => { setTransSel(values); updateFilters({ transmission: values.length ? values.join(",") : undefined }); };
-  const setConditions = (values: string[]) => { setCondSel(values); updateFilters({ condition: values.length ? values.join(",") : undefined }); };
-  const setPriceRange = (values: [number, number]) => { setPrice(values); updateFilters({ minPrice: values[0], maxPrice: values[1] }); };
+  const updateFilters = (next: Partial<Search>) => { setPage(1); navigate({ to: "/buy", search: { ...search, ...next } }); };
+  const setBrands = (v: string[]) => { setBrandSel(v); updateFilters({ brand: v.length ? v.join(",") : undefined }); };
+  const setBodies = (v: string[]) => { setBodySel(v); updateFilters({ body: v.length ? v.join(",") : undefined }); };
+  const setFuels = (v: string[]) => { setFuelSel(v); updateFilters({ fuel: v.length ? v.join(",") : undefined }); };
+  const setTrans = (v: string[]) => { setTransSel(v); updateFilters({ transmission: v.length ? v.join(",") : undefined }); };
+  const setConds = (v: string[]) => { setCondSel(v); updateFilters({ condition: v.length ? v.join(",") : undefined }); };
+  const setPriceRange = (v: [number, number]) => { setPrice(v); updateFilters({ minPrice: v[0], maxPrice: v[1] }); };
+  const reset = () => { setBrandSel([]); setBodySel([]); setFuelSel([]); setTransSel([]); setCondSel([]); setPrice([priceMin, priceMax]); setPage(1); navigate({ to: "/buy", search: {} }); };
 
   const pages = Math.max(1, Math.ceil(list.length / PER_PAGE));
   const safePage = Math.min(page, pages);
   const pageItems = list.slice((safePage - 1) * PER_PAGE, safePage * PER_PAGE);
 
-  const reset = () => {
-    setBrandSel([]); setBodySel([]); setFuelSel([]); setTransSel([]); setCondSel([]);
-    setPrice([priceMin, priceMax]); setPage(1);
-    navigate({ to: "/buy", search: {} });
-  };
-
-  const titleByPreset =
-    search.preset === "new" ? "New Projects" :
-    search.preset === "featured" ? "Featured Projects" :
-    "All Projects";
+  const title = search.preset === "featured" ? "Featured Packages" : search.preset === "new" ? "Newly Added Packages" : "All Detailing Packages";
 
   return (
     <main className="mx-auto w-full max-w-6xl overflow-x-hidden px-4 py-8">
-      <h1 className="text-3xl font-extrabold text-ink">{titleByPreset}</h1>
-      <p className="mt-1 text-sm text-muted-foreground">
-        Showing {pageItems.length} of {list.length} matching projects
-      </p>
+      <h1 className="text-3xl font-extrabold text-ink">{title}</h1>
+      <p className="mt-1 text-sm text-muted-foreground">Showing {pageItems.length} of {list.length} matching packages</p>
 
       <div className="mt-5 flex flex-wrap items-center justify-between gap-3">
-        <button
-          onClick={() => setFiltersOpen(true)}
-          className="inline-flex items-center gap-2 rounded-full border border-border bg-white px-4 py-2 text-sm font-medium text-ink lg:hidden"
-        >
+        <button onClick={() => setFiltersOpen(true)} className="inline-flex items-center gap-2 rounded-full border border-border bg-white px-4 py-2 text-sm font-medium text-ink lg:hidden">
           <SlidersHorizontal className="h-4 w-4" /> Filters
         </button>
-        <select
-          value={sort}
-          onChange={(e) => setSort(e.target.value)}
-          className="rounded-full border border-border bg-white px-4 py-2 text-sm text-ink"
-        >
+        <select value={sort} onChange={(e) => setSort(e.target.value)} className="rounded-full border border-border bg-white px-4 py-2 text-sm text-ink">
           <option value="relevance">Sort: Relevance</option>
-          <option value="price-asc">Budget: Low to High</option>
-          <option value="price-desc">Budget: High to Low</option>
-          <option value="year">Newest Project</option>
-          <option value="km">Smallest Square Footage</option>
+          <option value="price-asc">Price: Low to High</option>
+          <option value="price-desc">Price: High to Low</option>
+          <option value="year">Newest First</option>
         </select>
       </div>
 
       <div className="mt-6 grid grid-cols-1 gap-6 lg:grid-cols-[280px_1fr]">
         <aside className="hidden lg:block">
-          <FiltersPanel
-            brandSel={brandSel} setBrandSel={setBrands}
-            bodySel={bodySel} setBodySel={setBodies}
-            fuelSel={fuelSel} setFuelSel={setFuels}
-            transSel={transSel} setTransSel={setTransmissions}
-            condSel={condSel} setCondSel={setConditions}
-            price={price} setPrice={setPriceRange}
-            onReset={reset}
-          />
+          <FiltersPanel brandSel={brandSel} setBrandSel={setBrands} bodySel={bodySel} setBodySel={setBodies} fuelSel={fuelSel} setFuelSel={setFuels} transSel={transSel} setTransSel={setTrans} condSel={condSel} setCondSel={setConds} price={price} setPrice={setPriceRange} onReset={reset} />
         </aside>
-
         <div>
           {pageItems.length === 0 ? (
             <div className="rounded-2xl border border-dashed border-border bg-white p-10 text-center text-muted-foreground">
-              No projects match your filters.
-              <button onClick={reset} className="ml-2 font-semibold text-ink underline">Clear all</button>
+              No packages match your filters. <button onClick={reset} className="ml-2 font-semibold text-ink underline">Clear all</button>
             </div>
           ) : (
             <>
-              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3">
-                {pageItems.map((v) => <VehicleCard key={v.id} v={v} />)}
-              </div>
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3">{pageItems.map((v) => <VehicleCard key={v.id} v={v} />)}</div>
               <Pagination page={safePage} pages={pages} onChange={setPage} />
             </>
           )}
@@ -166,20 +129,10 @@ function BuyPage() {
           <div onClick={() => setFiltersOpen(false)} className="fixed inset-0 z-50 bg-black/50 lg:hidden" />
           <aside className="fixed inset-y-0 left-0 z-50 w-[90%] max-w-sm overflow-y-auto bg-white p-5 lg:hidden">
             <div className="flex items-center justify-between">
-              <h3 className="flex items-center gap-2 font-bold text-ink"><SlidersHorizontal className="h-4 w-4"/> Filters</h3>
-              <button onClick={() => setFiltersOpen(false)} className="grid h-9 w-9 place-items-center rounded-full border border-border"><X className="h-4 w-4"/></button>
+              <h3 className="flex items-center gap-2 font-bold text-ink"><SlidersHorizontal className="h-4 w-4" /> Filters</h3>
+              <button onClick={() => setFiltersOpen(false)} className="grid h-9 w-9 place-items-center rounded-full border border-border"><X className="h-4 w-4" /></button>
             </div>
-            <div className="mt-4">
-              <FiltersPanel
-                brandSel={brandSel} setBrandSel={setBrands}
-                bodySel={bodySel} setBodySel={setBodies}
-                fuelSel={fuelSel} setFuelSel={setFuels}
-                transSel={transSel} setTransSel={setTransmissions}
-                condSel={condSel} setCondSel={setConditions}
-                price={price} setPrice={setPriceRange}
-                onReset={reset}
-              />
-            </div>
+            <div className="mt-4"><FiltersPanel brandSel={brandSel} setBrandSel={setBrands} bodySel={bodySel} setBodySel={setBodies} fuelSel={fuelSel} setFuelSel={setFuels} transSel={transSel} setTransSel={setTrans} condSel={condSel} setCondSel={setConds} price={price} setPrice={setPriceRange} onReset={reset} /></div>
           </aside>
         </>
       )}
@@ -187,91 +140,29 @@ function BuyPage() {
   );
 }
 
-function FiltersPanel(props: {
-  brandSel: string[]; setBrandSel: (s: string[]) => void;
-  bodySel: string[]; setBodySel: (s: string[]) => void;
-  fuelSel: string[]; setFuelSel: (s: string[]) => void;
-  transSel: string[]; setTransSel: (s: string[]) => void;
-  condSel: string[]; setCondSel: (s: string[]) => void;
-  price: [number, number]; setPrice: (p: [number, number]) => void;
-  onReset: () => void;
-}) {
-  const toggle = (arr: string[], val: string, set: (a: string[]) => void) =>
-    set(arr.includes(val) ? arr.filter((x) => x !== val) : [...arr, val]);
-
+function FiltersPanel(p: { brandSel: string[]; setBrandSel: (s: string[]) => void; bodySel: string[]; setBodySel: (s: string[]) => void; fuelSel: string[]; setFuelSel: (s: string[]) => void; transSel: string[]; setTransSel: (s: string[]) => void; condSel: string[]; setCondSel: (s: string[]) => void; price: [number, number]; setPrice: (p: [number, number]) => void; onReset: () => void; }) {
+  const toggle = (arr: string[], val: string, set: (a: string[]) => void) => set(arr.includes(val) ? arr.filter((x) => x !== val) : [...arr, val]);
   return (
     <div className="space-y-5 rounded-2xl border border-border bg-white p-5">
-      <div className="flex items-center justify-between">
-        <h4 className="text-sm font-bold text-ink">Filters</h4>
-        <button onClick={props.onReset} className="text-xs font-medium text-muted-foreground hover:text-ink">Reset</button>
-      </div>
-
-      <Group title="Project Budget">
-        <div className="px-1">
-          <Slider
-            value={props.price}
-            min={priceMin}
-            max={priceMax}
-            step={1000}
-            onValueChange={(v) => props.setPrice([v[0], v[1]] as [number, number])}
-          />
-          <div className="mt-2 flex justify-between text-xs text-muted-foreground">
-            <span>${props.price[0].toLocaleString()}</span>
-            <span>${props.price[1].toLocaleString()}</span>
-          </div>
-        </div>
-      </Group>
-
-      <Group title="Service Type">
-        {conditions.map((c) => (
-          <Check key={c} label={c} checked={props.condSel.includes(c)} onChange={() => toggle(props.condSel, c, props.setCondSel)} />
-        ))}
-      </Group>
-
-      <Group title="Material Brand">
-        <div className="max-h-52 space-y-2 overflow-y-auto pr-1">
-          {brands.map((b) => (
-            <Check key={b} label={b} checked={props.brandSel.includes(b)} onChange={() => toggle(props.brandSel, b, props.setBrandSel)} />
-          ))}
-        </div>
-      </Group>
-
-      <Group title="Roof Profile">
-        {bodyTypes.map((b) => (
-          <Check key={b.label} label={`${b.label} (${b.count})`} checked={props.bodySel.includes(b.label)} onChange={() => toggle(props.bodySel, b.label, props.setBodySel)} />
-        ))}
-      </Group>
-
-      <Group title="Material Family">
-        {fuelTypes.map((f) => (
-          <Check key={f} label={f} checked={props.fuelSel.includes(f)} onChange={() => toggle(props.fuelSel, f, props.setFuelSel)} />
-        ))}
-      </Group>
-
-      <Group title="Finish">
-        {transmissions.map((t) => (
-          <Check key={t} label={t} checked={props.transSel.includes(t)} onChange={() => toggle(props.transSel, t, props.setTransSel)} />
-        ))}
-      </Group>
+      <div className="flex items-center justify-between"><h4 className="text-sm font-bold text-ink">Filters</h4><button onClick={p.onReset} className="text-xs font-medium text-muted-foreground hover:text-ink">Reset</button></div>
+      <Group title="Price Range"><div className="px-1"><Slider value={p.price} min={priceMin} max={priceMax} step={1000} onValueChange={(v) => p.setPrice([v[0], v[1]] as [number, number])} /><div className="mt-2 flex justify-between text-xs text-muted-foreground"><span>${p.price[0].toLocaleString()}</span><span>${p.price[1].toLocaleString()}</span></div></div></Group>
+      <Group title="Booking Status">{conditions.map((c) => <ChkBox key={c} label={c} checked={p.condSel.includes(c)} onChange={() => toggle(p.condSel, c, p.setCondSel)} />)}</Group>
+      <Group title="Car Make"><div className="max-h-52 space-y-2 overflow-y-auto pr-1">{brands.map((b) => <ChkBox key={b} label={b} checked={p.brandSel.includes(b)} onChange={() => toggle(p.brandSel, b, p.setBrandSel)} />)}</div></Group>
+      <Group title="Vehicle Class">{bodyTypes.map((b) => <ChkBox key={b.label} label={`${b.label} (${b.count})`} checked={p.bodySel.includes(b.label)} onChange={() => toggle(p.bodySel, b.label, p.setBodySel)} />)}</Group>
+      <Group title="Service Tier">{fuelTypes.map((f) => <ChkBox key={f} label={f} checked={p.fuelSel.includes(f)} onChange={() => toggle(p.fuelSel, f, p.setFuelSel)} />)}</Group>
+      <Group title="Package Type">{transmissions.map((t) => <ChkBox key={t} label={t} checked={p.transSel.includes(t)} onChange={() => toggle(p.transSel, t, p.setTransSel)} />)}</Group>
     </div>
   );
 }
 
 function Group({ title, children }: { title: string; children: React.ReactNode }) {
-  return (
-    <div className="border-t border-border pt-4 first:border-t-0 first:pt-0">
-      <h5 className="mb-3 text-xs font-bold uppercase tracking-wide text-ink">{title}</h5>
-      <div className="space-y-2">{children}</div>
-    </div>
-  );
+  return <div className="border-t border-border pt-4 first:border-t-0 first:pt-0"><h5 className="mb-3 text-xs font-bold uppercase tracking-wide text-ink">{title}</h5><div className="space-y-2">{children}</div></div>;
 }
 
-function Check({ label, checked, onChange }: { label: string; checked: boolean; onChange: () => void }) {
+function ChkBox({ label, checked, onChange }: { label: string; checked: boolean; onChange: () => void }) {
   return (
     <label className="flex cursor-pointer items-center gap-2 py-1 text-sm text-ink">
-      <span className={`grid h-4 w-4 shrink-0 place-items-center rounded border ${checked ? "border-brand bg-brand" : "border-border bg-white"}`}>
-        {checked && <span className="block h-2 w-2 rounded-[1px] bg-ink" />}
-      </span>
+      <span className={`grid h-4 w-4 shrink-0 place-items-center rounded border ${checked ? "border-brand bg-brand" : "border-border bg-white"}`}>{checked && <span className="block h-2 w-2 rounded-[1px] bg-ink" />}</span>
       <input type="checkbox" className="sr-only" checked={checked} onChange={onChange} />
       <span className="truncate">{label}</span>
     </label>
@@ -282,35 +173,9 @@ function Pagination({ page, pages, onChange }: { page: number; pages: number; on
   if (pages <= 1) return null;
   return (
     <div className="mt-8 flex items-center justify-center gap-2">
-      <button
-        onClick={() => onChange(Math.max(1, page - 1))}
-        disabled={page === 1}
-        className="grid h-9 w-9 place-items-center rounded-full border border-border bg-white disabled:opacity-40"
-        aria-label="Previous page"
-      >
-        <ChevronLeft className="h-4 w-4" />
-      </button>
-      {Array.from({ length: pages }).map((_, i) => {
-        const n = i + 1;
-        const active = n === page;
-        return (
-          <button
-            key={n}
-            onClick={() => onChange(n)}
-            className={`h-9 min-w-9 rounded-full px-3 text-sm font-semibold ${active ? "bg-ink text-white" : "border border-border bg-white text-ink"}`}
-          >
-            {n}
-          </button>
-        );
-      })}
-      <button
-        onClick={() => onChange(Math.min(pages, page + 1))}
-        disabled={page === pages}
-        className="grid h-9 w-9 place-items-center rounded-full border border-border bg-white disabled:opacity-40"
-        aria-label="Next page"
-      >
-        <ChevronRight className="h-4 w-4" />
-      </button>
+      <button onClick={() => onChange(Math.max(1, page - 1))} disabled={page === 1} className="grid h-9 w-9 place-items-center rounded-full border border-border bg-white disabled:opacity-40"><ChevronLeft className="h-4 w-4" /></button>
+      {Array.from({ length: pages }).map((_, i) => { const n = i + 1; return <button key={n} onClick={() => onChange(n)} className={`h-9 min-w-9 rounded-full px-3 text-sm font-semibold ${n === page ? "bg-ink text-white" : "border border-border bg-white text-ink"}`}>{n}</button>; })}
+      <button onClick={() => onChange(Math.min(pages, page + 1))} disabled={page === pages} className="grid h-9 w-9 place-items-center rounded-full border border-border bg-white disabled:opacity-40"><ChevronRight className="h-4 w-4" /></button>
     </div>
   );
 }

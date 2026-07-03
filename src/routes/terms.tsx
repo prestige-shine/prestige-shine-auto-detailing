@@ -4,10 +4,9 @@ import { PageHeader } from "@/components/aurexo/PageHeader";
 export const Route = createFileRoute("/terms")({
   head: () => ({
     meta: [
-      { title: "Terms of Use — Aurexo" },
-      { name: "description", content: "The terms governing your use of the Aurexo platform." },
-      { property: "og:title", content: "Terms of Use — Aurexo" },
-      { property: "og:description", content: "Terms for using the Aurexo automotive marketplace, listings, financing, and services." },
+      { title: "Terms of Service — Aurexo Detailing Studio" },
+      { name: "description", content: "Terms of service for Aurexo Detailing Studio auto detailing services in Ohio." },
+      { property: "og:title", content: "Terms of Service — Aurexo Detailing Studio" },
     ],
   }),
   component: Terms,
@@ -15,28 +14,37 @@ export const Route = createFileRoute("/terms")({
 
 function Terms() {
   return (
-    <main>
-      <PageHeader eyebrow="Legal" title="Terms of use." subtitle="Last updated June 11, 2026" />
-      <section className="mx-auto max-w-3xl px-4 py-12 space-y-6 text-sm text-muted-foreground leading-relaxed">
-        {[
-          ["1. Acceptance and scope", "By accessing or using Aurexo websites, applications, communications, or marketplace services, you agree to these Terms of Use and applicable policies. If you use Aurexo for an organization, you represent that you can bind that organization. If you do not agree, discontinue use of the service."],
-          ["2. Eligibility and accounts", "You must be at least 18 and legally able to enter contracts to purchase, finance, or sell a vehicle. You are responsible for accurate registration information, account confidentiality, and activity performed through your account. Notify Aurexo promptly if you suspect unauthorized access."],
-          ["3. Marketplace role and vehicle listings", "Aurexo provides technology that connects shoppers, sellers, dealers, lenders, and service providers. Unless explicitly stated, Aurexo does not own listed vehicles and is not the selling dealer. Dealers and sellers are responsible for price, availability, condition, disclosures, title, taxes, registration, and transaction documents. Inventory can change before a reservation is confirmed."],
-          ["4. Pricing, reservations, and transactions", "Displayed prices may exclude tax, title, registration, government charges, transportation, dealer documentation fees, optional products, and lender costs. A reservation may temporarily hold a vehicle but is not a completed purchase. Final terms appear in documents provided by the seller and must be reviewed before signing."],
-          ["5. Financing and estimates", "Loan offers are provided by independent lenders and remain subject to application, identity verification, credit review, collateral requirements, and final approval. Calculators and example payments are estimates only. Aurexo does not guarantee rates, approval, or savings and is not responsible for a lender's credit decision."],
-          ["6. Seller responsibilities", "Sellers must have authority to sell, provide truthful vehicle and lien information, disclose known material damage, and supply documents required for title transfer. Fraudulent, misleading, duplicate, or unlawful listings may be removed and accounts may be suspended."],
-          ["7. Acceptable use", "You may not scrape or copy inventory at scale, circumvent security, impersonate another person, submit malicious code, interfere with service availability, use the platform for unlawful activity, or exploit marketplace information to harass users. Automated access requires prior written permission."],
-          ["8. Intellectual property", "Aurexo names, marks, interface designs, software, editorial content, and original media are protected by intellectual-property law. Limited personal use is permitted; commercial republication, modification, resale, or creation of derivative databases requires written authorization."],
-          ["9. Privacy and communications", "Personal data is processed according to the Aurexo Privacy Policy and transaction requirements. By providing contact details, you authorize service-related communications. Marketing preferences can be changed through available controls, though essential transaction and security messages may continue."],
-          ["10. Disclaimers", "Services are provided on an as-available basis. To the maximum extent permitted by law, Aurexo disclaims implied warranties regarding merchantability, fitness, uninterrupted access, listing accuracy, and third-party services. Nothing here excludes warranties that cannot legally be disclaimed."],
-          ["11. Limitation of liability", "To the maximum extent permitted by law, Aurexo is not liable for indirect, incidental, special, consequential, exemplary, or lost-profit damages arising from marketplace use, a vehicle, or third-party conduct. Aurexo's aggregate liability is limited to fees paid directly to Aurexo during the preceding 12 months, unless a different limit is required by law."],
-          ["12. Changes and contact", "We may update these terms to reflect legal, security, or service changes. Material revisions will be identified by an updated date and, when appropriate, additional notice. Questions may be sent through the Contact page or by mail to Aurexo Roofing Studio, Ohio, USA."],
-        ].map(([h, b]) => (
-          <div key={h}>
-            <h2 className="text-base font-bold text-ink">{h}</h2>
-            <p className="mt-2">{b}</p>
-          </div>
-        ))}
+    <main className="overflow-x-hidden">
+      <PageHeader eyebrow="Legal" title="Terms of Service" subtitle="Updated Jan 2026. Applies to all detailing packages booked with Aurexo Detailing Studio." />
+      <section className="mx-auto max-w-3xl px-4 py-10 space-y-6 text-sm leading-relaxed text-ink">
+        <div>
+          <h2 className="text-lg font-bold">1. Scope of Services</h2>
+          <p className="mt-2 text-muted-foreground">Aurexo Detailing Studio provides auto detailing services including exterior maintenance, interior deep cleaning, paint correction, and ceramic coating installation, performed at our Ohio studios or as mobile service at your address.</p>
+        </div>
+        <div>
+          <h2 className="text-lg font-bold">2. Vehicle Assessment & Quotes</h2>
+          <p className="mt-2 text-muted-foreground">Online quotes are estimates. Final pricing is confirmed after our in-person or photo-based vehicle assessment. We reserve the right to adjust pricing for conditions materially different from what was disclosed at booking.</p>
+        </div>
+        <div>
+          <h2 className="text-lg font-bold">3. Cancellation Policy</h2>
+          <p className="mt-2 text-muted-foreground">Cancellations more than 24 hours before your appointment are refunded in full. Cancellations inside 24 hours forfeit a $75 booking deposit for Express/Interior packages and $250 for Ceramic/Correction packages.</p>
+        </div>
+        <div>
+          <h2 className="text-lg font-bold">4. Before / After Photos</h2>
+          <p className="mt-2 text-muted-foreground">By booking, you grant Aurexo the right to photograph your vehicle for internal quality documentation and, unless you opt out in writing, for anonymized marketing use. License plates and identifying VIN details are always blurred.</p>
+        </div>
+        <div>
+          <h2 className="text-lg font-bold">5. Ceramic Coating Warranty</h2>
+          <p className="mt-2 text-muted-foreground">Registered Aurexo 9H ceramic warranties (5–9 years) cover loss of hydrophobic performance under normal use. Warranty requires annual maintenance decontamination at an Aurexo studio to stay active. Damage from automated tunnel washes, harsh solvents, accidents, or improper aftercare voids coverage.</p>
+        </div>
+        <div>
+          <h2 className="text-lg font-bold">6. Limits of Liability</h2>
+          <p className="mt-2 text-muted-foreground">Aurexo is not responsible for pre-existing damage, aftermarket paint of unknown provenance, or paint failures caused by prior clear-coat degradation. Our liability is limited to the value of the service performed.</p>
+        </div>
+        <div>
+          <h2 className="text-lg font-bold">7. Payments</h2>
+          <p className="mt-2 text-muted-foreground">We accept cards, ACH, Apple Pay, and financing via our approved partners. Balances are due on completion unless a payment plan has been signed in advance.</p>
+        </div>
       </section>
     </main>
   );
