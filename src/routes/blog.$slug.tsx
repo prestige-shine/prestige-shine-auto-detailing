@@ -1,84 +1,64 @@
-import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { ArrowLeft, Calendar, User } from "lucide-react";
-import { articles, findArticle } from "@/lib/articles";
+import { createFileRoute, notFound, Link } from "@tanstack/react-router";
+import { articles } from "@/lib/articles";
 
 export const Route = createFileRoute("/blog/$slug")({
-  loader: ({ params }) => {
-    const article = findArticle(params.slug);
-    if (!article) throw notFound();
-    return { article };
+  head: ({ params }) => {
+    const a = articles.find((x) => x.slug === params.slug);
+    return {
+      meta: [
+        { title: a ? `${a.title} — Aurexo Detailing Studio` : "Article — Aurexo" },
+        { name: "description", content: a?.excerpt ?? "Detailing guide from Aurexo Detailing Studio." },
+        { property: "og:title", content: a?.title ?? "Article" },
+        { property: "og:description", content: a?.excerpt ?? "" },
+        { property: "og:image", content: a?.cover ?? "" },
+        { property: "og:type", content: "article" },
+      ],
+      scripts: a
+        ? [
+            {
+              type: "application/ld+json",
+              children: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "Article",
+                headline: a.title,
+                image: [a.cover],
+                datePublished: a.publishedAt ?? a.date,
+                author: [{ "@type": "Person", name: a.author }],
+                publisher: { "@type": "Organization", name: "Aurexo Detailing Studio" },
+              }),
+            },
+          ]
+        : [],
+    };
   },
-  head: ({ loaderData }) => ({
-    meta: loaderData
-      ? [
-          { title: `${loaderData.article.title} — Aurexo` },
-          { name: "description", content: loaderData.article.excerpt },
-          { property: "og:title", content: loaderData.article.title },
-          { property: "og:description", content: loaderData.article.excerpt },
-          { property: "og:image", content: loaderData.article.cover },
-          { property: "og:type", content: "article" },
-          { property: "og:url", content: `/blog/${loaderData.article.slug}` },
-        ]
-      : [],
-    links: loaderData ? [{ rel: "canonical", href: `/blog/${loaderData.article.slug}` }] : [],
-    scripts: loaderData ? [{ type: "application/ld+json", children: JSON.stringify({ "@context": "https://schema.org", "@type": "Article", headline: loaderData.article.title, description: loaderData.article.excerpt, image: loaderData.article.cover, datePublished: loaderData.article.date, author: { "@type": "Person", name: loaderData.article.author }, publisher: { "@type": "Organization", name: "Aurexo" } }) }] : [],
-  }),
-  errorComponent: ({ error }) => (
-    <div className="mx-auto max-w-md px-4 py-20 text-center">
-      <p className="text-sm text-muted-foreground">{error.message}</p>
-      <Link to="/news" className="mt-4 inline-block font-semibold text-ink underline">Back to all articles</Link>
-    </div>
-  ),
-  notFoundComponent: () => (
-    <div className="mx-auto max-w-md px-4 py-20 text-center">
-      <h1 className="text-2xl font-extrabold text-ink">Article not found</h1>
-      <Link to="/news" className="mt-4 inline-block font-semibold text-ink underline">Back to all articles</Link>
-    </div>
-  ),
-  component: BlogPost,
+  loader: ({ params }) => {
+    const a = articles.find((x) => x.slug === params.slug);
+    if (!a) throw notFound();
+    return { a };
+  },
+  component: ArticlePage,
 });
 
-function BlogPost() {
-  const { article } = Route.useLoaderData();
-  const more = articles.filter((a) => a.slug !== article.slug).slice(0, 3);
-
+function ArticlePage() {
+  const { a } = Route.useLoaderData();
   return (
-    <main>
+    <main className="overflow-x-hidden">
       <article className="mx-auto max-w-3xl px-4 py-10">
-        <Link to="/news" className="inline-flex items-center gap-1 text-sm font-medium text-muted-foreground hover:text-ink">
-          <ArrowLeft className="h-3.5 w-3.5" /> All Articles
-        </Link>
-        <p className="mt-6 text-xs font-bold uppercase tracking-wide text-brand">{article.category}</p>
-        <h1 className="mt-2 text-3xl font-extrabold text-ink sm:text-4xl">{article.title}</h1>
-        <div className="mt-3 flex flex-wrap items-center gap-4 text-sm text-muted-foreground">
-          <span className="inline-flex items-center gap-1"><User className="h-3.5 w-3.5" /> {article.author}</span>
-          <span className="inline-flex items-center gap-1"><Calendar className="h-3.5 w-3.5" /> {article.date}</span>
-        </div>
-        <img src={article.cover} alt={article.title} className="mt-6 aspect-video w-full rounded-2xl object-cover" />
-        <div className="mt-8 space-y-5 text-base leading-relaxed text-foreground">
-          {article.body.map((block: string, i: number) => block.startsWith("## ") ? <h2 key={i} className="pt-4 text-2xl font-bold text-ink">{block.slice(3)}</h2> : block.startsWith("- ") ? <ul key={i} className="list-disc space-y-2 pl-6 text-muted-foreground">{block.slice(2).split(" | ").map((item) => <li key={item}>{item}</li>)}</ul> : <p key={i}>{block}</p>)}
-        </div>
-      </article>
-
-      <section className="mx-auto max-w-6xl px-4 py-10">
-        <h2 className="text-2xl font-bold text-ink">Keep reading</h2>
-        <div className="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-3">
-          {more.map((m) => (
-            <Link
-              key={m.slug}
-              to="/blog/$slug"
-              params={{ slug: m.slug }}
-              className="overflow-hidden rounded-2xl border border-border bg-white"
-            >
-              <img src={m.cover} alt="" className="h-36 w-full object-cover" loading="lazy" />
-              <div className="p-4">
-                <p className="text-xs text-muted-foreground">{m.date}</p>
-                <p className="mt-1 font-bold text-ink">{m.title}</p>
-              </div>
-            </Link>
+        <p className="text-xs font-bold uppercase tracking-wider text-brand">{a.category} · {a.readMinutes ?? 6} min read</p>
+        <h1 className="mt-2 text-3xl font-bold text-ink sm:text-4xl">{a.title}</h1>
+        <p className="mt-3 text-sm text-muted-foreground">{a.date} · {a.author}</p>
+        <img src={a.cover} alt={a.title} className="mt-6 aspect-[16/9] w-full rounded-2xl object-cover" />
+        <p className="mt-6 text-lg leading-relaxed text-ink">{a.excerpt}</p>
+        <div className="mt-6 space-y-4 text-base leading-relaxed text-ink">
+          {a.body.map((p, i) => (
+            <p key={i}>{p}</p>
           ))}
         </div>
-      </section>
+        <div className="mt-10 rounded-2xl bg-surface p-6 text-center">
+          <p className="text-sm font-semibold text-ink">Ready to book?</p>
+          <Link to="/get-estimate" className="mt-3 inline-flex items-center rounded-full bg-brand px-5 py-3 text-sm font-bold text-ink">Get an instant detailing quote</Link>
+        </div>
+      </article>
     </main>
   );
 }

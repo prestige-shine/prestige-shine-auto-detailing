@@ -1,45 +1,35 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { PageHeader } from "@/components/aurexo/PageHeader";
 import { articles } from "@/lib/articles";
-import { ArrowRight } from "lucide-react";
+import { PageHeader } from "@/components/aurexo/PageHeader";
 
 export const Route = createFileRoute("/news")({
   head: () => ({
     meta: [
-      { title: "News & Guides — Aurexo Roofing Studio" },
-      { name: "description", content: "Premium roofing buyer's guides, Ohio budgeting benchmarks, and Midwest durability deep-dives from the Aurexo editorial desk." },
-      { property: "og:title", content: "News & Guides — Aurexo Roofing Studio" },
-      { property: "og:description", content: "Editorial guides from the Aurexo Roofing Studio." },
+      { title: "Detailing Journal — Aurexo Detailing Studio" },
+      { name: "description", content: "Guides on ceramic coating, paint correction, interior deep cleaning, and Ohio-climate paint care from Aurexo Detailing Studio." },
+      { property: "og:title", content: "Detailing Journal — Aurexo Detailing Studio" },
+      { property: "og:description", content: "Ceramic coating, paint correction, and Ohio-climate paint care guides." },
     ],
   }),
-  component: NewsList,
+  component: News,
 });
 
-function NewsList() {
+function News() {
   return (
-    <main>
-      <PageHeader eyebrow="Editorial" title="News & Guides" subtitle="Buyer's guides, material deep-dives, and the stories shaping premium roofing across Ohio." />
+    <main className="overflow-x-hidden">
+      <PageHeader eyebrow="Detailing Journal" title="Guides & Tips" subtitle="In-depth articles from Aurexo's detailers on ceramic protection, correction, and interior care." />
       <section className="mx-auto max-w-6xl px-4 py-10">
-        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {articles.map((a) => (
-            <article key={a.slug} className="flex flex-col overflow-hidden rounded-2xl border border-border bg-white">
-              <div className="relative">
-                <img src={a.cover} alt={a.title} className="h-48 w-full object-cover" loading="lazy" />
-                <span className="absolute left-3 top-3 rounded-full bg-ink/90 px-2.5 py-1 text-[11px] font-bold text-white">{a.date}</span>
+            <Link key={a.slug} to="/blog/$slug" params={{ slug: a.slug }} className="group overflow-hidden rounded-2xl border border-border bg-white transition hover:border-ink/40 hover:shadow-md">
+              <img src={a.cover} alt={a.title} className="aspect-[16/10] w-full object-cover transition group-hover:scale-105" loading="lazy" />
+              <div className="p-5">
+                <p className="text-[11px] font-bold uppercase tracking-wider text-brand">{a.category} · {a.readMinutes ?? 6} min read</p>
+                <h3 className="mt-2 text-lg font-bold text-ink">{a.title}</h3>
+                <p className="mt-2 line-clamp-3 text-sm text-muted-foreground">{a.excerpt}</p>
+                <p className="mt-4 text-xs text-muted-foreground">{a.date} · {a.author}</p>
               </div>
-              <div className="flex flex-1 flex-col p-5">
-                <p className="text-xs font-bold uppercase tracking-wide text-brand">{a.category}</p>
-                <h3 className="mt-1 text-lg font-bold text-ink">{a.title}</h3>
-                <p className="mt-2 text-sm text-muted-foreground line-clamp-3">{a.excerpt}</p>
-                <Link
-                  to="/blog/$slug"
-                  params={{ slug: a.slug }}
-                  className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-ink"
-                >
-                  Read Article <ArrowRight className="h-3.5 w-3.5" />
-                </Link>
-              </div>
-            </article>
+            </Link>
           ))}
         </div>
       </section>
