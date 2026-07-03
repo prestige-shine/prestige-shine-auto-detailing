@@ -93,8 +93,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "Aurexo Detailing Studio — Premium Auto Detailing & Ceramic Coating in Ohio" },
       { name: "twitter:description", content: "Aurexo Detailing Studio delivers concierge-grade auto detailing across Ohio — ceramic 9H coatings, multi-stage paint correction, interior deep cleans, and mobile service in Cleveland, Columbus, Cincinnati, Akron, Toledo & Dayton." },
-      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/cd00f54b-2b26-479c-b1b0-f1bd4ab37810" },
-      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/cd00f54b-2b26-479c-b1b0-f1bd4ab37810" },
+      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/68499a15-8bd5-4035-a33c-67b072846a79" },
+      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/68499a15-8bd5-4035-a33c-67b072846a79" },
     ],
     links: [
       {
