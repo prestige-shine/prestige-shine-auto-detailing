@@ -56,7 +56,7 @@ export function VehicleCard({ v }: { v: Vehicle }) {
       <div className="relative z-10 flex flex-1 flex-col p-4 pointer-events-none">
         <h3 className="truncate font-bold text-ink">{v.title}</h3>
         <p className="mt-1 truncate text-xs text-muted-foreground">
-          {v.km} sqft · {v.year} · {v.fuel} · {v.transmission}
+          {v.body} · {v.year} · {v.fuel} tier · {v.km} min
         </p>
         <p className="mt-2 text-lg font-extrabold text-ink">{v.price}</p>
         <div className="mt-auto flex items-center justify-between gap-2 border-t border-border pt-3 pointer-events-auto">
