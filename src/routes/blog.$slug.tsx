@@ -50,7 +50,7 @@ function ArticlePage() {
         <img src={a.cover} alt={a.title} className="mt-6 aspect-[16/9] w-full rounded-2xl object-cover" />
         <p className="mt-6 text-lg leading-relaxed text-ink">{a.excerpt}</p>
         <div className="mt-6 space-y-4 text-base leading-relaxed text-ink">
-          {a.body.map((p, i) => (
+          {a.body.map((p: string, i: number) => (
             <p key={i}>{p}</p>
           ))}
         </div>
