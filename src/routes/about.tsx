@@ -1,14 +1,15 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { ShieldCheck, Users, Trophy, Globe } from "lucide-react";
+import { ShieldCheck, Users, Trophy, Sparkles } from "lucide-react";
 import { PageHeader } from "@/components/aurexo/PageHeader";
+import { team } from "@/lib/team";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "About — Aurexo Roofing Studio" },
-      { name: "description", content: "Aurexo Roofing Studio is an Ohio premium roofing contractor specializing in architectural shingles, standing-seam metal, premium aluminium, and natural slate." },
-      { property: "og:title", content: "About — Aurexo Roofing Studio" },
-      { property: "og:description", content: "Premium roofing contractor based in Ohio." },
+      { title: "About Aurexo Detailing Studio — Ohio's Premier Auto Detailing" },
+      { name: "description", content: "Founded in 2015 in Cleveland, Aurexo Detailing Studio delivers museum-grade paint correction, 9H ceramic coatings, and deep interior cleaning across Ohio." },
+      { property: "og:title", content: "About Aurexo Detailing Studio" },
+      { property: "og:description", content: "Ohio's premier auto detailing studio — ceramic coatings, paint correction, and interior deep cleans since 2015." },
     ],
   }),
   component: About,
@@ -16,14 +17,19 @@ export const Route = createFileRoute("/about")({
 
 function About() {
   return (
-    <main>
-      <PageHeader eyebrow="About Aurexo" title="A premium roofing studio, built for Ohio." subtitle="Founded in 2014, Aurexo Roofing Studio designs and installs luxury roofing systems across every major Ohio metro — backed by manufacturer-certified crews and a 25-year workmanship warranty." />
+    <main className="overflow-x-hidden">
+      <PageHeader
+        eyebrow="About Aurexo"
+        title="Ohio's most trusted detailing studio, built from passion."
+        subtitle="Founded in 2015 in Cleveland, Aurexo Detailing Studio has grown from a one-bay garage into four state-of-the-art facilities serving Northeast and Central Ohio — each staffed by certified detailing professionals obsessed with perfection."
+      />
+
       <section className="mx-auto max-w-6xl px-4 py-12 grid grid-cols-2 sm:grid-cols-4 gap-4">
         {[
-          { i: Users, n: "1,800+", l: "Ohio homes served" },
-          { i: Trophy, n: "12", l: "Industry awards" },
-          { i: ShieldCheck, n: "25 yr", l: "Workmanship warranty" },
-          { i: Globe, n: "6", l: "Studios across Ohio" },
+          { i: Users, n: "4,200+", l: "Vehicles detailed" },
+          { i: Trophy, n: "9", l: "Industry awards" },
+          { i: ShieldCheck, n: "5 yr", l: "Ceramic warranty" },
+          { i: Sparkles, n: "4", l: "Studios across Ohio" },
         ].map(({ i: Icon, n, l }) => (
           <div key={l} className="rounded-2xl bg-white border border-border p-5 text-center">
             <Icon className="h-6 w-6 mx-auto text-brand" />
@@ -32,24 +38,93 @@ function About() {
           </div>
         ))}
       </section>
-      <section className="mx-auto max-w-6xl px-4 pb-16">
+
+      {/* Founding story */}
+      <section className="mx-auto max-w-6xl px-4 pb-12">
+        <div className="rounded-3xl bg-white border border-border overflow-hidden grid grid-cols-1 lg:grid-cols-2">
+          <img
+            src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=900&q=80"
+            alt="Aurexo detailing studio interior"
+            className="h-64 w-full object-cover lg:h-full"
+            loading="lazy"
+          />
+          <div className="p-8 sm:p-12 flex flex-col justify-center">
+            <p className="text-xs font-bold uppercase tracking-wide text-brand">Our Story</p>
+            <h2 className="mt-2 text-2xl font-bold text-ink">Cleveland, 2015.</h2>
+            <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+              Robert Fox started Aurexo out of a single-bay garage in Cleveland's Tremont neighborhood with one polisher, a pressure washer, and an uncompromising standard for paint. Word spread fast. Within two years the studio expanded to a purpose-built facility in Midtown Cleveland, then added Columbus in 2019, Cincinnati in 2021, and Akron in 2023. Today, Aurexo employs over 30 certified detailers across four Ohio studios and is widely regarded as the state's most trusted name in ceramic coatings and paint correction.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Mission & values */}
+      <section className="mx-auto max-w-6xl px-4 pb-12">
         <div className="rounded-3xl bg-white border border-border p-8 sm:p-12">
           <h2 className="text-2xl font-bold text-ink">Our mission</h2>
           <p className="mt-3 text-muted-foreground leading-relaxed">
-            We believe a roof is the most important capital improvement on any Ohio home — and that homeowners deserve to specify it the way an architect would. Aurexo Roofing Studio combines manufacturer-certified crews, line-item transparency, premium materials, and a fixed-completion guarantee so the project goes in once, correctly, and outlasts the mortgage.
+            Every vehicle that enters an Aurexo studio leaves better than when it arrived — not just cleaner, but protected, restored, and documented. We combine professional-grade chemistry with meticulous hand-work and transparent communication so you always know exactly what was done and why.
           </p>
           <h3 className="mt-8 text-lg font-bold text-ink">What we stand for</h3>
           <ul className="mt-3 grid sm:grid-cols-2 gap-3 text-sm">
-            {["Radical line-item transparency","Manufacturer-certified crews on every job","Premium materials specified to the home","Workmanship warranty registered in your name"].map((p) => (
-              <li key={p} className="flex items-center gap-2 rounded-xl bg-surface p-3"><span className="h-2 w-2 rounded-full bg-brand"/> {p}</li>
+            {[
+              "Factory-certified ceramic coating applicators on every job",
+              "Paint decontamination and correction before any protection layer",
+              "Transparent, itemised service documentation with before/after photos",
+              "5-year ceramic warranty registered in the vehicle owner's name",
+              "Eco-responsible chemistry — waterless and low-VOC options available",
+              "On-time completion guaranteed or we reschedule at no charge",
+            ].map((p) => (
+              <li key={p} className="flex items-center gap-2 rounded-xl bg-surface p-3">
+                <span className="h-2 w-2 rounded-full bg-brand shrink-0" /> {p}
+              </li>
             ))}
           </ul>
+
           <div className="mt-10 grid gap-8 border-t border-border pt-10 lg:grid-cols-2">
-            <div><h3 className="text-lg font-bold text-ink">How an Aurexo project works</h3><p className="mt-3 text-sm leading-relaxed text-muted-foreground">Every engagement begins with a documented site inspection — deck, ventilation, flashing details, and existing material composition. The estimate that follows itemises every layer of the assembly so you authorize what proceeds, including any concealed conditions uncovered during tear-off.</p></div>
-            <div><h3 className="text-lg font-bold text-ink">Studio quality standards</h3><p className="mt-3 text-sm leading-relaxed text-muted-foreground">Crews carry Master Elite, SELECT ShingleMaster, and DECRA Certified Installer credentials. Every project assigns a dedicated finish carpenter for valleys, penetrations, and ornamental metal so the details closest to your eye are handled by the most experienced hands on site.</p></div>
-            <div><h3 className="text-lg font-bold text-ink">Transparent project budgeting</h3><p className="mt-3 text-sm leading-relaxed text-muted-foreground">Estimates expose underlayment, ice-and-water shield, drip edge, starter and ridge cap, premium finish material, flashing metal, and ventilation as separate line items. Educational guides explain material trade-offs, wind and fire ratings, warranty structure, and the Midwest insurance implications of each choice.</p></div>
-            <div><h3 className="text-lg font-bold text-ink">Support after completion</h3><p className="mt-3 text-sm leading-relaxed text-muted-foreground">Warranty registration is filed in your name on completion day. Annual inspections are logged to your digital project file with photographs and recommendations, providing the documentation your insurance carrier expects after Ohio's storm seasons.</p></div>
+            <div>
+              <h3 className="text-lg font-bold text-ink">The Aurexo process</h3>
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                Every engagement begins with a thorough paint inspection under specialized lighting. We measure paint thickness, identify contaminants, swirl marks, and oxidation before recommending a service tier. Nothing is assumed — everything is documented.
+              </p>
+            </div>
+            <div>
+              <h3 className="text-lg font-bold text-ink">Studio quality standards</h3>
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                Our detailers hold certifications from IDA, Gtechniq, and RUPES. Each studio maintains a climate-controlled bay dedicated exclusively to ceramic coating application — no dust, no humidity surprises, no shortcuts.
+              </p>
+            </div>
+            <div>
+              <h3 className="text-lg font-bold text-ink">Awards & recognition</h3>
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                Aurexo has been named Ohio's Best Auto Detailing Studio by Cleveland Magazine five consecutive years. We've earned the Gtechniq Accredited Detailer designation, the RUPES Training Center badge, and the International Detailing Association's Recognized Business Award.
+              </p>
+            </div>
+            <div>
+              <h3 className="text-lg font-bold text-ink">Aftercare & support</h3>
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                Every ceramic-coated vehicle receives a digital care guide and is entered into our reminder programme. Annual maintenance washes are logged to your vehicle's profile with updated condition photography, building a documented history that helps maintain resale value.
+              </p>
+            </div>
           </div>
+        </div>
+      </section>
+
+      {/* Team */}
+      <section className="mx-auto max-w-6xl px-4 pb-16">
+        <p className="text-xs font-bold uppercase tracking-wide text-brand">The team</p>
+        <h2 className="mt-1 text-2xl font-bold text-ink">People behind the polish.</h2>
+        <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {team.map((m) => (
+            <article key={m.name} className="rounded-2xl bg-white border border-border overflow-hidden">
+              <img src={m.photo} alt={m.name} className="w-full h-48 object-cover" loading="lazy" />
+              <div className="p-4">
+                <h3 className="font-bold text-ink">{m.name}</h3>
+                <p className="text-xs text-muted-foreground">{m.role}</p>
+                <a href={`mailto:${m.email}`} className="mt-2 inline-block text-xs text-brand hover:underline">{m.email}</a>
+              </div>
+            </article>
+          ))}
         </div>
       </section>
     </main>

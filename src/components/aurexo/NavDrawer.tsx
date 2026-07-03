@@ -2,6 +2,7 @@ import { useState, type ReactNode } from "react";
 import { Link } from "@tanstack/react-router";
 import { X, ChevronDown, Phone } from "lucide-react";
 import { Logo } from "./Logo";
+import { STUDIO_PHONE, STUDIO_TEL } from "@/lib/whatsapp";
 
 type Props = { open: boolean; onClose: () => void };
 
@@ -10,35 +11,34 @@ type Node = { label: string; to?: string; search?: Record<string, unknown>; chil
 const tree: Node[] = [
   { label: "Home", to: "/" },
   {
-    label: "Projects",
+    label: "Detailing Packages",
     children: [
-      { label: "All Projects", to: "/buy" },
-      { label: "New Projects", to: "/new-arrivals" },
+      { label: "All Packages", to: "/buy" },
+      { label: "New Packages", to: "/new-arrivals" },
       { label: "Featured", to: "/featured" },
-      { label: "Saved Projects", to: "/saved" },
+      { label: "Saved Packages", to: "/saved" },
     ],
   },
   {
-    label: "News & Guides",
-    children: [
-      { label: "All Articles", to: "/news" },
-    ],
+    label: "Detailing Journal",
+    children: [{ label: "All Articles", to: "/news" }],
   },
   {
     label: "Pages",
     children: [
-      { label: "About Us", to: "/about" },
-      { label: "Studio Team", to: "/agents" },
-      { label: "Service Areas", to: "/dealerships" },
-      { label: "Estimate Calculator", to: "/calculator" },
-      { label: "Compare Materials", to: "/compare" },
-      { label: "Client Reviews", to: "/reviews" },
-      { label: "Financing", to: "/financing" },
-      { label: "Roofing Services", to: "/services" },
+      { label: "About the Studio", to: "/about" },
+      { label: "Our Detailers", to: "/agents" },
+      { label: "Studio Locations", to: "/dealerships" },
+      { label: "Instant Price Calculator", to: "/calculator" },
+      { label: "Compare Packages", to: "/compare" },
+      { label: "Owner Reviews", to: "/reviews" },
+      { label: "Payment Plans", to: "/financing" },
+      { label: "Detailing Services", to: "/services" },
       { label: "FAQs", to: "/faqs" },
-      { label: "Request Estimate", to: "/sell" },
+      { label: "Instant Quote", to: "/get-estimate" },
+      { label: "Book Free Assessment", to: "/sell" },
       { label: "Contact", to: "/contact" },
-      { label: "Terms of Use", to: "/terms" },
+      { label: "Terms of Service", to: "/terms" },
     ],
   },
 ];
@@ -109,11 +109,11 @@ export function NavDrawer({ open, onClose }: Props) {
         </div>
 
         <a
-          href="tel:+15615550199"
+          href={`tel:${STUDIO_TEL}`}
           className="flex items-center justify-center gap-2 border-t border-white/10 bg-brand py-4 font-semibold text-ink"
         >
           <Phone className="h-4 w-4" />
-          +1 (561) 555-0199
+          {STUDIO_PHONE}
         </a>
       </aside>
     </>

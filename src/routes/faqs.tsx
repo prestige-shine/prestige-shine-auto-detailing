@@ -5,50 +5,54 @@ import { PageHeader } from "@/components/aurexo/PageHeader";
 
 const groups = [
   {
-    title: "Inspections & Assessments",
+    title: "Ceramic Coating",
     items: [
-      ["How do I book a roof inspection?", "Request one from the Contact page or WhatsApp our studio. A certified Aurexo estimator will schedule an on-site inspection within 48 hours across most of Ohio, including drone imagery of every slope, valley and penetration."],
-      ["What does an Aurexo inspection cover?", "We assess the deck, underlayment, flashing, ventilation, ridge, valleys, penetrations, gutters and attic moisture profile. You receive a written report with photos, remaining service life, and an itemised repair or replacement recommendation."],
-      ["Is a roof inspection really free?", "Yes — standard residential inspections in our Ohio service area carry no cost and no obligation. Insurance-claim documentation, engineered reports and commercial assessments are quoted separately."],
-      ["How often should an Ohio roof be inspected?", "We recommend a full inspection every 2 years for asphalt systems and after any severe wind, hail or ice-dam event. Slate, tile and standing-seam metal roofs can move to a 3–5 year cadence once verified sound."],
+      ["What is a 9H ceramic coating?", "A 9H ceramic coating is a semi-permanent liquid polymer that chemically bonds to your vehicle's paint. It forms a glass-like layer rated 9H on the pencil hardness scale — harder than factory clear coat — providing scratch resistance, UV protection, and extreme hydrophobic properties that cause water and contaminants to bead off effortlessly."],
+      ["How long does a ceramic coating last?", "Aurexo applies Gtechniq Crystal Serum Ultra with an EXO v4 topcoat, which carries a 5-year manufacturer-backed warranty when installed by an accredited detailer. With proper maintenance washes, coatings routinely perform well beyond the warranty period."],
+      ["Does paint need to be corrected before coating?", "Yes — always. Any swirl marks, light scratches, or water spots trapped beneath the coating become permanent. Aurexo includes at minimum a single-stage machine polish in every ceramic package. Two-stage correction is available for vehicles with deeper paint defects."],
+      ["Can a ceramic coating be applied over existing wax or sealant?", "No. All existing waxes and sealants must be stripped completely with an IPA (isopropyl alcohol) panel wipe before coating. Aurexo performs this decontamination step as standard — no corners are cut."],
+      ["Will the coating prevent rock chips?", "Ceramic coating significantly improves scratch resistance but is not a substitute for paint protection film (PPF). For rock chip protection on the bonnet and front bumper, we recommend a PPF consult — available free at any Aurexo studio."],
+      ["How should I maintain a ceramic-coated car?", "Use a pH-neutral, wax-free shampoo and a soft wash mitt. Avoid automated car washes with brushes. Aurexo recommends a professional maintenance wash every 4–6 months to inspect the coating and apply a ceramic boost spray."],
     ],
   },
   {
-    title: "Leak Repairs & Emergency Response",
+    title: "Paint Correction",
     items: [
-      ["My roof is leaking right now — what do I do?", "Call +1 (561) 555-0199 or WhatsApp us. Move valuables away from the drip zone, place a container to catch water, and photograph any interior staining for your insurance file. Our emergency crews target a 4-hour tarp-and-secure response in most Ohio counties."],
-      ["Can you repair rather than replace?", "Whenever it is honest to do so, yes. If the deck is sound and remaining shingle life is above 30%, targeted repair is almost always the right call. We will never recommend a full replacement to solve a localised failure."],
-      ["Do you handle insurance claims?", "We document every finding to carrier-grade standards, meet the adjuster on-site, and translate scope language between you and your insurer. Aurexo is not a public adjuster — we advocate for a technically correct scope of work, not a specific payout."],
-      ["What is included in a typical repair?", "Repairs generally include underlayment patching, flashing re-work, replacement shingles or panels colour-matched from current inventory, sealant renewal at penetrations, and a written 2-year workmanship warranty on the repaired area."],
+      ["What is paint correction?", "Paint correction is the process of removing surface defects — swirl marks, light scratches, water spots, oxidation, and buffer trails — using machine polishers and a progression of cutting compounds and finishing polishes. The result is a mirror-like clarity that cannot be achieved by washing or waxing alone."],
+      ["How long does a correction take?", "A single-stage polish (light swirl removal) typically takes 4–8 hours depending on vehicle size. A full two-stage correction with heavy cutting and refinement can take two full working days. Aurexo never rushes this process."],
+      ["Will paint correction remove deep scratches?", "Single-stage correction removes light to moderate swirls and scuffs. Deep scratches that catch a fingernail cannot be polished out without wet-sanding, which removes more clear coat. Our technicians measure paint thickness before any correction work to ensure safe removal of material."],
+      ["How often should I get a paint correction?", "Most vehicles benefit from a correction every 2–3 years. Applying a ceramic coating after correction dramatically extends the interval because the coating protects the corrected surface from new contamination and micro-scratches."],
+      ["Does paint correction damage the clear coat?", "When performed by trained technicians using correct pad and compound combinations, correction safely removes only a tiny fraction of the clear coat. Aurexo measures paint depth at every panel before and after correction to confirm safe thickness margins."],
     ],
   },
   {
-    title: "Materials & Roofing Systems",
+    title: "Interior Deep Clean",
     items: [
-      ["Which roofing material lasts longest in Ohio?", "For pure lifecycle, natural slate and standing-seam metal top the chart at 50+ years. Synthetic slate composites reach 50 years at roughly half the structural load, and premium architectural shingles deliver a realistic 25–30 year service life in Ohio's freeze-thaw climate."],
-      ["Are metal roofs noisy in rain?", "Modern standing-seam systems installed over a solid deck with proper underlayment are effectively as quiet as a shingle roof. Noise is only an issue on open-purlin barns and outbuildings."],
-      ["What is the difference between 3-tab and architectural shingles?", "3-tab shingles are a flat, entry-grade product with a 20-year lifecycle. Architectural (dimensional) shingles are heavier, layered for depth, wind-rated to 130 mph and carry manufacturer warranties up to 50 years. We no longer install 3-tab on primary residences."],
-      ["Do you install cool-roof or energy-rated systems?", "Yes. We specify ENERGY STAR® reflective granules, cool-roof tile coatings and PVDF-coated metal in high-solar-load exposures. Expect a measurable reduction in attic temperature and summer HVAC load."],
+      ["What does an interior deep clean include?", "Aurexo's Full Interior Deep Clean includes a full vacuum, hot-water extraction of all carpet and fabric upholstery, dashboard and trim clay and detail, door card cleaning and conditioning, headliner spot treatment, streak-free window cleaning, odour neutraliser, and UV-protective dressing on all plastics."],
+      ["Can you remove pet hair from upholstery?", "Yes. Pet hair is removed using a combination of rubber squeegees, silicone tools, and a high-powered vacuum before hot-water extraction. Heavily embedded hair may require an add-on treatment — our team will advise during check-in."],
+      ["How do you remove odours from the interior?", "We treat odours at the source rather than masking them. Aurexo uses hot-water extraction on fabrics, an enzyme-based neutraliser spray, and where necessary an ozone generator session to eliminate bacteria-driven smells permanently."],
+      ["Can the leather seats be repaired?", "Aurexo's interior service includes a leather clean and condition. Cracking, fading, or colour loss requires leather restoration — available as an add-on. Our technicians will document leather condition with photos and advise on appropriate treatment during check-in."],
+      ["How long does an interior deep clean take?", "Most vehicles are completed in 3–5 hours. Heavily soiled interiors with pet hair, staining, or mould may require 6–8 hours. We'll give you a realistic estimate before work begins."],
     ],
   },
   {
-    title: "Roof Replacements",
+    title: "Mobile Detail",
     items: [
-      ["How long does a full roof replacement take?", "A typical Ohio single-family home (2,500–3,500 sqft, moderate complexity) is completed in 1–3 working days for architectural shingles, 3–5 days for stone-coated steel or standing-seam, and 5–10 days for slate or tile."],
-      ["Do I need to leave the house during installation?", "No. Our crews work exterior-only. We ask that vehicles be moved out of the driveway, patio furniture cleared, and pets kept indoors during active tear-off hours."],
-      ["Will you protect my landscaping and gutters?", "Yes. Every project starts with tarped ground protection, plywood over shrubs, and magnetic nail sweeps morning and evening. Gutters are protected during tear-off and cleaned before demobilisation."],
-      ["What happens to my old roof?", "All tear-off material is loaded directly into a job-site dumpster and disposed at a licensed Ohio facility. Recyclable metal, copper flashing and reusable decking are separated and diverted from landfill."],
-      ["What warranty do I receive?", "Every Aurexo replacement includes a 25-year transferable workmanship warranty in addition to the manufacturer's material warranty (up to lifetime on premium systems). Warranty documents are delivered with your final closeout package."],
+      ["Do you offer mobile detailing?", "Yes. Aurexo offers mobile express exterior washes and interior deep cleans for clients within a 25-mile radius of each studio. Mobile ceramic coating application is not available — ceramic work requires our controlled studio environment."],
+      ["What do I need to provide for a mobile appointment?", "Access to a flat, shaded surface and a standard outdoor water tap and electrical outlet. We bring our own equipment, chemicals, and water tank if needed. No driveway? Our team can work in a car park with permission."],
+      ["Is mobile detailing the same quality as studio work?", "For wash and interior services, yes — our mobile technicians are studio-trained and use identical products. For paint correction and ceramic coating, studio conditions ensure optimal results and we do not perform these services mobile."],
+      ["How far in advance should I book mobile?", "Mobile slots fill quickly. We recommend booking at least 5–7 days in advance. Same-week slots are occasionally available — check via WhatsApp for last-minute availability."],
     ],
   },
   {
-    title: "Estimates, Timelines & Payment",
+    title: "Booking & Pricing",
     items: [
-      ["How accurate is the online estimator?", "The /get-estimate calculator is calibrated to 2026 Ohio installed pricing and is typically within 8–12% of the final contracted number. The on-site inspection reconciles the remaining variance — deck condition, ventilation upgrades and flashing scope."],
-      ["How long is an estimate valid?", "Written estimates are honoured for 45 days. Material pricing has been volatile since 2022, so we re-confirm current per-square costs before signing if the estimate is older than that."],
-      ["Do you offer financing?", "Yes. We partner with Ohio-licensed lenders to offer 0% APR promotional plans up to 24 months and extended fixed-rate plans up to 15 years. Financing is fully optional and never bundled into the base price."],
-      ["When is payment due?", "For residential replacements: a signed contract with 10% material deposit at scheduling, 40% at material delivery, and the balance on completion and walkthrough sign-off. Repairs under $2,500 are invoiced net-15 on completion."],
-      ["What areas do you serve?", "Our primary service area covers Cleveland, Akron, Columbus, Cincinnati, Toledo and the surrounding Ohio counties. We accept select projects in western Pennsylvania and northern Kentucky on a case-by-case basis."],
+      ["How do I book an appointment?", "Use the Book a Free Assessment form on our website, call +1 (561) 555-0199, or message us on WhatsApp. We'll confirm your vehicle, service, and preferred studio or mobile location within a few hours."],
+      ["Are prices fixed or are there surprises?", "All prices are confirmed before work begins. If additional issues are discovered during check-in — like more severe paint damage than expected — we'll photograph the finding and offer a written change order before proceeding. You always authorise what happens next."],
+      ["Do you offer payment plans?", "Yes. Aurexo partners with Klarna and a select panel of auto-finance lenders to offer Pay-in-4 (0% interest) and 12–24 month plans for larger ceramic coating packages. See the Financing page for details."],
+      ["What is your cancellation policy?", "We ask for 48 hours' notice to reschedule without charge. Cancellations within 24 hours of a booked studio appointment may incur a $50 cancellation fee to cover reserved bay time. Mobile appointments carry a $25 same-day cancellation fee."],
+      ["Do you offer fleet or corporate detailing?", "Yes. Aurexo serves corporate fleets, dealerships, and rental companies. Volume pricing and dedicated scheduling are available — contact studio@aurexodetailing.com or call our studio line for a fleet quote."],
+      ["Is there a warranty on your work?", "All ceramic coating installations carry a 5-year warranty registered in the vehicle owner's name. If a coating defect develops within the warranty period, we will inspect and re-apply the affected area at no charge. Paint correction workmanship is guaranteed for 12 months."],
     ],
   },
 ];
@@ -56,20 +60,39 @@ const groups = [
 export const Route = createFileRoute("/faqs")({
   head: () => ({
     meta: [
-      { title: "Roofing FAQs — Aurexo Roofing Studio Ohio" },
-      { name: "description", content: "Answers to the most common roofing questions in Ohio — inspections, leak repairs, materials, full replacements, estimates and warranties." },
-      { property: "og:title", content: "Roofing FAQs — Aurexo Roofing Studio" },
-      { property: "og:description", content: "Ohio roofing questions answered by certified Aurexo estimators." },
+      { title: "Auto Detailing FAQs — Aurexo Detailing Studio Ohio" },
+      { name: "description", content: "Answers to Ohio drivers' most common questions about ceramic coating, paint correction, interior deep cleans, mobile detailing, and booking." },
+      { property: "og:title", content: "Detailing FAQs — Aurexo Detailing Studio" },
+      { property: "og:description", content: "Expert answers from Ohio's certified detailing professionals." },
     ],
-    scripts: [{ type: "application/ld+json", children: JSON.stringify({ "@context": "https://schema.org", "@type": "FAQPage", mainEntity: groups.flatMap((group) => group.items.map(([question, answer]) => ({ "@type": "Question", name: question, acceptedAnswer: { "@type": "Answer", text: answer } }))) }) }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: groups.flatMap((group) =>
+            group.items.map(([question, answer]) => ({
+              "@type": "Question",
+              name: question,
+              acceptedAnswer: { "@type": "Answer", text: answer },
+            }))
+          ),
+        }),
+      },
+    ],
   }),
   component: Faqs,
 });
 
 function Faqs() {
   return (
-    <main>
-      <PageHeader eyebrow="Help" title="Roofing questions, answered." subtitle="Everything Ohio homeowners ask us before, during and after a premium roofing project. Can't find yours? Our studio is one tap away." />
+    <main className="overflow-x-hidden">
+      <PageHeader
+        eyebrow="Help"
+        title="Detailing questions, answered."
+        subtitle="Everything Ohio vehicle owners ask before, during and after a premium detailing service. Can't find yours? Our studio is one tap away."
+      />
       <section className="mx-auto max-w-3xl px-4 py-12 space-y-8">
         {groups.map((g) => (
           <div key={g.title}>

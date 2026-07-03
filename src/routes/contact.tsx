@@ -2,24 +2,35 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { Phone, Mail, MapPin, Clock, MessageCircle, Check } from "lucide-react";
 import { PageHeader } from "@/components/aurexo/PageHeader";
-import { submitLead, STUDIO_PHONE, STUDIO_TEL } from "@/lib/whatsapp";
+import { buildWhatsAppHref, STUDIO_PHONE, STUDIO_TEL } from "@/lib/whatsapp";
 
-const PROJECT_TYPES = [
-  "Full Roof Replacement",
-  "Premium Architectural Upgrade",
-  "Emergency Leak / Storm Repair",
-  "Warranty Service Visit",
-  "New Construction Install",
-  "Other Inquiry",
+const SERVICE_OPTIONS = [
+  "Express Exterior Maintenance",
+  "Full Interior Deep Clean & Extraction",
+  "Premium 9H Ceramic Coating",
+  "Paint Correction",
+  "Headlight Restoration",
+  "Engine Bay Detail",
+  "Leather Conditioning",
+  "PPF Consultation",
+  "Ceramic Wheel Coating",
+  "Other / Not sure",
+];
+
+const locations = [
+  { name: "Cleveland HQ", address: "1847 Euclid Avenue, Cleveland, OH 44115", hours: "Mon–Sat 8AM–6PM EST" },
+  { name: "Columbus Studio", address: "3320 Olentangy River Rd, Columbus, OH 43202", hours: "Mon–Sat 8AM–6PM EST" },
+  { name: "Cincinnati Studio", address: "5901 Madison Rd, Cincinnati, OH 45227", hours: "Tue–Sat 8AM–6PM EST" },
+  { name: "Akron Studio", address: "750 W Market St, Akron, OH 44303", hours: "Mon–Sat 9AM–5PM EST" },
 ];
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
-      { title: "Contact Aurexo Roofing Studio — Ohio" },
-      { name: "description", content: "Reach the Aurexo Roofing Studio team across Ohio. Structured contact form, WhatsApp handoff, and studio phone line." },
-      { property: "og:title", content: "Contact — Aurexo Roofing Studio" },
-      { property: "og:description", content: "Get in touch with a certified Ohio roofing studio." },
+      { title: "Contact Aurexo Detailing Studio — Ohio" },
+      { name: "description", content: "Reach Aurexo Detailing Studio across Cleveland, Columbus, Cincinnati and Akron. Book a service, ask a question, or get a detailing quote via our contact form or WhatsApp." },
+      { property: "og:title", content: "Contact — Aurexo Detailing Studio" },
+      { property: "og:description", content: "Get in touch with Ohio's premier auto detailing studio." },
     ],
     links: [{ rel: "canonical", href: "/contact" }],
   }),
@@ -27,31 +38,35 @@ export const Route = createFileRoute("/contact")({
 });
 
 function Contact() {
-  const [form, setForm] = useState({ name: "", email: "", phone: "", projectType: PROJECT_TYPES[0], message: "" });
-  const [sending, setSending] = useState(false);
+  const [form, setForm] = useState({ name: "", phone: "", vehicle: "", service: SERVICE_OPTIONS[0], notes: "" });
   const [sent, setSent] = useState(false);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setSending(true);
-    const href = await submitLead({
-      name: form.name, email: form.email, phone: form.phone,
-      projectType: form.projectType, message: form.message,
+    const href = buildWhatsAppHref({
+      name: form.name,
+      phone: form.phone,
+      projectType: form.service,
+      message: `Vehicle: ${form.vehicle}. Notes: ${form.notes}`,
       source: "contact-form",
     });
-    setSent(true); setSending(false);
     window.open(href, "_blank", "noopener,noreferrer");
+    setSent(true);
   };
 
   return (
-    <main>
-      <PageHeader eyebrow="Contact" title="Talk to a real Ohio roofer." subtitle="Structured contact, direct studio phone line, and instant WhatsApp handoff — no bots in between." />
+    <main className="overflow-x-hidden">
+      <PageHeader
+        eyebrow="Contact"
+        title="Talk to a real Ohio detailer."
+        subtitle="Four studio locations, direct phone line, and instant WhatsApp handoff — no bots, no hold music."
+      />
 
-      <section aria-labelledby="contact-h2" className="mx-auto max-w-6xl px-4 py-12 grid grid-cols-1 gap-6 lg:grid-cols-[1.2fr_1fr]">
+      <section className="mx-auto max-w-6xl px-4 py-12 grid grid-cols-1 gap-6 lg:grid-cols-[1.2fr_1fr]">
         <article className="rounded-2xl bg-white border border-border p-6 sm:p-8">
-          <h2 id="contact-h2" className="text-xl font-bold text-ink">Send us a project brief</h2>
+          <h2 className="text-xl font-bold text-ink">Send us a message</h2>
           <p className="mt-1 text-sm text-muted-foreground">
-            Every submission is saved to our lead pipeline and simultaneously packaged into a legible WhatsApp brief for the estimator on-call.
+            Your enquiry is packaged into a legible WhatsApp brief and routed to the nearest studio team.
           </p>
 
           {sent ? (
@@ -59,20 +74,20 @@ function Contact() {
               <div className="mx-auto grid h-14 w-14 place-items-center rounded-full bg-brand text-ink">
                 <Check className="h-7 w-7" strokeWidth={3} />
               </div>
-              <h3 className="mt-3 text-lg font-bold text-ink">Brief delivered</h3>
-              <p className="mt-1 text-sm text-muted-foreground">We opened WhatsApp with your full brief. An estimator will follow up shortly.</p>
+              <h3 className="mt-3 text-lg font-bold text-ink">Message delivered!</h3>
+              <p className="mt-1 text-sm text-muted-foreground">We opened WhatsApp with your brief. A detailer will follow up shortly.</p>
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2">
               <input required value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} className="c-input" placeholder="Full name" />
-              <input required value={form.phone} onChange={(e) => setForm({ ...form, phone: e.target.value })} className="c-input" placeholder="Phone" />
-              <input value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} type="email" className="c-input sm:col-span-2" placeholder="Email" />
-              <select value={form.projectType} onChange={(e) => setForm({ ...form, projectType: e.target.value })} className="c-input sm:col-span-2">
-                {PROJECT_TYPES.map((p) => <option key={p} value={p}>{p}</option>)}
+              <input required value={form.phone} onChange={(e) => setForm({ ...form, phone: e.target.value })} className="c-input" placeholder="Phone number" />
+              <input required value={form.vehicle} onChange={(e) => setForm({ ...form, vehicle: e.target.value })} className="c-input sm:col-span-2" placeholder="Your vehicle (e.g. 2022 BMW M3)" />
+              <select value={form.service} onChange={(e) => setForm({ ...form, service: e.target.value })} className="c-input sm:col-span-2">
+                {SERVICE_OPTIONS.map((s) => <option key={s} value={s}>{s}</option>)}
               </select>
-              <textarea required value={form.message} onChange={(e) => setForm({ ...form, message: e.target.value })} rows={5} className="c-input sm:col-span-2" placeholder="Describe your project — location, timeline, materials of interest…" />
-              <button type="submit" disabled={sending} className="sm:col-span-2 inline-flex items-center justify-center gap-2 rounded-xl bg-brand py-3.5 text-sm font-bold text-ink disabled:opacity-60">
-                <MessageCircle className="h-4 w-4" /> {sending ? "Sending…" : "Send Brief to WhatsApp"}
+              <textarea value={form.notes} onChange={(e) => setForm({ ...form, notes: e.target.value })} rows={4} className="c-input sm:col-span-2" placeholder="Any additional notes — current condition, timeline, preferred studio…" />
+              <button type="submit" className="sm:col-span-2 inline-flex items-center justify-center gap-2 rounded-xl bg-brand py-3.5 text-sm font-bold text-ink">
+                <MessageCircle className="h-4 w-4" /> Send via WhatsApp
               </button>
               <style>{`.c-input{width:100%;border:1px solid var(--border);border-radius:0.75rem;padding:0.75rem 1rem;font-size:0.875rem;background:white;outline:none}.c-input:focus{border-color:var(--ink)}`}</style>
             </form>
@@ -80,31 +95,37 @@ function Contact() {
         </article>
 
         <aside className="space-y-3">
-          {[
-            { i: Phone, t: "Call the studio", d: STUDIO_PHONE, href: `tel:${STUDIO_TEL}` },
-            { i: Mail, t: "Email", d: "studio@aurexoroofing.com", href: "mailto:studio@aurexoroofing.com" },
-            { i: MapPin, t: "Studio HQ", d: "Aurexo Roofing Studio — Cleveland, Ohio, USA" },
-            { i: Clock, t: "Hours", d: "Mon–Fri 7AM–7PM · Sat 8AM–4PM EST" },
-          ].map(({ i: Icon, t, d, href }) => {
-            const Wrap: any = href ? "a" : "div";
-            return (
-              <Wrap key={t} href={href} className="flex items-start gap-4 rounded-2xl bg-white border border-border p-5 hover:border-ink transition">
-                <div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-brand/15 text-ink">
-                  <Icon className="h-5 w-5" />
-                </div>
-                <div className="min-w-0">
-                  <p className="font-bold text-ink">{t}</p>
-                  <p className="text-sm text-muted-foreground">{d}</p>
-                </div>
-              </Wrap>
-            );
-          })}
+          <a href={`tel:${STUDIO_TEL}`} className="flex items-start gap-4 rounded-2xl bg-white border border-border p-5 hover:border-ink transition">
+            <div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-brand/15 text-ink"><Phone className="h-5 w-5" /></div>
+            <div><p className="font-bold text-ink">Call the studio</p><p className="text-sm text-muted-foreground">{STUDIO_PHONE}</p></div>
+          </a>
+          <a href="mailto:studio@aurexodetailing.com" className="flex items-start gap-4 rounded-2xl bg-white border border-border p-5 hover:border-ink transition">
+            <div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-brand/15 text-ink"><Mail className="h-5 w-5" /></div>
+            <div><p className="font-bold text-ink">Email</p><p className="text-sm text-muted-foreground">studio@aurexodetailing.com</p></div>
+          </a>
+          <a
+            href="https://wa.me/2347012307036?text=Hi%20Aurexo%2C%20I%27d%20like%20to%20book%20a%20detailing%20appointment."
+            target="_blank" rel="noreferrer"
+            className="flex items-start gap-4 rounded-2xl bg-white border border-border p-5 hover:border-ink transition"
+          >
+            <div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-brand/15 text-ink"><MessageCircle className="h-5 w-5" /></div>
+            <div><p className="font-bold text-ink">WhatsApp</p><p className="text-sm text-muted-foreground">Tap to open a chat — fastest response</p></div>
+          </a>
+          <div className="flex items-start gap-4 rounded-2xl bg-white border border-border p-5">
+            <div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-brand/15 text-ink"><Clock className="h-5 w-5" /></div>
+            <div><p className="font-bold text-ink">Hours</p><p className="text-sm text-muted-foreground">Mon–Sat 8AM–6PM EST · Sun by appointment</p></div>
+          </div>
 
           <div className="rounded-2xl border border-border bg-ink p-5 text-white">
-            <p className="text-xs font-bold uppercase tracking-wide text-brand">Ohio service radius</p>
-            <p className="mt-2 text-sm text-white/80">
-              Cleveland · Akron · Canton · Columbus · Cincinnati · Toledo · Dayton · Youngstown — and every luxury suburb between.
-            </p>
+            <p className="text-xs font-bold uppercase tracking-wide text-brand">Our locations</p>
+            <ul className="mt-2 space-y-2">
+              {locations.map((l) => (
+                <li key={l.name} className="flex items-start gap-2 text-sm text-white/80">
+                  <MapPin className="h-4 w-4 text-brand shrink-0 mt-0.5" />
+                  <span><strong className="text-white">{l.name}</strong> — {l.address}</span>
+                </li>
+              ))}
+            </ul>
           </div>
         </aside>
       </section>

@@ -3,28 +3,28 @@ import { Plus, Minus } from "lucide-react";
 
 const FAQS: { q: string; a: string }[] = [
   {
-    q: "How long does a premium roof actually last in Ohio's climate?",
-    a: "Architectural shingles installed to spec typically deliver 25–30 years in Ohio's freeze-thaw band. Stone-coated steel and standing-seam aluminium routinely reach 40–50 years, and luxury slate or DaVinci synthetic composites are engineered for 50 years and beyond. The single largest variable is the underlayment, ventilation and flashing package — the parts you cannot see from the street.",
+    q: "How long does a professional ceramic 9H coating actually last on an Ohio-driven car?",
+    a: "A properly prepped and cured 9H ceramic coating from Aurexo delivers 5–9 years of hydrophobic protection with our recommended annual maintenance decontamination. Ohio winters — road salt, brine, freeze-thaw — accelerate wear on unprotected clear coat by up to 40%; a ceramic layer keeps chemical staining and micro-marring off the paint itself.",
   },
   {
-    q: "How does Aurexo handle insurance claims for storm or leak damage?",
-    a: "We document every damaged elevation with drone and ground photography, itemize the claim to Xactimate line items, and coordinate directly with your adjuster on-site. Homeowners keep the check and the paperwork; we keep the process transparent. Emergency tarping is dispatched within 24 hours across all Ohio metros.",
+    q: "What's the difference between a polish, a paint correction, and full multi-stage correction?",
+    a: "A one-step polish enhances gloss and removes light haze but leaves most defects behind. Two-stage correction cuts and refines to remove 70–85% of swirls, wash marks, and light scratches. Full multi-stage correction (our Premium tier) targets 90%+ defect removal on aged clear coat, measured with a paint depth gauge to keep every panel within safe tolerance.",
   },
   {
-    q: "What is the real difference between architectural shingles and premium slate or metal?",
-    a: "Architectural shingles are the value benchmark — 30-year lifecycle, Class A fire, 130 mph wind. Standing-seam metal upgrades the wind and lifecycle envelope with a monolithic panel and hidden fasteners. Luxury slate (natural or synthetic composite) is a fifty-year, heritage-grade finish that materially lifts appraised value on architecturally significant homes.",
+    q: "Can Aurexo actually remove heavy pet hair, deep stains, and lingering odours from an interior?",
+    a: "Yes — that's the core of our Full Interior Deep Clean & Extraction. We use hot-water extraction, enzymatic pre-treatments for organic stains, ozone treatment for smoke and pet odour, and rotary brush agitation on carpets and upholstery. Heavy pet hair sessions include a dedicated pass with rubber blades and pneumatic tools before extraction.",
   },
   {
-    q: "What does the Aurexo 25-year workmanship warranty actually cover?",
-    a: "Non-prorated labor coverage against installation defects — flashing, penetration seals, fastener patterns, ventilation balance and finish carpentry. It is transferable once at no cost to the next owner and is registered in your name on completion day, layered on top of the manufacturer's lifetime material warranty.",
+    q: "Do you come to me, or does my vehicle need to be dropped at the studio?",
+    a: "Both. Express Exterior Maintenance and most Interior packages are available fully mobile across Cleveland, Columbus, Cincinnati, Akron, Toledo, and Dayton — we bring water, power, and lighting. Premium Ceramic 9H and multi-stage Paint Correction are performed only in our climate-controlled studios so cure times, dust control, and lighting stay flight-perfect.",
   },
   {
-    q: "How long does a typical Aurexo project take from contract to completion?",
-    a: "A single-family re-roof in the 2,500–4,000 sqft range is normally on and off the property in three to five working days. Luxury slate builds and full architectural upgrades run seven to fourteen working days depending on complexity, with a fixed-completion clause protecting your schedule.",
+    q: "How does ceramic coating compare to a paint protection film (PPF) wrap?",
+    a: "Ceramic 9H is a bonded liquid nano-layer — chemical, UV, and hydrophobic protection with high gloss, 5–9 years. PPF is a thick urethane film — physical rock-chip and abrasion protection with self-healing properties, 8–10 years. The best luxury builds combine both: PPF on high-impact zones (hood, fenders, mirrors), ceramic 9H over the entire vehicle for uniform gloss and easy wash.",
   },
   {
-    q: "Do you offer financing for premium roofing projects?",
-    a: "Yes. Aurexo partners with A-rated lenders offering 0% promotional terms and extended fixed-rate options up to 15 years. Our estimator publishes a live monthly-payment view so you can plan the capital cost the same way you plan the material spec.",
+    q: "Do you offer financing or subscription-style detailing plans?",
+    a: "Yes. Ceramic and multi-stage correction packages qualify for 0% pay-in-4 and 12-month 0% APR promotional plans. We also run an Ohio Owners subscription — quarterly maintenance details plus priority booking — starting at $79/month for sedans.",
   },
 ];
 
@@ -34,9 +34,9 @@ export function HomeFAQ() {
     <section aria-labelledby="faq-heading" className="mx-auto max-w-4xl px-4 py-16">
       <div className="text-center">
         <p className="text-xs font-bold uppercase tracking-wide text-brand">Frequently Asked</p>
-        <h2 id="faq-heading" className="mt-1 text-3xl font-bold text-ink sm:text-4xl">Ohio homeowners ask us…</h2>
+        <h2 id="faq-heading" className="mt-1 text-3xl font-bold text-ink sm:text-4xl">Ohio owners ask us…</h2>
         <p className="mx-auto mt-2 max-w-xl text-sm text-muted-foreground">
-          The most common high-ticket questions we field before, during, and after a premium roofing project.
+          The most common questions we field before, during, and after a high-end detailing appointment.
         </p>
       </div>
       <div className="mt-8 divide-y divide-border rounded-2xl border border-border bg-white">

@@ -1,149 +1,181 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
-import {
-  Layers, Wind, ShieldCheck, Hammer, Thermometer, Sparkles, Check,
-} from "lucide-react";
+import { Check, Sparkles, Droplets, Shield, Plus } from "lucide-react";
 import { PageHeader } from "@/components/aurexo/PageHeader";
+
+const tiers = [
+  {
+    id: "express",
+    icon: Droplets,
+    name: "Express Exterior Maintenance",
+    price: "from $89",
+    duration: "60–90 min",
+    idealFor: "Regular upkeep between deeper services, daily drivers, lease returns",
+    included: [
+      "Hand wash & rinse with pH-neutral foam",
+      "Wheel & tire scrub with decontaminant",
+      "Door jamb wipe-down",
+      "Window exterior squeegee clean",
+      "Tyre dressing application",
+      "Quick-detailer spray & microfibre buff",
+    ],
+  },
+  {
+    id: "interior",
+    icon: Sparkles,
+    name: "Full Interior Deep Clean & Extraction",
+    price: "from $199",
+    duration: "3–5 hours",
+    idealFor: "Pet owners, families, pre-sale preparation, post-winter refresh",
+    included: [
+      "Complete vacuum of all surfaces, crevices & boot",
+      "Hot-water extraction for carpet & fabric seats",
+      "Dashboard, console & trim clay and detail",
+      "Door cards and pockets wiped & conditioned",
+      "Headliner spot-cleaned",
+      "Window interior streak-free clean",
+      "Odour neutraliser treatment",
+      "UV-protective dressing on all plastics",
+    ],
+  },
+  {
+    id: "ceramic",
+    icon: Shield,
+    name: "Premium 9H Ceramic Coating & Paint Correction",
+    price: "from $999",
+    duration: "2–4 days",
+    idealFor: "New vehicle owners, paint-preservation enthusiasts, high-value vehicles",
+    included: [
+      "Full paint decontamination (clay bar + iron fallout)",
+      "Paint thickness measurement at all panels",
+      "Single-stage machine polish (swirl & light scratch removal)",
+      "Two-stage correction available (deep scratch & oxidation)",
+      "Panel wipe-down with IPA to strip all oils",
+      "9H Gtechniq Crystal Serum Ultra application",
+      "EXO v4 topcoat for hydrophobic performance",
+      "5-year warranty registered in your name",
+      "Before & after documented photo set",
+    ],
+  },
+];
+
+const addons = [
+  { name: "Headlight Restoration", price: "$59/pair", desc: "Polish and UV-seal oxidised headlight lenses for clarity and longevity." },
+  { name: "Engine Bay Detail", price: "$89", desc: "Degrease, rinse, and dress all engine bay plastics and components." },
+  { name: "Leather Conditioning", price: "$79", desc: "Clean and condition all leather surfaces with pH-balanced products." },
+  { name: "PPF Consultation", price: "Free", desc: "Expert advice on paint protection film placement — clear bra, full bonnet, or full wrap referral." },
+  { name: "Ceramic Wheel Coating", price: "$149", desc: "Pro-grade ceramic coating on all four wheels for brake-dust resistance and easy cleaning." },
+];
 
 export const Route = createFileRoute("/services")({
   head: () => ({
     meta: [
-      { title: "Roofing Services — Aurexo Roofing Studio" },
-      { name: "description", content: "Premium installations, storm restoration, and certified workmanship across Ohio. Architectural shingles, standing-seam metal, luxury slate, and composite systems." },
-      { property: "og:title", content: "Roofing Services — Aurexo Roofing Studio" },
-      { property: "og:description", content: "Premium installations and restoration across Ohio." },
+      { title: "Detailing Services — Aurexo Detailing Studio Ohio" },
+      { name: "description", content: "Express exterior wash, full interior deep clean, 9H ceramic coating & paint correction. Add-ons: headlight restoration, engine bay, leather conditioning and more." },
+      { property: "og:title", content: "Detailing Services — Aurexo Detailing Studio" },
+      { property: "og:description", content: "Professional auto detailing services across Ohio." },
     ],
   }),
   component: Services,
 });
 
-const services = [
-  { i: Hammer, t: "New Installations", d: "Full architectural design and engineered installation for new builds and additions." },
-  { i: Layers, t: "Premium Re-Roofs", d: "Complete tear-off, deck inspection, and certified install on existing homes." },
-  { i: Wind, t: "Storm Restoration", d: "24-hour Ohio storm response with insurance-grade documentation and emergency tarping." },
-  { i: ShieldCheck, t: "Warranty Service", d: "Manufacturer-certified workmanship covered for the life of the installation." },
-  { i: Thermometer, t: "Ventilation & Insulation", d: "Engineered intake and exhaust pathways that lower attic temperatures by 15–20°F." },
-  { i: Sparkles, t: "Annual Inspections", d: "Photographic roof reports filed to your insurance carrier on request." },
-];
-
-const matrix = {
-  "Material Composition": [
-    "SBS-modified asphalt with copper-granule UV blend on every architectural shingle line",
-    "G90 galvanised steel substrate with Kynar 500 fluoropolymer coatings on standing-seam panels",
-    "Multi-layer polymer composites that replicate quarried slate at 25% of the structural load",
-    "Class A fire-rated underlayments, ice-and-water shields, and synthetic moisture barriers throughout",
-    "Copper, lead-coated copper, and galvanised steel valley and step flashing — never aluminium-on-asphalt",
-  ],
-  "Wind & Fire Resistance": [
-    "All shingle systems installed to 130 mph six-nail uplift pattern, exceeding ASTM D7158 Class H",
-    "Standing-seam metal assemblies tested to UL 580 Class 90 and Miami-Dade impact standards",
-    "Class A fire rating on every premium assembly, with documented ASTM E108 burn-through resistance",
-    "Class 4 impact-rated shingles available on every premium line — eligible for Ohio insurance discounts",
-    "Sealed-deck construction limits wind-driven rain intrusion even at sustained 110 mph gusts",
-  ],
-  "Warranty Details": [
-    "Lifetime limited material warranty on every premium shingle and metal system we install",
-    "25-year non-prorated workmanship warranty backed in writing by Aurexo Roofing Studio",
-    "50-year synthetic slate and composite warranties, transferable once at no cost to the next owner",
-    "Manufacturer Master Elite, SELECT ShingleMaster, and DECRA Certified Installer credentialing on file",
-    "Warranty registration filed in your name on completion day — never the contractor's",
-  ],
-} as const;
-
-type TabKey = keyof typeof matrix;
-
 function Services() {
-  const tabs = Object.keys(matrix) as TabKey[];
-  const [active, setActive] = useState<TabKey>(tabs[0]);
+  const [active, setActive] = useState(tiers[0].id);
+  const tier = tiers.find((t) => t.id === active)!;
+  const Icon = tier.icon;
 
   return (
-    <main>
+    <main className="overflow-x-hidden">
       <PageHeader
-        eyebrow="Capabilities"
-        title="Engineered roofing systems."
-        subtitle="Premium materials, manufacturer-certified crews, and a fixed-completion guarantee on every Ohio project."
+        eyebrow="Services"
+        title="Every service your vehicle deserves."
+        subtitle="Three core detailing tiers plus a menu of precision add-ons — each performed by IDA-certified technicians in our climate-controlled studios."
       />
 
-      <section className="mx-auto max-w-6xl px-4 py-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        {services.map(({ i: Icon, t, d }) => (
-          <article key={t} className="rounded-2xl bg-white border border-border p-6">
-            <div className="grid h-12 w-12 shrink-0 aspect-square place-items-center rounded-2xl bg-brand/15 text-ink">
-              <Icon className="h-6 w-6" />
-            </div>
-            <h3 className="mt-4 font-bold text-ink text-lg">{t}</h3>
-            <p className="mt-1 text-sm text-muted-foreground">{d}</p>
-            <a
-              href="https://wa.me/15615550199?text=Hi%20Aurexo%2C%20I%27d%20like%20to%20book%20a%20free%20site%20inspection."
-              target="_blank"
-              rel="noreferrer"
-              className="mt-4 inline-block text-sm font-semibold text-ink underline underline-offset-2 hover:text-brand"
-            >
-              Book free inspection →
-            </a>
-          </article>
-        ))}
-      </section>
-
-      <section className="mx-auto max-w-6xl px-4 pb-16">
-        <div className="rounded-3xl border border-border bg-white p-6 sm:p-8">
-          <p className="text-xs font-bold uppercase tracking-wide text-brand">Engineering matrix</p>
-          <h2 className="mt-1 text-2xl font-bold text-ink">Get to Know Your Roof</h2>
-
-          <div role="tablist" aria-label="Roof engineering matrix" className="mt-5 flex gap-2 overflow-x-auto overscroll-x-contain border-b border-border">
-            {tabs.map((tab) => {
-              const isActive = active === tab;
+      {/* Tier selector */}
+      <section className="mx-auto max-w-6xl px-4 py-10">
+        <div className="flex flex-col gap-4 lg:flex-row">
+          <aside className="flex flex-row gap-2 lg:flex-col lg:w-64 shrink-0">
+            {tiers.map((t) => {
+              const TIcon = t.icon;
               return (
                 <button
-                  key={tab}
-                  role="tab"
-                  aria-selected={isActive}
-                  onClick={() => setActive(tab)}
-                  className={`relative shrink-0 px-3 py-3 text-sm font-semibold transition ${isActive ? "text-ink" : "text-muted-foreground hover:text-ink"}`}
+                  key={t.id}
+                  onClick={() => setActive(t.id)}
+                  className={`flex items-center gap-3 rounded-2xl border px-4 py-3 text-left transition w-full ${active === t.id ? "border-brand bg-brand/10" : "border-border bg-white hover:border-ink"}`}
                 >
-                  {tab}
-                  {isActive && <span className="absolute -bottom-px left-0 right-0 h-[3px] rounded-full bg-brand" />}
+                  <TIcon className="h-5 w-5 shrink-0 text-ink" />
+                  <span className="text-sm font-semibold text-ink leading-tight">{t.name}</span>
                 </button>
               );
             })}
-          </div>
+          </aside>
 
-          <ul className="mt-6 grid gap-3 sm:grid-cols-2">
-            {matrix[active].map((line) => (
-              <li key={line} className="flex items-start gap-3 rounded-xl border border-border bg-surface/40 p-4">
-                <span className="grid h-7 w-7 shrink-0 aspect-square place-items-center rounded-full bg-brand text-ink">
-                  <Check className="h-4 w-4" strokeWidth={3} />
-                </span>
-                <span className="text-sm leading-relaxed text-ink">{line}</span>
-              </li>
-            ))}
-          </ul>
+          <article className="flex-1 rounded-3xl border border-border bg-white p-6 sm:p-10">
+            <div className="flex items-start gap-4">
+              <div className="grid h-14 w-14 shrink-0 place-items-center rounded-2xl bg-brand/15 text-ink">
+                <Icon className="h-7 w-7" />
+              </div>
+              <div>
+                <h2 className="text-2xl font-extrabold text-ink">{tier.name}</h2>
+                <p className="mt-1 text-xl font-bold text-brand">{tier.price}</p>
+              </div>
+            </div>
+
+            <div className="mt-5 flex flex-wrap gap-4 text-sm">
+              <span className="rounded-full bg-surface border border-border px-3 py-1"><strong>Duration:</strong> {tier.duration}</span>
+              <span className="rounded-full bg-surface border border-border px-3 py-1"><strong>Ideal for:</strong> {tier.idealFor}</span>
+            </div>
+
+            <h3 className="mt-7 text-sm font-bold uppercase tracking-wide text-muted-foreground">What's included</h3>
+            <ul className="mt-3 grid gap-2 sm:grid-cols-2">
+              {tier.included.map((item) => (
+                <li key={item} className="flex items-start gap-3 rounded-xl border border-border bg-surface/40 p-3">
+                  <span className="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-brand text-ink">
+                    <Check className="h-3 w-3" strokeWidth={3} />
+                  </span>
+                  <span className="text-sm text-ink leading-snug">{item}</span>
+                </li>
+              ))}
+            </ul>
+
+            <div className="mt-6 flex flex-wrap gap-3">
+              <a
+                href="https://wa.me/2347012307036?text=Hi%20Aurexo%2C%20I%27d%20like%20to%20book%20a%20detailing%20appointment."
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 rounded-xl bg-brand px-6 py-3 text-sm font-bold text-ink"
+              >
+                Book this service
+              </a>
+              <a
+                href="/get-estimate"
+                className="inline-flex items-center gap-2 rounded-xl border border-border bg-white px-6 py-3 text-sm font-semibold text-ink hover:border-ink transition"
+              >
+                Get an estimate
+              </a>
+            </div>
+          </article>
         </div>
+      </section>
 
-        <div className="mt-10 grid gap-8 lg:grid-cols-2">
-          <div>
-            <h2 className="text-2xl font-bold text-ink">Complete roofing scope</h2>
-            <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-              Every Aurexo project begins with a documented inspection of the existing deck, ventilation pathway, and flashing details. Scope includes tear-off, deck repair, ice-and-water shield, synthetic underlayment, drip edge, starter and ridge cap, premium finish material, and full flashing — itemised on the estimate, never bundled.
-            </p>
-          </div>
-          <div>
-            <h2 className="text-2xl font-bold text-ink">Authorization you control</h2>
-            <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-              Crew leads document any concealed condition uncovered during tear-off with photographs and a written change order before additional work begins. Urgent structural repairs are separated from elective upgrades so you choose what proceeds today and what plans for next season.
-            </p>
-          </div>
-          <div>
-            <h3 className="text-lg font-bold text-ink">Standing-seam and copper specialists</h3>
-            <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-              Architectural metal is rolled and seamed on-site by a dedicated finish crew. Copper accents, lead-coated copper valleys, and ornamental ridge details are installed by carpenters who have spent a decade exclusively on premium metal work.
-            </p>
-          </div>
-          <div>
-            <h3 className="text-lg font-bold text-ink">Warranty-backed workmanship</h3>
-            <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-              Every Aurexo installation includes a 25-year non-prorated workmanship warranty in addition to the manufacturer's lifetime material coverage. Your digital project record includes inspection photos, change orders, and warranty registration filed in your name on completion day.
-            </p>
-          </div>
+      {/* Add-ons */}
+      <section className="mx-auto max-w-6xl px-4 pb-16">
+        <p className="text-xs font-bold uppercase tracking-wide text-brand">Enhance your detail</p>
+        <h2 className="mt-1 text-2xl font-bold text-ink">Add-on services</h2>
+        <div className="mt-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {addons.map((a) => (
+            <div key={a.name} className="rounded-2xl bg-white border border-border p-5">
+              <div className="flex items-center justify-between gap-2">
+                <h3 className="font-bold text-ink">{a.name}</h3>
+                <span className="shrink-0 rounded-full bg-brand/15 px-3 py-1 text-xs font-bold text-ink">{a.price}</span>
+              </div>
+              <p className="mt-2 text-sm text-muted-foreground">{a.desc}</p>
+              <div className="mt-3 flex items-center gap-1 text-xs font-semibold text-brand">
+                <Plus className="h-3 w-3" /> Add to any service
+              </div>
+            </div>
+          ))}
         </div>
       </section>
     </main>
