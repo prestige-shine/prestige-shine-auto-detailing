@@ -1,18 +1,20 @@
-// Repurposed for Aurexo Roofing Studio.
-// Type names are preserved so all downstream routes (buy, listings, compare,
-// favorites, etc.) keep working — only the semantic meaning changes:
-//   title       -> project name
-//   brand       -> roofing material manufacturer
-//   body        -> roof profile (Gable / Hip / Mansard / Flat / Shed)
-//   fuel        -> material family (Asphalt / Metal / Slate / Composite)
-//   transmission-> finish (Architectural / Standing-Seam)
-//   condition   -> service type (New Install / Re-Roof / Restoration)
-//   priceNum    -> project budget (USD)
-//   kmNum       -> square footage
-//   year        -> completion year
-//   img         -> hero photo URL
+// ============================================================
+// Aurexo Detailing Studio — sample data
+// Type names are preserved so all downstream routes keep compiling.
+// Semantic remapping:
+//   title       -> service package name (e.g. "2024 Porsche 911 Ceramic 9H Package")
+//   brand       -> vehicle make (Porsche, BMW, Tesla, etc.)
+//   body        -> vehicle class: "Coupe/Sedan" | "SUV/Crossover" | "Truck" | "Van/3-Row SUV"
+//   fuel        -> service tier: "Express" | "Interior" | "Ceramic" | "Correction"
+//   transmission-> finish focus: "Interior" | "Exterior"
+//   condition   -> booking status: "Booked" | "In Progress" | "Completed"
+//   priceNum    -> detailing job cost ($200–$3,500 USD)
+//   kmNum       -> estimated labor minutes (60–600)
+//   year        -> model year of the vehicle
+//   img         -> before/after or showcase photo
+// ============================================================
 
-export type Condition = "New Install" | "Re-Roof" | "Restoration";
+export type Condition = "Booked" | "In Progress" | "Completed";
 
 export type Vehicle = {
   id: string;
@@ -22,8 +24,8 @@ export type Vehicle = {
   km: string;
   kmNum: number;
   year: number;
-  fuel: "Asphalt" | "Metal" | "Slate" | "Composite";
-  transmission: "Architectural" | "Standing-Seam";
+  fuel: "Express" | "Interior" | "Ceramic" | "Correction";
+  transmission: "Interior" | "Exterior";
   body: string;
   brand: string;
   condition: Condition;
@@ -36,21 +38,18 @@ const img = (id: string) =>
   `https://images.unsplash.com/${id}?auto=format&fit=crop&w=1280&q=70`;
 
 const photos = {
-  modernSlate: img("photo-1592595896616-c37162298647"),
-  shingleCraftsman: img("photo-1572120360610-d971b9d7767c"),
-  metalStandingSeam: img("photo-1600585154340-be6161a56a0c"),
-  estateMansard: img("photo-1600566753190-17f0baa2a6c3"),
-  lakefrontHip: img("photo-1600585154526-990dced4db0d"),
-  modernFlat: img("photo-1564013799919-ab600027ffc6"),
-  copperAccent: img("photo-1600585152220-90363fe7e115"),
-  farmhouseGable: img("photo-1568605114967-8130f3a36994"),
-  contemporaryDark: img("photo-1600596542815-ffad4c1539a9"),
-  slateHistoric: img("photo-1519659528534-7fd733a832a0"),
-  woodShake: img("photo-1605276374104-dee2a0ed3cd6"),
-  cedarShake: img("photo-1582268611958-ebfd161ef9cf"),
-  villaTile: img("photo-1564507592333-c60657eea523"),
-  ridgeLine: img("photo-1502005229762-cf1b2da7c5d6"),
-  poolHouse: img("photo-1613977257363-707ba9348227"),
+  p1: img("photo-1552519507-da3b142c6e3d"),
+  p2: img("photo-1503376780353-7e6692767b70"),
+  p3: img("photo-1544829099-b9a0c07fad1a"),
+  p4: img("photo-1493238792000-8113da705763"),
+  p5: img("photo-1605618313023-d3f1caeeed8b"),
+  p6: img("photo-1580273916550-e323be2ae537"),
+  p7: img("photo-1607861716497-e65ab29fc7ea"),
+  p8: img("photo-1583121274602-3e2820c69888"),
+  p9: img("photo-1600661653561-629509216228"),
+  p10: img("photo-1552519507-88aa2dfa9fdb"),
+  p11: img("photo-1542362567-b07e54358753"),
+  p12: img("photo-1511919884226-fd3cad34687c"),
 };
 
 const v = (
@@ -84,52 +83,52 @@ const v = (
 });
 
 export const vehicles: Vehicle[] = [
-  v("2025-cleveland-slate-estate", "2025 Cleveland Slate Estate Roof", 142000, 6200, 2025, "Slate", "Architectural", "Hip", "DaVinci", "New Install", photos.modernSlate, { tag: "Studio Pick", featured: true }),
-  v("2025-columbus-standing-seam", "2025 Columbus Standing-Seam Residence", 78400, 4100, 2025, "Metal", "Standing-Seam", "Gable", "DECRA", "New Install", photos.metalStandingSeam, { tag: "New Project", featured: true }),
-  v("2024-cincinnati-architectural", "2024 Cincinnati Architectural Shingle Re-Roof", 24800, 3200, 2024, "Asphalt", "Architectural", "Gable", "GAF", "Re-Roof", photos.shingleCraftsman, { tag: "Best Value" }),
-  v("2025-akron-mansard-estate", "2025 Akron Mansard Estate Restoration", 186000, 5400, 2025, "Slate", "Architectural", "Mansard", "CertainTeed", "Restoration", photos.estateMansard, { tag: "Premium Build", featured: true }),
-  v("2024-toledo-lakefront-hip", "2024 Toledo Lakefront Hip Roof", 64500, 3800, 2024, "Composite", "Architectural", "Hip", "Brava", "New Install", photos.lakefrontHip, { tag: "Best Value" }),
-  v("2025-dayton-modern-flat", "2025 Dayton Modern Flat-Profile Build", 92300, 4600, 2025, "Composite", "Architectural", "Flat", "Carlisle", "New Install", photos.modernFlat),
-  v("2025-canton-copper-accent", "2025 Canton Copper Accent Roof", 158000, 3900, 2025, "Metal", "Standing-Seam", "Hip", "Revere Copper", "New Install", photos.copperAccent, { tag: "Premium Build", featured: true }),
-  v("2024-medina-farmhouse-gable", "2024 Medina Farmhouse Gable Re-Roof", 28900, 2900, 2024, "Asphalt", "Architectural", "Gable", "Owens Corning", "Re-Roof", photos.farmhouseGable),
-  v("2025-westlake-contemporary", "2025 Westlake Contemporary Dark Roof", 71200, 4200, 2025, "Asphalt", "Architectural", "Gable", "Malarkey", "New Install", photos.contemporaryDark, { tag: "New Project" }),
-  v("2024-shaker-heights-historic-slate", "2024 Shaker Heights Historic Slate Restoration", 248000, 7100, 2024, "Slate", "Architectural", "Mansard", "North Country Slate", "Restoration", photos.slateHistoric, { tag: "Premium Build" }),
-  v("2024-hudson-cedar-shake", "2024 Hudson Cedar Shake Replacement", 88600, 4400, 2024, "Composite", "Architectural", "Gable", "DaVinci", "Re-Roof", photos.woodShake),
-  v("2025-rocky-river-cedar", "2025 Rocky River Cedar-Look Build", 96400, 4900, 2025, "Composite", "Architectural", "Hip", "Brava", "New Install", photos.cedarShake, { tag: "New Project" }),
-  v("2025-bath-villa-tile", "2025 Bath Township Mediterranean Tile Estate", 132000, 5800, 2025, "Composite", "Architectural", "Hip", "Boral", "New Install", photos.villaTile, { featured: true }),
-  v("2024-avon-ridge-line", "2024 Avon Ridge-Line Architectural Roof", 36200, 3100, 2024, "Asphalt", "Architectural", "Gable", "IKO", "New Install", photos.ridgeLine),
-  v("2025-chagrin-falls-poolhouse", "2025 Chagrin Falls Pool House Standing-Seam", 42800, 1800, 2025, "Metal", "Standing-Seam", "Shed", "DECRA", "New Install", photos.poolHouse, { tag: "Studio Pick" }),
-  v("2024-strongsville-architectural", "2024 Strongsville Architectural Shingle Re-Roof", 22400, 2700, 2024, "Asphalt", "Architectural", "Hip", "TAMKO", "Re-Roof", photos.shingleCraftsman, { tag: "Best Value" }),
-  v("2025-mentor-aluminium", "2025 Mentor Premium Aluminium System", 84500, 4300, 2025, "Metal", "Standing-Seam", "Hip", "Classic Metal Roofs", "New Install", photos.metalStandingSeam),
-  v("2024-beachwood-restoration", "2024 Beachwood Heritage Slate Restoration", 168000, 5200, 2024, "Slate", "Architectural", "Mansard", "Vermont Slate Co.", "Restoration", photos.estateMansard, { featured: true }),
-  v("2025-solon-modern-hip", "2025 Solon Modern Hip Roof", 58300, 3700, 2025, "Asphalt", "Architectural", "Hip", "Atlas", "New Install", photos.modernSlate, { tag: "New Project" }),
-  v("2024-bay-village-coastal", "2024 Bay Village Coastal Composite Roof", 74900, 4000, 2024, "Composite", "Architectural", "Gable", "Brava", "New Install", photos.lakefrontHip),
-  v("2025-lakewood-craftsman", "2025 Lakewood Craftsman Re-Roof", 31600, 2900, 2025, "Asphalt", "Architectural", "Gable", "GAF", "Re-Roof", photos.shingleCraftsman),
-  v("2025-pepper-pike-estate", "2025 Pepper Pike Estate Slate Build", 224000, 6600, 2025, "Slate", "Architectural", "Hip", "DaVinci", "New Install", photos.modernSlate, { tag: "Premium Build" }),
+  v("porsche-911-ceramic-9h", "2024 Porsche 911 Ceramic 9H Package", 2800, 480, 2024, "Ceramic", "Exterior", "Coupe/Sedan", "Porsche", "Completed", photos.p1, { tag: "Studio Pick", featured: true }),
+  v("bmw-m5-paint-correction", "2023 BMW M5 Multi-Stage Paint Correction", 3200, 600, 2023, "Correction", "Exterior", "Coupe/Sedan", "BMW", "Completed", photos.p2, { tag: "Premium Build", featured: true }),
+  v("tesla-modelx-interior-deep", "2024 Tesla Model X Interior Deep Clean", 650, 240, 2024, "Interior", "Interior", "SUV/Crossover", "Tesla", "Completed", photos.p3, { tag: "Best Value" }),
+  v("range-rover-sport-ceramic", "2023 Range Rover Sport Ceramic 9H Package", 3100, 540, 2023, "Ceramic", "Exterior", "SUV/Crossover", "Range Rover", "Completed", photos.p4, { tag: "Premium Build", featured: true }),
+  v("mercedes-gle-correction", "2024 Mercedes-Benz GLE Paint Correction & Ceramic", 3500, 600, 2024, "Correction", "Exterior", "SUV/Crossover", "Mercedes-Benz", "Completed", photos.p5, { tag: "Studio Pick", featured: true }),
+  v("audi-rs7-ceramic", "2024 Audi RS7 Ceramic Coating Package", 2600, 420, 2024, "Ceramic", "Exterior", "Coupe/Sedan", "Audi", "Completed", photos.p6, { tag: "New Project" }),
+  v("ford-f150-express", "2024 Ford F-150 Express Exterior Detail", 299, 90, 2024, "Express", "Exterior", "Truck", "Ford", "Completed", photos.p7, { tag: "Best Value" }),
+  v("cadillac-escalade-interior", "2023 Cadillac Escalade Full Interior Package", 895, 300, 2023, "Interior", "Interior", "Van/3-Row SUV", "Cadillac", "Completed", photos.p8),
+  v("lexus-lx600-ceramic", "2024 Lexus LX 600 Ceramic 9H Package", 3000, 510, 2024, "Ceramic", "Exterior", "SUV/Crossover", "Lexus", "In Progress", photos.p9, { tag: "New Project" }),
+  v("ram-1500-express", "2024 RAM 1500 Express Full Detail", 349, 120, 2024, "Express", "Exterior", "Truck", "RAM", "Completed", photos.p10, { tag: "Best Value" }),
+  v("porsche-cayenne-correction", "2022 Porsche Cayenne S Paint Correction", 2900, 540, 2022, "Correction", "Exterior", "SUV/Crossover", "Porsche", "Completed", photos.p11, { tag: "Premium Build" }),
+  v("toyota-sienna-interior", "2023 Toyota Sienna Interior Deep Clean", 550, 210, 2023, "Interior", "Interior", "Van/3-Row SUV", "Toyota", "Completed", photos.p12),
+  v("bmw-x7-ceramic", "2024 BMW X7 Ceramic 9H Full Package", 3100, 525, 2024, "Ceramic", "Exterior", "Van/3-Row SUV", "BMW", "Booked", photos.p1, { tag: "New Project" }),
+  v("chevy-silverado-express", "2023 Chevrolet Silverado Express Detail", 279, 90, 2023, "Express", "Exterior", "Truck", "Chevrolet", "Completed", photos.p2, { tag: "Best Value" }),
+  v("jeep-grand-cherokee-interior", "2024 Jeep Grand Cherokee Interior Package", 720, 270, 2024, "Interior", "Interior", "SUV/Crossover", "Jeep", "Completed", photos.p3),
+  v("mercedes-s580-ceramic", "2024 Mercedes-Benz S 580 Ceramic 9H Package", 3400, 570, 2024, "Ceramic", "Exterior", "Coupe/Sedan", "Mercedes-Benz", "In Progress", photos.p4, { tag: "Studio Pick", featured: true }),
+  v("tesla-model3-correction", "2023 Tesla Model 3 Paint Correction", 1800, 360, 2023, "Correction", "Exterior", "Coupe/Sedan", "Tesla", "Completed", photos.p5),
+  v("lexus-rx500h-express", "2024 Lexus RX 500h Express Package", 319, 90, 2024, "Express", "Exterior", "SUV/Crossover", "Lexus", "Completed", photos.p6, { tag: "Best Value" }),
+  v("audi-q8-interior", "2023 Audi Q8 Premium Interior Detail", 875, 300, 2023, "Interior", "Interior", "SUV/Crossover", "Audi", "Completed", photos.p7),
+  v("ford-expedition-max-interior", "2024 Ford Expedition MAX Interior Deep Clean", 750, 270, 2024, "Interior", "Interior", "Van/3-Row SUV", "Ford", "Booked", photos.p8, { tag: "New Project" }),
+  v("ram-trd-correction", "2023 RAM TRX Paint Correction & Sealant", 2400, 450, 2023, "Correction", "Exterior", "Truck", "RAM", "Completed", photos.p9, { tag: "Premium Build" }),
+  v("chevy-tahoe-ceramic", "2024 Chevrolet Tahoe Ceramic 9H Package", 2750, 465, 2024, "Ceramic", "Exterior", "SUV/Crossover", "Chevrolet", "Booked", photos.p10, { tag: "New Project" }),
 ];
 
-// Materials manufacturers (was: car brands)
+// Vehicle makes / brand partners
 export const brands = [
-  "GAF", "CertainTeed", "Owens Corning", "DECRA", "DaVinci",
-  "Brava", "Boral", "Malarkey", "IKO", "Atlas",
+  "Porsche", "BMW", "Mercedes-Benz", "Audi", "Tesla",
+  "Lexus", "Range Rover", "Toyota", "Ford", "Chevrolet", "RAM", "Cadillac", "Jeep",
 ];
 
-// Roof profile types (was: body types)
+// Vehicle class filters (was: body types)
 export const bodyTypes = [
-  { label: "Gable", count: vehicles.filter(x => x.body === "Gable").length },
-  { label: "Hip", count: vehicles.filter(x => x.body === "Hip").length },
-  { label: "Mansard", count: vehicles.filter(x => x.body === "Mansard").length },
-  { label: "Flat", count: vehicles.filter(x => x.body === "Flat").length },
-  { label: "Shed", count: vehicles.filter(x => x.body === "Shed").length },
-  { label: "Gambrel", count: 0 },
+  { label: "Coupe/Sedan", count: vehicles.filter((x) => x.body === "Coupe/Sedan").length },
+  { label: "SUV/Crossover", count: vehicles.filter((x) => x.body === "SUV/Crossover").length },
+  { label: "Truck", count: vehicles.filter((x) => x.body === "Truck").length },
+  { label: "Van/3-Row SUV", count: vehicles.filter((x) => x.body === "Van/3-Row SUV").length },
 ];
 
-// Material families (was: fuel types)
-export const fuelTypes: Vehicle["fuel"][] = ["Asphalt", "Metal", "Slate", "Composite"];
-// Finish (was: transmissions)
-export const transmissions: Vehicle["transmission"][] = ["Architectural", "Standing-Seam"];
-// Service type (was: conditions)
-export const conditions: Condition[] = ["New Install", "Re-Roof", "Restoration"];
+// Service tiers (was: fuel types)
+export const fuelTypes: Vehicle["fuel"][] = ["Express", "Interior", "Ceramic", "Correction"];
+
+// Finish focus (was: transmissions)
+export const transmissions: Vehicle["transmission"][] = ["Interior", "Exterior"];
+
+// Booking status (was: conditions)
+export const conditions: Condition[] = ["Booked", "In Progress", "Completed"];
 
 export const priceMin = 0;
-export const priceMax = 300000;
+export const priceMax = 4000;

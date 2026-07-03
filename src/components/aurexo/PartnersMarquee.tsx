@@ -1,6 +1,6 @@
 const PARTNERS = [
-  "GAF", "Owens Corning", "CertainTeed", "DECRA", "DaVinci Roofscapes",
-  "Brava", "Boral Steel", "Malarkey", "Carlisle SynTec", "IKO",
+  "Gtechniq", "CQuartz CarPro", "Gyeon", "Chemical Guys", "Meguiar's",
+  "Rupes", "3M", "Sonax", "Koch-Chemie", "Griot's Garage",
 ];
 
 export function PartnersMarquee() {
@@ -10,9 +10,9 @@ export function PartnersMarquee() {
       <div className="mx-auto max-w-6xl px-4">
         <div className="mx-auto max-w-2xl text-center">
           <p className="text-xs font-bold uppercase tracking-wide text-brand">Trusted Brands</p>
-          <h2 id="partners-heading" className="mt-1 text-2xl font-bold">Manufacturer-certified partners</h2>
+          <h2 id="partners-heading" className="mt-1 text-2xl font-bold">Premium detailing product partners</h2>
           <p className="mt-2 text-sm text-white/60">
-            Aurexo is credentialed by the world's leading premium roofing manufacturers — the same names that back every warranty we register.
+            Aurexo uses only professional-grade products from the world's most trusted detailing brands — the same products winning concours awards.
           </p>
         </div>
       </div>
@@ -23,8 +23,8 @@ export function PartnersMarquee() {
           {row.map((name, i) => (
             <div
               key={`${name}-${i}`}
-              className="grid h-14 min-w-40 place-items-center rounded-xl border border-white/10 bg-white/[0.03] px-6 text-sm font-bold uppercase tracking-widest text-white/60 grayscale transition hover:border-brand/50 hover:text-brand"
-              aria-label={`${name} certified partner`}
+              className="grid h-14 min-w-44 place-items-center rounded-xl border border-white/10 bg-white/[0.03] px-6 text-sm font-bold uppercase tracking-widest text-white/60 grayscale transition hover:border-brand/50 hover:text-brand"
+              aria-label={`${name} product partner`}
             >
               {name}
             </div>
