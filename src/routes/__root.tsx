@@ -142,7 +142,7 @@ function SiteShell() {
     <div className="bg-surface min-h-screen flex flex-col overflow-x-hidden">
       <Header onMenuClick={() => setMenuOpen(true)} />
       <NavDrawer open={menuOpen} onClose={() => setMenuOpen(false)} />
-      <div className="flex-1 pb-24">
+      <div className="flex-1">
         <Outlet />
       </div>
       <Footer />
