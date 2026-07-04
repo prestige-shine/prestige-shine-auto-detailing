@@ -2,6 +2,15 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { Check, Sparkles, Droplets, Shield, Plus } from "lucide-react";
 import { PageHeader } from "@/components/aurexo/PageHeader";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+
+const carImg = (id: string) => `https://images.unsplash.com/${id}?auto=format&fit=crop&w=1200&q=80`;
 
 const tiers = [
   {
@@ -11,6 +20,7 @@ const tiers = [
     price: "from $89",
     duration: "60–90 min",
     idealFor: "Regular upkeep between deeper services, daily drivers, lease returns",
+    image: carImg("photo-1520340356584-f9917d1eea6f"),
     included: [
       "Hand wash & rinse with pH-neutral foam",
       "Wheel & tire scrub with decontaminant",
@@ -27,6 +37,7 @@ const tiers = [
     price: "from $199",
     duration: "3–5 hours",
     idealFor: "Pet owners, families, pre-sale preparation, post-winter refresh",
+    image: carImg("photo-1449965408869-eaa3f722e40d"),
     included: [
       "Complete vacuum of all surfaces, crevices & boot",
       "Hot-water extraction for carpet & fabric seats",
@@ -45,6 +56,7 @@ const tiers = [
     price: "from $999",
     duration: "2–4 days",
     idealFor: "New vehicle owners, paint-preservation enthusiasts, high-value vehicles",
+    image: carImg("photo-1552519507-da3b142c6e3d"),
     included: [
       "Full paint decontamination (clay bar + iron fallout)",
       "Paint thickness measurement at all panels",
@@ -92,75 +104,117 @@ function Services() {
         subtitle="Three core detailing tiers plus a menu of precision add-ons — each performed by IDA-certified technicians in our climate-controlled studios."
       />
 
-      {/* Tier selector */}
+      {/* Swipeable tier carousel */}
       <section className="mx-auto max-w-6xl px-4 py-10">
-        <div className="flex flex-col gap-4 lg:flex-row">
-          <aside className="flex flex-row gap-2 lg:flex-col lg:w-64 shrink-0">
+        <div className="mb-5 flex items-end justify-between gap-4">
+          <div>
+            <p className="text-xs font-bold uppercase tracking-wide text-brand">Signature Tiers</p>
+            <h2 className="mt-1 text-2xl font-bold text-ink">Swipe to explore each service</h2>
+          </div>
+          <p className="hidden text-xs text-muted-foreground sm:block">Drag, swipe, or use arrows →</p>
+        </div>
+
+        <Carousel opts={{ align: "start", loop: true }} className="w-full">
+          <CarouselContent className="-ml-4">
             {tiers.map((t) => {
               const TIcon = t.icon;
+              const isActive = active === t.id;
               return (
-                <button
-                  key={t.id}
-                  onClick={() => setActive(t.id)}
-                  className={`flex items-center gap-3 rounded-2xl border px-4 py-3 text-left transition w-full ${active === t.id ? "border-brand bg-brand/10" : "border-border bg-white hover:border-ink"}`}
-                >
-                  <TIcon className="h-5 w-5 shrink-0 text-ink" />
-                  <span className="text-sm font-semibold text-ink leading-tight">{t.name}</span>
-                </button>
+                <CarouselItem key={t.id} className="pl-4 sm:basis-2/3 lg:basis-1/2">
+                  <button
+                    type="button"
+                    onClick={() => setActive(t.id)}
+                    className={`group relative block w-full overflow-hidden rounded-3xl border text-left transition ${
+                      isActive ? "border-brand shadow-xl" : "border-border hover:border-ink/40 hover:shadow-lg"
+                    }`}
+                  >
+                    <div className="relative aspect-[4/3] overflow-hidden">
+                      <img
+                        src={t.image}
+                        alt={t.name}
+                        loading="lazy"
+                        className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/25 to-transparent" />
+                      <div className="absolute inset-x-0 bottom-0 p-5 text-white">
+                        <div className="flex items-center gap-2">
+                          <span className="grid h-9 w-9 place-items-center rounded-full bg-brand text-ink">
+                            <TIcon className="h-4 w-4" />
+                          </span>
+                          <span className="rounded-full bg-white/15 px-2 py-0.5 text-[11px] font-bold backdrop-blur">
+                            {t.price}
+                          </span>
+                        </div>
+                        <h3 className="mt-3 text-lg font-extrabold leading-tight">{t.name}</h3>
+                        <p className="mt-1 text-xs text-white/70">{t.duration}</p>
+                      </div>
+                      {isActive && (
+                        <span className="absolute right-3 top-3 rounded-full bg-brand px-2 py-0.5 text-[11px] font-bold text-ink">
+                          Selected
+                        </span>
+                      )}
+                    </div>
+                  </button>
+                </CarouselItem>
               );
             })}
-          </aside>
+          </CarouselContent>
+          <CarouselPrevious className="hidden sm:flex -left-3" />
+          <CarouselNext className="hidden sm:flex -right-3" />
+        </Carousel>
+      </section>
 
-          <article className="flex-1 rounded-3xl border border-border bg-white p-6 sm:p-10">
-            <div className="flex items-start gap-4">
-              <div className="grid h-14 w-14 shrink-0 place-items-center rounded-2xl bg-brand/15 text-ink">
-                <Icon className="h-7 w-7" />
-              </div>
-              <div>
-                <h2 className="text-2xl font-extrabold text-ink">{tier.name}</h2>
-                <p className="mt-1 text-xl font-bold text-brand">{tier.price}</p>
-              </div>
+      {/* Active tier detail */}
+      <section className="mx-auto max-w-6xl px-4 pb-6">
+        <article className="rounded-3xl border border-border bg-white p-6 sm:p-10">
+          <div className="flex items-start gap-4">
+            <div className="grid h-14 w-14 shrink-0 place-items-center rounded-2xl bg-brand/15 text-ink">
+              <Icon className="h-7 w-7" />
             </div>
-
-            <div className="mt-5 flex flex-wrap gap-4 text-sm">
-              <span className="rounded-full bg-surface border border-border px-3 py-1"><strong>Duration:</strong> {tier.duration}</span>
-              <span className="rounded-full bg-surface border border-border px-3 py-1"><strong>Ideal for:</strong> {tier.idealFor}</span>
+            <div className="min-w-0">
+              <h2 className="text-2xl font-extrabold text-ink">{tier.name}</h2>
+              <p className="mt-1 text-xl font-bold text-brand">{tier.price}</p>
             </div>
+          </div>
 
-            <h3 className="mt-7 text-sm font-bold uppercase tracking-wide text-muted-foreground">What's included</h3>
-            <ul className="mt-3 grid gap-2 sm:grid-cols-2">
-              {tier.included.map((item) => (
-                <li key={item} className="flex items-start gap-3 rounded-xl border border-border bg-surface/40 p-3">
-                  <span className="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-brand text-ink">
-                    <Check className="h-3 w-3" strokeWidth={3} />
-                  </span>
-                  <span className="text-sm text-ink leading-snug">{item}</span>
-                </li>
-              ))}
-            </ul>
+          <div className="mt-5 flex flex-wrap gap-3 text-sm">
+            <span className="rounded-full bg-surface border border-border px-3 py-1"><strong>Duration:</strong> {tier.duration}</span>
+            <span className="rounded-full bg-surface border border-border px-3 py-1"><strong>Ideal for:</strong> {tier.idealFor}</span>
+          </div>
 
-            <div className="mt-6 flex flex-wrap gap-3">
-              <a
-                href="https://wa.me/2347012307036?text=Hi%20Aurexo%2C%20I%27d%20like%20to%20book%20a%20detailing%20appointment."
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center gap-2 rounded-xl bg-brand px-6 py-3 text-sm font-bold text-ink"
-              >
-                Book this service
-              </a>
-              <a
-                href="/get-estimate"
-                className="inline-flex items-center gap-2 rounded-xl border border-border bg-white px-6 py-3 text-sm font-semibold text-ink hover:border-ink transition"
-              >
-                Get an estimate
-              </a>
-            </div>
-          </article>
-        </div>
+          <h3 className="mt-7 text-sm font-bold uppercase tracking-wide text-muted-foreground">What's included</h3>
+          <ul className="mt-3 grid gap-2 sm:grid-cols-2">
+            {tier.included.map((item) => (
+              <li key={item} className="flex items-start gap-3 rounded-xl border border-border bg-surface/40 p-3">
+                <span className="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-brand text-ink">
+                  <Check className="h-3 w-3" strokeWidth={3} />
+                </span>
+                <span className="text-sm text-ink leading-snug">{item}</span>
+              </li>
+            ))}
+          </ul>
+
+          <div className="mt-6 flex flex-wrap gap-3">
+            <a
+              href="https://wa.me/15615550142?text=Hi%20Aurexo%2C%20I%27d%20like%20to%20book%20a%20detailing%20appointment."
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-2 rounded-xl bg-brand px-6 py-3 text-sm font-bold text-ink"
+            >
+              Book this service
+            </a>
+            <a
+              href="/get-estimate"
+              className="inline-flex items-center gap-2 rounded-xl border border-border bg-white px-6 py-3 text-sm font-semibold text-ink hover:border-ink transition"
+            >
+              Get an estimate
+            </a>
+          </div>
+        </article>
       </section>
 
       {/* Add-ons */}
-      <section className="mx-auto max-w-6xl px-4 pb-16">
+      <section className="mx-auto max-w-6xl px-4 pb-16 pt-6">
         <p className="text-xs font-bold uppercase tracking-wide text-brand">Enhance your detail</p>
         <h2 className="mt-1 text-2xl font-bold text-ink">Add-on services</h2>
         <div className="mt-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
