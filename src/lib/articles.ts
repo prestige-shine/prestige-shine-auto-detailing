@@ -12,10 +12,11 @@ export type Article = {
 };
 
 const stockCovers = [
-  "https://images.unsplash.com/photo-1605618313023-d3f1caeeed8b?auto=format&fit=crop&w=1200&q=70",
-  "https://images.unsplash.com/photo-1607861716497-e65ab29fc7ea?auto=format&fit=crop&w=1200&q=70",
-  "https://images.unsplash.com/photo-1583121274602-3e2820c69888?auto=format&fit=crop&w=1200&q=70",
+  "https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=1200&q=70",
+  "https://images.unsplash.com/photo-1494976388531-d1058494cdd8?auto=format&fit=crop&w=1200&q=70",
+  "https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&w=1200&q=70",
 ];
+
 
 export const articles: Article[] = [
   {
