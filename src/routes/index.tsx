@@ -158,7 +158,7 @@ function Home() {
               <div className="flex flex-1 flex-col p-5">
                 <h3 className="font-bold text-ink">{t.name}</h3>
                 <p className="mt-2 flex-1 text-sm text-muted-foreground">{t.desc}</p>
-                <Link to="/services" className="mt-4 inline-flex items-center gap-1 text-xs font-semibold text-ink hover:text-brand">
+                <Link to="/services" className="mt-4 inline-flex items-center gap-1 self-start rounded-full bg-brand px-3 py-1.5 text-xs font-bold text-brand-foreground transition hover:bg-brand/90">
                   Learn more <ArrowRight className="h-3 w-3" />
                 </Link>
               </div>
