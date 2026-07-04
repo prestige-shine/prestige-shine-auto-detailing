@@ -90,7 +90,7 @@ function Home() {
           aria-hidden="true"
         >
           <source src={HERO_VIDEO_MP4} type="video/mp4" />
-          <source src={HERO_VIDEO_MP4_FALLBACK} type="video/mp4" />
+          
         </video>
         <div className="absolute inset-0 bg-gradient-to-b from-ink/50 via-ink/60 to-ink" />
         <div className="relative mx-auto flex min-h-[88vh] max-w-6xl flex-col items-center justify-center px-4 py-20 text-center">
