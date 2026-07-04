@@ -7,12 +7,11 @@ import { PartnersMarquee } from "@/components/aurexo/PartnersMarquee";
 import { HomeFAQ } from "@/components/aurexo/HomeFAQ";
 import { WHATSAPP_NUMBER } from "@/lib/whatsapp";
 import { articles } from "@/lib/articles";
+import heroVideo from "@/assets/hero-video.mp4.asset.json";
 
 const carImg = (id: string, w = 1280) => `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&q=80`;
 const HERO_IMG = carImg("photo-1503376780353-7e6692767b70", 1920);
-// Reliable open MP4s (Pixabay CDN works cross-origin in <video>)
-const HERO_VIDEO_MP4 = "https://cdn.pixabay.com/video/2019/10/09/27725-365891329_large.mp4";
-const HERO_VIDEO_MP4_FALLBACK = "https://cdn.pixabay.com/video/2020/03/23/34019-401286064_large.mp4";
+const HERO_VIDEO_MP4 = heroVideo.url;
 
 const BEFORE_AFTER = [
   { id: "swirl-porsche", label: "Paint Swirl Correction — Porsche 911", before: carImg("photo-1503376780353-7e6692767b70"), after: carImg("photo-1552519507-da3b142c6e3d"), tier: "Paint Correction" },
