@@ -5,14 +5,15 @@ import { PageHeader } from "@/components/aurexo/PageHeader";
 const PHOTOS = [
   "photo-1552519507-da3b142c6e3d",
   "photo-1503376780353-7e6692767b70",
-  "photo-1544829099-b9a0c07fad1a",
+  "photo-1494976388531-d1058494cdd8",
   "photo-1493238792000-8113da705763",
-  "photo-1605618313023-d3f1caeeed8b",
+  "photo-1520340356584-f9917d1eea6f",
   "photo-1583121274602-3e2820c69888",
   "photo-1600661653561-629509216228",
-  "photo-1580273916550-e323be2ae537",
-  "photo-1552519507-da3b142c6e3d",
+  "photo-1449965408869-eaa3f722e40d",
+  "photo-1560958089-b8a1929cea89",
 ];
+
 
 const reviews = [
   { name: "Marcus T.", city: "Shaker Heights, OH", service: "9H Ceramic Coating", photo: PHOTOS[0], body: "Brought in my 2023 BMW M4 absolutely covered in swirl marks from a dealer prep job. The Aurexo team did a two-stage correction and Crystal Serum Ultra coating over two days. The paint looks deeper than the day it left the factory. Genuinely stunned." },

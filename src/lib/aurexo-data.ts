@@ -40,17 +40,18 @@ const img = (id: string) =>
 const photos = {
   p1: img("photo-1552519507-da3b142c6e3d"),
   p2: img("photo-1503376780353-7e6692767b70"),
-  p3: img("photo-1544829099-b9a0c07fad1a"),
+  p3: img("photo-1494976388531-d1058494cdd8"),
   p4: img("photo-1493238792000-8113da705763"),
-  p5: img("photo-1605618313023-d3f1caeeed8b"),
-  p6: img("photo-1580273916550-e323be2ae537"),
-  p7: img("photo-1607861716497-e65ab29fc7ea"),
+  p5: img("photo-1520340356584-f9917d1eea6f"),
+  p6: img("photo-1560958089-b8a1929cea89"),
+  p7: img("photo-1449965408869-eaa3f722e40d"),
   p8: img("photo-1583121274602-3e2820c69888"),
   p9: img("photo-1600661653561-629509216228"),
-  p10: img("photo-1552519507-88aa2dfa9fdb"),
-  p11: img("photo-1542362567-b07e54358753"),
-  p12: img("photo-1511919884226-fd3cad34687c"),
+  p10: img("photo-1542362567-b07e54358753"),
+  p11: img("photo-1511919884226-fd3cad34687c"),
+  p12: img("photo-1494905998402-395d579af36f"),
 };
+
 
 const v = (
   id: string,

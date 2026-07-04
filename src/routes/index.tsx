@@ -1,28 +1,47 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useMemo } from "react";
-import { ShieldCheck, Sparkles, Award, ArrowRight, Star, MessageCircle, Gauge, DollarSign, BarChart3 } from "lucide-react";
+import { ShieldCheck, Sparkles, Award, ArrowRight, Star, MessageCircle, Gauge, DollarSign, BarChart3, Calendar } from "lucide-react";
 import { vehicles } from "@/lib/aurexo-data";
 import { VehicleCard } from "@/components/aurexo/VehicleCard";
 import { PartnersMarquee } from "@/components/aurexo/PartnersMarquee";
 import { HomeFAQ } from "@/components/aurexo/HomeFAQ";
 import { WHATSAPP_NUMBER } from "@/lib/whatsapp";
+import { articles } from "@/lib/articles";
 
 const carImg = (id: string, w = 1280) => `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&q=80`;
-const HERO_IMG = carImg("photo-1552519507-da3b142c6e3d", 1920);
+const HERO_IMG = carImg("photo-1503376780353-7e6692767b70", 1920);
+// Reliable open MP4s (Pixabay CDN works cross-origin in <video>)
+const HERO_VIDEO_MP4 = "https://cdn.pixabay.com/video/2019/10/09/27725-365891329_large.mp4";
+const HERO_VIDEO_MP4_FALLBACK = "https://cdn.pixabay.com/video/2020/03/23/34019-401286064_large.mp4";
 
 const BEFORE_AFTER = [
-  { id: "swirl-porsche", label: "Paint Swirl Correction — Porsche 911", before: carImg("photo-1600661653561-629509216228"), after: carImg("photo-1552519507-da3b142c6e3d"), tier: "Paint Correction" },
-  { id: "oxidation-bmw", label: "Oxidation Removal — BMW M5", before: carImg("photo-1493238792000-8113da705763"), after: carImg("photo-1503376780353-7e6692767b70"), tier: "Paint Correction" },
-  { id: "pet-hair-suv", label: "Pet-Hair Extraction — SUV Interior", before: carImg("photo-1605618313023-d3f1caeeed8b"), after: carImg("photo-1544829099-b9a0c07fad1a"), tier: "Interior Deep Clean" },
-  { id: "coffee-steam", label: "Coffee-Stain Steam Extraction", before: carImg("photo-1583121274602-3e2820c69888"), after: carImg("photo-1607861716497-e65ab29fc7ea"), tier: "Interior Deep Clean" },
-  { id: "headlight", label: "Headlight Restoration", before: carImg("photo-1493238792000-8113da705763"), after: carImg("photo-1600661653561-629509216228"), tier: "Express Exterior" },
-  { id: "tesla-ceramic", label: "Ceramic-Coated Tesla Model 3", before: carImg("photo-1605618313023-d3f1caeeed8b"), after: carImg("photo-1552519507-da3b142c6e3d"), tier: "9H Ceramic Coating" },
+  { id: "swirl-porsche", label: "Paint Swirl Correction — Porsche 911", before: carImg("photo-1503376780353-7e6692767b70"), after: carImg("photo-1552519507-da3b142c6e3d"), tier: "Paint Correction" },
+  { id: "oxidation-bmw", label: "Oxidation Removal — BMW M5", before: carImg("photo-1493238792000-8113da705763"), after: carImg("photo-1494976388531-d1058494cdd8"), tier: "Paint Correction" },
+  { id: "pet-hair-suv", label: "Pet-Hair Extraction — SUV Interior", before: carImg("photo-1449965408869-eaa3f722e40d"), after: carImg("photo-1449965408869-eaa3f722e40d"), tier: "Interior Deep Clean" },
+  { id: "coffee-steam", label: "Coffee-Stain Steam Extraction", before: carImg("photo-1583121274602-3e2820c69888"), after: carImg("photo-1494905998402-395d579af36f"), tier: "Interior Deep Clean" },
+  { id: "headlight", label: "Headlight Restoration", before: carImg("photo-1493238792000-8113da705763"), after: carImg("photo-1552519507-da3b142c6e3d"), tier: "Express Exterior" },
+  { id: "tesla-ceramic", label: "Ceramic-Coated Tesla Model 3", before: carImg("photo-1560958089-b8a1929cea89"), after: carImg("photo-1503376780353-7e6692767b70"), tier: "9H Ceramic Coating" },
 ];
 
 const TIERS = [
-  { name: "Express Exterior Maintenance", desc: "Hand wash, clay bar decontamination, spray sealant, wheel & tire detail. Perfect for regular upkeep.", price: "From $149", icon: "⚡" },
-  { name: "Full Interior Deep Clean & Extraction", desc: "Hot-water extraction, steam sanitization, leather conditioning, odor elimination, glass treatment.", price: "From $329", icon: "🧹" },
-  { name: "Premium 9H Ceramic Coating & Paint Correction", desc: "Multi-stage machine polishing, swirl removal, 9H ceramic application — up to 9-year protection.", price: "From $1,899", icon: "💎" },
+  {
+    name: "Express Exterior Maintenance",
+    desc: "Hand wash, clay bar decontamination, spray sealant, wheel & tire detail. Perfect for regular upkeep.",
+    price: "From $149",
+    image: carImg("photo-1520340356584-f9917d1eea6f"),
+  },
+  {
+    name: "Full Interior Deep Clean & Extraction",
+    desc: "Hot-water extraction, steam sanitization, leather conditioning, odor elimination, glass treatment.",
+    price: "From $329",
+    image: carImg("photo-1449965408869-eaa3f722e40d"),
+  },
+  {
+    name: "Premium 9H Ceramic Coating & Paint Correction",
+    desc: "Multi-stage machine polishing, swirl removal, 9H ceramic application — up to 9-year protection.",
+    price: "From $1,899",
+    image: carImg("photo-1552519507-da3b142c6e3d"),
+  },
 ];
 
 const TOOLS = [
@@ -54,13 +73,26 @@ export const Route = createFileRoute("/")({
 
 function Home() {
   const featured = useMemo(() => [...vehicles.filter((v) => v.featured), ...vehicles.filter((v) => !v.featured)].slice(0, 4), []);
+  const latestArticles = useMemo(() => articles.slice(0, 3), []);
   const ctaMsg = "Hi Aurexo Detailing Studio — I'd like to book a free vehicle assessment in Ohio. Please send me available slots.";
 
   return (
     <main className="overflow-x-hidden">
       {/* Hero */}
       <section className="relative min-h-[88vh] overflow-hidden bg-ink">
-        <img src={HERO_IMG} alt="Luxury sports car after ceramic coating — Aurexo Detailing Studio Ohio" className="absolute inset-0 h-full w-full object-cover opacity-50" loading="eager" />
+        <video
+          className="absolute inset-0 h-full w-full object-cover opacity-55"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          poster={HERO_IMG}
+          aria-hidden="true"
+        >
+          <source src={HERO_VIDEO_MP4} type="video/mp4" />
+          <source src={HERO_VIDEO_MP4_FALLBACK} type="video/mp4" />
+        </video>
         <div className="absolute inset-0 bg-gradient-to-b from-ink/50 via-ink/60 to-ink" />
         <div className="relative mx-auto flex min-h-[88vh] max-w-6xl flex-col items-center justify-center px-4 py-20 text-center">
           <span className="inline-flex items-center gap-2 rounded-full bg-brand/15 px-3 py-1 text-xs font-semibold text-brand ring-1 ring-brand/30">
@@ -102,24 +134,36 @@ function Home() {
         </div>
       </section>
 
-      {/* Service Tiers */}
+      {/* Service Tiers — image-forward */}
       <section className="mx-auto max-w-6xl px-4 py-14">
         <div className="text-center">
           <p className="text-xs font-bold uppercase tracking-wide text-brand">Our Services</p>
           <h2 className="mt-2 text-2xl font-bold text-ink sm:text-3xl">Choose Your Service Tier</h2>
           <p className="mt-2 text-sm text-muted-foreground">Every package is tailored to your vehicle class and condition — no cookie-cutter pricing.</p>
         </div>
-        <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-3">
+        <div className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {TIERS.map((t) => (
-            <div key={t.name} className="flex flex-col rounded-2xl border border-border bg-white p-6 transition hover:border-ink/40 hover:shadow-md">
-              <div className="text-3xl">{t.icon}</div>
-              <h3 className="mt-3 font-bold text-ink">{t.name}</h3>
-              <p className="mt-2 flex-1 text-sm text-muted-foreground">{t.desc}</p>
-              <p className="mt-4 text-lg font-extrabold text-brand">{t.price}</p>
-              <Link to="/services" className="mt-3 inline-flex items-center gap-1 text-xs font-semibold text-ink hover:text-brand">
-                Learn more <ArrowRight className="h-3 w-3" />
-              </Link>
-            </div>
+            <article key={t.name} className="group flex flex-col overflow-hidden rounded-3xl border border-border bg-white transition hover:-translate-y-1 hover:border-ink/40 hover:shadow-xl">
+              <div className="relative aspect-[4/3] overflow-hidden">
+                <img
+                  src={t.image}
+                  alt={t.name}
+                  loading="lazy"
+                  className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-ink/70 via-transparent to-transparent" />
+                <span className="absolute left-3 top-3 rounded-full bg-white/95 px-3 py-1 text-[11px] font-bold text-ink shadow-sm">
+                  {t.price}
+                </span>
+              </div>
+              <div className="flex flex-1 flex-col p-5">
+                <h3 className="font-bold text-ink">{t.name}</h3>
+                <p className="mt-2 flex-1 text-sm text-muted-foreground">{t.desc}</p>
+                <Link to="/services" className="mt-4 inline-flex items-center gap-1 text-xs font-semibold text-ink hover:text-brand">
+                  Learn more <ArrowRight className="h-3 w-3" />
+                </Link>
+              </div>
+            </article>
           ))}
         </div>
       </section>
@@ -163,7 +207,7 @@ function Home() {
             <p className="text-xs font-bold uppercase tracking-wide text-brand">Featured</p>
             <h2 className="mt-1 text-2xl font-bold text-ink">Top Detailing Packages</h2>
           </div>
-          <Link to="/listings" className="inline-flex items-center gap-1 text-sm font-medium text-ink">All packages <ArrowRight className="h-4 w-4" /></Link>
+          <Link to="/buy" className="inline-flex items-center gap-1 text-sm font-medium text-ink">All packages <ArrowRight className="h-4 w-4" /></Link>
         </div>
         <div className="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {featured.map((v) => <VehicleCard key={v.id} v={v} />)}
@@ -190,6 +234,55 @@ function Home() {
       </section>
 
       <PartnersMarquee />
+
+      {/* Blog Section */}
+      <section className="mx-auto max-w-6xl px-4 py-14">
+        <div className="flex items-end justify-between gap-4">
+          <div>
+            <p className="text-xs font-bold uppercase tracking-wide text-brand">From the Journal</p>
+            <h2 className="mt-1 text-2xl font-bold text-ink sm:text-3xl">Detailing Guides & Ohio Insights</h2>
+          </div>
+          <Link to="/news" className="hidden sm:inline-flex items-center gap-1 text-sm font-medium text-ink">
+            All articles <ArrowRight className="h-4 w-4" />
+          </Link>
+        </div>
+        <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {latestArticles.map((a) => (
+            <Link
+              key={a.slug}
+              to="/blog/$slug"
+              params={{ slug: a.slug }}
+              className="group overflow-hidden rounded-2xl border border-border bg-white transition hover:-translate-y-1 hover:shadow-lg"
+            >
+              <div className="relative aspect-[16/10] overflow-hidden">
+                <img
+                  src={a.cover}
+                  alt={a.title}
+                  loading="lazy"
+                  className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                />
+                <span className="absolute left-3 top-3 rounded-full bg-white/95 px-3 py-1 text-[11px] font-bold text-ink">
+                  {a.category}
+                </span>
+              </div>
+              <div className="p-5">
+                <h3 className="font-bold text-ink line-clamp-2 group-hover:text-brand">{a.title}</h3>
+                <p className="mt-2 text-sm text-muted-foreground line-clamp-2">{a.excerpt}</p>
+                <div className="mt-3 flex items-center gap-3 text-[11px] text-muted-foreground">
+                  <span className="inline-flex items-center gap-1"><Calendar className="h-3 w-3" /> {a.date}</span>
+                  {a.readMinutes ? <span>· {a.readMinutes} min read</span> : null}
+                </div>
+              </div>
+            </Link>
+          ))}
+        </div>
+        <div className="mt-6 sm:hidden">
+          <Link to="/news" className="inline-flex items-center gap-1 text-sm font-medium text-ink">
+            All articles <ArrowRight className="h-4 w-4" />
+          </Link>
+        </div>
+      </section>
+
       <HomeFAQ />
 
       {/* Bottom CTA */}
