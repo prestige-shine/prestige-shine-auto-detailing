@@ -23,7 +23,7 @@ const PLANS = [
 function Financing() {
   return (
     <main className="overflow-x-hidden">
-      <PageHeader eyebrow="Payment Plans" title="Book now, pay over time" subtitle="A-rated lender partners let Ohio owners spread ceramic and correction packages into affordable monthly payments." />
+      <PageHeader eyebrow="Payment Plans" title="Book now, pay over time" subtitle="A-rated lender partners let Lahore owners spread ceramic and correction packages into affordable monthly payments." />
       <section className="mx-auto max-w-6xl px-4 py-10">
         <div className="grid gap-4 md:grid-cols-3">
           {PLANS.map((p) => (

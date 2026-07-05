@@ -18,19 +18,19 @@ const SERVICE_OPTIONS = [
 ];
 
 const locations = [
-  { name: "Cleveland HQ", address: "1847 Euclid Avenue, Cleveland, OH 44115", hours: "Mon–Sat 8AM–6PM EST" },
-  { name: "Columbus Studio", address: "3320 Olentangy River Rd, Columbus, OH 43202", hours: "Mon–Sat 8AM–6PM EST" },
-  { name: "Cincinnati Studio", address: "5901 Madison Rd, Cincinnati, OH 45227", hours: "Tue–Sat 8AM–6PM EST" },
-  { name: "Akron Studio", address: "750 W Market St, Akron, OH 44303", hours: "Mon–Sat 9AM–5PM EST" },
+  { name: "Gulberg HQ", address: "1847 Euclid Avenue, Gulberg, Lahore 44115", hours: "Mon–Sat 8AM–6PM EST" },
+  { name: "DHA Studio", address: "3320 Olentangy River Rd, DHA, Lahore 43202", hours: "Mon–Sat 8AM–6PM EST" },
+  { name: "Bahria Town Studio", address: "5901 Madison Rd, Bahria Town, Lahore 45227", hours: "Tue–Sat 8AM–6PM EST" },
+  { name: "Model Town Studio", address: "750 W Market St, Model Town, Lahore 44303", hours: "Mon–Sat 9AM–5PM EST" },
 ];
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
-      { title: "Contact Top Coat Auto Detailers — Ohio" },
-      { name: "description", content: "Reach Top Coat Auto Detailers across Cleveland, Columbus, Cincinnati and Akron. Book a service, ask a question, or get a detailing quote via our contact form or WhatsApp." },
+      { title: "Contact Top Coat Auto Detailers — Lahore" },
+      { name: "description", content: "Reach Top Coat Auto Detailers across Gulberg, DHA, Bahria Town and Model Town. Book a service, ask a question, or get a detailing quote via our contact form or WhatsApp." },
       { property: "og:title", content: "Contact — Top Coat Auto Detailers" },
-      { property: "og:description", content: "Get in touch with Ohio's premier auto detailing studio." },
+      { property: "og:description", content: "Get in touch with Lahore's premier auto detailing studio." },
     ],
     links: [{ rel: "canonical", href: "/contact" }],
   }),
@@ -58,7 +58,7 @@ function Contact() {
     <main className="overflow-x-hidden">
       <PageHeader
         eyebrow="Contact"
-        title="Talk to a real Ohio detailer."
+        title="Talk to a real Lahore detailer."
         subtitle="Four studio locations, direct phone line, and instant WhatsApp handoff — no bots, no hold music."
       />
 
@@ -104,7 +104,7 @@ function Contact() {
             <div><p className="font-bold text-ink">Email</p><p className="text-sm text-muted-foreground">studio@aurexodetailing.com</p></div>
           </a>
           <a
-            href="https://wa.me/2347012307036?text=Hi%20Top Coat%2C%20I%27d%20like%20to%20book%20a%20detailing%20appointment."
+            href="https://wa.me/923219200955?text=Hi%20Top Coat%2C%20I%27d%20like%20to%20book%20a%20detailing%20appointment."
             target="_blank" rel="noreferrer"
             className="flex items-start gap-4 rounded-2xl bg-white border border-border p-5 hover:border-ink transition"
           >

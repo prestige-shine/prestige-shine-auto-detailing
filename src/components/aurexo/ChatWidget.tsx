@@ -60,8 +60,8 @@ export function ChatWidget() {
   const handleSubmit = () => {
     setSending(true);
     // Open WhatsApp synchronously so the tab isn't blocked
-    const href = `https://wa.me/15615550142?text=${encodeURIComponent(
-      `Hi Top Coat Auto Detailers — I'd like to book.\n\n• Name: ${payload.name}\n• Phone: ${payload.phone}\n• Ohio Zip: ${payload.zip}\n• Vehicle Class: ${payload.vehicleClass}\n• Service Tier: ${payload.serviceTier}\n• Preferred Window: ${payload.appointmentWindow}${estRange ? `\n• Estimated Range: ${estRange}` : ""}`,
+    const href = `https://wa.me/923219200955?text=${encodeURIComponent(
+      `Hi Top Coat Auto Detailers — I'd like to book.\n\n• Name: ${payload.name}\n• Phone: ${payload.phone}\n• Lahore Area: ${payload.zip}\n• Vehicle Class: ${payload.vehicleClass}\n• Service Tier: ${payload.serviceTier}\n• Preferred Window: ${payload.appointmentWindow}${estRange ? `\n• Estimated Range: ${estRange}` : ""}`,
     )}`;
     window.open(href, "_blank", "noopener,noreferrer");
     submitLead({ ...payload, estimate: estRange ?? undefined }).finally(() => {
@@ -92,7 +92,7 @@ export function ChatWidget() {
           <div className="grid h-9 w-9 place-items-center rounded-full bg-brand text-ink font-extrabold">A</div>
           <div className="min-w-0 flex-1">
             <p className="truncate text-sm font-semibold">Top Coat Detailing Concierge</p>
-            <p className="text-[11px] text-white/60">Typically replies within 2 minutes · Ohio</p>
+            <p className="text-[11px] text-white/60">Typically replies within 2 minutes · Lahore</p>
           </div>
           <button aria-label="Close" onClick={() => setOpen(false)} className="grid h-8 w-8 place-items-center rounded-full border border-white/15 text-white/80 hover:text-white">
             <X className="h-4 w-4" />
@@ -107,7 +107,7 @@ export function ChatWidget() {
 
           {step >= 0 && (
             <Bubble from="bot" title="Step 1 · Contact">
-              Who are we detailing for? Share your name, phone, and Ohio zip.
+              Who are we detailing for? Share your name, phone, and Lahore area.
             </Bubble>
           )}
           {step === 0 && (
@@ -115,7 +115,7 @@ export function ChatWidget() {
               <input aria-label="Full name" className="chat-input" placeholder="Full name" value={payload.name} onChange={(e) => setPayload({ ...payload, name: e.target.value })} />
               <input aria-label="Phone" className="chat-input" placeholder="Phone" value={payload.phone} onChange={(e) => setPayload({ ...payload, phone: e.target.value })} />
               <input aria-label="Email" type="email" className="chat-input" placeholder="Email (optional)" value={payload.email} onChange={(e) => setPayload({ ...payload, email: e.target.value })} />
-              <input aria-label="Zip" className="chat-input" placeholder="Ohio Zip" value={payload.zip} onChange={(e) => setPayload({ ...payload, zip: e.target.value })} />
+              <input aria-label="Zip" className="chat-input" placeholder="Lahore Area" value={payload.zip} onChange={(e) => setPayload({ ...payload, zip: e.target.value })} />
             </StepCard>
           )}
 
@@ -205,7 +205,7 @@ export function ChatWidget() {
                 <div className="space-y-1 text-xs text-white/85">
                   <p><span className="text-white/60">Client:</span> {payload.name} ({payload.phone})</p>
                   {payload.email ? <p><span className="text-white/60">Email:</span> {payload.email}</p> : null}
-                  <p><span className="text-white/60">Location:</span> {payload.zip}, OH</p>
+                  <p><span className="text-white/60">Location:</span> {payload.zip}, Lahore</p>
                   <p><span className="text-white/60">Vehicle:</span> {payload.vehicleClass}</p>
                   <p><span className="text-white/60">Tier:</span> {payload.serviceTier}</p>
                   <p><span className="text-white/60">Window:</span> {payload.appointmentWindow}</p>

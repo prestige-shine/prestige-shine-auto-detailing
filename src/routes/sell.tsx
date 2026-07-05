@@ -8,9 +8,9 @@ export const Route = createFileRoute("/sell")({
   head: () => ({
     meta: [
       { title: "Book a Free Vehicle Assessment — Top Coat Auto Detailers" },
-      { name: "description", content: "Book a free vehicle condition assessment at any Top Coat Auto Detailers in Ohio. We'll evaluate your paint, interior, and recommend the ideal detailing package." },
+      { name: "description", content: "Book a free vehicle condition assessment at any Top Coat Auto Detailers in Lahore. We'll evaluate your paint, interior, and recommend the ideal detailing package." },
       { property: "og:title", content: "Free Vehicle Assessment — Top Coat Auto Detailers" },
-      { property: "og:description", content: "Free Ohio vehicle detailing assessments — walk out with a clear plan and transparent quote." },
+      { property: "og:description", content: "Free Lahore vehicle detailing assessments — walk out with a clear plan and transparent quote." },
     ],
   }),
   component: Sell,

@@ -7,7 +7,7 @@ export const Route = createFileRoute("/inventory/$body")({
   head: ({ params }) => ({
     meta: [
       { title: `${decodeURIComponent(params.body)} Detailing Packages — Top Coat` },
-      { name: "description", content: `Top Coat detailing packages tailored for ${decodeURIComponent(params.body)} vehicles across Ohio.` },
+      { name: "description", content: `Top Coat detailing packages tailored for ${decodeURIComponent(params.body)} vehicles across Lahore.` },
       { property: "og:title", content: `${decodeURIComponent(params.body)} Detailing Packages — Top Coat` },
     ],
   }),
