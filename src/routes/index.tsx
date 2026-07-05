@@ -81,15 +81,26 @@ function Home() {
       <section className="relative min-h-[88vh] overflow-hidden bg-black">
         <video
           className="absolute inset-0 h-full w-full object-cover"
+          src={HERO_VIDEO_MP4}
           autoPlay
           muted
+          defaultMuted
           loop
           playsInline
           preload="auto"
+          disableRemotePlayback
+          disablePictureInPicture
+          controls={false}
+          ref={(el) => {
+            if (!el) return;
+            el.muted = true;
+            const tryPlay = () => el.play().catch(() => {});
+            if (el.readyState >= 2) tryPlay();
+            else el.addEventListener("loadeddata", tryPlay, { once: true });
+            el.addEventListener("canplay", tryPlay, { once: true });
+          }}
           aria-hidden="true"
-        >
-          <source src={HERO_VIDEO_MP4} type="video/mp4" />
-        </video>
+        />
         <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/40 to-ink/85" />
         <div className="relative mx-auto flex min-h-[88vh] max-w-6xl flex-col items-center justify-center px-4 py-20 text-center">
           <span className="inline-flex items-center gap-2 rounded-full bg-brand/15 px-3 py-1 text-xs font-semibold text-brand ring-1 ring-brand/30">
