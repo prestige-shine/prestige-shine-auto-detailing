@@ -2,12 +2,12 @@ type Props = { variant?: "dark" | "light"; className?: string };
 
 export function Logo({ variant: _variant = "dark", className = "" }: Props) {
   return (
-    <div className={`flex items-center gap-2 ${className}`} aria-label="Aurexo Detailing Studio">
+    <div className={`flex items-center gap-2 ${className}`} aria-label="Top Coat Auto Detailers">
       <svg viewBox="0 0 32 32" className="h-8 w-8" aria-hidden>
         <path d="M4 26 L16 4 L20 12 L12 26 Z" fill="#84CC16" />
         <path d="M20 12 L28 26 L16 26 Z" fill="#84CC16" opacity="0.55" />
       </svg>
-      <span className="sr-only">Aurexo Detailing Studio</span>
+      <span className="sr-only">Top Coat Auto Detailers</span>
     </div>
   );
 }

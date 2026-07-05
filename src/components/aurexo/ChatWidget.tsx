@@ -61,7 +61,7 @@ export function ChatWidget() {
     setSending(true);
     // Open WhatsApp synchronously so the tab isn't blocked
     const href = `https://wa.me/15615550142?text=${encodeURIComponent(
-      `Hi Aurexo Detailing Studio — I'd like to book.\n\n• Name: ${payload.name}\n• Phone: ${payload.phone}\n• Ohio Zip: ${payload.zip}\n• Vehicle Class: ${payload.vehicleClass}\n• Service Tier: ${payload.serviceTier}\n• Preferred Window: ${payload.appointmentWindow}${estRange ? `\n• Estimated Range: ${estRange}` : ""}`,
+      `Hi Top Coat Auto Detailers — I'd like to book.\n\n• Name: ${payload.name}\n• Phone: ${payload.phone}\n• Ohio Zip: ${payload.zip}\n• Vehicle Class: ${payload.vehicleClass}\n• Service Tier: ${payload.serviceTier}\n• Preferred Window: ${payload.appointmentWindow}${estRange ? `\n• Estimated Range: ${estRange}` : ""}`,
     )}`;
     window.open(href, "_blank", "noopener,noreferrer");
     submitLead({ ...payload, estimate: estRange ?? undefined }).finally(() => {
@@ -86,12 +86,12 @@ export function ChatWidget() {
           open ? "scale-100 opacity-100 translate-y-0" : "pointer-events-none scale-95 opacity-0 translate-y-2"
         }`}
         role="dialog"
-        aria-label="Aurexo detailing concierge chat"
+        aria-label="Top Coat detailing concierge chat"
       >
         <div className="flex items-center gap-3 border-b border-white/10 px-4 py-3">
           <div className="grid h-9 w-9 place-items-center rounded-full bg-brand text-ink font-extrabold">A</div>
           <div className="min-w-0 flex-1">
-            <p className="truncate text-sm font-semibold">Aurexo Detailing Concierge</p>
+            <p className="truncate text-sm font-semibold">Top Coat Detailing Concierge</p>
             <p className="text-[11px] text-white/60">Typically replies within 2 minutes · Ohio</p>
           </div>
           <button aria-label="Close" onClick={() => setOpen(false)} className="grid h-8 w-8 place-items-center rounded-full border border-white/15 text-white/80 hover:text-white">
@@ -101,7 +101,7 @@ export function ChatWidget() {
 
         <div ref={scrollRef} className="max-h-[60vh] space-y-4 overflow-y-auto px-4 py-4 text-sm">
           <Bubble from="bot">
-            Hi! I'm Aurexo's detailing concierge. Ask about ceramic coatings, paint correction, interior deep cleans,
+            Hi! I'm Top Coat's detailing concierge. Ask about ceramic coatings, paint correction, interior deep cleans,
             or book a slot in four quick steps.
           </Bubble>
 
@@ -219,7 +219,7 @@ export function ChatWidget() {
             <Bubble from="bot" title="Sent">
               <div className="flex items-start gap-2">
                 <Check className="mt-0.5 h-4 w-4 text-brand" />
-                <span>Brief handed off. An Aurexo detailer will confirm your slot within 2 hours.</span>
+                <span>Brief handed off. An Top Coat detailer will confirm your slot within 2 hours.</span>
               </div>
             </Bubble>
           )}

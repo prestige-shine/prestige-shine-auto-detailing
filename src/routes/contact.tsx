@@ -27,9 +27,9 @@ const locations = [
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
-      { title: "Contact Aurexo Detailing Studio — Ohio" },
-      { name: "description", content: "Reach Aurexo Detailing Studio across Cleveland, Columbus, Cincinnati and Akron. Book a service, ask a question, or get a detailing quote via our contact form or WhatsApp." },
-      { property: "og:title", content: "Contact — Aurexo Detailing Studio" },
+      { title: "Contact Top Coat Auto Detailers — Ohio" },
+      { name: "description", content: "Reach Top Coat Auto Detailers across Cleveland, Columbus, Cincinnati and Akron. Book a service, ask a question, or get a detailing quote via our contact form or WhatsApp." },
+      { property: "og:title", content: "Contact — Top Coat Auto Detailers" },
       { property: "og:description", content: "Get in touch with Ohio's premier auto detailing studio." },
     ],
     links: [{ rel: "canonical", href: "/contact" }],
@@ -104,7 +104,7 @@ function Contact() {
             <div><p className="font-bold text-ink">Email</p><p className="text-sm text-muted-foreground">studio@aurexodetailing.com</p></div>
           </a>
           <a
-            href="https://wa.me/2347012307036?text=Hi%20Aurexo%2C%20I%27d%20like%20to%20book%20a%20detailing%20appointment."
+            href="https://wa.me/2347012307036?text=Hi%20Top Coat%2C%20I%27d%20like%20to%20book%20a%20detailing%20appointment."
             target="_blank" rel="noreferrer"
             className="flex items-start gap-4 rounded-2xl bg-white border border-border p-5 hover:border-ink transition"
           >

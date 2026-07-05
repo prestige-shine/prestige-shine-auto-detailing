@@ -1,5 +1,5 @@
 // ============================================================
-// Aurexo Detailing Studio — sample data
+// Top Coat Auto Detailers — sample data
 // Type names are preserved so all downstream routes keep compiling.
 // Semantic remapping:
 //   title       -> service package name (e.g. "2024 Porsche 911 Ceramic 9H Package")

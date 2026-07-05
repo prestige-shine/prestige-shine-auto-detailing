@@ -4,14 +4,14 @@ import { Plus, Minus } from "lucide-react";
 const FAQS: { q: string; a: string }[] = [
   {
     q: "How long does a professional ceramic 9H coating actually last on an Ohio-driven car?",
-    a: "A properly prepped and cured 9H ceramic coating from Aurexo delivers 5–9 years of hydrophobic protection with our recommended annual maintenance decontamination. Ohio winters — road salt, brine, freeze-thaw — accelerate wear on unprotected clear coat by up to 40%; a ceramic layer keeps chemical staining and micro-marring off the paint itself.",
+    a: "A properly prepped and cured 9H ceramic coating from Top Coat delivers 5–9 years of hydrophobic protection with our recommended annual maintenance decontamination. Ohio winters — road salt, brine, freeze-thaw — accelerate wear on unprotected clear coat by up to 40%; a ceramic layer keeps chemical staining and micro-marring off the paint itself.",
   },
   {
     q: "What's the difference between a polish, a paint correction, and full multi-stage correction?",
     a: "A one-step polish enhances gloss and removes light haze but leaves most defects behind. Two-stage correction cuts and refines to remove 70–85% of swirls, wash marks, and light scratches. Full multi-stage correction (our Premium tier) targets 90%+ defect removal on aged clear coat, measured with a paint depth gauge to keep every panel within safe tolerance.",
   },
   {
-    q: "Can Aurexo actually remove heavy pet hair, deep stains, and lingering odours from an interior?",
+    q: "Can Top Coat actually remove heavy pet hair, deep stains, and lingering odours from an interior?",
     a: "Yes — that's the core of our Full Interior Deep Clean & Extraction. We use hot-water extraction, enzymatic pre-treatments for organic stains, ozone treatment for smoke and pet odour, and rotary brush agitation on carpets and upholstery. Heavy pet hair sessions include a dedicated pass with rubber blades and pneumatic tools before extraction.",
   },
   {

@@ -5,9 +5,9 @@ import { FinanceCalculator } from "@/components/aurexo/FinanceCalculator";
 export const Route = createFileRoute("/calculator")({
   head: () => ({
     meta: [
-      { title: "Loan Calculator — Aurexo" },
-      { name: "description", content: "Estimate your monthly car payment with Aurexo's free financing calculator." },
-      { property: "og:title", content: "Loan Calculator — Aurexo" },
+      { title: "Loan Calculator — Top Coat" },
+      { name: "description", content: "Estimate your monthly car payment with Top Coat's free financing calculator." },
+      { property: "og:title", content: "Loan Calculator — Top Coat" },
       { property: "og:description", content: "Estimate your monthly car payment." },
     ],
   }),

@@ -1,4 +1,4 @@
-// Centralized WhatsApp lead routing for Aurexo Detailing Studio.
+// Centralized WhatsApp lead routing for Top Coat Auto Detailers.
 export const WHATSAPP_NUMBER = "15615550142";
 export const WHATSAPP_DISPLAY = "+1 (561) 555-0142";
 export const STUDIO_PHONE = "+1 (561) 555-0142";
@@ -34,7 +34,7 @@ export function formatEstimateRange(low: number, high: number) {
 
 export function buildLeadMessage(p: LeadPayload) {
   const lines: string[] = [
-    "Hi Aurexo Detailing Studio — I'd like to book a detailing appointment.",
+    "Hi Top Coat Auto Detailers — I'd like to book a detailing appointment.",
     "",
     "── Client Details ──",
   ];

@@ -5,9 +5,9 @@ import { PageHeader } from "@/components/aurexo/PageHeader";
 export const Route = createFileRoute("/financing")({
   head: () => ({
     meta: [
-      { title: "Payment Plans — Aurexo Detailing Studio" },
-      { name: "description", content: "Flexible payment plans for ceramic coating, paint correction, and premium detailing packages at Aurexo Detailing Studio." },
-      { property: "og:title", content: "Payment Plans — Aurexo Detailing Studio" },
+      { title: "Payment Plans — Top Coat Auto Detailers" },
+      { name: "description", content: "Flexible payment plans for ceramic coating, paint correction, and premium detailing packages at Top Coat Auto Detailers." },
+      { property: "og:title", content: "Payment Plans — Top Coat Auto Detailers" },
       { property: "og:description", content: "0% pay-in-4, 12-month promotional APR, and 24-month fixed plans." },
     ],
   }),

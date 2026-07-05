@@ -33,9 +33,9 @@ export const Route = createFileRoute("/buy")({
   }),
   head: () => ({
     meta: [
-      { title: "Browse Detailing Packages — Aurexo Detailing Studio Ohio" },
-      { name: "description", content: "Browse and filter Aurexo's detailing packages by vehicle class, service tier, booking status, price range, and car make." },
-      { property: "og:title", content: "Detailing Packages — Aurexo Detailing Studio" },
+      { title: "Browse Detailing Packages — Top Coat Auto Detailers Ohio" },
+      { name: "description", content: "Browse and filter Top Coat's detailing packages by vehicle class, service tier, booking status, price range, and car make." },
+      { property: "og:title", content: "Detailing Packages — Top Coat Auto Detailers" },
       { property: "og:description", content: "Find the right detailing package for your vehicle." },
     ],
   }),
