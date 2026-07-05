@@ -66,6 +66,9 @@ export const Route = createFileRoute("/")({
       { name: "twitter:description", content: "Concierge auto detailing perfected in Lahore." },
       { name: "application/ld+json", content: JSON.stringify({ "@context": "https://schema.org", "@type": ["LocalBusiness", "AutoDetailing"], "name": "Top Coat Auto Detailers", "description": "Premium concierge auto detailing, ceramic coating, and paint correction in Lahore.", "telephone": "+923219200955", "areaServed": "Lahore, Pakistan", "priceRange": "$$$", "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "400" } }) },
     ],
+    links: [
+      { rel: "preload", as: "video", href: HERO_VIDEO_MP4, type: "video/mp4" },
+    ],
   }),
   component: Home,
 });
