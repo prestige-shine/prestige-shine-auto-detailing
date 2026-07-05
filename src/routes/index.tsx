@@ -84,7 +84,6 @@ function Home() {
           src={HERO_VIDEO_MP4}
           autoPlay
           muted
-          defaultMuted
           loop
           playsInline
           preload="auto"
