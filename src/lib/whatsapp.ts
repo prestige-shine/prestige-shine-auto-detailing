@@ -1,8 +1,8 @@
 // Centralized WhatsApp lead routing for Top Coat Auto Detailers.
-export const WHATSAPP_NUMBER = "15615550142";
-export const WHATSAPP_DISPLAY = "+1 (561) 555-0142";
-export const STUDIO_PHONE = "+1 (561) 555-0142";
-export const STUDIO_TEL = "+15615550142";
+export const WHATSAPP_NUMBER = "923219200955";
+export const WHATSAPP_DISPLAY = "+92 321 9200955";
+export const STUDIO_PHONE = "+92 321 9200955";
+export const STUDIO_TEL = "+923219200955";
 
 export type LeadPayload = {
   name?: string;
@@ -41,7 +41,7 @@ export function buildLeadMessage(p: LeadPayload) {
   if (p.name) lines.push(`• Name: ${p.name}`);
   if (p.phone) lines.push(`• Phone: ${p.phone}`);
   if (p.email) lines.push(`• Email: ${p.email}`);
-  if (p.zip) lines.push(`• Ohio Zip: ${p.zip}`);
+  if (p.zip) lines.push(`• Lahore Area: ${p.zip}`);
   if (p.county) lines.push(`• County: ${p.county}`);
 
   lines.push("", "── Service Specification ──");

@@ -5,7 +5,7 @@ export const Route = createFileRoute("/terms")({
   head: () => ({
     meta: [
       { title: "Terms of Service — Top Coat Auto Detailers" },
-      { name: "description", content: "Terms of service for Top Coat Auto Detailers auto detailing services in Ohio." },
+      { name: "description", content: "Terms of service for Top Coat Auto Detailers auto detailing services in Lahore." },
       { property: "og:title", content: "Terms of Service — Top Coat Auto Detailers" },
     ],
   }),
@@ -19,7 +19,7 @@ function Terms() {
       <section className="mx-auto max-w-3xl px-4 py-10 space-y-6 text-sm leading-relaxed text-ink">
         <div>
           <h2 className="text-lg font-bold">1. Scope of Services</h2>
-          <p className="mt-2 text-muted-foreground">Top Coat Auto Detailers provides auto detailing services including exterior maintenance, interior deep cleaning, paint correction, and ceramic coating installation, performed at our Ohio studios or as mobile service at your address.</p>
+          <p className="mt-2 text-muted-foreground">Top Coat Auto Detailers provides auto detailing services including exterior maintenance, interior deep cleaning, paint correction, and ceramic coating installation, performed at our Lahore studios or as mobile service at your address.</p>
         </div>
         <div>
           <h2 className="text-lg font-bold">2. Vehicle Assessment & Quotes</h2>

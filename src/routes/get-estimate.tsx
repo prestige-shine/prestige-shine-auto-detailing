@@ -15,10 +15,10 @@ const WINDOWS = ["Morning (8AM–12PM)", "Afternoon (12PM–4PM)", "Drop-off ove
 export const Route = createFileRoute("/get-estimate")({
   head: () => ({
     meta: [
-      { title: "Request a Detailing Estimate — Top Coat Auto Detailers Ohio" },
-      { name: "description", content: "Get an instant detailing estimate from Top Coat. Choose your vehicle class, service tier, and add-ons — we'll package your brief and connect you with a certified Ohio detailer." },
-      { property: "og:title", content: "Instant Detailing Estimate — Top Coat Ohio" },
-      { property: "og:description", content: "Fast, transparent auto detailing estimates from Ohio's premier studio." },
+      { title: "Request a Detailing Estimate — Top Coat Auto Detailers Lahore" },
+      { name: "description", content: "Get an instant detailing estimate from Top Coat. Choose your vehicle class, service tier, and add-ons — we'll package your brief and connect you with a certified Lahore detailer." },
+      { property: "og:title", content: "Instant Detailing Estimate — Top Coat Lahore" },
+      { property: "og:description", content: "Fast, transparent auto detailing estimates from Lahore's premier studio." },
     ],
     links: [{ rel: "canonical", href: "/get-estimate" }],
   }),
@@ -70,7 +70,7 @@ function GetEstimate() {
       <section className="bg-ink text-white">
         <div className="mx-auto max-w-6xl px-4 py-14 sm:py-20">
           <span className="inline-flex items-center gap-2 rounded-full bg-brand/15 px-3 py-1 text-xs font-bold text-brand ring-1 ring-brand/30">
-            <Car className="h-3 w-3" /> Instant Detailing Estimate — Ohio
+            <Car className="h-3 w-3" /> Instant Detailing Estimate — Lahore
           </span>
           <h1 className="mt-4 max-w-3xl text-4xl font-extrabold leading-tight tracking-tight sm:text-6xl">
             Request your detailing estimate in <span className="text-brand">under 60 seconds.</span>

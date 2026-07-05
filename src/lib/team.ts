@@ -10,7 +10,7 @@ export type TeamMember = {
 export const team: TeamMember[] = [
   {
     name: "Robert Fox",
-    role: "Lead Detailer — Cleveland Studio",
+    role: "Lead Detailer — Gulberg Studio",
     photo: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=70",
     linkedin: "https://www.linkedin.com/",
     twitter: "https://x.com/",
@@ -18,7 +18,7 @@ export const team: TeamMember[] = [
   },
   {
     name: "Marcus Tate",
-    role: "Ceramic Coating Specialist — Columbus Studio",
+    role: "Ceramic Coating Specialist — DHA Studio",
     photo: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=600&q=70",
     linkedin: "https://www.linkedin.com/",
     twitter: "https://x.com/",
@@ -26,7 +26,7 @@ export const team: TeamMember[] = [
   },
   {
     name: "Sarah Mendez",
-    role: "Interior Restoration Specialist — Cincinnati Studio",
+    role: "Interior Restoration Specialist — Bahria Town Studio",
     photo: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=600&q=70",
     linkedin: "https://www.linkedin.com/",
     twitter: "https://x.com/",
@@ -34,7 +34,7 @@ export const team: TeamMember[] = [
   },
   {
     name: "Priya Kapoor",
-    role: "Mobile Detailer — Akron & Dayton",
+    role: "Mobile Detailer — Model Town & Cantt",
     photo: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=70",
     linkedin: "https://www.linkedin.com/",
     twitter: "https://x.com/",

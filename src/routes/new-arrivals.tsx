@@ -7,7 +7,7 @@ export const Route = createFileRoute("/new-arrivals")({
   head: () => ({
     meta: [
       { title: "New Detailing Packages — Top Coat Auto Detailers" },
-      { name: "description", content: "The latest detailing packages and vehicle transformations added at Top Coat Auto Detailers across Ohio." },
+      { name: "description", content: "The latest detailing packages and vehicle transformations added at Top Coat Auto Detailers across Lahore." },
       { property: "og:title", content: "New Detailing Packages — Top Coat Auto Detailers" },
       { property: "og:description", content: "Newest ceramic coating, paint correction, and interior deep clean packages added this month." },
     ],

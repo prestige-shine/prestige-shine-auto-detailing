@@ -6,9 +6,9 @@ export const Route = createFileRoute("/news")({
   head: () => ({
     meta: [
       { title: "Detailing Journal — Top Coat Auto Detailers" },
-      { name: "description", content: "Guides on ceramic coating, paint correction, interior deep cleaning, and Ohio-climate paint care from Top Coat Auto Detailers." },
+      { name: "description", content: "Guides on ceramic coating, paint correction, interior deep cleaning, and Lahore-climate paint care from Top Coat Auto Detailers." },
       { property: "og:title", content: "Detailing Journal — Top Coat Auto Detailers" },
-      { property: "og:description", content: "Ceramic coating, paint correction, and Ohio-climate paint care guides." },
+      { property: "og:description", content: "Ceramic coating, paint correction, and Lahore-climate paint care guides." },
     ],
   }),
   component: News,

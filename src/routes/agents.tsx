@@ -7,9 +7,9 @@ export const Route = createFileRoute("/agents")({
   head: () => ({
     meta: [
       { title: "Our Detailers — Top Coat Auto Detailers" },
-      { name: "description", content: "Meet the Top Coat Auto Detailers team — certified ceramic coating installers and paint correction specialists across Ohio." },
+      { name: "description", content: "Meet the Top Coat Auto Detailers team — certified ceramic coating installers and paint correction specialists across Lahore." },
       { property: "og:title", content: "Our Detailers — Top Coat Auto Detailers" },
-      { property: "og:description", content: "Certified ceramic and paint correction specialists across Ohio." },
+      { property: "og:description", content: "Certified ceramic and paint correction specialists across Lahore." },
     ],
   }),
   component: Agents,

@@ -6,10 +6,10 @@ import { team } from "@/lib/team";
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "About Top Coat Auto Detailers — Ohio's Premier Auto Detailing" },
-      { name: "description", content: "Founded in 2015 in Cleveland, Top Coat Auto Detailers delivers museum-grade paint correction, 9H ceramic coatings, and deep interior cleaning across Ohio." },
+      { title: "About Top Coat Auto Detailers — Lahore's Premier Auto Detailing" },
+      { name: "description", content: "Founded in 2015 in Gulberg, Top Coat Auto Detailers delivers museum-grade paint correction, 9H ceramic coatings, and deep interior cleaning across Lahore." },
       { property: "og:title", content: "About Top Coat Auto Detailers" },
-      { property: "og:description", content: "Ohio's premier auto detailing studio — ceramic coatings, paint correction, and interior deep cleans since 2015." },
+      { property: "og:description", content: "Lahore's premier auto detailing studio — ceramic coatings, paint correction, and interior deep cleans since 2015." },
     ],
   }),
   component: About,
@@ -20,8 +20,8 @@ function About() {
     <main className="overflow-x-hidden">
       <PageHeader
         eyebrow="About Top Coat"
-        title="Ohio's most trusted detailing studio, built from passion."
-        subtitle="Founded in 2015 in Cleveland, Top Coat Auto Detailers has grown from a one-bay garage into four state-of-the-art facilities serving Northeast and Central Ohio — each staffed by certified detailing professionals obsessed with perfection."
+        title="Lahore's most trusted detailing studio, built from passion."
+        subtitle="Founded in 2015 in Gulberg, Top Coat Auto Detailers has grown from a one-bay garage into four state-of-the-art facilities serving Northeast and Central Lahore — each staffed by certified detailing professionals obsessed with perfection."
       />
 
       <section className="mx-auto max-w-6xl px-4 py-12 grid grid-cols-2 sm:grid-cols-4 gap-4">
@@ -29,7 +29,7 @@ function About() {
           { i: Users, n: "4,200+", l: "Vehicles detailed" },
           { i: Trophy, n: "9", l: "Industry awards" },
           { i: ShieldCheck, n: "5 yr", l: "Ceramic warranty" },
-          { i: Sparkles, n: "4", l: "Studios across Ohio" },
+          { i: Sparkles, n: "4", l: "Studios across Lahore" },
         ].map(({ i: Icon, n, l }) => (
           <div key={l} className="rounded-2xl bg-white border border-border p-5 text-center">
             <Icon className="h-6 w-6 mx-auto text-brand" />
@@ -50,9 +50,9 @@ function About() {
           />
           <div className="p-8 sm:p-12 flex flex-col justify-center">
             <p className="text-xs font-bold uppercase tracking-wide text-brand">Our Story</p>
-            <h2 className="mt-2 text-2xl font-bold text-ink">Cleveland, 2015.</h2>
+            <h2 className="mt-2 text-2xl font-bold text-ink">Gulberg, 2015.</h2>
             <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-              Robert Fox started Top Coat out of a single-bay garage in Cleveland's Tremont neighborhood with one polisher, a pressure washer, and an uncompromising standard for paint. Word spread fast. Within two years the studio expanded to a purpose-built facility in Midtown Cleveland, then added Columbus in 2019, Cincinnati in 2021, and Akron in 2023. Today, Top Coat employs over 30 certified detailers across four Ohio studios and is widely regarded as the state's most trusted name in ceramic coatings and paint correction.
+              Robert Fox started Top Coat out of a single-bay garage in Gulberg's Tremont neighborhood with one polisher, a pressure washer, and an uncompromising standard for paint. Word spread fast. Within two years the studio expanded to a purpose-built facility in Midtown Gulberg, then added DHA in 2019, Bahria Town in 2021, and Model Town in 2023. Today, Top Coat employs over 30 certified detailers across four Lahore studios and is widely regarded as the state's most trusted name in ceramic coatings and paint correction.
             </p>
           </div>
         </div>
@@ -97,7 +97,7 @@ function About() {
             <div>
               <h3 className="text-lg font-bold text-ink">Awards & recognition</h3>
               <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                Top Coat has been named Ohio's Best Auto Detailing Studio by Cleveland Magazine five consecutive years. We've earned the Gtechniq Accredited Detailer designation, the RUPES Training Center badge, and the International Detailing Association's Recognized Business Award.
+                Top Coat has been named Lahore's Best Auto Detailing Studio by Gulberg Magazine five consecutive years. We've earned the Gtechniq Accredited Detailer designation, the RUPES Training Center badge, and the International Detailing Association's Recognized Business Award.
               </p>
             </div>
             <div>

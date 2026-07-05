@@ -47,7 +47,7 @@ const groups = [
   {
     title: "Booking & Pricing",
     items: [
-      ["How do I book an appointment?", "Use the Book a Free Assessment form on our website, call +1 (561) 555-0199, or message us on WhatsApp. We'll confirm your vehicle, service, and preferred studio or mobile location within a few hours."],
+      ["How do I book an appointment?", "Use the Book a Free Assessment form on our website, call +92 321 9200955, or message us on WhatsApp. We'll confirm your vehicle, service, and preferred studio or mobile location within a few hours."],
       ["Are prices fixed or are there surprises?", "All prices are confirmed before work begins. If additional issues are discovered during check-in — like more severe paint damage than expected — we'll photograph the finding and offer a written change order before proceeding. You always authorise what happens next."],
       ["Do you offer payment plans?", "Yes. Top Coat partners with Klarna and a select panel of auto-finance lenders to offer Pay-in-4 (0% interest) and 12–24 month plans for larger ceramic coating packages. See the Financing page for details."],
       ["What is your cancellation policy?", "We ask for 48 hours' notice to reschedule without charge. Cancellations within 24 hours of a booked studio appointment may incur a $50 cancellation fee to cover reserved bay time. Mobile appointments carry a $25 same-day cancellation fee."],
@@ -60,10 +60,10 @@ const groups = [
 export const Route = createFileRoute("/faqs")({
   head: () => ({
     meta: [
-      { title: "Auto Detailing FAQs — Top Coat Auto Detailers Ohio" },
-      { name: "description", content: "Answers to Ohio drivers' most common questions about ceramic coating, paint correction, interior deep cleans, mobile detailing, and booking." },
+      { title: "Auto Detailing FAQs — Top Coat Auto Detailers Lahore" },
+      { name: "description", content: "Answers to Lahore drivers' most common questions about ceramic coating, paint correction, interior deep cleans, mobile detailing, and booking." },
       { property: "og:title", content: "Detailing FAQs — Top Coat Auto Detailers" },
-      { property: "og:description", content: "Expert answers from Ohio's certified detailing professionals." },
+      { property: "og:description", content: "Expert answers from Lahore's certified detailing professionals." },
     ],
     scripts: [
       {
@@ -91,7 +91,7 @@ function Faqs() {
       <PageHeader
         eyebrow="Help"
         title="Detailing questions, answered."
-        subtitle="Everything Ohio vehicle owners ask before, during and after a premium detailing service. Can't find yours? Our studio is one tap away."
+        subtitle="Everything Lahore vehicle owners ask before, during and after a premium detailing service. Can't find yours? Our studio is one tap away."
       />
       <section className="mx-auto max-w-3xl px-4 py-12 space-y-8">
         {groups.map((g) => (
