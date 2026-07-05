@@ -6,9 +6,9 @@ import { PageHeader } from "@/components/aurexo/PageHeader";
 export const Route = createFileRoute("/inventory/$body")({
   head: ({ params }) => ({
     meta: [
-      { title: `${decodeURIComponent(params.body)} Detailing Packages — Aurexo` },
-      { name: "description", content: `Aurexo detailing packages tailored for ${decodeURIComponent(params.body)} vehicles across Ohio.` },
-      { property: "og:title", content: `${decodeURIComponent(params.body)} Detailing Packages — Aurexo` },
+      { title: `${decodeURIComponent(params.body)} Detailing Packages — Top Coat` },
+      { name: "description", content: `Top Coat detailing packages tailored for ${decodeURIComponent(params.body)} vehicles across Ohio.` },
+      { property: "og:title", content: `${decodeURIComponent(params.body)} Detailing Packages — Top Coat` },
     ],
   }),
   component: InventoryByBody,

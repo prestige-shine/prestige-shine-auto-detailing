@@ -55,16 +55,16 @@ const waHref = (msg: string) => `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeU
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Aurexo Detailing Studio — Concierge Auto Detailing in Ohio" },
+      { title: "Top Coat Auto Detailers — Concierge Auto Detailing in Ohio" },
       { name: "description", content: "Premium auto detailing in Ohio. Ceramic 9H coating, multi-stage paint correction, interior hot-water extraction — concierge results." },
-      { property: "og:title", content: "Aurexo Detailing Studio — Concierge Auto Detailing in Ohio" },
+      { property: "og:title", content: "Top Coat Auto Detailers — Concierge Auto Detailing in Ohio" },
       { property: "og:description", content: "Ceramic 9H coating, paint correction, and interior deep extraction. Serving all of Ohio." },
       { property: "og:type", content: "website" },
       { property: "og:image", content: HERO_IMG },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Aurexo Detailing Studio — Ohio" },
+      { name: "twitter:title", content: "Top Coat Auto Detailers — Ohio" },
       { name: "twitter:description", content: "Concierge auto detailing perfected in Ohio." },
-      { name: "application/ld+json", content: JSON.stringify({ "@context": "https://schema.org", "@type": ["LocalBusiness", "AutoDetailing"], "name": "Aurexo Detailing Studio", "description": "Premium concierge auto detailing, ceramic coating, and paint correction in Ohio.", "telephone": "+15615550142", "areaServed": "Ohio, USA", "priceRange": "$$$", "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "400" } }) },
+      { name: "application/ld+json", content: JSON.stringify({ "@context": "https://schema.org", "@type": ["LocalBusiness", "AutoDetailing"], "name": "Top Coat Auto Detailers", "description": "Premium concierge auto detailing, ceramic coating, and paint correction in Ohio.", "telephone": "+15615550142", "areaServed": "Ohio, USA", "priceRange": "$$$", "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "400" } }) },
     ],
   }),
   component: Home,
@@ -73,7 +73,7 @@ export const Route = createFileRoute("/")({
 function Home() {
   const featured = useMemo(() => [...vehicles.filter((v) => v.featured), ...vehicles.filter((v) => !v.featured)].slice(0, 4), []);
   const latestArticles = useMemo(() => articles.slice(0, 3), []);
-  const ctaMsg = "Hi Aurexo Detailing Studio — I'd like to book a free vehicle assessment in Ohio. Please send me available slots.";
+  const ctaMsg = "Hi Top Coat Auto Detailers — I'd like to book a free vehicle assessment in Ohio. Please send me available slots.";
 
   return (
     <main className="overflow-x-hidden">

@@ -4,9 +4,9 @@ import { Sparkles } from "lucide-react";
 export const Route = createFileRoute("/coming-soon")({
   head: () => ({
     meta: [
-      { title: "Coming Soon — Aurexo Detailing Studio" },
-      { name: "description", content: "This service is launching soon at Aurexo Detailing Studio." },
-      { property: "og:title", content: "Coming Soon — Aurexo Detailing Studio" },
+      { title: "Coming Soon — Top Coat Auto Detailers" },
+      { name: "description", content: "This service is launching soon at Top Coat Auto Detailers." },
+      { property: "og:title", content: "Coming Soon — Top Coat Auto Detailers" },
       { name: "robots", content: "noindex" },
     ],
   }),

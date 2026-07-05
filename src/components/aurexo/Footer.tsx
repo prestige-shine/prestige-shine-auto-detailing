@@ -55,7 +55,7 @@ export function Footer() {
         <Logo variant="light" />
 
         <p className="mt-4 max-w-md text-sm leading-relaxed text-white/70">
-          Aurexo Detailing Studio is Ohio's concierge auto detailing house — ceramic 9H coatings, multi-stage paint
+          Top Coat Auto Detailers is Ohio's concierge auto detailing house — ceramic 9H coatings, multi-stage paint
           correction, and interior deep extractions performed in-studio or at your driveway.
         </p>
 
@@ -107,7 +107,7 @@ export function Footer() {
           </div>
           <div className="flex items-start gap-3 text-sm text-white/85">
             <MapPin className="h-4 w-4 text-brand shrink-0 mt-0.5" />
-            <span>Aurexo Detailing Studio — Serving all of Ohio, USA</span>
+            <span>Top Coat Auto Detailers — Serving all of Ohio, USA</span>
           </div>
         </div>
 
@@ -119,7 +119,7 @@ export function Footer() {
         </div>
 
         <div className="mt-10 flex flex-wrap items-center justify-between gap-3 text-xs text-white/40">
-          <p>© 2026 Aurexo Detailing Studio · Ohio, USA. All rights reserved.</p>
+          <p>© 2026 Top Coat Auto Detailers · Ohio, USA. All rights reserved.</p>
           <Link to="/terms" className="hover:text-white/70">Terms of Service</Link>
         </div>
       </div>

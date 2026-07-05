@@ -6,9 +6,9 @@ import { team } from "@/lib/team";
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "About Aurexo Detailing Studio — Ohio's Premier Auto Detailing" },
-      { name: "description", content: "Founded in 2015 in Cleveland, Aurexo Detailing Studio delivers museum-grade paint correction, 9H ceramic coatings, and deep interior cleaning across Ohio." },
-      { property: "og:title", content: "About Aurexo Detailing Studio" },
+      { title: "About Top Coat Auto Detailers — Ohio's Premier Auto Detailing" },
+      { name: "description", content: "Founded in 2015 in Cleveland, Top Coat Auto Detailers delivers museum-grade paint correction, 9H ceramic coatings, and deep interior cleaning across Ohio." },
+      { property: "og:title", content: "About Top Coat Auto Detailers" },
       { property: "og:description", content: "Ohio's premier auto detailing studio — ceramic coatings, paint correction, and interior deep cleans since 2015." },
     ],
   }),
@@ -19,9 +19,9 @@ function About() {
   return (
     <main className="overflow-x-hidden">
       <PageHeader
-        eyebrow="About Aurexo"
+        eyebrow="About Top Coat"
         title="Ohio's most trusted detailing studio, built from passion."
-        subtitle="Founded in 2015 in Cleveland, Aurexo Detailing Studio has grown from a one-bay garage into four state-of-the-art facilities serving Northeast and Central Ohio — each staffed by certified detailing professionals obsessed with perfection."
+        subtitle="Founded in 2015 in Cleveland, Top Coat Auto Detailers has grown from a one-bay garage into four state-of-the-art facilities serving Northeast and Central Ohio — each staffed by certified detailing professionals obsessed with perfection."
       />
 
       <section className="mx-auto max-w-6xl px-4 py-12 grid grid-cols-2 sm:grid-cols-4 gap-4">
@@ -44,7 +44,7 @@ function About() {
         <div className="rounded-3xl bg-white border border-border overflow-hidden grid grid-cols-1 lg:grid-cols-2">
           <img
             src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=900&q=80"
-            alt="Aurexo detailing studio interior"
+            alt="Top Coat detailing studio interior"
             className="h-64 w-full object-cover lg:h-full"
             loading="lazy"
           />
@@ -52,7 +52,7 @@ function About() {
             <p className="text-xs font-bold uppercase tracking-wide text-brand">Our Story</p>
             <h2 className="mt-2 text-2xl font-bold text-ink">Cleveland, 2015.</h2>
             <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-              Robert Fox started Aurexo out of a single-bay garage in Cleveland's Tremont neighborhood with one polisher, a pressure washer, and an uncompromising standard for paint. Word spread fast. Within two years the studio expanded to a purpose-built facility in Midtown Cleveland, then added Columbus in 2019, Cincinnati in 2021, and Akron in 2023. Today, Aurexo employs over 30 certified detailers across four Ohio studios and is widely regarded as the state's most trusted name in ceramic coatings and paint correction.
+              Robert Fox started Top Coat out of a single-bay garage in Cleveland's Tremont neighborhood with one polisher, a pressure washer, and an uncompromising standard for paint. Word spread fast. Within two years the studio expanded to a purpose-built facility in Midtown Cleveland, then added Columbus in 2019, Cincinnati in 2021, and Akron in 2023. Today, Top Coat employs over 30 certified detailers across four Ohio studios and is widely regarded as the state's most trusted name in ceramic coatings and paint correction.
             </p>
           </div>
         </div>
@@ -63,7 +63,7 @@ function About() {
         <div className="rounded-3xl bg-white border border-border p-8 sm:p-12">
           <h2 className="text-2xl font-bold text-ink">Our mission</h2>
           <p className="mt-3 text-muted-foreground leading-relaxed">
-            Every vehicle that enters an Aurexo studio leaves better than when it arrived — not just cleaner, but protected, restored, and documented. We combine professional-grade chemistry with meticulous hand-work and transparent communication so you always know exactly what was done and why.
+            Every vehicle that enters an Top Coat studio leaves better than when it arrived — not just cleaner, but protected, restored, and documented. We combine professional-grade chemistry with meticulous hand-work and transparent communication so you always know exactly what was done and why.
           </p>
           <h3 className="mt-8 text-lg font-bold text-ink">What we stand for</h3>
           <ul className="mt-3 grid sm:grid-cols-2 gap-3 text-sm">
@@ -83,7 +83,7 @@ function About() {
 
           <div className="mt-10 grid gap-8 border-t border-border pt-10 lg:grid-cols-2">
             <div>
-              <h3 className="text-lg font-bold text-ink">The Aurexo process</h3>
+              <h3 className="text-lg font-bold text-ink">The Top Coat process</h3>
               <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
                 Every engagement begins with a thorough paint inspection under specialized lighting. We measure paint thickness, identify contaminants, swirl marks, and oxidation before recommending a service tier. Nothing is assumed — everything is documented.
               </p>
@@ -97,7 +97,7 @@ function About() {
             <div>
               <h3 className="text-lg font-bold text-ink">Awards & recognition</h3>
               <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                Aurexo has been named Ohio's Best Auto Detailing Studio by Cleveland Magazine five consecutive years. We've earned the Gtechniq Accredited Detailer designation, the RUPES Training Center badge, and the International Detailing Association's Recognized Business Award.
+                Top Coat has been named Ohio's Best Auto Detailing Studio by Cleveland Magazine five consecutive years. We've earned the Gtechniq Accredited Detailer designation, the RUPES Training Center badge, and the International Detailing Association's Recognized Business Award.
               </p>
             </div>
             <div>

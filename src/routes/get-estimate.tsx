@@ -15,9 +15,9 @@ const WINDOWS = ["Morning (8AM–12PM)", "Afternoon (12PM–4PM)", "Drop-off ove
 export const Route = createFileRoute("/get-estimate")({
   head: () => ({
     meta: [
-      { title: "Request a Detailing Estimate — Aurexo Detailing Studio Ohio" },
-      { name: "description", content: "Get an instant detailing estimate from Aurexo. Choose your vehicle class, service tier, and add-ons — we'll package your brief and connect you with a certified Ohio detailer." },
-      { property: "og:title", content: "Instant Detailing Estimate — Aurexo Ohio" },
+      { title: "Request a Detailing Estimate — Top Coat Auto Detailers Ohio" },
+      { name: "description", content: "Get an instant detailing estimate from Top Coat. Choose your vehicle class, service tier, and add-ons — we'll package your brief and connect you with a certified Ohio detailer." },
+      { property: "og:title", content: "Instant Detailing Estimate — Top Coat Ohio" },
       { property: "og:description", content: "Fast, transparent auto detailing estimates from Ohio's premier studio." },
     ],
     links: [{ rel: "canonical", href: "/get-estimate" }],
@@ -76,7 +76,7 @@ function GetEstimate() {
             Request your detailing estimate in <span className="text-brand">under 60 seconds.</span>
           </h1>
           <p className="mt-4 max-w-2xl text-sm text-white/70 sm:text-base">
-            Select your vehicle class, service tier, and any add-ons. We'll package your brief and connect you with a certified Aurexo detailer via WhatsApp — no obligation.
+            Select your vehicle class, service tier, and any add-ons. We'll package your brief and connect you with a certified Top Coat detailer via WhatsApp — no obligation.
           </p>
           <div className="mt-6 flex flex-wrap gap-3 text-xs text-white/70">
             <span className="inline-flex items-center gap-1"><ShieldCheck className="h-4 w-4 text-brand" /> 5-year ceramic warranty</span>

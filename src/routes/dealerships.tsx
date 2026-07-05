@@ -6,9 +6,9 @@ import { STUDIO_PHONE, STUDIO_TEL } from "@/lib/whatsapp";
 export const Route = createFileRoute("/dealerships")({
   head: () => ({
     meta: [
-      { title: "Studio Locations — Aurexo Detailing Studio" },
-      { name: "description", content: "Aurexo Detailing Studio locations across Ohio — Cleveland HQ, Columbus, Cincinnati, and Akron. Climate-controlled bays for ceramic coating and paint correction." },
-      { property: "og:title", content: "Studio Locations — Aurexo Detailing Studio" },
+      { title: "Studio Locations — Top Coat Auto Detailers" },
+      { name: "description", content: "Top Coat Auto Detailers locations across Ohio — Cleveland HQ, Columbus, Cincinnati, and Akron. Climate-controlled bays for ceramic coating and paint correction." },
+      { property: "og:title", content: "Studio Locations — Top Coat Auto Detailers" },
       { property: "og:description", content: "Four Ohio detailing studios: Cleveland, Columbus, Cincinnati, Akron." },
     ],
   }),

@@ -6,9 +6,9 @@ import { PageHeader } from "@/components/aurexo/PageHeader";
 export const Route = createFileRoute("/new-arrivals")({
   head: () => ({
     meta: [
-      { title: "New Detailing Packages — Aurexo Detailing Studio" },
-      { name: "description", content: "The latest detailing packages and vehicle transformations added at Aurexo Detailing Studio across Ohio." },
-      { property: "og:title", content: "New Detailing Packages — Aurexo Detailing Studio" },
+      { title: "New Detailing Packages — Top Coat Auto Detailers" },
+      { name: "description", content: "The latest detailing packages and vehicle transformations added at Top Coat Auto Detailers across Ohio." },
+      { property: "og:title", content: "New Detailing Packages — Top Coat Auto Detailers" },
       { property: "og:description", content: "Newest ceramic coating, paint correction, and interior deep clean packages added this month." },
     ],
   }),
