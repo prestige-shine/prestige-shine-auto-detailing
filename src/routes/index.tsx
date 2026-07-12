@@ -180,6 +180,8 @@ function Home() {
       </section>
 
       {/* Before / After Gallery */}
+      <BookingWidget />
+
       <section className="bg-surface py-14">
         <div className="mx-auto max-w-6xl px-4">
           <div className="text-center">
