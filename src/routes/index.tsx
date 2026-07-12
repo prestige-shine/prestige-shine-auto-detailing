@@ -5,6 +5,7 @@ import { vehicles } from "@/lib/aurexo-data";
 import { VehicleCard } from "@/components/aurexo/VehicleCard";
 import { PartnersMarquee } from "@/components/aurexo/PartnersMarquee";
 import { HomeFAQ } from "@/components/aurexo/HomeFAQ";
+import { BookingWidget } from "@/components/aurexo/BookingWidget";
 import { WHATSAPP_NUMBER } from "@/lib/whatsapp";
 import { articles } from "@/lib/articles";
 import heroVideo from "@/assets/hero-video.mp4.asset.json";
@@ -179,6 +180,8 @@ function Home() {
       </section>
 
       {/* Before / After Gallery */}
+      <BookingWidget />
+
       <section className="bg-surface py-14">
         <div className="mx-auto max-w-6xl px-4">
           <div className="text-center">
