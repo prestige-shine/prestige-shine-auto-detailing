@@ -104,11 +104,11 @@ export function BookingWidget() {
         {/* Body */}
         <div className="px-6 pb-8">
           {step === 1 && (
-            <div className="rounded-3xl bg-white/5 p-5">
-              <p className="mb-4 text-center text-base font-bold">
+            <div className="rounded-3xl bg-white p-5 shadow-sm">
+              <p className="mb-4 text-center text-lg font-extrabold" style={{ color: "#3f6212" }}>
                 {MONTHS[viewMonth.getMonth()]} {viewMonth.getFullYear()}
               </p>
-              <div className="grid grid-cols-7 gap-1 text-center text-xs font-bold uppercase tracking-wider text-white">
+              <div className="grid grid-cols-7 gap-1 text-center text-xs font-bold uppercase tracking-wider text-[#3f6212]/70">
                 {DOW.map((d) => <div key={d} className="py-1">{d}</div>)}
               </div>
               <div className="mt-2 grid grid-cols-7 gap-1">
@@ -122,8 +122,8 @@ export function BookingWidget() {
                       onClick={() => { setSelectedDate(cell); setStep(2); }}
                       className={`aspect-square rounded-full text-base font-bold transition ${
                         isPast
-                          ? "text-white/40 cursor-not-allowed"
-                          : "text-white hover:bg-white hover:text-[#4d7c0f]"
+                          ? "text-[#3f6212]/30 cursor-not-allowed"
+                          : "text-[#3f6212] hover:bg-[#84CC16] hover:text-white"
                       }`}
                     >
                       {cell.getDate()}
