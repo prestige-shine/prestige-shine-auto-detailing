@@ -1,11 +1,11 @@
 {
-  "version": 1,
   "asset_id": "3aeb568f-d3f5-4790-8318-0d17359e41a1",
-  "project_id": "8e48329f-5a06-4f6e-a83d-0c342b29e8a4",
-  "url": "/__l5e/assets-v1/3aeb568f-d3f5-4790-8318-0d17359e41a1/topcoat-logo.png",
-  "r2_key": "a/v1/8e48329f-5a06-4f6e-a83d-0c342b29e8a4/3aeb568f-d3f5-4790-8318-0d17359e41a1/topcoat-logo.png",
-  "original_filename": "topcoat-logo.png",
-  "size": 199088,
   "content_type": "image/png",
-  "created_at": "2026-07-05T07:01:05Z"
+  "created_at": "2026-07-05T07:01:05Z",
+  "original_filename": "topcoat-logo.png",
+  "project_id": "0272b1a4-c483-4942-af28-7a7b7693ff62",
+  "r2_key": "a/v1/0272b1a4-c483-4942-af28-7a7b7693ff62/3aeb568f-d3f5-4790-8318-0d17359e41a1/topcoat-logo.png",
+  "size": 199088,
+  "url": "/__l5e/assets-v1/3aeb568f-d3f5-4790-8318-0d17359e41a1/topcoat-logo.png",
+  "version": 1
 }
