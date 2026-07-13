@@ -14,16 +14,111 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      leads: {
+        Row: {
+          condition_notes: string | null
+          conditions: string[]
+          created_at: string
+          email: string
+          full_name: string
+          id: string
+          other_service: string | null
+          phone: string
+          photo_urls: string[]
+          preferred_date: string | null
+          preferred_time: string | null
+          schedule_flexible: boolean | null
+          services: string[]
+          source: string | null
+          status: string
+          timeline: string | null
+          vehicle_color: string | null
+          vehicle_make: string | null
+          vehicle_model: string | null
+          vehicle_year: string | null
+        }
+        Insert: {
+          condition_notes?: string | null
+          conditions?: string[]
+          created_at?: string
+          email: string
+          full_name: string
+          id?: string
+          other_service?: string | null
+          phone: string
+          photo_urls?: string[]
+          preferred_date?: string | null
+          preferred_time?: string | null
+          schedule_flexible?: boolean | null
+          services?: string[]
+          source?: string | null
+          status?: string
+          timeline?: string | null
+          vehicle_color?: string | null
+          vehicle_make?: string | null
+          vehicle_model?: string | null
+          vehicle_year?: string | null
+        }
+        Update: {
+          condition_notes?: string | null
+          conditions?: string[]
+          created_at?: string
+          email?: string
+          full_name?: string
+          id?: string
+          other_service?: string | null
+          phone?: string
+          photo_urls?: string[]
+          preferred_date?: string | null
+          preferred_time?: string | null
+          schedule_flexible?: boolean | null
+          services?: string[]
+          source?: string | null
+          status?: string
+          timeline?: string | null
+          vehicle_color?: string | null
+          vehicle_make?: string | null
+          vehicle_model?: string | null
+          vehicle_year?: string | null
+        }
+        Relationships: []
+      }
+      user_roles: {
+        Row: {
+          created_at: string
+          id: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"]
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      has_role: {
+        Args: {
+          _role: Database["public"]["Enums"]["app_role"]
+          _user_id: string
+        }
+        Returns: boolean
+      }
     }
     Enums: {
-      [_ in never]: never
+      app_role: "admin" | "user"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -150,6 +245,8 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      app_role: ["admin", "user"],
+    },
   },
 } as const
