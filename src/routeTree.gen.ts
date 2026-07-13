@@ -16,7 +16,6 @@ import { Route as SavedRouteImport } from './routes/saved'
 import { Route as ReviewsRouteImport } from './routes/reviews'
 import { Route as NewsRouteImport } from './routes/news'
 import { Route as NewArrivalsRouteImport } from './routes/new-arrivals'
-import { Route as GetEstimateRouteImport } from './routes/get-estimate'
 import { Route as FinancingRouteImport } from './routes/financing'
 import { Route as FeaturedRouteImport } from './routes/featured'
 import { Route as FaqsRouteImport } from './routes/faqs'
@@ -67,11 +66,6 @@ const NewsRoute = NewsRouteImport.update({
 const NewArrivalsRoute = NewArrivalsRouteImport.update({
   id: '/new-arrivals',
   path: '/new-arrivals',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const GetEstimateRoute = GetEstimateRouteImport.update({
-  id: '/get-estimate',
-  path: '/get-estimate',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FinancingRoute = FinancingRouteImport.update({
@@ -169,7 +163,6 @@ export interface FileRoutesByFullPath {
   '/faqs': typeof FaqsRoute
   '/featured': typeof FeaturedRoute
   '/financing': typeof FinancingRoute
-  '/get-estimate': typeof GetEstimateRoute
   '/new-arrivals': typeof NewArrivalsRoute
   '/news': typeof NewsRoute
   '/reviews': typeof ReviewsRoute
@@ -195,7 +188,6 @@ export interface FileRoutesByTo {
   '/faqs': typeof FaqsRoute
   '/featured': typeof FeaturedRoute
   '/financing': typeof FinancingRoute
-  '/get-estimate': typeof GetEstimateRoute
   '/new-arrivals': typeof NewArrivalsRoute
   '/news': typeof NewsRoute
   '/reviews': typeof ReviewsRoute
@@ -222,7 +214,6 @@ export interface FileRoutesById {
   '/faqs': typeof FaqsRoute
   '/featured': typeof FeaturedRoute
   '/financing': typeof FinancingRoute
-  '/get-estimate': typeof GetEstimateRoute
   '/new-arrivals': typeof NewArrivalsRoute
   '/news': typeof NewsRoute
   '/reviews': typeof ReviewsRoute
@@ -250,7 +241,6 @@ export interface FileRouteTypes {
     | '/faqs'
     | '/featured'
     | '/financing'
-    | '/get-estimate'
     | '/new-arrivals'
     | '/news'
     | '/reviews'
@@ -276,7 +266,6 @@ export interface FileRouteTypes {
     | '/faqs'
     | '/featured'
     | '/financing'
-    | '/get-estimate'
     | '/new-arrivals'
     | '/news'
     | '/reviews'
@@ -302,7 +291,6 @@ export interface FileRouteTypes {
     | '/faqs'
     | '/featured'
     | '/financing'
-    | '/get-estimate'
     | '/new-arrivals'
     | '/news'
     | '/reviews'
@@ -329,7 +317,6 @@ export interface RootRouteChildren {
   FaqsRoute: typeof FaqsRoute
   FeaturedRoute: typeof FeaturedRoute
   FinancingRoute: typeof FinancingRoute
-  GetEstimateRoute: typeof GetEstimateRoute
   NewArrivalsRoute: typeof NewArrivalsRoute
   NewsRoute: typeof NewsRoute
   ReviewsRoute: typeof ReviewsRoute
@@ -391,13 +378,6 @@ declare module '@tanstack/react-router' {
       path: '/new-arrivals'
       fullPath: '/new-arrivals'
       preLoaderRoute: typeof NewArrivalsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/get-estimate': {
-      id: '/get-estimate'
-      path: '/get-estimate'
-      fullPath: '/get-estimate'
-      preLoaderRoute: typeof GetEstimateRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/financing': {
@@ -529,7 +509,6 @@ const rootRouteChildren: RootRouteChildren = {
   FaqsRoute: FaqsRoute,
   FeaturedRoute: FeaturedRoute,
   FinancingRoute: FinancingRoute,
-  GetEstimateRoute: GetEstimateRoute,
   NewArrivalsRoute: NewArrivalsRoute,
   NewsRoute: NewsRoute,
   ReviewsRoute: ReviewsRoute,
