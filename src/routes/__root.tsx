@@ -18,6 +18,7 @@ import { CompareProvider } from "@/contexts/CompareContext";
 import { CompareBar } from "@/components/aurexo/CompareBar";
 import { FavoritesProvider } from "@/contexts/FavoritesContext";
 import { ChatWidget } from "@/components/aurexo/ChatWidget";
+import { LeadDialogProvider } from "@/contexts/LeadDialogContext";
 
 function NotFoundComponent() {
   return (
@@ -129,7 +130,9 @@ function RootComponent() {
     <QueryClientProvider client={queryClient}>
       <FavoritesProvider>
         <CompareProvider>
-          <SiteShell />
+          <LeadDialogProvider>
+            <SiteShell />
+          </LeadDialogProvider>
         </CompareProvider>
       </FavoritesProvider>
     </QueryClientProvider>
