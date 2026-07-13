@@ -16,6 +16,7 @@ import { Route as SavedRouteImport } from './routes/saved'
 import { Route as ReviewsRouteImport } from './routes/reviews'
 import { Route as NewsRouteImport } from './routes/news'
 import { Route as NewArrivalsRouteImport } from './routes/new-arrivals'
+import { Route as GetEstimateRouteImport } from './routes/get-estimate'
 import { Route as FinancingRouteImport } from './routes/financing'
 import { Route as FeaturedRouteImport } from './routes/featured'
 import { Route as FaqsRouteImport } from './routes/faqs'
@@ -25,13 +26,16 @@ import { Route as CompareRouteImport } from './routes/compare'
 import { Route as ComingSoonRouteImport } from './routes/coming-soon'
 import { Route as CalculatorRouteImport } from './routes/calculator'
 import { Route as BuyRouteImport } from './routes/buy'
+import { Route as AuthRouteImport } from './routes/auth'
 import { Route as AgentsRouteImport } from './routes/agents'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as R404RouteImport } from './routes/404'
+import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ListingsIdRouteImport } from './routes/listings.$id'
 import { Route as InventoryBodyRouteImport } from './routes/inventory.$body'
 import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
+import { Route as AuthenticatedAdminRouteImport } from './routes/_authenticated/admin'
 
 const TermsRoute = TermsRouteImport.update({
   id: '/terms',
@@ -66,6 +70,11 @@ const NewsRoute = NewsRouteImport.update({
 const NewArrivalsRoute = NewArrivalsRouteImport.update({
   id: '/new-arrivals',
   path: '/new-arrivals',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GetEstimateRoute = GetEstimateRouteImport.update({
+  id: '/get-estimate',
+  path: '/get-estimate',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FinancingRoute = FinancingRouteImport.update({
@@ -113,6 +122,11 @@ const BuyRoute = BuyRouteImport.update({
   path: '/buy',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthRoute = AuthRouteImport.update({
+  id: '/auth',
+  path: '/auth',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AgentsRoute = AgentsRouteImport.update({
   id: '/agents',
   path: '/agents',
@@ -126,6 +140,10 @@ const AboutRoute = AboutRouteImport.update({
 const R404Route = R404RouteImport.update({
   id: '/404',
   path: '/404',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
+  id: '/_authenticated',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -148,12 +166,18 @@ const BlogSlugRoute = BlogSlugRouteImport.update({
   path: '/blog/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthenticatedAdminRoute = AuthenticatedAdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/404': typeof R404Route
   '/about': typeof AboutRoute
   '/agents': typeof AgentsRoute
+  '/auth': typeof AuthRoute
   '/buy': typeof BuyRoute
   '/calculator': typeof CalculatorRoute
   '/coming-soon': typeof ComingSoonRoute
@@ -163,6 +187,7 @@ export interface FileRoutesByFullPath {
   '/faqs': typeof FaqsRoute
   '/featured': typeof FeaturedRoute
   '/financing': typeof FinancingRoute
+  '/get-estimate': typeof GetEstimateRoute
   '/new-arrivals': typeof NewArrivalsRoute
   '/news': typeof NewsRoute
   '/reviews': typeof ReviewsRoute
@@ -170,6 +195,7 @@ export interface FileRoutesByFullPath {
   '/sell': typeof SellRoute
   '/services': typeof ServicesRoute
   '/terms': typeof TermsRoute
+  '/admin': typeof AuthenticatedAdminRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/inventory/$body': typeof InventoryBodyRoute
   '/listings/$id': typeof ListingsIdRoute
@@ -179,6 +205,7 @@ export interface FileRoutesByTo {
   '/404': typeof R404Route
   '/about': typeof AboutRoute
   '/agents': typeof AgentsRoute
+  '/auth': typeof AuthRoute
   '/buy': typeof BuyRoute
   '/calculator': typeof CalculatorRoute
   '/coming-soon': typeof ComingSoonRoute
@@ -188,6 +215,7 @@ export interface FileRoutesByTo {
   '/faqs': typeof FaqsRoute
   '/featured': typeof FeaturedRoute
   '/financing': typeof FinancingRoute
+  '/get-estimate': typeof GetEstimateRoute
   '/new-arrivals': typeof NewArrivalsRoute
   '/news': typeof NewsRoute
   '/reviews': typeof ReviewsRoute
@@ -195,6 +223,7 @@ export interface FileRoutesByTo {
   '/sell': typeof SellRoute
   '/services': typeof ServicesRoute
   '/terms': typeof TermsRoute
+  '/admin': typeof AuthenticatedAdminRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/inventory/$body': typeof InventoryBodyRoute
   '/listings/$id': typeof ListingsIdRoute
@@ -202,9 +231,11 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
   '/404': typeof R404Route
   '/about': typeof AboutRoute
   '/agents': typeof AgentsRoute
+  '/auth': typeof AuthRoute
   '/buy': typeof BuyRoute
   '/calculator': typeof CalculatorRoute
   '/coming-soon': typeof ComingSoonRoute
@@ -214,6 +245,7 @@ export interface FileRoutesById {
   '/faqs': typeof FaqsRoute
   '/featured': typeof FeaturedRoute
   '/financing': typeof FinancingRoute
+  '/get-estimate': typeof GetEstimateRoute
   '/new-arrivals': typeof NewArrivalsRoute
   '/news': typeof NewsRoute
   '/reviews': typeof ReviewsRoute
@@ -221,6 +253,7 @@ export interface FileRoutesById {
   '/sell': typeof SellRoute
   '/services': typeof ServicesRoute
   '/terms': typeof TermsRoute
+  '/_authenticated/admin': typeof AuthenticatedAdminRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/inventory/$body': typeof InventoryBodyRoute
   '/listings/$id': typeof ListingsIdRoute
@@ -232,6 +265,7 @@ export interface FileRouteTypes {
     | '/404'
     | '/about'
     | '/agents'
+    | '/auth'
     | '/buy'
     | '/calculator'
     | '/coming-soon'
@@ -241,6 +275,7 @@ export interface FileRouteTypes {
     | '/faqs'
     | '/featured'
     | '/financing'
+    | '/get-estimate'
     | '/new-arrivals'
     | '/news'
     | '/reviews'
@@ -248,6 +283,7 @@ export interface FileRouteTypes {
     | '/sell'
     | '/services'
     | '/terms'
+    | '/admin'
     | '/blog/$slug'
     | '/inventory/$body'
     | '/listings/$id'
@@ -257,6 +293,7 @@ export interface FileRouteTypes {
     | '/404'
     | '/about'
     | '/agents'
+    | '/auth'
     | '/buy'
     | '/calculator'
     | '/coming-soon'
@@ -266,6 +303,7 @@ export interface FileRouteTypes {
     | '/faqs'
     | '/featured'
     | '/financing'
+    | '/get-estimate'
     | '/new-arrivals'
     | '/news'
     | '/reviews'
@@ -273,15 +311,18 @@ export interface FileRouteTypes {
     | '/sell'
     | '/services'
     | '/terms'
+    | '/admin'
     | '/blog/$slug'
     | '/inventory/$body'
     | '/listings/$id'
   id:
     | '__root__'
     | '/'
+    | '/_authenticated'
     | '/404'
     | '/about'
     | '/agents'
+    | '/auth'
     | '/buy'
     | '/calculator'
     | '/coming-soon'
@@ -291,6 +332,7 @@ export interface FileRouteTypes {
     | '/faqs'
     | '/featured'
     | '/financing'
+    | '/get-estimate'
     | '/new-arrivals'
     | '/news'
     | '/reviews'
@@ -298,6 +340,7 @@ export interface FileRouteTypes {
     | '/sell'
     | '/services'
     | '/terms'
+    | '/_authenticated/admin'
     | '/blog/$slug'
     | '/inventory/$body'
     | '/listings/$id'
@@ -305,9 +348,11 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
   R404Route: typeof R404Route
   AboutRoute: typeof AboutRoute
   AgentsRoute: typeof AgentsRoute
+  AuthRoute: typeof AuthRoute
   BuyRoute: typeof BuyRoute
   CalculatorRoute: typeof CalculatorRoute
   ComingSoonRoute: typeof ComingSoonRoute
@@ -317,6 +362,7 @@ export interface RootRouteChildren {
   FaqsRoute: typeof FaqsRoute
   FeaturedRoute: typeof FeaturedRoute
   FinancingRoute: typeof FinancingRoute
+  GetEstimateRoute: typeof GetEstimateRoute
   NewArrivalsRoute: typeof NewArrivalsRoute
   NewsRoute: typeof NewsRoute
   ReviewsRoute: typeof ReviewsRoute
@@ -378,6 +424,13 @@ declare module '@tanstack/react-router' {
       path: '/new-arrivals'
       fullPath: '/new-arrivals'
       preLoaderRoute: typeof NewArrivalsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/get-estimate': {
+      id: '/get-estimate'
+      path: '/get-estimate'
+      fullPath: '/get-estimate'
+      preLoaderRoute: typeof GetEstimateRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/financing': {
@@ -443,6 +496,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BuyRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/auth': {
+      id: '/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/agents': {
       id: '/agents'
       path: '/agents'
@@ -462,6 +522,13 @@ declare module '@tanstack/react-router' {
       path: '/404'
       fullPath: '/404'
       preLoaderRoute: typeof R404RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_authenticated': {
+      id: '/_authenticated'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof AuthenticatedRouteRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -492,14 +559,34 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BlogSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_authenticated/admin': {
+      id: '/_authenticated/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AuthenticatedAdminRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
   }
 }
 
+interface AuthenticatedRouteRouteChildren {
+  AuthenticatedAdminRoute: typeof AuthenticatedAdminRoute
+}
+
+const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
+  AuthenticatedAdminRoute: AuthenticatedAdminRoute,
+}
+
+const AuthenticatedRouteRouteWithChildren =
+  AuthenticatedRouteRoute._addFileChildren(AuthenticatedRouteRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
   R404Route: R404Route,
   AboutRoute: AboutRoute,
   AgentsRoute: AgentsRoute,
+  AuthRoute: AuthRoute,
   BuyRoute: BuyRoute,
   CalculatorRoute: CalculatorRoute,
   ComingSoonRoute: ComingSoonRoute,
@@ -509,6 +596,7 @@ const rootRouteChildren: RootRouteChildren = {
   FaqsRoute: FaqsRoute,
   FeaturedRoute: FeaturedRoute,
   FinancingRoute: FinancingRoute,
+  GetEstimateRoute: GetEstimateRoute,
   NewArrivalsRoute: NewArrivalsRoute,
   NewsRoute: NewsRoute,
   ReviewsRoute: ReviewsRoute,
