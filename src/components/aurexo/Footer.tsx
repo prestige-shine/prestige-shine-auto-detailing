@@ -1,8 +1,9 @@
 import { useState } from "react";
-import { Plus, Minus, Phone, MapPin, ArrowRight, Facebook, Instagram, MessageCircle } from "lucide-react";
+import { Plus, Minus, Phone, MapPin, ArrowRight, Facebook, Instagram, MessageCircle, Sparkles } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import { Logo } from "./Logo";
 import { STUDIO_PHONE, STUDIO_TEL, WHATSAPP_NUMBER } from "@/lib/whatsapp";
+import { useLeadDialog } from "@/contexts/LeadDialogContext";
 
 const groups: Record<string, { label: string; to: string }[]> = {
   "Quick Links": [
@@ -49,6 +50,7 @@ function AccordionRow({ title, items }: { title: string; items: { label: string;
 }
 
 export function Footer() {
+  const { open } = useLeadDialog();
   return (
     <footer className="bg-ink text-white">
       <div className="mx-auto max-w-6xl px-5 py-12">
@@ -58,6 +60,14 @@ export function Footer() {
           Top Coat Auto Detailers is Lahore's concierge auto detailing house — ceramic 9H coatings, multi-stage paint
           correction, and interior deep extractions performed in-studio or at your driveway.
         </p>
+
+        <button
+          type="button"
+          onClick={() => open()}
+          className="mt-6 inline-flex items-center gap-2 rounded-full bg-brand px-6 py-3 text-sm font-extrabold text-ink shadow-lg transition hover:opacity-90"
+        >
+          <Sparkles className="h-4 w-4" /> Get My Personalized Quote <ArrowRight className="h-4 w-4" />
+        </button>
 
         <div className="mt-8 grid gap-6 sm:grid-cols-2">
           <div>

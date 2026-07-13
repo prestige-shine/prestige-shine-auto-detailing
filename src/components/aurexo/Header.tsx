@@ -1,12 +1,14 @@
 import { Link } from "@tanstack/react-router";
 import { Logo } from "./Logo";
-import { Heart, MessageCircle } from "lucide-react";
+import { Heart, Sparkles } from "lucide-react";
 import { useFavorites } from "@/contexts/FavoritesContext";
+import { useLeadDialog } from "@/contexts/LeadDialogContext";
 
 type Props = { onMenuClick: () => void };
 
 export function Header({ onMenuClick }: Props) {
   const favorites = useFavorites();
+  const { open } = useLeadDialog();
   return (
     <header className="sticky top-0 z-40 w-full border-b border-border bg-background/95 backdrop-blur">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4">
@@ -18,13 +20,14 @@ export function Header({ onMenuClick }: Props) {
             <Heart className="h-4 w-4" fill={favorites.ids.length ? "currentColor" : "none"} />
             {favorites.ids.length > 0 && <span className="absolute -right-1 -top-1 grid h-5 min-w-5 place-items-center rounded-full bg-brand px-1 text-[10px] font-extrabold text-ink">{favorites.ids.length}</span>}
           </Link>
-          <Link
-            to="/contact"
-            className="inline-flex items-center gap-2 rounded-full border border-ink/80 px-4 py-2 text-sm font-semibold text-ink transition hover:bg-ink hover:text-white sm:px-5"
+          <button
+            type="button"
+            onClick={() => open()}
+            className="inline-flex items-center gap-2 rounded-full bg-brand px-4 py-2 text-sm font-bold text-ink shadow-sm transition hover:opacity-90 sm:px-5"
           >
-            <MessageCircle className="h-4 w-4" />
-            <span>Contact Us</span>
-          </Link>
+            <Sparkles className="h-4 w-4" />
+            <span>Book Now</span>
+          </button>
           <button
             type="button"
             onClick={onMenuClick}

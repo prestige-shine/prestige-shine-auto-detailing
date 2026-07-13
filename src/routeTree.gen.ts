@@ -26,13 +26,16 @@ import { Route as CompareRouteImport } from './routes/compare'
 import { Route as ComingSoonRouteImport } from './routes/coming-soon'
 import { Route as CalculatorRouteImport } from './routes/calculator'
 import { Route as BuyRouteImport } from './routes/buy'
+import { Route as AuthRouteImport } from './routes/auth'
 import { Route as AgentsRouteImport } from './routes/agents'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as R404RouteImport } from './routes/404'
+import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ListingsIdRouteImport } from './routes/listings.$id'
 import { Route as InventoryBodyRouteImport } from './routes/inventory.$body'
 import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
+import { Route as AuthenticatedAdminRouteImport } from './routes/_authenticated/admin'
 
 const TermsRoute = TermsRouteImport.update({
   id: '/terms',
@@ -119,6 +122,11 @@ const BuyRoute = BuyRouteImport.update({
   path: '/buy',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthRoute = AuthRouteImport.update({
+  id: '/auth',
+  path: '/auth',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AgentsRoute = AgentsRouteImport.update({
   id: '/agents',
   path: '/agents',
@@ -132,6 +140,10 @@ const AboutRoute = AboutRouteImport.update({
 const R404Route = R404RouteImport.update({
   id: '/404',
   path: '/404',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
+  id: '/_authenticated',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -154,12 +166,18 @@ const BlogSlugRoute = BlogSlugRouteImport.update({
   path: '/blog/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthenticatedAdminRoute = AuthenticatedAdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/404': typeof R404Route
   '/about': typeof AboutRoute
   '/agents': typeof AgentsRoute
+  '/auth': typeof AuthRoute
   '/buy': typeof BuyRoute
   '/calculator': typeof CalculatorRoute
   '/coming-soon': typeof ComingSoonRoute
@@ -177,6 +195,7 @@ export interface FileRoutesByFullPath {
   '/sell': typeof SellRoute
   '/services': typeof ServicesRoute
   '/terms': typeof TermsRoute
+  '/admin': typeof AuthenticatedAdminRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/inventory/$body': typeof InventoryBodyRoute
   '/listings/$id': typeof ListingsIdRoute
@@ -186,6 +205,7 @@ export interface FileRoutesByTo {
   '/404': typeof R404Route
   '/about': typeof AboutRoute
   '/agents': typeof AgentsRoute
+  '/auth': typeof AuthRoute
   '/buy': typeof BuyRoute
   '/calculator': typeof CalculatorRoute
   '/coming-soon': typeof ComingSoonRoute
@@ -203,6 +223,7 @@ export interface FileRoutesByTo {
   '/sell': typeof SellRoute
   '/services': typeof ServicesRoute
   '/terms': typeof TermsRoute
+  '/admin': typeof AuthenticatedAdminRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/inventory/$body': typeof InventoryBodyRoute
   '/listings/$id': typeof ListingsIdRoute
@@ -210,9 +231,11 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
   '/404': typeof R404Route
   '/about': typeof AboutRoute
   '/agents': typeof AgentsRoute
+  '/auth': typeof AuthRoute
   '/buy': typeof BuyRoute
   '/calculator': typeof CalculatorRoute
   '/coming-soon': typeof ComingSoonRoute
@@ -230,6 +253,7 @@ export interface FileRoutesById {
   '/sell': typeof SellRoute
   '/services': typeof ServicesRoute
   '/terms': typeof TermsRoute
+  '/_authenticated/admin': typeof AuthenticatedAdminRoute
   '/blog/$slug': typeof BlogSlugRoute
   '/inventory/$body': typeof InventoryBodyRoute
   '/listings/$id': typeof ListingsIdRoute
@@ -241,6 +265,7 @@ export interface FileRouteTypes {
     | '/404'
     | '/about'
     | '/agents'
+    | '/auth'
     | '/buy'
     | '/calculator'
     | '/coming-soon'
@@ -258,6 +283,7 @@ export interface FileRouteTypes {
     | '/sell'
     | '/services'
     | '/terms'
+    | '/admin'
     | '/blog/$slug'
     | '/inventory/$body'
     | '/listings/$id'
@@ -267,6 +293,7 @@ export interface FileRouteTypes {
     | '/404'
     | '/about'
     | '/agents'
+    | '/auth'
     | '/buy'
     | '/calculator'
     | '/coming-soon'
@@ -284,15 +311,18 @@ export interface FileRouteTypes {
     | '/sell'
     | '/services'
     | '/terms'
+    | '/admin'
     | '/blog/$slug'
     | '/inventory/$body'
     | '/listings/$id'
   id:
     | '__root__'
     | '/'
+    | '/_authenticated'
     | '/404'
     | '/about'
     | '/agents'
+    | '/auth'
     | '/buy'
     | '/calculator'
     | '/coming-soon'
@@ -310,6 +340,7 @@ export interface FileRouteTypes {
     | '/sell'
     | '/services'
     | '/terms'
+    | '/_authenticated/admin'
     | '/blog/$slug'
     | '/inventory/$body'
     | '/listings/$id'
@@ -317,9 +348,11 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
   R404Route: typeof R404Route
   AboutRoute: typeof AboutRoute
   AgentsRoute: typeof AgentsRoute
+  AuthRoute: typeof AuthRoute
   BuyRoute: typeof BuyRoute
   CalculatorRoute: typeof CalculatorRoute
   ComingSoonRoute: typeof ComingSoonRoute
@@ -463,6 +496,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BuyRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/auth': {
+      id: '/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/agents': {
       id: '/agents'
       path: '/agents'
@@ -482,6 +522,13 @@ declare module '@tanstack/react-router' {
       path: '/404'
       fullPath: '/404'
       preLoaderRoute: typeof R404RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_authenticated': {
+      id: '/_authenticated'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof AuthenticatedRouteRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -512,14 +559,34 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BlogSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_authenticated/admin': {
+      id: '/_authenticated/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AuthenticatedAdminRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
   }
 }
 
+interface AuthenticatedRouteRouteChildren {
+  AuthenticatedAdminRoute: typeof AuthenticatedAdminRoute
+}
+
+const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
+  AuthenticatedAdminRoute: AuthenticatedAdminRoute,
+}
+
+const AuthenticatedRouteRouteWithChildren =
+  AuthenticatedRouteRoute._addFileChildren(AuthenticatedRouteRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
   R404Route: R404Route,
   AboutRoute: AboutRoute,
   AgentsRoute: AgentsRoute,
+  AuthRoute: AuthRoute,
   BuyRoute: BuyRoute,
   CalculatorRoute: CalculatorRoute,
   ComingSoonRoute: ComingSoonRoute,
@@ -544,13 +611,3 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
