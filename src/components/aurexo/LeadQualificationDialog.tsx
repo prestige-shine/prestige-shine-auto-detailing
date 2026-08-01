@@ -955,10 +955,6 @@ function StepReview({ form, goTo }: { form: FormState; goTo: (n: number) => void
   );
 }
 
-function SuccessView({ onClose }: { onClose: () => void }) {
-  return SuccessViewInner({ onClose });
-}
-
 function StepEstimate({
   form,
   submitting,
