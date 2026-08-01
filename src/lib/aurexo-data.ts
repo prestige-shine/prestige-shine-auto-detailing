@@ -1,18 +1,28 @@
 // ============================================================
-// Top Coat Auto Detailers — sample data
+// Top Coat Auto Detailers — real completed projects
 // Type names are preserved so all downstream routes keep compiling.
 // Semantic remapping:
-//   title       -> service package name (e.g. "2024 Porsche 911 Ceramic 9H Package")
-//   brand       -> vehicle make (Porsche, BMW, Tesla, etc.)
+//   title       -> project name (vehicle + service performed)
+//   brand       -> vehicle make
 //   body        -> vehicle class: "Coupe/Sedan" | "SUV/Crossover" | "Truck" | "Van/3-Row SUV"
 //   fuel        -> service tier: "Express" | "Interior" | "Ceramic" | "Correction"
 //   transmission-> finish focus: "Interior" | "Exterior"
 //   condition   -> booking status: "Booked" | "In Progress" | "Completed"
-//   priceNum    -> detailing job cost ($200–$3,500 USD)
-//   kmNum       -> estimated labor minutes (60–600)
-//   year        -> model year of the vehicle
-//   img         -> before/after or showcase photo
+//   priceNum    -> detailing job cost (USD)
+//   kmNum       -> estimated labor minutes
+//   summary     -> project description
 // ============================================================
+
+import pontiacTransAm from "@/assets/pontiac_trans_am.jpg.asset.json";
+import audiQ5 from "@/assets/audi_q5.jpg.asset.json";
+import toyotaRav4 from "@/assets/toyota_rav4.jpg.asset.json";
+import corvetteC8 from "@/assets/corvette_c8.jpg.asset.json";
+import bmwX5 from "@/assets/bmwx5.jpg.asset.json";
+import chevelleSS from "@/assets/chevelle_ss.jpg.asset.json";
+import hondaOdyssey from "@/assets/honda_odyssey.jpg.asset.json";
+import chevyBelAir from "@/assets/chevrolette_bel_air.jpg.asset.json";
+import hondaHrv from "@/assets/honda_hrv.jpg.asset.json";
+import fordF150 from "@/assets/ford_f150.jpg.asset.json";
 
 export type Condition = "Booked" | "In Progress" | "Completed";
 
@@ -32,26 +42,8 @@ export type Vehicle = {
   featured?: boolean;
   tag?: "Best Value" | "Premium Build" | "New Project" | "Studio Pick";
   img: string;
+  summary?: string;
 };
-
-const img = (id: string) =>
-  `https://images.unsplash.com/${id}?auto=format&fit=crop&w=1280&q=70`;
-
-const photos = {
-  p1: img("photo-1552519507-da3b142c6e3d"),
-  p2: img("photo-1503376780353-7e6692767b70"),
-  p3: img("photo-1494976388531-d1058494cdd8"),
-  p4: img("photo-1493238792000-8113da705763"),
-  p5: img("photo-1520340356584-f9917d1eea6f"),
-  p6: img("photo-1560958089-b8a1929cea89"),
-  p7: img("photo-1449965408869-eaa3f722e40d"),
-  p8: img("photo-1583121274602-3e2820c69888"),
-  p9: img("photo-1600661653561-629509216228"),
-  p10: img("photo-1542362567-b07e54358753"),
-  p11: img("photo-1511919884226-fd3cad34687c"),
-  p12: img("photo-1494905998402-395d579af36f"),
-};
-
 
 const v = (
   id: string,
@@ -84,34 +76,64 @@ const v = (
 });
 
 export const vehicles: Vehicle[] = [
-  v("porsche-911-ceramic-9h", "2024 Porsche 911 Ceramic 9H Package", 2800, 480, 2024, "Ceramic", "Exterior", "Coupe/Sedan", "Porsche", "Completed", photos.p1, { tag: "Studio Pick", featured: true }),
-  v("bmw-m5-paint-correction", "2023 BMW M5 Multi-Stage Paint Correction", 3200, 600, 2023, "Correction", "Exterior", "Coupe/Sedan", "BMW", "Completed", photos.p2, { tag: "Premium Build", featured: true }),
-  v("tesla-modelx-interior-deep", "2024 Tesla Model X Interior Deep Clean", 650, 240, 2024, "Interior", "Interior", "SUV/Crossover", "Tesla", "Completed", photos.p3, { tag: "Best Value" }),
-  v("range-rover-sport-ceramic", "2023 Range Rover Sport Ceramic 9H Package", 3100, 540, 2023, "Ceramic", "Exterior", "SUV/Crossover", "Range Rover", "Completed", photos.p4, { tag: "Premium Build", featured: true }),
-  v("mercedes-gle-correction", "2024 Mercedes-Benz GLE Paint Correction & Ceramic", 3500, 600, 2024, "Correction", "Exterior", "SUV/Crossover", "Mercedes-Benz", "Completed", photos.p5, { tag: "Studio Pick", featured: true }),
-  v("audi-rs7-ceramic", "2024 Audi RS7 Ceramic Coating Package", 2600, 420, 2024, "Ceramic", "Exterior", "Coupe/Sedan", "Audi", "Completed", photos.p6, { tag: "New Project" }),
-  v("ford-f150-express", "2024 Ford F-150 Express Exterior Detail", 299, 90, 2024, "Express", "Exterior", "Truck", "Ford", "Completed", photos.p7, { tag: "Best Value" }),
-  v("cadillac-escalade-interior", "2023 Cadillac Escalade Full Interior Package", 895, 300, 2023, "Interior", "Interior", "Van/3-Row SUV", "Cadillac", "Completed", photos.p8),
-  v("lexus-lx600-ceramic", "2024 Lexus LX 600 Ceramic 9H Package", 3000, 510, 2024, "Ceramic", "Exterior", "SUV/Crossover", "Lexus", "In Progress", photos.p9, { tag: "New Project" }),
-  v("ram-1500-express", "2024 RAM 1500 Express Full Detail", 349, 120, 2024, "Express", "Exterior", "Truck", "RAM", "Completed", photos.p10, { tag: "Best Value" }),
-  v("porsche-cayenne-correction", "2022 Porsche Cayenne S Paint Correction", 2900, 540, 2022, "Correction", "Exterior", "SUV/Crossover", "Porsche", "Completed", photos.p11, { tag: "Premium Build" }),
-  v("toyota-sienna-interior", "2023 Toyota Sienna Interior Deep Clean", 550, 210, 2023, "Interior", "Interior", "Van/3-Row SUV", "Toyota", "Completed", photos.p12),
-  v("bmw-x7-ceramic", "2024 BMW X7 Ceramic 9H Full Package", 3100, 525, 2024, "Ceramic", "Exterior", "Van/3-Row SUV", "BMW", "Booked", photos.p1, { tag: "New Project" }),
-  v("chevy-silverado-express", "2023 Chevrolet Silverado Express Detail", 279, 90, 2023, "Express", "Exterior", "Truck", "Chevrolet", "Completed", photos.p2, { tag: "Best Value" }),
-  v("jeep-grand-cherokee-interior", "2024 Jeep Grand Cherokee Interior Package", 720, 270, 2024, "Interior", "Interior", "SUV/Crossover", "Jeep", "Completed", photos.p3),
-  v("mercedes-s580-ceramic", "2024 Mercedes-Benz S 580 Ceramic 9H Package", 3400, 570, 2024, "Ceramic", "Exterior", "Coupe/Sedan", "Mercedes-Benz", "In Progress", photos.p4, { tag: "Studio Pick", featured: true }),
-  v("tesla-model3-correction", "2023 Tesla Model 3 Paint Correction", 1800, 360, 2023, "Correction", "Exterior", "Coupe/Sedan", "Tesla", "Completed", photos.p5),
-  v("lexus-rx500h-express", "2024 Lexus RX 500h Express Package", 319, 90, 2024, "Express", "Exterior", "SUV/Crossover", "Lexus", "Completed", photos.p6, { tag: "Best Value" }),
-  v("audi-q8-interior", "2023 Audi Q8 Premium Interior Detail", 875, 300, 2023, "Interior", "Interior", "SUV/Crossover", "Audi", "Completed", photos.p7),
-  v("ford-expedition-max-interior", "2024 Ford Expedition MAX Interior Deep Clean", 750, 270, 2024, "Interior", "Interior", "Van/3-Row SUV", "Ford", "Booked", photos.p8, { tag: "New Project" }),
-  v("ram-trd-correction", "2023 RAM TRX Paint Correction & Sealant", 2400, 450, 2023, "Correction", "Exterior", "Truck", "RAM", "Completed", photos.p9, { tag: "Premium Build" }),
-  v("chevy-tahoe-ceramic", "2024 Chevrolet Tahoe Ceramic 9H Package", 2750, 465, 2024, "Ceramic", "Exterior", "SUV/Crossover", "Chevrolet", "Booked", photos.p10, { tag: "New Project" }),
+  v("pontiac-trans-am-restoration-detail", "Pontiac Trans Am — Restoration Detail", 2450, 540, 2002, "Correction", "Exterior", "Coupe/Sedan", "Pontiac", "Completed", pontiacTransAm.url, {
+    tag: "Studio Pick",
+    featured: true,
+    summary:
+      "A full restoration detail on a black Trans Am. Decontamination wash, clay treatment, and multi-stage machine polishing removed years of swirl marks and oxidation from the single-stage-sensitive panels, followed by a durable sealant, trim restoration, and wheel and tire detailing to bring the finish back to a deep, wet black.",
+  }),
+  v("audi-q5-ceramic-coating", "Audi Q5 — Ceramic Coating", 1899, 480, 2023, "Ceramic", "Exterior", "SUV/Crossover", "Audi", "Completed", audiQ5.url, {
+    tag: "Premium Build",
+    featured: true,
+    summary:
+      "Nano-ceramic coating applied to a Daytona Grey Q5. The paint was chemically decontaminated, clayed, and machine polished before a 9H base and top coat were applied panel by panel, with coated wheel faces, glass, and gloss-black trim for long-term hydrophobic protection.",
+  }),
+  v("toyota-rav4-ceramic-coating", "Toyota RAV4 — Ceramic Coating", 1749, 450, 2023, "Ceramic", "Exterior", "SUV/Crossover", "Toyota", "Completed", toyotaRav4.url, {
+    summary:
+      "Ceramic coating on a Cavalry Blue RAV4 daily driver. Iron and tar removal, clay decontamination, and a refining polish preceded the 9H coating, locking in gloss on the paint while adding easy-clean protection to the black cladding and alloy wheels.",
+  }),
+  v("corvette-c8-ceramic-coating", "Chevrolet Corvette C8 — Ceramic Coating", 2199, 510, 2022, "Ceramic", "Exterior", "Coupe/Sedan", "Chevrolet", "Completed", corvetteC8.url, {
+    tag: "Premium Build",
+    featured: true,
+    summary:
+      "9H ceramic coating on a Hypersonic Grey C8. Every panel was decontaminated and polished to remove light wash marring before coating, with special attention to the front splitter, side intakes, and gloss-black wheels so the metallic flake pops under direct light.",
+  }),
+  v("bmw-x5-full-detail", "BMW X5 — Full Detail", 649, 300, 2021, "Express", "Exterior", "SUV/Crossover", "BMW", "Completed", bmwX5.url, {
+    summary:
+      "Complete inside-and-out detail on an X5. Two-bucket contact wash, bug and tar removal, wheel and wheel-barrel cleaning, and a spray sealant outside; full vacuum, interior wipe-down, and streak-free glass inside for a factory-fresh presentation.",
+  }),
+  v("chevelle-ss-paint-correction", "Chevrolet Chevelle SS — Paint Correction", 2650, 570, 1966, "Correction", "Exterior", "Coupe/Sedan", "Chevrolet", "Completed", chevelleSS.url, {
+    tag: "Studio Pick",
+    featured: true,
+    summary:
+      "Multi-stage paint correction on a black '66 Chevelle SS. Paint depth was mapped before compounding, then progressively refined with finishing polishes to level swirls and holograms on the delicate older finish, sealed to protect the mirror-flat gloss and polished chrome trim.",
+  }),
+  v("honda-odyssey-interior-restoration", "Honda Odyssey — Interior Restoration", 549, 330, 2022, "Interior", "Interior", "Van/3-Row SUV", "Honda", "Completed", hondaOdyssey.url, {
+    tag: "Best Value",
+    summary:
+      "Interior restoration on a family Odyssey. Full three-row vacuum and pet-hair removal, hot-water extraction of carpets and seats, enzymatic stain treatment, door jamb and console detailing, and a fabric protection top coat to keep the cabin clean between visits.",
+  }),
+  v("chevrolet-bel-air-paint-correction", "Chevrolet Bel Air — Paint Correction", 2850, 600, 1957, "Correction", "Exterior", "Coupe/Sedan", "Chevrolet", "Completed", chevyBelAir.url, {
+    tag: "Premium Build",
+    featured: true,
+    summary:
+      "Show-level paint correction on a custom blue '57 Bel Air. Careful hand decontamination and controlled machine polishing brought the deep metallic blue back to a flawless reflection, with hand-polished chrome brightwork and a protective sealant suited to a garage-kept classic.",
+  }),
+  v("honda-hrv-ceramic-coating", "Honda HR-V — Ceramic Coating", 1599, 420, 2024, "Ceramic", "Exterior", "SUV/Crossover", "Honda", "Completed", hondaHrv.url, {
+    tag: "Best Value",
+    summary:
+      "Ceramic coating on a Urban Grey HR-V. A light single-stage polish removed dealer-install marring before the 9H coating was applied, giving the flat grey paint noticeably more depth along with UV, chemical, and water-spot resistance.",
+  }),
+  v("ford-f150-platinum-full-detail", "Ford F-150 — Platinum Full Detail", 899, 390, 2019, "Express", "Exterior", "Truck", "Ford", "Completed", fordF150.url, {
+    tag: "New Project",
+    summary:
+      "Platinum-level full detail on a black F-150. Foam pre-wash, iron decontamination, clay treatment, and a gloss-enhancing polish removed wash marring across the large panels, finished with a durable sealant, dressed trim and running boards, and a full interior clean.",
+  }),
 ];
 
-// Vehicle makes / brand partners
+// Vehicle makes featured in our project work
 export const brands = [
-  "Porsche", "BMW", "Mercedes-Benz", "Audi", "Tesla",
-  "Lexus", "Range Rover", "Toyota", "Ford", "Chevrolet", "RAM", "Cadillac", "Jeep",
+  "Pontiac", "Audi", "Toyota", "Chevrolet", "BMW", "Honda", "Ford",
 ];
 
 // Vehicle class filters (was: body types)
