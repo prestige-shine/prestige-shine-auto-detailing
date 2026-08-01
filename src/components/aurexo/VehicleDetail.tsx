@@ -196,7 +196,7 @@ export function VehicleDetail({ vehicle }: { vehicle: Vehicle }) {
         <div>
           <p className="text-xs font-bold uppercase tracking-wider text-brand">{vehicle.fuel} tier · {vehicle.transmission}</p>
           <h1 className="mt-2 text-2xl font-bold text-ink sm:text-3xl">{vehicle.title}</h1>
-          <p className="mt-2 text-sm text-muted-foreground">{meta.tagline}</p>
+          <p className="mt-2 text-sm text-muted-foreground">{vehicle.summary ?? meta.tagline}</p>
 
           <div className="mt-6 flex flex-wrap items-center gap-3">
             <span className="text-3xl font-extrabold text-ink">{vehicle.price}</span>
