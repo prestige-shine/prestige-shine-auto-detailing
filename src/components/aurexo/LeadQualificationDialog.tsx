@@ -81,6 +81,7 @@ const STEP_TITLES = [
   "Scheduling",
   "Pricing info",
   "Review & submit",
+  "Your estimate",
 ];
 
 const BRAND = "#84CC16";
@@ -123,7 +124,7 @@ export function LeadQualificationDialog({ open, onClose, presetServiceKey }: Pro
     };
   }, [open]);
 
-  const totalSteps = 8;
+  const totalSteps = 9;
   const progressPct = (step / totalSteps) * 100;
 
   const canProceed = useMemo(() => {
@@ -143,6 +144,8 @@ export function LeadQualificationDialog({ open, onClose, presetServiceKey }: Pro
       case 7:
         return true;
       case 8:
+        return true;
+      case 9:
         return true;
       default:
         return false;
@@ -314,6 +317,14 @@ export function LeadQualificationDialog({ open, onClose, presetServiceKey }: Pro
               {step === 6 && <StepScheduling form={form} setForm={setForm} />}
               {step === 7 && <StepPricing />}
               {step === 8 && <StepReview form={form} goTo={setStep} />}
+              {step === 9 && (
+                <StepEstimate
+                  form={form}
+                  submitting={submitting}
+                  onSubmit={doSubmit}
+                  onEdit={() => setStep(1)}
+                />
+              )}
             </div>
           )}
 
@@ -325,7 +336,7 @@ export function LeadQualificationDialog({ open, onClose, presetServiceKey }: Pro
         </div>
 
         {/* Footer nav */}
-        {!submitted && (
+        {!submitted && step !== totalSteps && (
           <div className="flex items-center justify-between gap-3 border-t border-black/5 bg-white px-4 py-3 sm:px-6">
             <button
               type="button"
@@ -335,8 +346,7 @@ export function LeadQualificationDialog({ open, onClose, presetServiceKey }: Pro
             >
               <ArrowLeft className="h-4 w-4" /> Back
             </button>
-            {step < totalSteps ? (
-              <button
+            <button
                 type="button"
                 disabled={!canProceed}
                 onClick={() => setStep((s) => Math.min(totalSteps, s + 1))}
@@ -346,18 +356,6 @@ export function LeadQualificationDialog({ open, onClose, presetServiceKey }: Pro
                 {uploadingCount > 0 && step === 5 ? "Uploading…" : "Continue"}
                 <ArrowRight className="h-4 w-4" />
               </button>
-            ) : (
-              <button
-                type="button"
-                disabled={submitting}
-                onClick={doSubmit}
-                className="inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-extrabold text-white shadow-lg transition disabled:opacity-60"
-                style={{ backgroundColor: BRAND }}
-              >
-                {submitting ? <Loader2 className="h-4 w-4 animate-spin" /> : <Check className="h-4 w-4" />}
-                {submitting ? "Submitting…" : "Get My Personalized Quote"}
-              </button>
-            )}
           </div>
         )}
       </div>
