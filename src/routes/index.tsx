@@ -9,18 +9,27 @@ import { BookingWidget } from "@/components/aurexo/BookingWidget";
 import { WHATSAPP_NUMBER } from "@/lib/whatsapp";
 import { articles } from "@/lib/articles";
 import heroVideo from "@/assets/hero-video.mp4.asset.json";
+import baBefore1 from "@/assets/ba-before-1.jpg.asset.json";
+import baAfter1 from "@/assets/ba-after-1.jpg.asset.json";
+import baBefore2 from "@/assets/ba-before-2.jpg.asset.json";
+import baAfter2 from "@/assets/ba-after-2.jpg.asset.json";
+import baBefore3 from "@/assets/ba-before-3.jpg.asset.json";
+import baAfter3 from "@/assets/ba-after-3.jpg.asset.json";
+import baBefore4 from "@/assets/ba-before-4.jpg.asset.json";
+import baAfter4 from "@/assets/ba-after-4.jpg.asset.json";
+import baBefore5 from "@/assets/ba-before-5.jpg.asset.json";
+import baAfter5 from "@/assets/ba-after-5.jpg.asset.json";
 
 const carImg = (id: string, w = 1280) => `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&q=80`;
 const HERO_IMG = carImg("photo-1503376780353-7e6692767b70", 1920);
 const HERO_VIDEO_MP4 = heroVideo.url;
 
 const BEFORE_AFTER = [
-  { id: "swirl-porsche", label: "Paint Swirl Correction — Porsche 911", before: carImg("photo-1503376780353-7e6692767b70"), after: carImg("photo-1552519507-da3b142c6e3d"), tier: "Paint Correction" },
-  { id: "oxidation-bmw", label: "Oxidation Removal — BMW M5", before: carImg("photo-1493238792000-8113da705763"), after: carImg("photo-1494976388531-d1058494cdd8"), tier: "Paint Correction" },
-  { id: "pet-hair-suv", label: "Pet-Hair Extraction — SUV Interior", before: carImg("photo-1449965408869-eaa3f722e40d"), after: carImg("photo-1449965408869-eaa3f722e40d"), tier: "Interior Deep Clean" },
-  { id: "coffee-steam", label: "Coffee-Stain Steam Extraction", before: carImg("photo-1583121274602-3e2820c69888"), after: carImg("photo-1494905998402-395d579af36f"), tier: "Interior Deep Clean" },
-  { id: "headlight", label: "Headlight Restoration", before: carImg("photo-1493238792000-8113da705763"), after: carImg("photo-1552519507-da3b142c6e3d"), tier: "Express Exterior" },
-  { id: "tesla-ceramic", label: "Ceramic-Coated Tesla Model 3", before: carImg("photo-1560958089-b8a1929cea89"), after: carImg("photo-1503376780353-7e6692767b70"), tier: "9H Ceramic Coating" },
+  { id: "bmw-x5-revival", label: "Full Vehicle Revival — BMW X5", before: baBefore2.url, after: baAfter2.url, tier: "Full Detail & Paint Enhancement" },
+  { id: "f150-interior-reset", label: "Work Truck Interior Reset — Ford F-150", before: baBefore1.url, after: baAfter1.url, tier: "Interior Restoration" },
+  { id: "sienna-transformation", label: "Family Van Transformation — Toyota Sienna", before: baBefore3.url, after: baAfter3.url, tier: "Full Detail" },
+  { id: "corvette-paint-revival", label: "Corvette Paint Revival — Chevrolet Corvette", before: baBefore4.url, after: baAfter4.url, tier: "Paint Correction" },
+  { id: "trans-am-revival", label: "Classic Muscle Car Revival — Pontiac Trans Am", before: baBefore5.url, after: baAfter5.url, tier: "Complete Restoration Detail" },
 ];
 
 const TIERS = [
@@ -186,8 +195,8 @@ function Home() {
         <div className="mx-auto max-w-6xl px-4">
           <div className="text-center">
             <p className="text-xs font-bold uppercase tracking-wide text-brand">Recent Work</p>
-            <h2 className="mt-2 text-2xl font-bold text-ink sm:text-3xl">Recent Automotive Transformations</h2>
-            <p className="mt-2 text-sm text-muted-foreground">Real results from our Lahore studio — before & after every treatment.</p>
+            <h2 className="mt-2 text-2xl font-bold text-ink sm:text-3xl">Recent Work</h2>
+            <p className="mt-2 text-sm text-muted-foreground">Real vehicle transformations completed by Prestige Shine Auto Detailing in Miramichi, NB. Every project showcases the craftsmanship, attention to detail, and premium finish our clients expect.</p>
           </div>
           <div className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {BEFORE_AFTER.map((item) => (
