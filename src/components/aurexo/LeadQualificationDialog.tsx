@@ -27,6 +27,7 @@ import {
   TIME_SLOTS,
   type LeadSubmission,
 } from "@/lib/leads";
+import { calculateEstimate, formatPrice } from "@/lib/pricing";
 
 type Props = {
   open: boolean;
@@ -81,6 +82,7 @@ const STEP_TITLES = [
   "Scheduling",
   "Pricing info",
   "Review & submit",
+  "Your estimate",
 ];
 
 const BRAND = "#84CC16";
@@ -123,7 +125,7 @@ export function LeadQualificationDialog({ open, onClose, presetServiceKey }: Pro
     };
   }, [open]);
 
-  const totalSteps = 8;
+  const totalSteps = 9;
   const progressPct = (step / totalSteps) * 100;
 
   const canProceed = useMemo(() => {
@@ -143,6 +145,8 @@ export function LeadQualificationDialog({ open, onClose, presetServiceKey }: Pro
       case 7:
         return true;
       case 8:
+        return true;
+      case 9:
         return true;
       default:
         return false;
@@ -314,6 +318,14 @@ export function LeadQualificationDialog({ open, onClose, presetServiceKey }: Pro
               {step === 6 && <StepScheduling form={form} setForm={setForm} />}
               {step === 7 && <StepPricing />}
               {step === 8 && <StepReview form={form} goTo={setStep} />}
+              {step === 9 && (
+                <StepEstimate
+                  form={form}
+                  submitting={submitting}
+                  onSubmit={doSubmit}
+                  onEdit={() => setStep(1)}
+                />
+              )}
             </div>
           )}
 
@@ -325,7 +337,7 @@ export function LeadQualificationDialog({ open, onClose, presetServiceKey }: Pro
         </div>
 
         {/* Footer nav */}
-        {!submitted && (
+        {!submitted && step !== totalSteps && (
           <div className="flex items-center justify-between gap-3 border-t border-black/5 bg-white px-4 py-3 sm:px-6">
             <button
               type="button"
@@ -335,8 +347,7 @@ export function LeadQualificationDialog({ open, onClose, presetServiceKey }: Pro
             >
               <ArrowLeft className="h-4 w-4" /> Back
             </button>
-            {step < totalSteps ? (
-              <button
+            <button
                 type="button"
                 disabled={!canProceed}
                 onClick={() => setStep((s) => Math.min(totalSteps, s + 1))}
@@ -346,18 +357,6 @@ export function LeadQualificationDialog({ open, onClose, presetServiceKey }: Pro
                 {uploadingCount > 0 && step === 5 ? "Uploading…" : "Continue"}
                 <ArrowRight className="h-4 w-4" />
               </button>
-            ) : (
-              <button
-                type="button"
-                disabled={submitting}
-                onClick={doSubmit}
-                className="inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-extrabold text-white shadow-lg transition disabled:opacity-60"
-                style={{ backgroundColor: BRAND }}
-              >
-                {submitting ? <Loader2 className="h-4 w-4 animate-spin" /> : <Check className="h-4 w-4" />}
-                {submitting ? "Submitting…" : "Get My Personalized Quote"}
-              </button>
-            )}
           </div>
         )}
       </div>
@@ -951,6 +950,106 @@ function StepReview({ form, goTo }: { form: FormState; goTo: (n: number) => void
             <Edit3 className="h-4 w-4 shrink-0 text-ink/40" />
           </button>
         ))}
+      </div>
+    </div>
+  );
+}
+
+function StepEstimate({
+  form,
+  submitting,
+  onSubmit,
+  onEdit,
+}: {
+  form: FormState;
+  submitting: boolean;
+  onSubmit: () => void;
+  onEdit: () => void;
+}) {
+  const est = calculateEstimate({
+    services: form.services,
+    conditions: form.conditions,
+  });
+
+  return (
+    <div>
+      <SectionHead
+        eyebrow="Estimate"
+        title="Your Estimated Starting Price"
+        sub={`${est.packageLabel} · ${est.vehicleTypeLabel}`}
+      />
+
+      <div
+        className="rounded-3xl border-2 p-6 text-center"
+        style={{
+          borderColor: BRAND,
+          background: "linear-gradient(135deg, rgba(132,204,22,0.10), rgba(132,204,22,0.02))",
+        }}
+      >
+        <p className="text-xs font-bold uppercase tracking-wider" style={{ color: BRAND_DARK }}>
+          {est.isRange ? "Estimated Price Range" : "Estimated Starting Price"}
+        </p>
+        <p className="mt-2 text-4xl font-extrabold text-ink sm:text-5xl">
+          {est.isRange ? `${formatPrice(est.low)} – ${formatPrice(est.high)}` : formatPrice(est.low)}
+        </p>
+        <div className="mx-auto mt-5 max-w-sm space-y-1 text-left">
+          {est.breakdown.map((b) => (
+            <div key={b.label} className="flex items-center justify-between text-xs text-ink/70">
+              <span>{b.label}</span>
+              <span className="font-bold text-ink">{formatPrice(b.amount)}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+        This estimate is based on the information you've provided. Your final quote will be confirmed after
+        reviewing your uploaded vehicle photos and your vehicle's overall condition.
+      </p>
+
+      <div className="mt-5 grid gap-2">
+        {[
+          "No obligation",
+          "Personally reviewed by Prestige Shine Auto Detailing",
+          "Final quote confirmed before any work begins",
+        ].map((t) => (
+          <div key={t} className="flex items-center gap-2 text-sm text-ink">
+            <span
+              className="grid h-5 w-5 shrink-0 place-items-center rounded-full"
+              style={{ backgroundColor: BRAND }}
+            >
+              <Check className="h-3 w-3 text-white" strokeWidth={3} />
+            </span>
+            {t}
+          </div>
+        ))}
+      </div>
+
+      <div className="mt-8 rounded-3xl border border-black/10 bg-black/[0.02] p-6 text-center">
+        <h4 className="text-lg font-extrabold text-ink">Happy with your estimated starting price?</h4>
+        <p className="mt-2 text-sm text-muted-foreground">
+          Submit your request and we'll personally review everything before confirming your final quote.
+        </p>
+        <div className="mt-5 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
+          <button
+            type="button"
+            disabled={submitting}
+            onClick={onSubmit}
+            className="inline-flex w-full items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-extrabold text-white shadow-lg transition disabled:opacity-60 sm:w-auto"
+            style={{ backgroundColor: BRAND }}
+          >
+            {submitting ? <Loader2 className="h-4 w-4 animate-spin" /> : <Check className="h-4 w-4" />}
+            {submitting ? "Submitting…" : "Continue & Request My Estimate"}
+          </button>
+          <button
+            type="button"
+            disabled={submitting}
+            onClick={onEdit}
+            className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-black/10 px-6 py-3 text-sm font-bold text-ink transition hover:bg-black/[0.03] disabled:opacity-60 sm:w-auto"
+          >
+            <Edit3 className="h-4 w-4" /> Edit My Information
+          </button>
+        </div>
       </div>
     </div>
   );
