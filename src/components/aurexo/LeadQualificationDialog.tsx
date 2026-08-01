@@ -1055,7 +1055,7 @@ function StepEstimate({
   );
 }
 
-function SuccessViewInner({ onClose }: { onClose: () => void }) {
+function SuccessView({ onClose }: { onClose: () => void }) {
   return (
     <div className="flex flex-col items-center justify-center py-14 text-center">
       <div
