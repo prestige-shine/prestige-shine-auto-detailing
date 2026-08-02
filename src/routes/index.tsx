@@ -97,10 +97,10 @@ function Home() {
           aria-hidden="true"
           fetchPriority="high"
           decoding="async"
-          className="absolute inset-0 h-full w-full scale-105 object-cover object-center opacity-60 sm:opacity-70"
+          className="absolute inset-0 h-full w-full scale-105 object-cover object-center opacity-70 sm:opacity-80"
         />
-        <div className="absolute inset-0 bg-ink/50" />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/55 to-ink/90" />
+        <div className="absolute inset-0 bg-ink/25" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-ink/70" />
         <div className="relative mx-auto flex min-h-[88vh] max-w-6xl flex-col items-center justify-center px-4 py-20 text-center">
           <span className="inline-flex items-center gap-2 rounded-full bg-brand/15 px-3 py-1 text-xs font-semibold text-brand ring-1 ring-brand/30">
             <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-brand" /> Serving All of Lahore
