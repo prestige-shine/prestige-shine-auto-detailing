@@ -8,7 +8,7 @@ import { HomeFAQ } from "@/components/aurexo/HomeFAQ";
 import { BookingWidget } from "@/components/aurexo/BookingWidget";
 import { WHATSAPP_NUMBER } from "@/lib/whatsapp";
 import { articles } from "@/lib/articles";
-import heroVideo from "@/assets/hero-video.mp4.asset.json";
+import heroCollage from "@/assets/hero-collage.png.asset.json";
 import baBefore1 from "@/assets/ba-before-1.jpg.asset.json";
 import baAfter1 from "@/assets/ba-after-1.jpg.asset.json";
 import baBefore2 from "@/assets/ba-before-2.jpg.asset.json";
@@ -21,8 +21,7 @@ import baBefore5 from "@/assets/ba-before-5.jpg.asset.json";
 import baAfter5 from "@/assets/ba-after-5.jpg.asset.json";
 
 const carImg = (id: string, w = 1280) => `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&q=80`;
-const HERO_IMG = carImg("photo-1503376780353-7e6692767b70", 1920);
-const HERO_VIDEO_MP4 = heroVideo.url;
+const HERO_IMG = heroCollage.url;
 
 const BEFORE_AFTER = [
   { id: "bmw-x5-revival", label: "Full Vehicle Revival — BMW X5", before: baBefore2.url, after: baAfter2.url, tier: "Full Detail & Paint Enhancement" },
@@ -77,7 +76,7 @@ export const Route = createFileRoute("/")({
       { name: "application/ld+json", content: JSON.stringify({ "@context": "https://schema.org", "@type": ["LocalBusiness", "AutoDetailing"], "name": "Top Coat Auto Detailers", "description": "Premium concierge auto detailing, ceramic coating, and paint correction in Lahore.", "telephone": "+923219200955", "areaServed": "Lahore, Pakistan", "priceRange": "$$$", "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "400" } }) },
     ],
     links: [
-      { rel: "preload", as: "video", href: HERO_VIDEO_MP4, type: "video/mp4" },
+      { rel: "preload", as: "image", href: HERO_IMG },
     ],
   }),
   component: Home,
@@ -92,28 +91,16 @@ function Home() {
     <main className="overflow-x-hidden">
       {/* Hero */}
       <section className="relative min-h-[88vh] overflow-hidden bg-black">
-        <video
-          className="absolute inset-0 h-full w-full object-cover"
-          src={HERO_VIDEO_MP4}
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="auto"
-          disableRemotePlayback
-          disablePictureInPicture
-          controls={false}
-          ref={(el) => {
-            if (!el) return;
-            el.muted = true;
-            const tryPlay = () => el.play().catch(() => {});
-            if (el.readyState >= 2) tryPlay();
-            else el.addEventListener("loadeddata", tryPlay, { once: true });
-            el.addEventListener("canplay", tryPlay, { once: true });
-          }}
+        <img
+          src={HERO_IMG}
+          alt=""
           aria-hidden="true"
+          fetchPriority="high"
+          decoding="async"
+          className="absolute inset-0 h-full w-full scale-105 object-cover object-center opacity-60 sm:opacity-70"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/40 to-ink/85" />
+        <div className="absolute inset-0 bg-ink/50" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/55 to-ink/90" />
         <div className="relative mx-auto flex min-h-[88vh] max-w-6xl flex-col items-center justify-center px-4 py-20 text-center">
           <span className="inline-flex items-center gap-2 rounded-full bg-brand/15 px-3 py-1 text-xs font-semibold text-brand ring-1 ring-brand/30">
             <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-brand" /> Serving All of Lahore
