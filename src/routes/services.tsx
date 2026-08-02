@@ -172,14 +172,14 @@ function Services() {
       <PageHeader
         eyebrow="Services"
         title="Every service your vehicle deserves."
-        subtitle="Three core detailing tiers plus a menu of precision add-ons — each performed by IDA-certified technicians in our climate-controlled studios."
+        subtitle="Six core services plus a menu of precision add-ons — interior, exterior, full packages, ceramic coating, paint protection and paint correction, performed personally by Kevin at Prestige Shine Auto Detailing in Miramichi, NB."
       />
 
       {/* Swipeable tier carousel */}
       <section className="mx-auto max-w-6xl px-4 py-10">
         <div className="mb-5 flex items-end justify-between gap-4">
           <div>
-            <p className="text-xs font-bold uppercase tracking-wide text-brand">Signature Tiers</p>
+            <p className="text-xs font-bold uppercase tracking-wide text-brand">Our Services</p>
             <h2 className="mt-1 text-2xl font-bold text-ink">Swipe to explore each service</h2>
           </div>
           <p className="hidden text-xs text-muted-foreground sm:block">Drag, swipe, or use arrows →</p>
@@ -252,6 +252,8 @@ function Services() {
             <span className="rounded-full bg-surface border border-border px-3 py-1"><strong>Duration:</strong> {tier.duration}</span>
             <span className="rounded-full bg-surface border border-border px-3 py-1"><strong>Ideal for:</strong> {tier.idealFor}</span>
           </div>
+
+          <p className="mt-5 text-sm leading-relaxed text-muted-foreground">{tier.blurb}</p>
 
           <h3 className="mt-7 text-sm font-bold uppercase tracking-wide text-muted-foreground">What's included</h3>
           <ul className="mt-3 grid gap-2 sm:grid-cols-2">
