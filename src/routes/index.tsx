@@ -19,8 +19,11 @@ import baBefore4 from "@/assets/ba-before-4.jpg.asset.json";
 import baAfter4 from "@/assets/ba-after-4.jpg.asset.json";
 import baBefore5 from "@/assets/ba-before-5.jpg.asset.json";
 import baAfter5 from "@/assets/ba-after-5.jpg.asset.json";
+import bmwX5 from "@/assets/bmwx5.jpg.asset.json";
+import audiQ5 from "@/assets/audi_q5.jpg.asset.json";
+import pontiacTransAm from "@/assets/pontiac_trans_am.jpg.asset.json";
+import corvetteC8 from "@/assets/corvette_c8.jpg.asset.json";
 
-const carImg = (id: string, w = 1280) => `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&q=80`;
 const HERO_IMG = heroCollage.url;
 
 const BEFORE_AFTER = [
@@ -33,22 +36,40 @@ const BEFORE_AFTER = [
 
 const TIERS = [
   {
-    name: "Express Exterior Maintenance",
-    desc: "Hand wash, clay bar decontamination, spray sealant, wheel & tire detail. Perfect for regular upkeep.",
-    price: "From $149",
-    image: carImg("photo-1520340356584-f9917d1eea6f"),
+    name: "Interior Detailing",
+    desc: "Deep vacuum, hot-water extraction, steam sanitizing, leather cleaning and conditioning — every vent, seam and console restored by hand.",
+    price: "From $100",
+    image: baAfter1.url,
   },
   {
-    name: "Full Interior Deep Clean & Extraction",
-    desc: "Hot-water extraction, steam sanitization, leather conditioning, odor elimination, glass treatment.",
-    price: "From $329",
-    image: carImg("photo-1449965408869-eaa3f722e40d"),
+    name: "Exterior Detailing",
+    desc: "Foam pre-wash, safe two-bucket contact wash, iron and tar decontamination, clay treatment, gloss enhancement and dressed trim, wheels and tires.",
+    price: "From $100",
+    image: bmwX5.url,
   },
   {
-    name: "Premium 9H Ceramic Coating & Paint Correction",
-    desc: "Multi-stage machine polishing, swirl removal, 9H ceramic application — up to 9-year protection.",
-    price: "From $1,899",
-    image: carImg("photo-1552519507-da3b142c6e3d"),
+    name: "Full Detailing Packages",
+    desc: "Silver, Gold and Platinum packages that combine our interior and exterior work into one complete inside-and-out transformation.",
+    price: "From $150",
+    image: baAfter3.url,
+  },
+  {
+    name: "Ceramic Coating",
+    desc: "System X certified ceramic protection. Prepped, polished and coated panel by panel for years of gloss, hydrophobics and easier washing.",
+    price: "From $799",
+    image: audiQ5.url,
+  },
+  {
+    name: "Paint Protection",
+    desc: "Long-lasting sealants and protective coatings that shield paint, trim, glass and wheels from UV, road salt and winter grime here in Miramichi.",
+    price: "From $249",
+    image: pontiacTransAm.url,
+  },
+  {
+    name: "Paint Correction",
+    desc: "Machine polishing that levels swirls, holograms and oxidation to bring back true depth, clarity and reflection before any coating is applied.",
+    price: "From $399",
+    image: corvetteC8.url,
   },
 ];
 
@@ -145,8 +166,8 @@ function Home() {
       <section className="mx-auto max-w-6xl px-4 py-14">
         <div className="text-center">
           <p className="text-xs font-bold uppercase tracking-wide text-brand">Our Services</p>
-          <h2 className="mt-2 text-2xl font-bold text-ink sm:text-3xl">Choose Your Service Tier</h2>
-          <p className="mt-2 text-sm text-muted-foreground">Every package is tailored to your vehicle class and condition — no cookie-cutter pricing.</p>
+          <h2 className="mt-2 text-2xl font-bold text-ink sm:text-3xl">Six Services, One Standard of Finish</h2>
+          <p className="mt-2 text-sm text-muted-foreground">From interior resets to System X ceramic coatings — every service is performed personally by Kevin and priced to your vehicle's size and condition.</p>
         </div>
         <div className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {TIERS.map((t) => (

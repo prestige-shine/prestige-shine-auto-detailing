@@ -1,7 +1,13 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
-import { Check, Sparkles, Droplets, Shield, Plus } from "lucide-react";
+import { Check, Sparkles, Droplets, Shield, Plus, Car, Layers, Gem } from "lucide-react";
 import { PageHeader } from "@/components/aurexo/PageHeader";
+import baAfter1 from "@/assets/ba-after-1.jpg.asset.json";
+import baAfter3 from "@/assets/ba-after-3.jpg.asset.json";
+import bmwX5 from "@/assets/bmwx5.jpg.asset.json";
+import audiQ5 from "@/assets/audi_q5.jpg.asset.json";
+import pontiacTransAm from "@/assets/pontiac_trans_am.jpg.asset.json";
+import corvetteC8 from "@/assets/corvette_c8.jpg.asset.json";
 import {
   Carousel,
   CarouselContent,
@@ -10,63 +16,128 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 
-const carImg = (id: string) => `https://images.unsplash.com/${id}?auto=format&fit=crop&w=1200&q=80`;
-
 const tiers = [
-  {
-    id: "express",
-    icon: Droplets,
-    name: "Express Exterior Maintenance",
-    price: "from $89",
-    duration: "60–90 min",
-    idealFor: "Regular upkeep between deeper services, daily drivers, lease returns",
-    image: carImg("photo-1520340356584-f9917d1eea6f"),
-    included: [
-      "Hand wash & rinse with pH-neutral foam",
-      "Wheel & tire scrub with decontaminant",
-      "Door jamb wipe-down",
-      "Window exterior squeegee clean",
-      "Tyre dressing application",
-      "Quick-detailer spray & microfibre buff",
-    ],
-  },
   {
     id: "interior",
     icon: Sparkles,
-    name: "Full Interior Deep Clean & Extraction",
-    price: "from $199",
-    duration: "3–5 hours",
-    idealFor: "Pet owners, families, pre-sale preparation, post-winter refresh",
-    image: carImg("photo-1449965408869-eaa3f722e40d"),
+    name: "Interior Detailing",
+    price: "from $100",
+    duration: "2–5 hours",
+    idealFor: "Work trucks, family vehicles, pet owners, pre-sale preparation, post-winter resets",
+    image: baAfter1.url,
+    blurb:
+      "Your interior is the part of the vehicle you actually live in. We strip out the salt, sand, spills and pet hair that build up through a Miramichi winter and bring the cabin back to a condition most owners haven't seen since delivery day. Every panel is worked by hand — no blow-and-go, no cover-up dressings.",
     included: [
-      "Complete vacuum of all surfaces, crevices & boot",
-      "Hot-water extraction for carpet & fabric seats",
-      "Dashboard, console & trim clay and detail",
-      "Door cards and pockets wiped & conditioned",
-      "Headliner spot-cleaned",
-      "Window interior streak-free clean",
-      "Odour neutraliser treatment",
-      "UV-protective dressing on all plastics",
+      "Full vacuum of seats, carpets, trunk and every crevice",
+      "Hot-water extraction of carpets and fabric upholstery",
+      "Steam cleaning of vents, seams and hard-to-reach trim",
+      "Leather cleaned and conditioned with pH-balanced products",
+      "Dashboard, console and door cards detailed and UV-protected",
+      "Pet hair and salt stain removal",
+      "Odour neutralising treatment",
+      "Streak-free interior glass",
+    ],
+  },
+  {
+    id: "exterior",
+    icon: Droplets,
+    name: "Exterior Detailing",
+    price: "from $100",
+    duration: "2–4 hours",
+    idealFor: "Daily drivers, seasonal refreshes, vehicles being prepped for sale or protection",
+    image: bmwX5.url,
+    blurb:
+      "A proper exterior detail is more than a wash. We decontaminate the paint chemically and mechanically so the surface is truly clean, then enhance the gloss safely — using rinseless-safe technique, clean media and controlled pressure so nothing new is scratched into your finish.",
+    included: [
+      "Foam pre-soak and safe two-bucket contact wash",
+      "Iron fallout, tar and bug removal",
+      "Clay bar decontamination of paint and glass",
+      "Wheel faces, barrels and wheel wells deep cleaned",
+      "Gloss-enhancing polish or spray sealant",
+      "Door jambs cleaned and dried",
+      "Trim and tires dressed with a satin, non-greasy finish",
+      "Exterior glass polished streak-free",
+    ],
+  },
+  {
+    id: "packages",
+    icon: Layers,
+    name: "Full Detailing Packages",
+    price: "from $150",
+    duration: "4 hours – 1 day",
+    idealFor: "Owners who want one complete inside-and-out transformation",
+    image: baAfter3.url,
+    blurb:
+      "Our Silver, Gold and Platinum packages combine interior and exterior work into a single visit. Pricing scales with vehicle size and condition — cars start at $100 and SUVs and trucks at $150 — and you always know the starting point before we begin. Kevin reviews every vehicle personally and confirms the final quote before any work starts.",
+    included: [
+      "Silver: complete interior clean plus exterior wash, decontamination and sealant",
+      "Gold: adds extraction, deeper interior restoration and a gloss-enhancing polish",
+      "Platinum: adds paint refinement and long-term protection for a showroom finish",
+      "Engine bay and door jamb detailing available in higher tiers",
+      "Wheels, tires and trim restored on every package",
+      "Photo documentation of the finished vehicle",
     ],
   },
   {
     id: "ceramic",
     icon: Shield,
-    name: "Premium 9H Ceramic Coating & Paint Correction",
-    price: "from $999",
-    duration: "2–4 days",
-    idealFor: "New vehicle owners, paint-preservation enthusiasts, high-value vehicles",
-    image: carImg("photo-1552519507-da3b142c6e3d"),
+    name: "Ceramic Coating",
+    price: "from $799",
+    duration: "1–3 days",
+    idealFor: "New vehicles, high-value cars, owners who want long-term, low-maintenance protection",
+    image: audiQ5.url,
+    blurb:
+      "As a System X certified installer, Kevin applies professional-grade ceramic coatings the way they're meant to be applied: fully prepped, polished, panel-wiped and cured in a controlled environment. The result is a hard, slick, hydrophobic layer that keeps your paint glossy and dramatically easier to wash through every season.",
     included: [
-      "Full paint decontamination (clay bar + iron fallout)",
-      "Paint thickness measurement at all panels",
-      "Single-stage machine polish (swirl & light scratch removal)",
-      "Two-stage correction available (deep scratch & oxidation)",
-      "Panel wipe-down with IPA to strip all oils",
-      "9H Gtechniq Crystal Serum Ultra application",
-      "EXO v4 topcoat for hydrophobic performance",
-      "5-year warranty registered in your name",
-      "Before & after documented photo set",
+      "System X certified professional coating products",
+      "Full chemical and clay decontamination",
+      "Machine polish to remove marring before coating",
+      "IPA panel wipe to strip all polishing oils",
+      "Coating applied panel by panel and levelled by hand",
+      "Wheels, glass and trim coating available",
+      "Controlled cure time before release",
+      "Aftercare guidance so the coating performs for years",
+    ],
+  },
+  {
+    id: "paint-protection",
+    icon: Gem,
+    name: "Paint Protection",
+    price: "from $249",
+    duration: "4 hours – 1 day",
+    idealFor: "Classics, weekend cars, and any vehicle facing salt, sand and UV exposure",
+    image: pontiacTransAm.url,
+    blurb:
+      "Between road salt, gravel and long summer sun, paint in New Brunswick takes a beating. We match the right level of protection to how you actually use the vehicle — from durable sealants to hybrid and ceramic-based products — so the finish stays protected without changing its character.",
+    included: [
+      "Condition assessment and protection plan for your vehicle",
+      "Decontamination and surface prep before any product is applied",
+      "Durable sealant or hybrid ceramic protection",
+      "UV, salt, bird dropping and water spot resistance",
+      "Trim, plastic and glass protection included",
+      "Wheel and tire protection available",
+      "Maintenance wash schedule tailored to your vehicle",
+    ],
+  },
+  {
+    id: "paint-correction",
+    icon: Car,
+    name: "Paint Correction",
+    price: "from $399",
+    duration: "1–3 days",
+    idealFor: "Swirled, dull, oxidised or previously poorly-washed paint",
+    image: corvetteC8.url,
+    blurb:
+      "Paint correction is where the biggest transformations happen. Kevin measures paint thickness, tests panels, then machine polishes in stages to permanently remove swirls, wash marring and oxidation — instead of filling them in. Under direct light the difference is undeniable: sharper reflections, deeper colour, true clarity.",
+    included: [
+      "Paint depth measurement and test-spot panel work",
+      "Compounding stage to remove defects",
+      "Refining polish for a hologram-free finish",
+      "Swirl, wash marring and oxidation removal",
+      "Single-stage or multi-stage correction to suit the paint",
+      "Chrome and trim brightwork polished by hand",
+      "Protection applied to lock in the corrected finish",
+      "Before and after photo documentation",
     ],
   },
 ];
@@ -82,10 +153,10 @@ const addons = [
 export const Route = createFileRoute("/services")({
   head: () => ({
     meta: [
-      { title: "Detailing Services — Top Coat Auto Detailers Lahore" },
-      { name: "description", content: "Express exterior wash, full interior deep clean, 9H ceramic coating & paint correction. Add-ons: headlight restoration, engine bay, leather conditioning and more." },
-      { property: "og:title", content: "Detailing Services — Top Coat Auto Detailers" },
-      { property: "og:description", content: "Professional auto detailing services across Lahore." },
+      { title: "Detailing Services — Prestige Shine Auto Detailing" },
+      { name: "description", content: "Interior detailing, exterior detailing, full detailing packages, System X ceramic coating, paint protection and paint correction in Miramichi, NB." },
+      { property: "og:title", content: "Our Six Services — Prestige Shine Auto Detailing" },
+      { property: "og:description", content: "Interior, exterior, full packages, ceramic coating, paint protection and paint correction — done personally by Kevin in Miramichi, NB." },
     ],
   }),
   component: Services,
@@ -101,14 +172,14 @@ function Services() {
       <PageHeader
         eyebrow="Services"
         title="Every service your vehicle deserves."
-        subtitle="Three core detailing tiers plus a menu of precision add-ons — each performed by IDA-certified technicians in our climate-controlled studios."
+        subtitle="Six core services plus a menu of precision add-ons — interior, exterior, full packages, ceramic coating, paint protection and paint correction, performed personally by Kevin at Prestige Shine Auto Detailing in Miramichi, NB."
       />
 
       {/* Swipeable tier carousel */}
       <section className="mx-auto max-w-6xl px-4 py-10">
         <div className="mb-5 flex items-end justify-between gap-4">
           <div>
-            <p className="text-xs font-bold uppercase tracking-wide text-brand">Signature Tiers</p>
+            <p className="text-xs font-bold uppercase tracking-wide text-brand">Our Services</p>
             <h2 className="mt-1 text-2xl font-bold text-ink">Swipe to explore each service</h2>
           </div>
           <p className="hidden text-xs text-muted-foreground sm:block">Drag, swipe, or use arrows →</p>
@@ -181,6 +252,8 @@ function Services() {
             <span className="rounded-full bg-surface border border-border px-3 py-1"><strong>Duration:</strong> {tier.duration}</span>
             <span className="rounded-full bg-surface border border-border px-3 py-1"><strong>Ideal for:</strong> {tier.idealFor}</span>
           </div>
+
+          <p className="mt-5 text-sm leading-relaxed text-muted-foreground">{tier.blurb}</p>
 
           <h3 className="mt-7 text-sm font-bold uppercase tracking-wide text-muted-foreground">What's included</h3>
           <ul className="mt-3 grid gap-2 sm:grid-cols-2">
