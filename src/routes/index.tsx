@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useMemo } from "react";
-import { ShieldCheck, Sparkles, Award, ArrowRight, Star, MessageCircle, Gauge, DollarSign, BarChart3, Calendar } from "lucide-react";
+import { ShieldCheck, Sparkles, Award, ArrowRight, Star, MessageCircle, Gauge, DollarSign, BarChart3, Calendar, MapPin } from "lucide-react";
 import { vehicles } from "@/lib/aurexo-data";
 import { VehicleCard } from "@/components/aurexo/VehicleCard";
 import { PartnersMarquee } from "@/components/aurexo/PartnersMarquee";
@@ -127,9 +127,9 @@ function Home() {
         <div className="mx-auto max-w-6xl px-4 py-10">
           <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
             {[
-              { icon: Award, num: "5,200+", label: "Lahore Vehicles Detailed" },
-              { icon: ShieldCheck, num: "Up to 9 years", label: "Ceramic Coating Warranty" },
-              { icon: Star, num: "4.9/5", label: "Owner Ratings (400+ reviews)" },
+              { icon: ShieldCheck, num: "System X Certified", label: "Professional Ceramic Coatings" },
+              { icon: Sparkles, num: "Paint Correction Specialists", label: "Restore Gloss & Clarity" },
+              { icon: MapPin, num: "Serving Miramichi, NB", label: "Locally Owned & Operated" },
             ].map(({ icon: Icon, num, label }) => (
               <div key={label} className="flex flex-col items-center justify-center rounded-2xl border border-border bg-surface p-6 text-center">
                 <div className="grid h-12 w-12 place-items-center rounded-full bg-brand/15"><Icon className="h-6 w-6 text-ink" /></div>
