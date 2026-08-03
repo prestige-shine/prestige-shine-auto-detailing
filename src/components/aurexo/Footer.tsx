@@ -152,11 +152,3 @@ function Social({ href, label, children }: { href: string; label: string; childr
     </a>
   );
 }
-
-function XLogo() {
-  return (
-    <svg viewBox="0 0 24 24" className="h-4 w-4" fill="currentColor" aria-hidden="true">
-      <path d="M18.244 2H21.5l-7.5 8.57L23 22h-6.844l-5.36-7.01L4.6 22H1.34l8.04-9.18L1 2h7.02l4.84 6.4L18.24 2zm-2.4 18h1.86L7.26 4h-1.97l10.55 16z" />
-    </svg>
-  );
-}

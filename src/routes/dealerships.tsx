@@ -6,26 +6,28 @@ import { STUDIO_PHONE, STUDIO_TEL } from "@/lib/whatsapp";
 export const Route = createFileRoute("/dealerships")({
   head: () => ({
     meta: [
-      { title: "Studio Locations — Prestige Shine Auto Detailing" },
-      { name: "description", content: "Prestige Shine Auto Detailing locations across Miramichi — Chatham HQ, Northside, Douglastown, and Newcastle. Climate-controlled bays for ceramic coating and paint correction." },
-      { property: "og:title", content: "Studio Locations — Prestige Shine Auto Detailing" },
-      { property: "og:description", content: "Four Miramichi detailing studios: Chatham, Northside, Douglastown, Newcastle." },
+      { title: "Studio Location — Prestige Shine Auto Detailing, Miramichi NB" },
+      { name: "description", content: "Prestige Shine Auto Detailing is located at 229 Jacqueline Dr, Miramichi, NB E1N 3Z2 — serving Miramichi and surrounding areas with ceramic coating and paint correction." },
+      { property: "og:title", content: "Studio Location — Prestige Shine Auto Detailing" },
+      { property: "og:description", content: "229 Jacqueline Dr, Miramichi, NB — serving Miramichi and surrounding areas." },
     ],
   }),
   component: Locations,
 });
 
 const STUDIOS = [
-  { city: "Chatham (HQ)", addr: "1420 Detail Way, Chatham, Miramichi 44113", hours: "Mon–Sat · 8am–7pm", offers: "Ceramic 9H · Multi-stage correction · Interior extraction · Mobile" },
-  { city: "Northside", addr: "88 Polish Ave, Northside, Miramichi 43215", hours: "Mon–Sat · 8am–7pm", offers: "Ceramic 9H · Correction · Interior · Express" },
-  { city: "Douglastown", addr: "512 Gloss Blvd, Douglastown, Miramichi 45202", hours: "Tue–Sat · 9am–6pm", offers: "Interior extraction · Express · Mobile · Correction" },
-  { city: "Newcastle", addr: "205 Foam Lane, Newcastle, Miramichi 44308", hours: "Tue–Sat · 9am–6pm", offers: "Express · Interior · Mobile" },
+  {
+    city: "Miramichi Studio",
+    addr: "229 Jacqueline Dr, Miramichi, NB E1N 3Z2, Canada",
+    hours: "Mon–Sat · 8am–7pm",
+    offers: "Ceramic 9H · Multi-stage correction · Interior extraction · Mobile",
+  },
 ];
 
 function Locations() {
   return (
     <main className="overflow-x-hidden">
-      <PageHeader eyebrow="Miramichi Coverage" title="Studio Locations" subtitle="Four Miramichi detailing studios plus fully mobile service across the state." />
+      <PageHeader eyebrow="Miramichi Coverage" title="Studio Location" subtitle="Our Miramichi studio plus fully mobile service across Miramichi, NB and surrounding areas." />
       <section className="mx-auto max-w-6xl px-4 py-10">
         <div className="grid gap-4 sm:grid-cols-2">
           {STUDIOS.map((s) => (
