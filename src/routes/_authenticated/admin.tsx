@@ -25,7 +25,7 @@ import {
 
 export const Route = createFileRoute("/_authenticated/admin")({
   head: () => ({
-    meta: [{ title: "Leads — Top Coat Admin" }, { name: "robots", content: "noindex" }],
+    meta: [{ title: "Leads — Prestige Shine Admin" }, { name: "robots", content: "noindex" }],
   }),
   component: AdminLeads,
 });

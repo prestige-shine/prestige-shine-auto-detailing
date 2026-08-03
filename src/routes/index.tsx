@@ -85,16 +85,16 @@ const waHref = (msg: string) => `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeU
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Top Coat Auto Detailers — Concierge Auto Detailing in Lahore" },
-      { name: "description", content: "Premium auto detailing in Lahore. Ceramic 9H coating, multi-stage paint correction, interior hot-water extraction — concierge results." },
-      { property: "og:title", content: "Top Coat Auto Detailers — Concierge Auto Detailing in Lahore" },
-      { property: "og:description", content: "Ceramic 9H coating, paint correction, and interior deep extraction. Serving all of Lahore." },
+      { title: "Prestige Shine Auto Detailing — Concierge Auto Detailing in Miramichi" },
+      { name: "description", content: "Premium auto detailing in Miramichi. Ceramic 9H coating, multi-stage paint correction, interior hot-water extraction — concierge results." },
+      { property: "og:title", content: "Prestige Shine Auto Detailing — Concierge Auto Detailing in Miramichi" },
+      { property: "og:description", content: "Ceramic 9H coating, paint correction, and interior deep extraction. Serving all of Miramichi." },
       { property: "og:type", content: "website" },
       { property: "og:image", content: HERO_IMG },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Top Coat Auto Detailers — Lahore" },
-      { name: "twitter:description", content: "Concierge auto detailing perfected in Lahore." },
-      { name: "application/ld+json", content: JSON.stringify({ "@context": "https://schema.org", "@type": ["LocalBusiness", "AutoDetailing"], "name": "Top Coat Auto Detailers", "description": "Premium concierge auto detailing, ceramic coating, and paint correction in Lahore.", "telephone": "+923219200955", "areaServed": "Lahore, Pakistan", "priceRange": "$$$", "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "400" } }) },
+      { name: "twitter:title", content: "Prestige Shine Auto Detailing — Miramichi" },
+      { name: "twitter:description", content: "Concierge auto detailing perfected in Miramichi." },
+      { name: "application/ld+json", content: JSON.stringify({ "@context": "https://schema.org", "@type": ["LocalBusiness", "AutoDetailing"], "name": "Prestige Shine Auto Detailing", "description": "Premium auto detailing, ceramic coating, and paint correction in Miramichi, NB.", "telephone": "+15062514451", "email": "kevinohines@gmail.com", "url": "https://prestige-shine-auto-detailing.lovable.app", "address": { "@type": "PostalAddress", "streetAddress": "229 Jacqueline Dr", "addressLocality": "Miramichi", "addressRegion": "NB", "postalCode": "E1N 3Z2", "addressCountry": "CA" }, "areaServed": "Miramichi, NB and surrounding areas", "sameAs": ["https://www.facebook.com/share/19LTaGPm2C/"], "priceRange": "$$$", "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "400" } }) },
     ],
     links: [
       { rel: "preload", as: "image", href: HERO_IMG },
@@ -106,7 +106,7 @@ export const Route = createFileRoute("/")({
 function Home() {
   const featured = useMemo(() => [...vehicles.filter((v) => v.featured), ...vehicles.filter((v) => !v.featured)].slice(0, 4), []);
   const latestArticles = useMemo(() => articles.slice(0, 3), []);
-  const ctaMsg = "Hi Top Coat Auto Detailers — I'd like to book a free vehicle assessment in Lahore. Please send me available slots.";
+  const ctaMsg = "Hi Prestige Shine Auto Detailing — I'd like to book a free vehicle assessment in Miramichi. Please send me available slots.";
 
   return (
     <main className="overflow-x-hidden">
@@ -124,13 +124,13 @@ function Home() {
         <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-ink/70" />
         <div className="relative mx-auto flex min-h-[88vh] max-w-6xl flex-col items-center justify-center px-4 py-20 text-center">
           <span className="inline-flex items-center gap-2 rounded-full bg-brand/15 px-3 py-1 text-xs font-semibold text-brand ring-1 ring-brand/30">
-            <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-brand" /> Serving All of Lahore
+            <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-brand" /> Serving All of Miramichi
           </span>
           <h1 className="mt-5 max-w-4xl text-4xl font-extrabold leading-[1.05] tracking-tight text-white sm:text-6xl lg:text-7xl">
-            Concierge Auto Detailing,<br /><span className="text-brand">Perfected in Lahore.</span>
+            Concierge Auto Detailing,<br /><span className="text-brand">Perfected in Miramichi.</span>
           </h1>
           <p className="mt-5 max-w-2xl text-base text-white/75 sm:text-lg">
-            Ceramic 9H nano-coating, multi-stage paint correction, and professional interior hot-water extraction — all delivered with white-glove precision at our Lahore studio.
+            Ceramic 9H nano-coating, multi-stage paint correction, and professional interior hot-water extraction — all delivered with white-glove precision at our Miramichi studio.
           </p>
           <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
             <Link to="/get-estimate" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-brand px-6 py-3 text-sm font-semibold text-ink transition hover:bg-brand/90">
@@ -270,7 +270,7 @@ function Home() {
         <div className="flex items-end justify-between gap-4">
           <div>
             <p className="text-xs font-bold uppercase tracking-wide text-brand">From the Journal</p>
-            <h2 className="mt-1 text-2xl font-bold text-ink sm:text-3xl">Detailing Guides & Lahore Insights</h2>
+            <h2 className="mt-1 text-2xl font-bold text-ink sm:text-3xl">Detailing Guides & Miramichi Insights</h2>
           </div>
           <Link to="/news" className="hidden sm:inline-flex items-center gap-1 text-sm font-medium text-ink">
             All articles <ArrowRight className="h-4 w-4" />
@@ -331,7 +331,7 @@ function Home() {
               Get Instant Quote <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
-          <p className="mt-5 text-xs text-white/45">+92 321 9200955 · Lahore, Pakistan · Mon–Sat 7 am–6 pm</p>
+          <p className="mt-5 text-xs text-white/45">+1 (506) 251-4451 · Miramichi, NB · Mon–Sat 7 am–6 pm</p>
         </div>
       </section>
     </main>

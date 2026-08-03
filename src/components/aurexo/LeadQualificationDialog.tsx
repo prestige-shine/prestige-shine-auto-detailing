@@ -256,7 +256,7 @@ export function LeadQualificationDialog({ open, onClose, presetServiceKey }: Pro
             </div>
             <div className="leading-tight">
               <p className="text-xs font-bold uppercase tracking-wider" style={{ color: BRAND_DARK }}>
-                Top Coat
+                Prestige Shine
               </p>
               <p className="text-[11px] text-muted-foreground">Vehicle assessment</p>
             </div>

@@ -12,7 +12,7 @@ export function Header({ onMenuClick }: Props) {
   return (
     <header className="sticky top-0 z-40 w-full border-b border-border bg-background/95 backdrop-blur">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4">
-        <Link to="/" aria-label="Top Coat Auto Detailers home">
+        <Link to="/" aria-label="Prestige Shine Auto Detailing home">
           <Logo />
         </Link>
         <div className="flex items-center gap-2 sm:gap-3">

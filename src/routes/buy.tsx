@@ -33,9 +33,9 @@ export const Route = createFileRoute("/buy")({
   }),
   head: () => ({
     meta: [
-      { title: "Browse Detailing Packages — Top Coat Auto Detailers Lahore" },
-      { name: "description", content: "Browse and filter Top Coat's detailing packages by vehicle class, service tier, booking status, price range, and car make." },
-      { property: "og:title", content: "Detailing Packages — Top Coat Auto Detailers" },
+      { title: "Browse Detailing Packages — Prestige Shine Auto Detailing Miramichi" },
+      { name: "description", content: "Browse and filter Prestige Shine's detailing packages by vehicle class, service tier, booking status, price range, and car make." },
+      { property: "og:title", content: "Detailing Packages — Prestige Shine Auto Detailing" },
       { property: "og:description", content: "Find the right detailing package for your vehicle." },
     ],
   }),

@@ -6,10 +6,10 @@ import { team } from "@/lib/team";
 export const Route = createFileRoute("/agents")({
   head: () => ({
     meta: [
-      { title: "Our Detailers — Top Coat Auto Detailers" },
-      { name: "description", content: "Meet the Top Coat Auto Detailers team — certified ceramic coating installers and paint correction specialists across Lahore." },
-      { property: "og:title", content: "Our Detailers — Top Coat Auto Detailers" },
-      { property: "og:description", content: "Certified ceramic and paint correction specialists across Lahore." },
+      { title: "Our Detailers — Prestige Shine Auto Detailing" },
+      { name: "description", content: "Meet the Prestige Shine Auto Detailing team — certified ceramic coating installers and paint correction specialists across Miramichi." },
+      { property: "og:title", content: "Our Detailers — Prestige Shine Auto Detailing" },
+      { property: "og:description", content: "Certified ceramic and paint correction specialists across Miramichi." },
     ],
   }),
   component: Agents,
@@ -18,7 +18,7 @@ export const Route = createFileRoute("/agents")({
 function Agents() {
   return (
     <main className="overflow-x-hidden">
-      <PageHeader eyebrow="The Team" title="Our Detailers" subtitle="Certified installers behind every Top Coat package." />
+      <PageHeader eyebrow="The Team" title="Our Detailers" subtitle="Certified installers behind every Prestige Shine package." />
       <section className="mx-auto max-w-6xl px-4 py-10">
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {team.map((m) => (

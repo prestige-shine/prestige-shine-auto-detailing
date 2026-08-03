@@ -10,7 +10,7 @@ export const Route = createFileRoute("/auth")({
   validateSearch: searchSchema,
   head: () => ({
     meta: [
-      { title: "Admin Sign In — Top Coat" },
+      { title: "Admin Sign In — Prestige Shine" },
       { name: "robots", content: "noindex" },
     ],
   }),

@@ -5,9 +5,9 @@ import { PageHeader } from "@/components/aurexo/PageHeader";
 export const Route = createFileRoute("/financing")({
   head: () => ({
     meta: [
-      { title: "Payment Plans — Top Coat Auto Detailers" },
-      { name: "description", content: "Flexible payment plans for ceramic coating, paint correction, and premium detailing packages at Top Coat Auto Detailers." },
-      { property: "og:title", content: "Payment Plans — Top Coat Auto Detailers" },
+      { title: "Payment Plans — Prestige Shine Auto Detailing" },
+      { name: "description", content: "Flexible payment plans for ceramic coating, paint correction, and premium detailing packages at Prestige Shine Auto Detailing." },
+      { property: "og:title", content: "Payment Plans — Prestige Shine Auto Detailing" },
       { property: "og:description", content: "0% pay-in-4, 12-month promotional APR, and 24-month fixed plans." },
     ],
   }),
@@ -23,7 +23,7 @@ const PLANS = [
 function Financing() {
   return (
     <main className="overflow-x-hidden">
-      <PageHeader eyebrow="Payment Plans" title="Book now, pay over time" subtitle="A-rated lender partners let Lahore owners spread ceramic and correction packages into affordable monthly payments." />
+      <PageHeader eyebrow="Payment Plans" title="Book now, pay over time" subtitle="A-rated lender partners let Miramichi owners spread ceramic and correction packages into affordable monthly payments." />
       <section className="mx-auto max-w-6xl px-4 py-10">
         <div className="grid gap-4 md:grid-cols-3">
           {PLANS.map((p) => (

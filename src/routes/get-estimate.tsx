@@ -6,10 +6,10 @@ import { useLeadDialog } from "@/contexts/LeadDialogContext";
 export const Route = createFileRoute("/get-estimate")({
   head: () => ({
     meta: [
-      { title: "Get a Personalized Estimate — Top Coat Auto Detailers Lahore" },
-      { name: "description", content: "Answer a few quick questions about your vehicle and Top Coat will send an accurate detailing estimate — photo-based pricing, no phone tag." },
-      { property: "og:title", content: "Get a Personalized Estimate — Top Coat Lahore" },
-      { property: "og:description", content: "Photo-based, accurate detailing quotes from Lahore's premier studio." },
+      { title: "Get a Personalized Estimate — Prestige Shine Auto Detailing Miramichi" },
+      { name: "description", content: "Answer a few quick questions about your vehicle and Prestige Shine will send an accurate detailing estimate — photo-based pricing, no phone tag." },
+      { property: "og:title", content: "Get a Personalized Estimate — Prestige Shine Miramichi" },
+      { property: "og:description", content: "Photo-based, accurate detailing quotes from Miramichi's premier studio." },
     ],
     links: [{ rel: "canonical", href: "/get-estimate" }],
   }),

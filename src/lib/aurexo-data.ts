@@ -1,5 +1,5 @@
 // ============================================================
-// Top Coat Auto Detailers — real completed projects
+// Prestige Shine Auto Detailing — real completed projects
 // Type names are preserved so all downstream routes keep compiling.
 // Semantic remapping:
 //   title       -> project name (vehicle + service performed)

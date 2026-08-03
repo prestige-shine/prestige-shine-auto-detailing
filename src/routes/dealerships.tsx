@@ -6,26 +6,28 @@ import { STUDIO_PHONE, STUDIO_TEL } from "@/lib/whatsapp";
 export const Route = createFileRoute("/dealerships")({
   head: () => ({
     meta: [
-      { title: "Studio Locations — Top Coat Auto Detailers" },
-      { name: "description", content: "Top Coat Auto Detailers locations across Lahore — Gulberg HQ, DHA, Bahria Town, and Model Town. Climate-controlled bays for ceramic coating and paint correction." },
-      { property: "og:title", content: "Studio Locations — Top Coat Auto Detailers" },
-      { property: "og:description", content: "Four Lahore detailing studios: Gulberg, DHA, Bahria Town, Model Town." },
+      { title: "Studio Location — Prestige Shine Auto Detailing, Miramichi NB" },
+      { name: "description", content: "Prestige Shine Auto Detailing is located at 229 Jacqueline Dr, Miramichi, NB E1N 3Z2 — serving Miramichi and surrounding areas with ceramic coating and paint correction." },
+      { property: "og:title", content: "Studio Location — Prestige Shine Auto Detailing" },
+      { property: "og:description", content: "229 Jacqueline Dr, Miramichi, NB — serving Miramichi and surrounding areas." },
     ],
   }),
   component: Locations,
 });
 
 const STUDIOS = [
-  { city: "Gulberg (HQ)", addr: "1420 Detail Way, Gulberg, Lahore 44113", hours: "Mon–Sat · 8am–7pm", offers: "Ceramic 9H · Multi-stage correction · Interior extraction · Mobile" },
-  { city: "DHA", addr: "88 Polish Ave, DHA, Lahore 43215", hours: "Mon–Sat · 8am–7pm", offers: "Ceramic 9H · Correction · Interior · Express" },
-  { city: "Bahria Town", addr: "512 Gloss Blvd, Bahria Town, Lahore 45202", hours: "Tue–Sat · 9am–6pm", offers: "Interior extraction · Express · Mobile · Correction" },
-  { city: "Model Town", addr: "205 Foam Lane, Model Town, Lahore 44308", hours: "Tue–Sat · 9am–6pm", offers: "Express · Interior · Mobile" },
+  {
+    city: "Miramichi Studio",
+    addr: "229 Jacqueline Dr, Miramichi, NB E1N 3Z2, Canada",
+    hours: "Mon–Sat · 8am–7pm",
+    offers: "Ceramic 9H · Multi-stage correction · Interior extraction · Mobile",
+  },
 ];
 
 function Locations() {
   return (
     <main className="overflow-x-hidden">
-      <PageHeader eyebrow="Lahore Coverage" title="Studio Locations" subtitle="Four Lahore detailing studios plus fully mobile service across the state." />
+      <PageHeader eyebrow="Miramichi Coverage" title="Studio Location" subtitle="Our Miramichi studio plus fully mobile service across Miramichi, NB and surrounding areas." />
       <section className="mx-auto max-w-6xl px-4 py-10">
         <div className="grid gap-4 sm:grid-cols-2">
           {STUDIOS.map((s) => (

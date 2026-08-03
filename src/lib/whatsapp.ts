@@ -1,8 +1,13 @@
-// Centralized WhatsApp lead routing for Top Coat Auto Detailers.
-export const WHATSAPP_NUMBER = "923219200955";
-export const WHATSAPP_DISPLAY = "+92 321 9200955";
-export const STUDIO_PHONE = "+92 321 9200955";
-export const STUDIO_TEL = "+923219200955";
+// Centralized business identity + WhatsApp lead routing for Prestige Shine Auto Detailing.
+export const BUSINESS_NAME = "Prestige Shine Auto Detailing";
+export const STUDIO_EMAIL = "kevinohines@gmail.com";
+export const STUDIO_ADDRESS = "229 Jacqueline Dr, Miramichi, NB E1N 3Z2, Canada";
+export const SERVICE_AREA = "Miramichi, NB and surrounding areas";
+export const FACEBOOK_URL = "https://www.facebook.com/share/19LTaGPm2C/";
+export const WHATSAPP_NUMBER = "15062514451";
+export const WHATSAPP_DISPLAY = "+1 (506) 251-4451";
+export const STUDIO_PHONE = "+1 (506) 251-4451";
+export const STUDIO_TEL = "+15062514451";
 
 export type LeadPayload = {
   name?: string;
@@ -34,14 +39,14 @@ export function formatEstimateRange(low: number, high: number) {
 
 export function buildLeadMessage(p: LeadPayload) {
   const lines: string[] = [
-    "Hi Top Coat Auto Detailers — I'd like to book a detailing appointment.",
+    "Hi Prestige Shine Auto Detailing — I'd like to book a detailing appointment.",
     "",
     "── Client Details ──",
   ];
   if (p.name) lines.push(`• Name: ${p.name}`);
   if (p.phone) lines.push(`• Phone: ${p.phone}`);
   if (p.email) lines.push(`• Email: ${p.email}`);
-  if (p.zip) lines.push(`• Lahore Area: ${p.zip}`);
+  if (p.zip) lines.push(`• Miramichi Area: ${p.zip}`);
   if (p.county) lines.push(`• County: ${p.county}`);
 
   lines.push("", "── Service Specification ──");
@@ -58,7 +63,7 @@ export function buildLeadMessage(p: LeadPayload) {
     lines.push("", "── Notes ──", note);
   }
 
-  lines.push("", `Submitted via: ${p.source ?? "aurexo-detailing.lovable.app"}`);
+  lines.push("", `Submitted via: ${p.source ?? "prestige-shine-auto-detailing.lovable.app"}`);
   return lines.join("\n");
 }
 
