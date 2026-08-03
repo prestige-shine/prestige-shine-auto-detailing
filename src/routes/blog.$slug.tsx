@@ -6,8 +6,8 @@ export const Route = createFileRoute("/blog/$slug")({
     const a = articles.find((x) => x.slug === params.slug);
     return {
       meta: [
-        { title: a ? `${a.title} — Top Coat Auto Detailers` : "Article — Top Coat" },
-        { name: "description", content: a?.excerpt ?? "Detailing guide from Top Coat Auto Detailers." },
+        { title: a ? `${a.title} — Prestige Shine Auto Detailing` : "Article — Prestige Shine" },
+        { name: "description", content: a?.excerpt ?? "Detailing guide from Prestige Shine Auto Detailing." },
         { property: "og:title", content: a?.title ?? "Article" },
         { property: "og:description", content: a?.excerpt ?? "" },
         { property: "og:image", content: a?.cover ?? "" },
@@ -24,7 +24,7 @@ export const Route = createFileRoute("/blog/$slug")({
                 image: [a.cover],
                 datePublished: a.publishedAt ?? a.date,
                 author: [{ "@type": "Person", name: a.author }],
-                publisher: { "@type": "Organization", name: "Top Coat Auto Detailers" },
+                publisher: { "@type": "Organization", name: "Prestige Shine Auto Detailing" },
               }),
             },
           ]

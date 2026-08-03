@@ -3,7 +3,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 export const Route = createFileRoute("/404")({
   head: () => ({
     meta: [
-      { title: "Page not found — Top Coat Auto Detailers" },
+      { title: "Page not found — Prestige Shine Auto Detailing" },
       { name: "robots", content: "noindex" },
     ],
   }),

@@ -12,7 +12,7 @@ export function PartnersMarquee() {
           <p className="text-xs font-bold uppercase tracking-wide text-brand">Trusted Brands</p>
           <h2 id="partners-heading" className="mt-1 text-2xl font-bold">Premium detailing product partners</h2>
           <p className="mt-2 text-sm text-white/60">
-            Top Coat uses only professional-grade products from the world's most trusted detailing brands — the same products winning concours awards.
+            Prestige Shine uses only professional-grade products from the world's most trusted detailing brands — the same products winning concours awards.
           </p>
         </div>
       </div>

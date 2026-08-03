@@ -6,10 +6,10 @@ import { team } from "@/lib/team";
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "About Top Coat Auto Detailers — Lahore's Premier Auto Detailing" },
-      { name: "description", content: "Founded in 2015 in Gulberg, Top Coat Auto Detailers delivers museum-grade paint correction, 9H ceramic coatings, and deep interior cleaning across Lahore." },
-      { property: "og:title", content: "About Top Coat Auto Detailers" },
-      { property: "og:description", content: "Lahore's premier auto detailing studio — ceramic coatings, paint correction, and interior deep cleans since 2015." },
+      { title: "About Prestige Shine Auto Detailing — Miramichi's Premier Auto Detailing" },
+      { name: "description", content: "Founded in 2015 in Chatham, Prestige Shine Auto Detailing delivers museum-grade paint correction, 9H ceramic coatings, and deep interior cleaning across Miramichi." },
+      { property: "og:title", content: "About Prestige Shine Auto Detailing" },
+      { property: "og:description", content: "Miramichi's premier auto detailing studio — ceramic coatings, paint correction, and interior deep cleans since 2015." },
     ],
   }),
   component: About,
@@ -19,9 +19,9 @@ function About() {
   return (
     <main className="overflow-x-hidden">
       <PageHeader
-        eyebrow="About Top Coat"
-        title="Lahore's most trusted detailing studio, built from passion."
-        subtitle="Founded in 2015 in Gulberg, Top Coat Auto Detailers has grown from a one-bay garage into four state-of-the-art facilities serving Northeast and Central Lahore — each staffed by certified detailing professionals obsessed with perfection."
+        eyebrow="About Prestige Shine"
+        title="Miramichi's most trusted detailing studio, built from passion."
+        subtitle="Founded in 2015 in Chatham, Prestige Shine Auto Detailing has grown from a one-bay garage into four state-of-the-art facilities serving Northeast and Central Miramichi — each staffed by certified detailing professionals obsessed with perfection."
       />
 
       <section className="mx-auto max-w-6xl px-4 py-12 grid grid-cols-2 sm:grid-cols-4 gap-4">
@@ -29,7 +29,7 @@ function About() {
           { i: Users, n: "4,200+", l: "Vehicles detailed" },
           { i: Trophy, n: "9", l: "Industry awards" },
           { i: ShieldCheck, n: "5 yr", l: "Ceramic warranty" },
-          { i: Sparkles, n: "4", l: "Studios across Lahore" },
+          { i: Sparkles, n: "4", l: "Studios across Miramichi" },
         ].map(({ i: Icon, n, l }) => (
           <div key={l} className="rounded-2xl bg-white border border-border p-5 text-center">
             <Icon className="h-6 w-6 mx-auto text-brand" />
@@ -44,15 +44,15 @@ function About() {
         <div className="rounded-3xl bg-white border border-border overflow-hidden grid grid-cols-1 lg:grid-cols-2">
           <img
             src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=900&q=80"
-            alt="Top Coat detailing studio interior"
+            alt="Prestige Shine detailing studio interior"
             className="h-64 w-full object-cover lg:h-full"
             loading="lazy"
           />
           <div className="p-8 sm:p-12 flex flex-col justify-center">
             <p className="text-xs font-bold uppercase tracking-wide text-brand">Our Story</p>
-            <h2 className="mt-2 text-2xl font-bold text-ink">Gulberg, 2015.</h2>
+            <h2 className="mt-2 text-2xl font-bold text-ink">Chatham, 2015.</h2>
             <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-              Robert Fox started Top Coat out of a single-bay garage in Gulberg's Tremont neighborhood with one polisher, a pressure washer, and an uncompromising standard for paint. Word spread fast. Within two years the studio expanded to a purpose-built facility in Midtown Gulberg, then added DHA in 2019, Bahria Town in 2021, and Model Town in 2023. Today, Top Coat employs over 30 certified detailers across four Lahore studios and is widely regarded as the state's most trusted name in ceramic coatings and paint correction.
+              Robert Fox started Prestige Shine out of a single-bay garage in Chatham's Tremont neighborhood with one polisher, a pressure washer, and an uncompromising standard for paint. Word spread fast. Within two years the studio expanded to a purpose-built facility in Midtown Chatham, then added Northside in 2019, Douglastown in 2021, and Newcastle in 2023. Today, Prestige Shine employs over 30 certified detailers across four Miramichi studios and is widely regarded as the state's most trusted name in ceramic coatings and paint correction.
             </p>
           </div>
         </div>
@@ -63,7 +63,7 @@ function About() {
         <div className="rounded-3xl bg-white border border-border p-8 sm:p-12">
           <h2 className="text-2xl font-bold text-ink">Our mission</h2>
           <p className="mt-3 text-muted-foreground leading-relaxed">
-            Every vehicle that enters an Top Coat studio leaves better than when it arrived — not just cleaner, but protected, restored, and documented. We combine professional-grade chemistry with meticulous hand-work and transparent communication so you always know exactly what was done and why.
+            Every vehicle that enters an Prestige Shine studio leaves better than when it arrived — not just cleaner, but protected, restored, and documented. We combine professional-grade chemistry with meticulous hand-work and transparent communication so you always know exactly what was done and why.
           </p>
           <h3 className="mt-8 text-lg font-bold text-ink">What we stand for</h3>
           <ul className="mt-3 grid sm:grid-cols-2 gap-3 text-sm">
@@ -83,7 +83,7 @@ function About() {
 
           <div className="mt-10 grid gap-8 border-t border-border pt-10 lg:grid-cols-2">
             <div>
-              <h3 className="text-lg font-bold text-ink">The Top Coat process</h3>
+              <h3 className="text-lg font-bold text-ink">The Prestige Shine process</h3>
               <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
                 Every engagement begins with a thorough paint inspection under specialized lighting. We measure paint thickness, identify contaminants, swirl marks, and oxidation before recommending a service tier. Nothing is assumed — everything is documented.
               </p>
@@ -97,7 +97,7 @@ function About() {
             <div>
               <h3 className="text-lg font-bold text-ink">Awards & recognition</h3>
               <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                Top Coat has been named Lahore's Best Auto Detailing Studio by Gulberg Magazine five consecutive years. We've earned the Gtechniq Accredited Detailer designation, the RUPES Training Center badge, and the International Detailing Association's Recognized Business Award.
+                Prestige Shine has been named Miramichi's Best Auto Detailing Studio by Chatham Magazine five consecutive years. We've earned the Gtechniq Accredited Detailer designation, the RUPES Training Center badge, and the International Detailing Association's Recognized Business Award.
               </p>
             </div>
             <div>

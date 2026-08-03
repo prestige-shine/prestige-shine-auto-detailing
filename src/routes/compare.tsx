@@ -14,9 +14,9 @@ export const Route = createFileRoute("/compare")({
   }),
   head: () => ({
     meta: [
-      { title: "Compare Detailing Packages — Top Coat Auto Detailers" },
+      { title: "Compare Detailing Packages — Prestige Shine Auto Detailing" },
       { name: "description", content: "Detailing Maintenance vs. Ceramic Paint Protection value comparison. Weigh 5-year cost, gloss, hydrophobic performance, and resale impact side-by-side." },
-      { property: "og:title", content: "Compare Detailing Packages — Top Coat" },
+      { property: "og:title", content: "Compare Detailing Packages — Prestige Shine" },
       { property: "og:description", content: "Detailing Maintenance vs Ceramic Paint Protection value comparison tool." },
     ],
   }),
@@ -100,7 +100,7 @@ function Compare() {
       <PageHeader
         eyebrow="Value Tool"
         title="Detailing Maintenance vs. Ceramic Paint Protection"
-        subtitle="Weigh wax-and-wash maintenance against Top Coat's 9H Ceramic Paint Protection — 5-year cost, gloss, hydrophobic behavior, and resale impact — then stack up to three packages side-by-side."
+        subtitle="Weigh wax-and-wash maintenance against Prestige Shine's 9H Ceramic Paint Protection — 5-year cost, gloss, hydrophobic behavior, and resale impact — then stack up to three packages side-by-side."
       />
 
       <section className="mx-auto max-w-6xl px-4 py-10">
@@ -115,7 +115,7 @@ function Compare() {
               <p className="mt-1 font-bold text-ink">Wax & Wash Maintenance</p>
             </div>
             <div className="p-4 border-b border-l border-border bg-brand/10">
-              <p className="text-[11px] font-bold uppercase tracking-wider text-brand">Top Coat</p>
+              <p className="text-[11px] font-bold uppercase tracking-wider text-brand">Prestige Shine</p>
               <p className="mt-1 font-bold text-ink">9H Ceramic Paint Protection</p>
             </div>
 

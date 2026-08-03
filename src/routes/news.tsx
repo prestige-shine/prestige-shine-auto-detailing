@@ -5,10 +5,10 @@ import { PageHeader } from "@/components/aurexo/PageHeader";
 export const Route = createFileRoute("/news")({
   head: () => ({
     meta: [
-      { title: "Detailing Journal — Top Coat Auto Detailers" },
-      { name: "description", content: "Guides on ceramic coating, paint correction, interior deep cleaning, and Lahore-climate paint care from Top Coat Auto Detailers." },
-      { property: "og:title", content: "Detailing Journal — Top Coat Auto Detailers" },
-      { property: "og:description", content: "Ceramic coating, paint correction, and Lahore-climate paint care guides." },
+      { title: "Detailing Journal — Prestige Shine Auto Detailing" },
+      { name: "description", content: "Guides on ceramic coating, paint correction, interior deep cleaning, and Miramichi-climate paint care from Prestige Shine Auto Detailing." },
+      { property: "og:title", content: "Detailing Journal — Prestige Shine Auto Detailing" },
+      { property: "og:description", content: "Ceramic coating, paint correction, and Miramichi-climate paint care guides." },
     ],
   }),
   component: News,
@@ -17,7 +17,7 @@ export const Route = createFileRoute("/news")({
 function News() {
   return (
     <main className="overflow-x-hidden">
-      <PageHeader eyebrow="Detailing Journal" title="Guides & Tips" subtitle="In-depth articles from Top Coat's detailers on ceramic protection, correction, and interior care." />
+      <PageHeader eyebrow="Detailing Journal" title="Guides & Tips" subtitle="In-depth articles from Prestige Shine's detailers on ceramic protection, correction, and interior care." />
       <section className="mx-auto max-w-6xl px-4 py-10">
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {articles.map((a) => (

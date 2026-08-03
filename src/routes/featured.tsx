@@ -6,9 +6,9 @@ import { PageHeader } from "@/components/aurexo/PageHeader";
 export const Route = createFileRoute("/featured")({
   head: () => ({
     meta: [
-      { title: "Featured Detailing Packages — Top Coat Auto Detailers" },
-      { name: "description", content: "Hand-picked featured detailing packages selected by the Top Coat team — ceramic coatings, paint corrections, and full detail bundles for every vehicle type." },
-      { property: "og:title", content: "Featured Packages — Top Coat Auto Detailers" },
+      { title: "Featured Detailing Packages — Prestige Shine Auto Detailing" },
+      { name: "description", content: "Hand-picked featured detailing packages selected by the Prestige Shine team — ceramic coatings, paint corrections, and full detail bundles for every vehicle type." },
+      { property: "og:title", content: "Featured Packages — Prestige Shine Auto Detailing" },
       { property: "og:description", content: "Our team's top detailing package picks this season." },
     ],
   }),

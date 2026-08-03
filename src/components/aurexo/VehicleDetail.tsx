@@ -306,7 +306,7 @@ export function VehicleDetail({ vehicle }: { vehicle: Vehicle }) {
 
       <section className="mx-auto max-w-6xl px-4 pb-16">
         <h2 className="text-xl font-bold text-ink sm:text-2xl">Related packages</h2>
-        <p className="mt-1 text-sm text-muted-foreground">Other detailing work our Lahore studios have booked recently.</p>
+        <p className="mt-1 text-sm text-muted-foreground">Other detailing work our Miramichi studios have booked recently.</p>
         <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {related.map((v) => (
             <VehicleCard key={v.id} v={v} />

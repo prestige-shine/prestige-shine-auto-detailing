@@ -18,19 +18,19 @@ const SERVICE_OPTIONS = [
 ];
 
 const locations = [
-  { name: "Gulberg HQ", address: "1847 Euclid Avenue, Gulberg, Lahore 44115", hours: "Mon–Sat 8AM–6PM EST" },
-  { name: "DHA Studio", address: "3320 Olentangy River Rd, DHA, Lahore 43202", hours: "Mon–Sat 8AM–6PM EST" },
-  { name: "Bahria Town Studio", address: "5901 Madison Rd, Bahria Town, Lahore 45227", hours: "Tue–Sat 8AM–6PM EST" },
-  { name: "Model Town Studio", address: "750 W Market St, Model Town, Lahore 44303", hours: "Mon–Sat 9AM–5PM EST" },
+  { name: "Chatham HQ", address: "1847 Euclid Avenue, Chatham, Miramichi 44115", hours: "Mon–Sat 8AM–6PM EST" },
+  { name: "Northside Studio", address: "3320 Olentangy River Rd, Northside, Miramichi 43202", hours: "Mon–Sat 8AM–6PM EST" },
+  { name: "Douglastown Studio", address: "5901 Madison Rd, Douglastown, Miramichi 45227", hours: "Tue–Sat 8AM–6PM EST" },
+  { name: "Newcastle Studio", address: "750 W Market St, Newcastle, Miramichi 44303", hours: "Mon–Sat 9AM–5PM EST" },
 ];
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
-      { title: "Contact Top Coat Auto Detailers — Lahore" },
-      { name: "description", content: "Reach Top Coat Auto Detailers across Gulberg, DHA, Bahria Town and Model Town. Book a service, ask a question, or get a detailing quote via our contact form or WhatsApp." },
-      { property: "og:title", content: "Contact — Top Coat Auto Detailers" },
-      { property: "og:description", content: "Get in touch with Lahore's premier auto detailing studio." },
+      { title: "Contact Prestige Shine Auto Detailing — Miramichi" },
+      { name: "description", content: "Reach Prestige Shine Auto Detailing across Chatham, Northside, Douglastown and Newcastle. Book a service, ask a question, or get a detailing quote via our contact form or WhatsApp." },
+      { property: "og:title", content: "Contact — Prestige Shine Auto Detailing" },
+      { property: "og:description", content: "Get in touch with Miramichi's premier auto detailing studio." },
     ],
     links: [{ rel: "canonical", href: "/contact" }],
   }),
@@ -58,7 +58,7 @@ function Contact() {
     <main className="overflow-x-hidden">
       <PageHeader
         eyebrow="Contact"
-        title="Talk to a real Lahore detailer."
+        title="Talk to a real Miramichi detailer."
         subtitle="Four studio locations, direct phone line, and instant WhatsApp handoff — no bots, no hold music."
       />
 
@@ -99,12 +99,12 @@ function Contact() {
             <div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-brand/15 text-ink"><Phone className="h-5 w-5" /></div>
             <div><p className="font-bold text-ink">Call the studio</p><p className="text-sm text-muted-foreground">{STUDIO_PHONE}</p></div>
           </a>
-          <a href="mailto:studio@aurexodetailing.com" className="flex items-start gap-4 rounded-2xl bg-white border border-border p-5 hover:border-ink transition">
+          <a href="mailto:kevinohines@gmail.com" className="flex items-start gap-4 rounded-2xl bg-white border border-border p-5 hover:border-ink transition">
             <div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-brand/15 text-ink"><Mail className="h-5 w-5" /></div>
-            <div><p className="font-bold text-ink">Email</p><p className="text-sm text-muted-foreground">studio@aurexodetailing.com</p></div>
+            <div><p className="font-bold text-ink">Email</p><p className="text-sm text-muted-foreground">kevinohines@gmail.com</p></div>
           </a>
           <a
-            href="https://wa.me/923219200955?text=Hi%20Top Coat%2C%20I%27d%20like%20to%20book%20a%20detailing%20appointment."
+            href="https://wa.me/15062514451?text=Hi%20Prestige Shine%2C%20I%27d%20like%20to%20book%20a%20detailing%20appointment."
             target="_blank" rel="noreferrer"
             className="flex items-start gap-4 rounded-2xl bg-white border border-border p-5 hover:border-ink transition"
           >

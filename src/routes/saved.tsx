@@ -7,9 +7,9 @@ import { useFavorites } from "@/contexts/FavoritesContext";
 export const Route = createFileRoute("/saved")({
   head: () => ({
     meta: [
-      { title: "Saved Packages — Top Coat Auto Detailers" },
-      { name: "description", content: "Your saved detailing packages at Top Coat Auto Detailers." },
-      { property: "og:title", content: "Saved Packages — Top Coat Auto Detailers" },
+      { title: "Saved Packages — Prestige Shine Auto Detailing" },
+      { name: "description", content: "Your saved detailing packages at Prestige Shine Auto Detailing." },
+      { property: "og:title", content: "Saved Packages — Prestige Shine Auto Detailing" },
     ],
   }),
   component: Saved,

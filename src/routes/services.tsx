@@ -269,7 +269,7 @@ function Services() {
 
           <div className="mt-6 flex flex-wrap gap-3">
             <a
-              href="https://wa.me/923219200955?text=Hi%20Top Coat%2C%20I%27d%20like%20to%20book%20a%20detailing%20appointment."
+              href="https://wa.me/15062514451?text=Hi%20Prestige Shine%2C%20I%27d%20like%20to%20book%20a%20detailing%20appointment."
               target="_blank"
               rel="noreferrer"
               className="inline-flex items-center gap-2 rounded-xl bg-brand px-6 py-3 text-sm font-bold text-ink"
