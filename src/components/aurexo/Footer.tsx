@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { Plus, Minus, Phone, MapPin, ArrowRight, Facebook, Instagram, MessageCircle, Sparkles } from "lucide-react";
+import { Plus, Minus, Phone, Mail, MapPin, ArrowRight, Facebook, MessageCircle, Sparkles } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import { Logo } from "./Logo";
-import { STUDIO_PHONE, STUDIO_TEL, WHATSAPP_NUMBER } from "@/lib/whatsapp";
+import { STUDIO_PHONE, STUDIO_TEL, STUDIO_EMAIL, FACEBOOK_URL, WHATSAPP_NUMBER } from "@/lib/whatsapp";
 import { useLeadDialog } from "@/contexts/LeadDialogContext";
 
 const groups: Record<string, { label: string; to: string }[]> = {
@@ -80,8 +80,8 @@ export function Footer() {
           <div>
             <h4 className="text-sm font-semibold uppercase tracking-wider text-white/60">Service Area</h4>
             <p className="mt-3 text-sm leading-relaxed text-white/80">
-              Chatham · Northside · Douglastown<br />
-              Newcastle · Nelson-Miramichi · Neguac · Greater Miramichi
+              Miramichi, NB<br />
+              and surrounding areas
             </p>
           </div>
         </div>
@@ -115,16 +115,18 @@ export function Footer() {
             <Phone className="h-4 w-4 text-brand shrink-0" />
             <a href={`tel:${STUDIO_TEL}`} className="hover:text-white">{STUDIO_PHONE}</a>
           </div>
+          <div className="flex items-center gap-3 text-sm text-white/85">
+            <Mail className="h-4 w-4 text-brand shrink-0" />
+            <a href={`mailto:${STUDIO_EMAIL}`} className="hover:text-white">{STUDIO_EMAIL}</a>
+          </div>
           <div className="flex items-start gap-3 text-sm text-white/85">
             <MapPin className="h-4 w-4 text-brand shrink-0 mt-0.5" />
-            <span>Prestige Shine Auto Detailing — Serving all of Miramichi, NB</span>
+            <span>229 Jacqueline Dr, Miramichi, NB E1N 3Z2, Canada</span>
           </div>
         </div>
 
         <div className="mt-8 flex items-center gap-3 border-t border-white/10 pt-8">
-          <Social href="https://www.facebook.com" label="Facebook"><Facebook className="h-4 w-4" /></Social>
-          <Social href="https://x.com" label="X"><XLogo /></Social>
-          <Social href="https://www.instagram.com" label="Instagram"><Instagram className="h-4 w-4" /></Social>
+          <Social href={FACEBOOK_URL} label="Facebook"><Facebook className="h-4 w-4" /></Social>
           <Social href={`https://wa.me/${WHATSAPP_NUMBER}`} label="WhatsApp"><MessageCircle className="h-4 w-4" /></Social>
         </div>
 
