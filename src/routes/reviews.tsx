@@ -52,12 +52,6 @@ function Reviews() {
         <div className="columns-1 gap-4 sm:columns-2 lg:columns-3 [column-fill:_balance]">
           {reviews.map((r) => (
             <article key={r.name} className="mb-4 break-inside-avoid rounded-2xl bg-white border border-border overflow-hidden">
-              <img
-                src={r.photo}
-                alt={`${r.service} — Prestige Shine`}
-                className="w-full h-36 object-cover"
-                loading="lazy"
-              />
               <div className="p-5">
                 <div className="flex gap-0.5 text-brand">
                   {Array.from({ length: 5 }).map((_, i) => <Star key={i} className="h-4 w-4" fill="currentColor" strokeWidth={0} />)}
