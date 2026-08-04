@@ -2,29 +2,34 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { Star, MessageCircle } from "lucide-react";
 import { PageHeader } from "@/components/aurexo/PageHeader";
 
-const PHOTOS = [
-  "photo-1552519507-da3b142c6e3d",
-  "photo-1503376780353-7e6692767b70",
-  "photo-1494976388531-d1058494cdd8",
-  "photo-1493238792000-8113da705763",
-  "photo-1520340356584-f9917d1eea6f",
-  "photo-1583121274602-3e2820c69888",
-  "photo-1600661653561-629509216228",
-  "photo-1449965408869-eaa3f722e40d",
-  "photo-1560958089-b8a1929cea89",
-];
-
+import bmwx5 from "@/assets/bmwx5.jpg.asset.json";
+import fordF150 from "@/assets/ford_f150.jpg.asset.json";
+import audiQ5 from "@/assets/audi_q5.jpg.asset.json";
+import corvette from "@/assets/corvette_c8.jpg.asset.json";
+import hondaHrv from "@/assets/honda_hrv.jpg.asset.json";
+import hondaOdyssey from "@/assets/honda_odyssey.jpg.asset.json";
+import transAm from "@/assets/pontiac_trans_am.jpg.asset.json";
+import rav4 from "@/assets/toyota_rav4.jpg.asset.json";
+import belAir from "@/assets/chevrolette_bel_air.jpg.asset.json";
+import chevelle from "@/assets/chevelle_ss.jpg.asset.json";
+import baAfter1 from "@/assets/ba-after-1.jpg.asset.json";
+import baAfter2 from "@/assets/ba-after-2.jpg.asset.json";
+import baAfter3 from "@/assets/ba-after-3.jpg.asset.json";
 
 const reviews = [
-  { name: "Marcus T.", city: "Shaker Heights, Miramichi", service: "9H Ceramic Coating", photo: PHOTOS[0], body: "Brought in my 2023 BMW M4 absolutely covered in swirl marks from a dealer prep job. The Prestige Shine team did a two-stage correction and Crystal Serum Ultra coating over two days. The paint looks deeper than the day it left the factory. Genuinely stunned." },
-  { name: "Priya K.", city: "Dublin, Miramichi", service: "Full Interior Deep Clean", photo: PHOTOS[1], body: "I have two large dogs and the interior of my Range Rover was honestly embarrassing. Prestige Shine's Northside studio extracted the carpet, removed every trace of pet hair, and eliminated the odour completely. Looked and smelled showroom-new. Will be back every six months." },
-  { name: "Jordan A.", city: "Hyde Park, Douglastown, Miramichi", service: "Paint Correction", photo: PHOTOS[2], body: "Three-year-old Porsche 911 with light swirling from automated washes. The single-stage correction took about five hours and the result is mirror-flat paint I hadn't seen since delivery day. The team photographed every panel before and after — incredible documentation." },
-  { name: "Camille R.", city: "Fairlawn, Newcastle, Miramichi", service: "Express Exterior + Wheel Coating", photo: PHOTOS[3], body: "The ceramic wheel coating add-on was the best $149 I've spent on the car. Brake dust just rinses off now. The express exterior wash is fast, thorough, and the staff actually care about doing it properly. Booked my third appointment already." },
-  { name: "Liam P.", city: "Westlake, Miramichi", service: "Full Detail Bundle", photo: PHOTOS[4], body: "Prestige Shine detailed my Tesla Model S Plaid before a charity auction. Interior deep clean, paint correction, and a ceramic coat all in three days. The auction organisers asked which dealership had it — that's the Prestige Shine standard." },
-  { name: "Sophia W.", city: "Bexley, Northside, Miramichi", service: "Interior Deep Clean", photo: PHOTOS[5], body: "Bought a used Lexus RX with an unknown history. Prestige Shine's team did a full interior extraction and odour treatment. What came out of those seats was unbelievable. The before/after photos alone were worth the price of admission." },
-  { name: "Daniel R.", city: "Tremont, Chatham, Miramichi", service: "Ceramic Coating", photo: PHOTOS[6], body: "First time getting a ceramic coating and I was nervous about the process. The Chatham studio walked me through every step, let me watch from the waiting area, and the result is flawless. 8 months later the coating is still beading water perfectly." },
-  { name: "Aisha M.", city: "Upper Arlington, Miramichi", service: "Headlight Restoration", photo: PHOTOS[7], body: "My 2015 Jeep Grand Cherokee headlights were completely yellowed — visibility was genuinely dangerous at night. Prestige Shine restored and sealed them in under an hour. Looks like new glass and the difference in light output at night is incredible." },
-  { name: "Tyler B.", city: "Bath Township, Newcastle, Miramichi", service: "Full Detail", photo: PHOTOS[8], body: "I asked for a pre-sale detail on my wife's Audi Q5. The Newcastle studio did paint correction, a full interior deep clean, and headlight restoration. The car sold for $2,500 above asking price within 48 hours of listing. Worth every penny." },
+  { name: "Clifford Strickland", city: "Miramichi, NB", service: "Full Detail", photo: bmwx5.url, body: "Great service!! Car looked brand new inside and outside. Amazing work! Will definitely be going back!!" },
+  { name: "Rachel & John Gore Tattoo Art", city: "Miramichi, NB", service: "Paint Correction", photo: chevelle.url, body: "Fantastic service and attention to detail." },
+  { name: "Paula Carter", city: "Miramichi, NB", service: "Full Detail", photo: rav4.url, body: "Highly recommend! He did an amazing job detailing my car—it looks and smells like new again. Super friendly and great service!" },
+  { name: "Dodie MacCallum", city: "Miramichi, NB", service: "Full Detail", photo: baAfter2.url, body: "I highly recommend this detailing company! My car looked just as new as when I got it! Thanks so much!! ⭐⭐⭐⭐⭐" },
+  { name: "Kevin McGaghey", city: "Miramichi, NB", service: "Ceramic Coating + Full Detail (2024 Honda HR-V)", photo: hondaHrv.url, body: "Picked up my 2024 Honda HR-V today... detailed and ceramic coated... I think my car looks better than when I picked it up new from the dealer." },
+  { name: "Kelsey Murphy", city: "Miramichi, NB", service: "Quick Winter Wash", photo: audiQ5.url, body: "I just got the quick winter wash & my car is cleaner than when I bought it. I am so pleased & will definitely be back! Also such a good price 😊" },
+  { name: "Tyson MaColl", city: "Miramichi, NB", service: "Paint Correction + Full Detail", photo: fordF150.url, body: "Truck was rough looking before I brought it here. Was absolutely spotless when I got it back and he got all the swirls out of the paint. Price was more than fair as well." },
+  { name: "Melanie Brown Gibbs", city: "Miramichi, NB", service: "Full Detail (SUV)", photo: baAfter1.url, body: "I just picked up our SUV and am shocked at how clean Kevin got it! The vehicle looks brand new, unreal! His service is top notch as well! We will definitely be back and telling our friends!" },
+  { name: "Jacob Tozer", city: "Miramichi, NB", service: "Platinum Full Detail Package", photo: baAfter3.url, body: "Kevin did an excellent job on our truck. We got the Platinum package and the truck looks brand new. Very fairly priced for what you get, and he's flexible with scheduling. Will be back for sure. Thanks again!" },
+  { name: "Dekdek Villagracia", city: "Miramichi, NB", service: "Complete Restoration Detail", photo: hondaOdyssey.url, body: "If your vehicle is looking for a 'SPA' this is the place to be. Very highly recommended! Thanks much for restoring our Chevy Traverse's beauty back. They offer varieties of packages suitable for your needs. You won't be disappointed." },
+  { name: "James M Fisher", city: "Miramichi, NB", service: "Paint Correction & Ceramic Coating", photo: corvette.url, body: "Excellent work done, attention to detail, and a very clean & organized garage." },
+  { name: "Cheryl MacDonald Martin", city: "Miramichi, NB", service: "Full Detail + Paint Enhancement", photo: belAir.url, body: "Top notch cleaning job. Had my SUV there today and it now looks like a new car. Even the paint looks awesome with a new glow. Super friendly guy also. Highly recommend him." },
+  { name: "Noel Milson", city: "Miramichi, NB", service: "Exterior Detail", photo: transAm.url, body: "Excellent service very well done." },
 ];
 
 export const Route = createFileRoute("/reviews")({
@@ -42,13 +47,13 @@ export const Route = createFileRoute("/reviews")({
 function Reviews() {
   return (
     <main className="overflow-x-hidden">
-      <PageHeader eyebrow="Reviews" title="4.9 / 5 from 4,200+ Miramichi drivers." subtitle="Genuine feedback from vehicle owners across Chatham, Northside, Douglastown, and Newcastle who've experienced the Prestige Shine difference." />
+      <PageHeader eyebrow="Reviews" title="52+ verified reviews from Miramichi drivers." subtitle="Genuine feedback from vehicle owners across Miramichi, NB and surrounding areas who've experienced the Prestige Shine difference." />
       <section className="mx-auto max-w-6xl px-4 py-12">
         <div className="columns-1 gap-4 sm:columns-2 lg:columns-3 [column-fill:_balance]">
           {reviews.map((r) => (
             <article key={r.name} className="mb-4 break-inside-avoid rounded-2xl bg-white border border-border overflow-hidden">
               <img
-                src={`https://images.unsplash.com/${r.photo}?auto=format&fit=crop&w=600&q=70`}
+                src={r.photo}
                 alt={`${r.service} — Prestige Shine`}
                 className="w-full h-36 object-cover"
                 loading="lazy"
