@@ -2,34 +2,21 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { Star, MessageCircle } from "lucide-react";
 import { PageHeader } from "@/components/aurexo/PageHeader";
 
-import bmwx5 from "@/assets/bmwx5.jpg.asset.json";
-import fordF150 from "@/assets/ford_f150.jpg.asset.json";
-import audiQ5 from "@/assets/audi_q5.jpg.asset.json";
-import corvette from "@/assets/corvette_c8.jpg.asset.json";
-import hondaHrv from "@/assets/honda_hrv.jpg.asset.json";
-import hondaOdyssey from "@/assets/honda_odyssey.jpg.asset.json";
-import transAm from "@/assets/pontiac_trans_am.jpg.asset.json";
-import rav4 from "@/assets/toyota_rav4.jpg.asset.json";
-import belAir from "@/assets/chevrolette_bel_air.jpg.asset.json";
-import chevelle from "@/assets/chevelle_ss.jpg.asset.json";
-import baAfter1 from "@/assets/ba-after-1.jpg.asset.json";
-import baAfter2 from "@/assets/ba-after-2.jpg.asset.json";
-import baAfter3 from "@/assets/ba-after-3.jpg.asset.json";
 
 const reviews = [
-  { name: "Clifford Strickland", city: "Miramichi, NB", service: "Full Detail", photo: bmwx5.url, body: "Great service!! Car looked brand new inside and outside. Amazing work! Will definitely be going back!!" },
-  { name: "Rachel & John Gore Tattoo Art", city: "Miramichi, NB", service: "Paint Correction", photo: chevelle.url, body: "Fantastic service and attention to detail." },
-  { name: "Paula Carter", city: "Miramichi, NB", service: "Full Detail", photo: rav4.url, body: "Highly recommend! He did an amazing job detailing my car—it looks and smells like new again. Super friendly and great service!" },
-  { name: "Dodie MacCallum", city: "Miramichi, NB", service: "Full Detail", photo: baAfter2.url, body: "I highly recommend this detailing company! My car looked just as new as when I got it! Thanks so much!! ⭐⭐⭐⭐⭐" },
-  { name: "Kevin McGaghey", city: "Miramichi, NB", service: "Ceramic Coating + Full Detail (2024 Honda HR-V)", photo: hondaHrv.url, body: "Picked up my 2024 Honda HR-V today... detailed and ceramic coated... I think my car looks better than when I picked it up new from the dealer." },
-  { name: "Kelsey Murphy", city: "Miramichi, NB", service: "Quick Winter Wash", photo: audiQ5.url, body: "I just got the quick winter wash & my car is cleaner than when I bought it. I am so pleased & will definitely be back! Also such a good price 😊" },
-  { name: "Tyson MaColl", city: "Miramichi, NB", service: "Paint Correction + Full Detail", photo: fordF150.url, body: "Truck was rough looking before I brought it here. Was absolutely spotless when I got it back and he got all the swirls out of the paint. Price was more than fair as well." },
-  { name: "Melanie Brown Gibbs", city: "Miramichi, NB", service: "Full Detail (SUV)", photo: baAfter1.url, body: "I just picked up our SUV and am shocked at how clean Kevin got it! The vehicle looks brand new, unreal! His service is top notch as well! We will definitely be back and telling our friends!" },
-  { name: "Jacob Tozer", city: "Miramichi, NB", service: "Platinum Full Detail Package", photo: baAfter3.url, body: "Kevin did an excellent job on our truck. We got the Platinum package and the truck looks brand new. Very fairly priced for what you get, and he's flexible with scheduling. Will be back for sure. Thanks again!" },
-  { name: "Dekdek Villagracia", city: "Miramichi, NB", service: "Complete Restoration Detail", photo: hondaOdyssey.url, body: "If your vehicle is looking for a 'SPA' this is the place to be. Very highly recommended! Thanks much for restoring our Chevy Traverse's beauty back. They offer varieties of packages suitable for your needs. You won't be disappointed." },
-  { name: "James M Fisher", city: "Miramichi, NB", service: "Paint Correction & Ceramic Coating", photo: corvette.url, body: "Excellent work done, attention to detail, and a very clean & organized garage." },
-  { name: "Cheryl MacDonald Martin", city: "Miramichi, NB", service: "Full Detail + Paint Enhancement", photo: belAir.url, body: "Top notch cleaning job. Had my SUV there today and it now looks like a new car. Even the paint looks awesome with a new glow. Super friendly guy also. Highly recommend him." },
-  { name: "Noel Milson", city: "Miramichi, NB", service: "Exterior Detail", photo: transAm.url, body: "Excellent service very well done." },
+  { name: "Clifford Strickland", city: "Miramichi, NB", service: "Full Detail", body: "Great service!! Car looked brand new inside and outside. Amazing work! Will definitely be going back!!" },
+  { name: "Rachel & John Gore Tattoo Art", city: "Miramichi, NB", service: "Paint Correction", body: "Fantastic service and attention to detail." },
+  { name: "Paula Carter", city: "Miramichi, NB", service: "Full Detail", body: "Highly recommend! He did an amazing job detailing my car—it looks and smells like new again. Super friendly and great service!" },
+  { name: "Dodie MacCallum", city: "Miramichi, NB", service: "Full Detail", body: "I highly recommend this detailing company! My car looked just as new as when I got it! Thanks so much!! ⭐⭐⭐⭐⭐" },
+  { name: "Kevin McGaghey", city: "Miramichi, NB", service: "Ceramic Coating + Full Detail (2024 Honda HR-V)", body: "Picked up my 2024 Honda HR-V today... detailed and ceramic coated... I think my car looks better than when I picked it up new from the dealer." },
+  { name: "Kelsey Murphy", city: "Miramichi, NB", service: "Quick Winter Wash", body: "I just got the quick winter wash & my car is cleaner than when I bought it. I am so pleased & will definitely be back! Also such a good price 😊" },
+  { name: "Tyson MaColl", city: "Miramichi, NB", service: "Paint Correction + Full Detail", body: "Truck was rough looking before I brought it here. Was absolutely spotless when I got it back and he got all the swirls out of the paint. Price was more than fair as well." },
+  { name: "Melanie Brown Gibbs", city: "Miramichi, NB", service: "Full Detail (SUV)", body: "I just picked up our SUV and am shocked at how clean Kevin got it! The vehicle looks brand new, unreal! His service is top notch as well! We will definitely be back and telling our friends!" },
+  { name: "Jacob Tozer", city: "Miramichi, NB", service: "Platinum Full Detail Package", body: "Kevin did an excellent job on our truck. We got the Platinum package and the truck looks brand new. Very fairly priced for what you get, and he's flexible with scheduling. Will be back for sure. Thanks again!" },
+  { name: "Dekdek Villagracia", city: "Miramichi, NB", service: "Complete Restoration Detail", body: "If your vehicle is looking for a 'SPA' this is the place to be. Very highly recommended! Thanks much for restoring our Chevy Traverse's beauty back. They offer varieties of packages suitable for your needs. You won't be disappointed." },
+  { name: "James M Fisher", city: "Miramichi, NB", service: "Paint Correction & Ceramic Coating", body: "Excellent work done, attention to detail, and a very clean & organized garage." },
+  { name: "Cheryl MacDonald Martin", city: "Miramichi, NB", service: "Full Detail + Paint Enhancement", body: "Top notch cleaning job. Had my SUV there today and it now looks like a new car. Even the paint looks awesome with a new glow. Super friendly guy also. Highly recommend him." },
+  { name: "Noel Milson", city: "Miramichi, NB", service: "Exterior Detail", body: "Excellent service very well done." },
 ];
 
 export const Route = createFileRoute("/reviews")({
@@ -52,12 +39,6 @@ function Reviews() {
         <div className="columns-1 gap-4 sm:columns-2 lg:columns-3 [column-fill:_balance]">
           {reviews.map((r) => (
             <article key={r.name} className="mb-4 break-inside-avoid rounded-2xl bg-white border border-border overflow-hidden">
-              <img
-                src={r.photo}
-                alt={`${r.service} — Prestige Shine`}
-                className="w-full h-36 object-cover"
-                loading="lazy"
-              />
               <div className="p-5">
                 <div className="flex gap-0.5 text-brand">
                   {Array.from({ length: 5 }).map((_, i) => <Star key={i} className="h-4 w-4" fill="currentColor" strokeWidth={0} />)}
