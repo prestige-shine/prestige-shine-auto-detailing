@@ -8,7 +8,7 @@ export function Logo({ variant: _variant = "dark", className = "" }: Props) {
       <img
         src={logoAsset.url}
         alt="Prestige Shine Auto Detailing — Miramichi, NB"
-        className="h-12 w-12 sm:h-14 sm:w-14 object-contain"
+        className="h-14 w-14 sm:h-16 sm:w-16 lg:h-[4.5rem] lg:w-[4.5rem] object-contain"
         loading="eager"
       />
       <span className="sr-only">Prestige Shine Auto Detailing</span>
