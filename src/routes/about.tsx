@@ -91,13 +91,13 @@ function About() {
             <div>
               <h3 className="text-lg font-bold text-ink">Studio quality standards</h3>
               <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                Our detailers hold certifications from IDA, Gtechniq, and RUPES. Each studio maintains a climate-controlled bay dedicated exclusively to ceramic coating application — no dust, no humidity surprises, no shortcuts.
+               Kevin is a System X certified installer and works out of a clean, climate-controlled bay dedicated to ceramic coating application — no dust, no humidity surprises, no shortcuts.
               </p>
             </div>
             <div>
-              <h3 className="text-lg font-bold text-ink">Awards & recognition</h3>
+               <h3 className="text-lg font-bold text-ink">Recognition</h3>
               <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                Prestige Shine has been named Miramichi's Best Auto Detailing Studio by Chatham Magazine five consecutive years. We've earned the Gtechniq Accredited Detailer designation, the RUPES Training Center badge, and the International Detailing Association's Recognized Business Award.
+                Prestige Shine has earned 52+ verified five-star reviews from Miramichi vehicle owners, with repeat clients for ceramic coatings, paint correction, interior restoration, and full detail packages — the recognition that matters most is a customer sending their friends.
               </p>
             </div>
             <div>
