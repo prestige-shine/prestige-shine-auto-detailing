@@ -1,7 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { ShieldCheck, Users, Trophy, Sparkles } from "lucide-react";
+import { ShieldCheck, Sparkles, MapPin } from "lucide-react";
 import { PageHeader } from "@/components/aurexo/PageHeader";
 import { team } from "@/lib/team";
+import chevelleDetail from "@/assets/chevelle-ss-detail.jpg.asset.json";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -24,16 +25,15 @@ function About() {
         subtitle="Founded in 2015 in Chatham, Prestige Shine Auto Detailing has grown from a one-bay garage into four state-of-the-art facilities serving Northeast and Central Miramichi — each staffed by certified detailing professionals obsessed with perfection."
       />
 
-      <section className="mx-auto max-w-6xl px-4 py-12 grid grid-cols-2 sm:grid-cols-4 gap-4">
+      <section className="mx-auto max-w-6xl px-4 py-12 grid grid-cols-1 sm:grid-cols-3 gap-4">
         {[
-          { i: Users, n: "4,200+", l: "Vehicles detailed" },
-          { i: Trophy, n: "9", l: "Industry awards" },
-          { i: ShieldCheck, n: "5 yr", l: "Ceramic warranty" },
-          { i: Sparkles, n: "4", l: "Studios across Miramichi" },
+          { i: ShieldCheck, n: "System X Certified Installer", l: "Professional Ceramic Coating Specialist" },
+          { i: Sparkles, n: "Paint Correction Specialists", l: "Restoring Gloss, Depth & Clarity" },
+          { i: MapPin, n: "Serving Miramichi, NB", l: "Premium Auto Detailing for Local Vehicle Owners" },
         ].map(({ i: Icon, n, l }) => (
           <div key={l} className="rounded-2xl bg-white border border-border p-5 text-center">
             <Icon className="h-6 w-6 mx-auto text-brand" />
-            <p className="mt-3 text-2xl font-extrabold text-ink">{n}</p>
+            <p className="mt-3 text-base font-extrabold text-ink">{n}</p>
             <p className="text-xs text-muted-foreground">{l}</p>
           </div>
         ))}
@@ -43,16 +43,16 @@ function About() {
       <section className="mx-auto max-w-6xl px-4 pb-12">
         <div className="rounded-3xl bg-white border border-border overflow-hidden grid grid-cols-1 lg:grid-cols-2">
           <img
-            src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?auto=format&fit=crop&w=900&q=80"
-            alt="Prestige Shine detailing studio interior"
+            src={chevelleDetail.url}
+            alt="Chevrolet Chevelle SS detailed by Prestige Shine Auto Detailing in Miramichi, NB"
             className="h-64 w-full object-cover lg:h-full"
             loading="lazy"
           />
           <div className="p-8 sm:p-12 flex flex-col justify-center">
             <p className="text-xs font-bold uppercase tracking-wide text-brand">Our Story</p>
-            <h2 className="mt-2 text-2xl font-bold text-ink">Chatham, 2015.</h2>
+            <h2 className="mt-2 text-2xl font-bold text-ink">Built by Kevin Hines, in Miramichi.</h2>
             <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-              Robert Fox started Prestige Shine out of a single-bay garage in Chatham's Tremont neighborhood with one polisher, a pressure washer, and an uncompromising standard for paint. Word spread fast. Within two years the studio expanded to a purpose-built facility in Midtown Chatham, then added Northside in 2019, Douglastown in 2021, and Newcastle in 2023. Today, Prestige Shine employs over 30 certified detailers across four Miramichi studios and is widely regarded as the state's most trusted name in ceramic coatings and paint correction.
+              Prestige Shine Auto Detailing is owned and operated by Kevin Hines out of a clean, organised shop at 229 Jacqueline Dr in Miramichi, NB. Kevin is a System X certified ceramic coating installer and a paint correction specialist — every vehicle is polished, coated, and finished by his own hands, whether it's a daily driver, a work truck, or a classic like this Chevelle SS. No rushed production line, no handing your keys to a rotating crew: one detailer, one standard, and a finish local owners keep coming back for.
             </p>
           </div>
         </div>
@@ -91,13 +91,13 @@ function About() {
             <div>
               <h3 className="text-lg font-bold text-ink">Studio quality standards</h3>
               <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                Our detailers hold certifications from IDA, Gtechniq, and RUPES. Each studio maintains a climate-controlled bay dedicated exclusively to ceramic coating application — no dust, no humidity surprises, no shortcuts.
+               Kevin is a System X certified installer and works out of a clean, climate-controlled bay dedicated to ceramic coating application — no dust, no humidity surprises, no shortcuts.
               </p>
             </div>
             <div>
-              <h3 className="text-lg font-bold text-ink">Awards & recognition</h3>
+               <h3 className="text-lg font-bold text-ink">Recognition</h3>
               <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                Prestige Shine has been named Miramichi's Best Auto Detailing Studio by Chatham Magazine five consecutive years. We've earned the Gtechniq Accredited Detailer designation, the RUPES Training Center badge, and the International Detailing Association's Recognized Business Award.
+                Prestige Shine has earned 52+ verified five-star reviews from Miramichi vehicle owners, with repeat clients for ceramic coatings, paint correction, interior restoration, and full detail packages — the recognition that matters most is a customer sending their friends.
               </p>
             </div>
             <div>
