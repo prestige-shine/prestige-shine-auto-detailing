@@ -1,3 +1,5 @@
+import kevinPhoto from "@/assets/kevin-working.jpg.asset.json";
+
 export type TeamMember = {
   name: string;
   role: string;
