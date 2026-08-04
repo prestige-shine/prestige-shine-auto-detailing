@@ -2,19 +2,6 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { Star, MessageCircle } from "lucide-react";
 import { PageHeader } from "@/components/aurexo/PageHeader";
 
-import bmwx5 from "@/assets/bmwx5.jpg.asset.json";
-import fordF150 from "@/assets/ford_f150.jpg.asset.json";
-import audiQ5 from "@/assets/audi_q5.jpg.asset.json";
-import corvette from "@/assets/corvette_c8.jpg.asset.json";
-import hondaHrv from "@/assets/honda_hrv.jpg.asset.json";
-import hondaOdyssey from "@/assets/honda_odyssey.jpg.asset.json";
-import transAm from "@/assets/pontiac_trans_am.jpg.asset.json";
-import rav4 from "@/assets/toyota_rav4.jpg.asset.json";
-import belAir from "@/assets/chevrolette_bel_air.jpg.asset.json";
-import chevelle from "@/assets/chevelle_ss.jpg.asset.json";
-import baAfter1 from "@/assets/ba-after-1.jpg.asset.json";
-import baAfter2 from "@/assets/ba-after-2.jpg.asset.json";
-import baAfter3 from "@/assets/ba-after-3.jpg.asset.json";
 
 const reviews = [
   { name: "Clifford Strickland", city: "Miramichi, NB", service: "Full Detail", photo: bmwx5.url, body: "Great service!! Car looked brand new inside and outside. Amazing work! Will definitely be going back!!" },
