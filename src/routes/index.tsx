@@ -77,7 +77,7 @@ const TOOLS = [
   { label: "Instant Detailing Price", sub: "Get your estimate in 60 s", to: "/calculator", icon: DollarSign },
   { label: "Compare Packages", sub: "Side-by-side package view", to: "/compare", icon: BarChart3 },
   { label: "Payment Plans", sub: "Flexible financing options", to: "/financing", icon: Gauge },
-  { label: "Owner Reviews", sub: "400+ verified ratings", to: "/reviews", icon: Star },
+  { label: "Owner Reviews", sub: "52+ verified reviews", to: "/reviews", icon: Star },
 ];
 
 const waHref = (msg: string) => `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`;
@@ -94,7 +94,7 @@ export const Route = createFileRoute("/")({
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "Prestige Shine Auto Detailing — Miramichi" },
       { name: "twitter:description", content: "Concierge auto detailing perfected in Miramichi." },
-      { name: "application/ld+json", content: JSON.stringify({ "@context": "https://schema.org", "@type": ["LocalBusiness", "AutoDetailing"], "name": "Prestige Shine Auto Detailing", "description": "Premium auto detailing, ceramic coating, and paint correction in Miramichi, NB.", "telephone": "+15062514451", "email": "kevinohines@gmail.com", "url": "https://prestige-shine-auto-detailing.lovable.app", "address": { "@type": "PostalAddress", "streetAddress": "229 Jacqueline Dr", "addressLocality": "Miramichi", "addressRegion": "NB", "postalCode": "E1N 3Z2", "addressCountry": "CA" }, "areaServed": "Miramichi, NB and surrounding areas", "sameAs": ["https://www.facebook.com/share/19LTaGPm2C/"], "priceRange": "$$$", "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "400" } }) },
+      { name: "application/ld+json", content: JSON.stringify({ "@context": "https://schema.org", "@type": ["LocalBusiness", "AutoDetailing"], "name": "Prestige Shine Auto Detailing", "description": "Premium auto detailing, ceramic coating, and paint correction in Miramichi, NB.", "telephone": "+15062514451", "email": "kevinohines@gmail.com", "url": "https://prestige-shine-auto-detailing.lovable.app", "address": { "@type": "PostalAddress", "streetAddress": "229 Jacqueline Dr", "addressLocality": "Miramichi", "addressRegion": "NB", "postalCode": "E1N 3Z2", "addressCountry": "CA" }, "areaServed": "Miramichi, NB and surrounding areas", "sameAs": ["https://www.facebook.com/share/19LTaGPm2C/"], "priceRange": "$$$", "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "52" } }) },
     ],
     links: [
       { rel: "preload", as: "image", href: HERO_IMG },
