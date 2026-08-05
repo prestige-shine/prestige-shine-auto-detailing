@@ -31,13 +31,12 @@ export async function uploadLeadPhoto(file: File): Promise<string> {
 }
 
 export async function submitLead(payload: LeadSubmission): Promise<{ id: string }> {
-  const { data, error } = await supabase
+  const id = crypto.randomUUID();
+  const { error } = await supabase
     .from("leads")
-    .insert(payload as never)
-    .select("id")
-    .single();
+    .insert({ id, ...payload } as never);
   if (error) throw error;
-  return data as { id: string };
+  return { id };
 }
 
 export const SERVICE_OPTIONS = [
