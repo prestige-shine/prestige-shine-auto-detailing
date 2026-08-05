@@ -6,6 +6,10 @@ import { supabase } from "@/integrations/supabase/client";
 
 const searchSchema = z.object({ redirect: z.string().optional() });
 
+function safeRedirect(value: string | undefined) {
+  return value?.startsWith("/") && !value.startsWith("//") ? value : "/admin";
+}
+
 export const Route = createFileRoute("/auth")({
   validateSearch: searchSchema,
   head: () => ({
@@ -28,7 +32,7 @@ function AuthPage() {
 
   useEffect(() => {
     supabase.auth.getSession().then(({ data }) => {
-      if (data.session) navigate({ to: (search.redirect as any) || "/admin" });
+      if (data.session) navigate({ to: safeRedirect(search.redirect) as "/admin" });
     });
   }, []);
 
@@ -38,11 +42,21 @@ function AuthPage() {
     setErr(null);
     const fn = mode === "signin"
       ? supabase.auth.signInWithPassword({ email, password })
-      : supabase.auth.signUp({ email, password, options: { emailRedirectTo: `${window.location.origin}/auth` } });
-    const { error } = await fn;
+      : supabase.auth.signUp({
+          email,
+          password,
+          options: {
+            emailRedirectTo: `${window.location.origin}/auth?redirect=${encodeURIComponent(safeRedirect(search.redirect))}`,
+          },
+        });
+    const { data, error } = await fn;
     setLoading(false);
     if (error) return setErr(error.message);
-    navigate({ to: (search.redirect as any) || "/admin" });
+    if (!data.session) {
+      setErr("Check your email to confirm your account, then return to complete the connection.");
+      return;
+    }
+    navigate({ to: safeRedirect(search.redirect) as "/admin" });
   };
 
   return (

@@ -1,0 +1,95 @@
+{
+  "version": 1,
+  "sdk_version": "0.26.1",
+  "path": "/mcp",
+  "auth": {
+    "type": "oauth",
+    "issuer": "https://lndvupwqydvhggvujang.supabase.co/auth/v1",
+    "accepted_audiences": [
+      "authenticated"
+    ]
+  },
+  "mcp": {
+    "server": {
+      "name": "prestige-shine-auto-detailing",
+      "version": "0.1.0",
+      "title": "Prestige Shine Auto Detailing"
+    },
+    "tools": [
+      {
+        "name": "list_leads",
+        "title": "List lead enquiries",
+        "description": "List recent Prestige Shine customer enquiries for the signed-in administrator.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "status": {
+              "type": "string",
+              "enum": [
+                "new",
+                "qualified",
+                "quoted",
+                "booked",
+                "archived"
+              ],
+              "description": "Optional lead status filter."
+            },
+            "limit": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 100,
+              "description": "Maximum rows to return; defaults to 25."
+            }
+          },
+          "additionalProperties": false,
+          "$schema": "http://json-schema.org/draft-07/schema#"
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "update_lead_status",
+        "title": "Update lead status",
+        "description": "Change the workflow status of one Prestige Shine lead as the signed-in administrator.",
+        "annotations": {
+          "readOnlyHint": false,
+          "destructiveHint": false,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "leadId": {
+              "type": "string",
+              "format": "uuid",
+              "description": "The lead UUID."
+            },
+            "status": {
+              "type": "string",
+              "enum": [
+                "new",
+                "qualified",
+                "quoted",
+                "booked",
+                "archived"
+              ],
+              "description": "The new workflow status."
+            }
+          },
+          "required": [
+            "leadId",
+            "status"
+          ],
+          "additionalProperties": false,
+          "$schema": "http://json-schema.org/draft-07/schema#"
+        },
+        "outputSchema": null
+      }
+    ]
+  }
+}
