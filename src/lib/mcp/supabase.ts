@@ -63,9 +63,11 @@ export function supabaseForUser(ctx: ToolContext) {
 
 export async function requireAdmin(ctx: ToolContext) {
   if (!ctx.isAuthenticated()) throw new Error("An authenticated connection is required");
+  const userId = ctx.getUserId();
+  if (!userId) throw new Error("The authenticated connection has no user identity");
   const client = supabaseForUser(ctx);
   const { data, error } = await client.rpc("has_role", {
-    _user_id: ctx.getUserId(),
+    _user_id: userId,
     _role: "admin",
   });
   if (error || !data) throw new Error("This tool is restricted to Prestige Shine administrators");

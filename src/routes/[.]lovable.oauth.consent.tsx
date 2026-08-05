@@ -3,17 +3,19 @@ import { useState } from "react";
 import { Check, Loader2, Lock, X } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 
-type OAuthResult = { data?: { redirect_url?: string; redirect_to?: string }; error?: { message: string } | null };
+type OAuthResult = { data?: { redirect_url: string } | null; error?: { message: string } | null };
 type OAuthDetails = {
+  authorization_id: string;
   client?: { name?: string };
-  redirect_url?: string;
-  redirect_to?: string;
+  redirect_uri?: string;
+  scope?: string;
 };
+type OAuthDetailsResult = OAuthDetails | { redirect_url: string };
 
 function oauthApi() {
   return (supabase.auth as typeof supabase.auth & {
     oauth: {
-      getAuthorizationDetails: (id: string) => Promise<{ data: OAuthDetails | null; error: Error | null }>;
+      getAuthorizationDetails: (id: string) => Promise<{ data: OAuthDetailsResult | null; error: Error | null }>;
       approveAuthorization: (id: string) => Promise<OAuthResult>;
       denyAuthorization: (id: string) => Promise<OAuthResult>;
     };
@@ -40,8 +42,7 @@ export const Route = createFileRoute("/.lovable/oauth/consent")({
     if (!authorizationId) throw new Error("Missing authorization request");
     const { data, error } = await oauthApi().getAuthorizationDetails(authorizationId);
     if (error) throw error;
-    const immediate = data?.redirect_url ?? data?.redirect_to;
-    if (immediate && !data?.client) throw redirect({ href: immediate });
+    if (data && "redirect_url" in data) throw redirect({ href: data.redirect_url });
     return data;
   },
   head: () => ({
@@ -84,7 +85,7 @@ function ConsentPage() {
       setError(result.error.message);
       return;
     }
-    const target = result.data?.redirect_url ?? result.data?.redirect_to;
+    const target = result.data?.redirect_url;
     if (!target) {
       setBusy(null);
       setError("The authorization service did not return a destination.");
