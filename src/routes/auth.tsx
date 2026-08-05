@@ -15,6 +15,11 @@ export const Route = createFileRoute("/auth")({
   head: () => ({
     meta: [
       { title: "Admin Sign In — Prestige Shine" },
+      { name: "description", content: "Secure administrator sign-in for Prestige Shine Auto Detailing." },
+      { property: "og:title", content: "Admin Sign In — Prestige Shine" },
+      { property: "og:description", content: "Secure administrator access for Prestige Shine Auto Detailing." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary" },
       { name: "robots", content: "noindex" },
     ],
   }),
