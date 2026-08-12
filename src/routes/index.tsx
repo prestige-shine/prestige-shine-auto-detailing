@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useMemo } from "react";
-import { ShieldCheck, Sparkles, Award, ArrowRight, Star, MessageCircle, Gauge, DollarSign, BarChart3, Calendar, MapPin } from "lucide-react";
+import { ShieldCheck, Sparkles, Award, ArrowRight, Star, MessageCircle, DollarSign, BarChart3, Calendar, MapPin } from "lucide-react";
 import { vehicles } from "@/lib/aurexo-data";
 import { VehicleCard } from "@/components/aurexo/VehicleCard";
 import { PartnersMarquee } from "@/components/aurexo/PartnersMarquee";
@@ -38,46 +38,46 @@ const TIERS = [
   {
     name: "Interior Detailing",
     desc: "Deep vacuum, hot-water extraction, steam sanitizing, leather cleaning and conditioning — every vent, seam and console restored by hand.",
-    price: "From $100",
+    price: "Priced by size",
     image: baAfter1.url,
   },
   {
     name: "Exterior Detailing",
     desc: "Foam pre-wash, safe two-bucket contact wash, iron and tar decontamination, clay treatment, gloss enhancement and dressed trim, wheels and tires.",
-    price: "From $100",
+    price: "Priced by size",
     image: bmwX5.url,
   },
   {
     name: "Full Detailing Packages",
-    desc: "Silver, Gold and Platinum packages that combine our interior and exterior work into one complete inside-and-out transformation.",
-    price: "From $150",
+    desc: "Complete inside-and-out detailing priced by vehicle size — cars from $200 up to large and HD trucks from $350.",
+    price: "Cars from $200",
     image: baAfter3.url,
   },
   {
     name: "Ceramic Coating",
-    desc: "System X certified ceramic protection. Prepped, polished and coated panel by panel for years of gloss, hydrophobics and easier washing.",
-    price: "From $799",
+    desc: "3-Year Ceramic Protection from $800, System X 6-Year Ceramic Coating from $1,200, or Correction + 6-Year Ceramic from $1,500 — prepped, polished and coated panel by panel.",
+    price: "From $800",
     image: audiQ5.url,
   },
   {
-    name: "Paint Protection",
-    desc: "Long-lasting sealants and protective coatings that shield paint, trim, glass and wheels from UV, road salt and winter grime here in Miramichi.",
-    price: "From $249",
+    name: "Full Detail + Paint Enhancement",
+    desc: "Our most popular combination — a complete full detail paired with a 1-step paint enhancement. Cars from $450 up to XL SUVs and HD trucks from $700.",
+    price: "Cars from $450",
     image: pontiacTransAm.url,
   },
   {
     name: "Paint Correction",
-    desc: "Machine polishing that levels swirls, holograms and oxidation to bring back true depth, clarity and reflection before any coating is applied.",
-    price: "From $399",
+    desc: "1-Step Paint Enhancement from $300, 2-Step Paint Correction from $600, or Advanced / Multi-Stage Correction from $900 — machine polishing that levels swirls, holograms and oxidation.",
+    price: "From $300",
     image: corvetteC8.url,
   },
 ];
 
 const TOOLS = [
-  { label: "Instant Detailing Price", sub: "Get your estimate in 60 s", to: "/calculator", icon: DollarSign },
-  { label: "Compare Packages", sub: "Side-by-side package view", to: "/compare", icon: BarChart3 },
-  { label: "Payment Plans", sub: "Flexible financing options", to: "/financing", icon: Gauge },
-  { label: "Owner Reviews", sub: "52+ verified reviews", to: "/reviews", icon: Star },
+  { label: "Instant Detailing Estimate", sub: "Starting price in 60 s", to: "/get-estimate", icon: DollarSign },
+  { label: "Compare Services", sub: "Side-by-side service view", to: "/compare", icon: BarChart3 },
+  { label: "Our Recent Work", sub: "Before & after transformations", to: "/buy", icon: Sparkles },
+  { label: "Owner Reviews", sub: "100+ 5-star Google reviews", to: "/reviews", icon: Star },
 ];
 
 const waHref = (msg: string) => `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`;
@@ -86,15 +86,15 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "Prestige Shine Auto Detailing — Concierge Auto Detailing in Miramichi" },
-      { name: "description", content: "Premium auto detailing in Miramichi. Ceramic 9H coating, multi-stage paint correction, interior hot-water extraction — concierge results." },
+      { name: "description", content: "Premium auto detailing in Miramichi. Appointment-only full detailing, paint enhancement, paint correction and professional ceramic coatings in Miramichi, NB." },
       { property: "og:title", content: "Prestige Shine Auto Detailing — Concierge Auto Detailing in Miramichi" },
-      { property: "og:description", content: "Ceramic 9H coating, paint correction, and interior deep extraction. Serving all of Miramichi." },
+      { property: "og:description", content: "Full detailing, paint enhancement, paint correction and ceramic coatings. Appointment only in Miramichi, NB." },
       { property: "og:type", content: "website" },
       { property: "og:image", content: HERO_IMG },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "Prestige Shine Auto Detailing — Miramichi" },
       { name: "twitter:description", content: "Concierge auto detailing perfected in Miramichi." },
-      { name: "application/ld+json", content: JSON.stringify({ "@context": "https://schema.org", "@type": ["LocalBusiness", "AutoDetailing"], "name": "Prestige Shine Auto Detailing", "description": "Premium auto detailing, ceramic coating, and paint correction in Miramichi, NB.", "telephone": "+15062514451", "email": "kevinohines@gmail.com", "url": "https://prestige-shine-auto-detailing.lovable.app", "address": { "@type": "PostalAddress", "streetAddress": "229 Jacqueline Dr", "addressLocality": "Miramichi", "addressRegion": "NB", "postalCode": "E1N 3Z2", "addressCountry": "CA" }, "areaServed": "Miramichi, NB and surrounding areas", "sameAs": ["https://www.facebook.com/share/19LTaGPm2C/"], "priceRange": "$$$", "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "52" } }) },
+      { name: "application/ld+json", content: JSON.stringify({ "@context": "https://schema.org", "@type": ["LocalBusiness", "AutoDetailing"], "name": "Prestige Shine Auto Detailing", "description": "Premium auto detailing, ceramic coating, and paint correction in Miramichi, NB.", "telephone": "+15062514451", "email": "prestige101shine@gmail.com", "url": "https://prestige-shine-auto-detailing.lovable.app", "address": { "@type": "PostalAddress", "streetAddress": "229 Jacqueline Dr", "addressLocality": "Miramichi", "addressRegion": "NB", "postalCode": "E1N 3Z2", "addressCountry": "CA" }, "areaServed": "Miramichi, NB and surrounding areas", "sameAs": ["https://www.facebook.com/share/19LTaGPm2C/"], "priceRange": "$$$", "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "100" } }) },
     ],
     links: [
       { rel: "preload", as: "image", href: HERO_IMG },
@@ -130,7 +130,7 @@ function Home() {
             Concierge Auto Detailing,<br /><span className="text-brand">Perfected in Miramichi.</span>
           </h1>
           <p className="mt-5 max-w-2xl text-base text-white/75 sm:text-lg">
-            Ceramic 9H nano-coating, multi-stage paint correction, and professional interior hot-water extraction — all delivered with white-glove precision at our Miramichi studio.
+            Appointment-only, drop-off detailing at our dedicated detailing and coating shop in Miramichi — full detailing, paint enhancement, paint correction and professional ceramic coatings.
           </p>
           <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
             <Link to="/get-estimate" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-brand px-6 py-3 text-sm font-semibold text-ink transition hover:bg-brand/90">
@@ -168,6 +168,7 @@ function Home() {
           <p className="text-xs font-bold uppercase tracking-wide text-brand">Our Services</p>
           <h2 className="mt-2 text-2xl font-bold text-ink sm:text-3xl">Six Services, One Standard of Finish</h2>
           <p className="mt-2 text-sm text-muted-foreground">From interior resets to System X ceramic coatings — every service is performed personally by Kevin and priced to your vehicle's size and condition.</p>
+          <p className="mx-auto mt-2 max-w-2xl text-xs text-muted-foreground">Prices shown are starting estimates. Final pricing is based on vehicle size and condition. Excessive pet hair, staining, heavy soiling, or unusually neglected vehicles may cost more.</p>
         </div>
         <div className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {TIERS.map((t) => (
@@ -235,9 +236,9 @@ function Home() {
         <div className="flex items-baseline justify-between">
           <div>
             <p className="text-xs font-bold uppercase tracking-wide text-brand">Featured</p>
-            <h2 className="mt-1 text-2xl font-bold text-ink">Top Detailing Packages</h2>
+            <h2 className="mt-1 text-2xl font-bold text-ink">Recent Completed Vehicles</h2>
           </div>
-          <Link to="/buy" className="inline-flex items-center gap-1 text-sm font-medium text-ink">All packages <ArrowRight className="h-4 w-4" /></Link>
+          <Link to="/buy" className="inline-flex items-center gap-1 text-sm font-medium text-ink">All work <ArrowRight className="h-4 w-4" /></Link>
         </div>
         <div className="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {featured.map((v) => <VehicleCard key={v.id} v={v} />)}

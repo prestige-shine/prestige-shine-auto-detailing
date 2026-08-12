@@ -8,9 +8,9 @@ export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
       { title: "About Prestige Shine Auto Detailing — Miramichi's Premier Auto Detailing" },
-      { name: "description", content: "Founded in 2015 in Chatham, Prestige Shine Auto Detailing delivers museum-grade paint correction, 9H ceramic coatings, and deep interior cleaning across Miramichi." },
+      { name: "description", content: "Prestige Shine Auto Detailing Miramichi is an appointment-only professional detailing studio specializing in full detailing, paint enhancement, paint correction and professional ceramic coatings." },
       { property: "og:title", content: "About Prestige Shine Auto Detailing" },
-      { property: "og:description", content: "Miramichi's premier auto detailing studio — ceramic coatings, paint correction, and interior deep cleans since 2015." },
+      { property: "og:description", content: "Miramichi's appointment-only auto detailing shop — ceramic coatings, paint correction, and interior deep cleans." },
     ],
   }),
   component: About,
@@ -21,8 +21,8 @@ function About() {
     <main className="overflow-x-hidden">
       <PageHeader
         eyebrow="About Prestige Shine"
-        title="Miramichi's most trusted detailing studio, built from passion."
-        subtitle="Founded in 2015 in Chatham, Prestige Shine Auto Detailing has grown from a one-bay garage into four state-of-the-art facilities serving Northeast and Central Miramichi — each staffed by certified detailing professionals obsessed with perfection."
+        title="Miramichi's most trusted detailing shop, built from passion."
+        subtitle="Prestige Shine Auto Detailing is owned and operated by Kevin Hines out of our dedicated detailing and coating shop in Miramichi, serving Northeast and Central Miramichi by appointment."
       />
 
       <section className="mx-auto max-w-6xl px-4 py-12 grid grid-cols-1 sm:grid-cols-3 gap-4">
@@ -63,15 +63,15 @@ function About() {
         <div className="rounded-3xl bg-white border border-border p-8 sm:p-12">
           <h2 className="text-2xl font-bold text-ink">Our mission</h2>
           <p className="mt-3 text-muted-foreground leading-relaxed">
-            Every vehicle that enters an Prestige Shine studio leaves better than when it arrived — not just cleaner, but protected, restored, and documented. We combine professional-grade chemistry with meticulous hand-work and transparent communication so you always know exactly what was done and why.
+            Every vehicle that comes into our dedicated detailing and coating shop in Miramichi leaves better than when it arrived — not just cleaner, but protected, restored, and documented. We combine professional-grade chemistry with meticulous hand-work and transparent communication so you always know exactly what was done and why.
           </p>
           <h3 className="mt-8 text-lg font-bold text-ink">What we stand for</h3>
           <ul className="mt-3 grid sm:grid-cols-2 gap-3 text-sm">
             {[
-              "Factory-certified ceramic coating applicators on every job",
+              "Certified ceramic coating application on every job",
               "Paint decontamination and correction before any protection layer",
               "Transparent, itemised service documentation with before/after photos",
-              "5-year ceramic warranty registered in the vehicle owner's name",
+              "Ceramic coating warranty matched to the package installed",
               "Eco-responsible chemistry — waterless and low-VOC options available",
               "On-time completion guaranteed or we reschedule at no charge",
             ].map((p) => (
@@ -85,25 +85,25 @@ function About() {
             <div>
               <h3 className="text-lg font-bold text-ink">The Prestige Shine process</h3>
               <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                Every engagement begins with a thorough paint inspection under specialized lighting. We measure paint thickness, identify contaminants, swirl marks, and oxidation before recommending a service tier. Nothing is assumed — everything is documented.
+                Every appointment begins with a thorough paint inspection under specialized lighting. We measure paint condition, identify contaminants, swirl marks, and oxidation before recommending a service. Nothing is assumed — everything is documented.
               </p>
             </div>
             <div>
-              <h3 className="text-lg font-bold text-ink">Studio quality standards</h3>
+              <h3 className="text-lg font-bold text-ink">Shop quality standards</h3>
               <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-               Kevin is a System X certified installer and works out of a clean, climate-controlled bay dedicated to ceramic coating application — no dust, no humidity surprises, no shortcuts.
+               Kevin is a System X certified installer and works out of our dedicated detailing and coating shop in Miramichi — no dust, no humidity surprises, no shortcuts.
               </p>
             </div>
             <div>
                <h3 className="text-lg font-bold text-ink">Recognition</h3>
               <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                Prestige Shine has earned 52+ verified five-star reviews from Miramichi vehicle owners, with repeat clients for ceramic coatings, paint correction, interior restoration, and full detail packages — the recognition that matters most is a customer sending their friends.
+                Prestige Shine has earned 100+ 5-star Google reviews from Miramichi vehicle owners, with repeat clients for ceramic coatings, paint correction, interior restoration, and full detail packages — the recognition that matters most is a customer sending their friends.
               </p>
             </div>
             <div>
               <h3 className="text-lg font-bold text-ink">Aftercare & support</h3>
               <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                Every ceramic-coated vehicle receives a digital care guide and is entered into our reminder programme. Annual maintenance washes are logged to your vehicle's profile with updated condition photography, building a documented history that helps maintain resale value.
+                Every ceramic-coated vehicle receives a digital care guide. Maintenance washes are logged to your vehicle's profile with updated condition photography, building a documented history that helps maintain resale value.
               </p>
             </div>
           </div>

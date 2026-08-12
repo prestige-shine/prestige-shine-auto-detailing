@@ -40,11 +40,16 @@ export async function submitLead(payload: LeadSubmission): Promise<{ id: string 
 }
 
 export const SERVICE_OPTIONS = [
-  { key: "interior", label: "Interior Detail", desc: "Deep vacuum, steam, wipe-down, glass." },
+  { key: "interior", label: "Interior Detail", desc: "Deep vacuum, steam, extraction, glass." },
   { key: "exterior", label: "Exterior Detail", desc: "Hand wash, decontamination, wheels & tires." },
-  { key: "full", label: "Full Detail", desc: "Complete inside-and-out concierge detail." },
-  { key: "ceramic", label: "Ceramic Coating", desc: "9H hydrophobic paint protection." },
-  { key: "paint-correction", label: "Paint Correction", desc: "Multi-stage swirl & scratch removal." },
+  { key: "full", label: "Full Detail", desc: "Complete inside-and-out detail. From $200." },
+  { key: "combo", label: "Full Detail + Paint Enhancement", desc: "Full detail plus a 1-step gloss enhancement. From $450." },
+  { key: "paint-enhancement", label: "1-Step Paint Enhancement", desc: "Improves gloss and reduces light swirls. From $300." },
+  { key: "paint-correction", label: "2-Step Paint Correction", desc: "Targets moderate swirls, oxidation and paint defects. From $600." },
+  { key: "paint-correction-advanced", label: "Advanced / Multi-Stage Paint Correction", desc: "For heavier defects and restoration-level work. From $900." },
+  { key: "ceramic-3", label: "3-Year Ceramic Protection", desc: "Durable ceramic protection. From $800." },
+  { key: "ceramic-6", label: "System X 6-Year Ceramic Coating", desc: "System X certified 6-year coating. From $1,200." },
+  { key: "ceramic-correction", label: "Correction + 6-Year Ceramic", desc: "Paint correction paired with a 6-year coating. From $1,500." },
   { key: "engine-bay", label: "Engine Bay Detail", desc: "Safe degrease & dress of the engine bay." },
   { key: "headlight", label: "Headlight Restoration", desc: "Restore clarity to yellowed lenses." },
   { key: "maintenance", label: "Maintenance Detail", desc: "Regular upkeep between full details." },

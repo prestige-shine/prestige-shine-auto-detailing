@@ -1,5 +1,5 @@
 import { createFileRoute, notFound, Link } from "@tanstack/react-router";
-import { articles } from "@/lib/articles";
+import { articles, type Article } from "@/lib/articles";
 
 export const Route = createFileRoute("/blog/$slug")({
   head: ({ params }) => {
@@ -40,7 +40,7 @@ export const Route = createFileRoute("/blog/$slug")({
 });
 
 function ArticlePage() {
-  const { a } = Route.useLoaderData();
+  const { a } = Route.useLoaderData() as { a: Article };
   return (
     <main className="overflow-x-hidden">
       <article className="mx-auto max-w-3xl px-4 py-10">

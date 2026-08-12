@@ -12,7 +12,7 @@ const reviews = [
   { name: "Kelsey Murphy", city: "Miramichi, NB", service: "Quick Winter Wash", body: "I just got the quick winter wash & my car is cleaner than when I bought it. I am so pleased & will definitely be back! Also such a good price 😊" },
   { name: "Tyson MaColl", city: "Miramichi, NB", service: "Paint Correction + Full Detail", body: "Truck was rough looking before I brought it here. Was absolutely spotless when I got it back and he got all the swirls out of the paint. Price was more than fair as well." },
   { name: "Melanie Brown Gibbs", city: "Miramichi, NB", service: "Full Detail (SUV)", body: "I just picked up our SUV and am shocked at how clean Kevin got it! The vehicle looks brand new, unreal! His service is top notch as well! We will definitely be back and telling our friends!" },
-  { name: "Jacob Tozer", city: "Miramichi, NB", service: "Platinum Full Detail Package", body: "Kevin did an excellent job on our truck. We got the Platinum package and the truck looks brand new. Very fairly priced for what you get, and he's flexible with scheduling. Will be back for sure. Thanks again!" },
+  { name: "Jacob Tozer", city: "Miramichi, NB", service: "Full Detail Package", body: "Kevin did an excellent job on our truck. We got the Full Detail package and the truck looks brand new. Very fairly priced for what you get, and he's flexible with scheduling. Will be back for sure. Thanks again!" },
   { name: "Dekdek Villagracia", city: "Miramichi, NB", service: "Complete Restoration Detail", body: "If your vehicle is looking for a 'SPA' this is the place to be. Very highly recommended! Thanks much for restoring our Chevy Traverse's beauty back. They offer varieties of packages suitable for your needs. You won't be disappointed." },
   { name: "James M Fisher", city: "Miramichi, NB", service: "Paint Correction & Ceramic Coating", body: "Excellent work done, attention to detail, and a very clean & organized garage." },
   { name: "Cheryl MacDonald Martin", city: "Miramichi, NB", service: "Full Detail + Paint Enhancement", body: "Top notch cleaning job. Had my SUV there today and it now looks like a new car. Even the paint looks awesome with a new glow. Super friendly guy also. Highly recommend him." },
@@ -23,7 +23,7 @@ export const Route = createFileRoute("/reviews")({
   head: () => ({
     meta: [
       { title: "Client Reviews — Prestige Shine Auto Detailing Miramichi" },
-      { name: "description", content: "Verified reviews from Miramichi vehicle owners on Prestige Shine's ceramic coatings, paint correction, and interior deep cleaning services." },
+      { name: "description", content: "100+ 5-star Google reviews from Miramichi vehicle owners on Prestige Shine's ceramic coatings, paint correction, and interior deep cleaning services." },
       { property: "og:title", content: "Client Reviews — Prestige Shine Auto Detailing" },
       { property: "og:description", content: "What Miramichi drivers say about Prestige Shine's detailing services." },
     ],
@@ -34,7 +34,7 @@ export const Route = createFileRoute("/reviews")({
 function Reviews() {
   return (
     <main className="overflow-x-hidden">
-      <PageHeader eyebrow="Reviews" title="52+ verified reviews from Miramichi drivers." subtitle="Genuine feedback from vehicle owners across Miramichi, NB and surrounding areas who've experienced the Prestige Shine difference." />
+      <PageHeader eyebrow="Reviews" title="100+ 5-star Google reviews from Miramichi drivers." subtitle="Genuine feedback from vehicle owners across Miramichi, NB and surrounding areas who've experienced the Prestige Shine difference." />
       <section className="mx-auto max-w-6xl px-4 py-12">
         <div className="columns-1 gap-4 sm:columns-2 lg:columns-3 [column-fill:_balance]">
           {reviews.map((r) => (

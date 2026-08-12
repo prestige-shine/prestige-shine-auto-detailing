@@ -19,7 +19,7 @@ function Terms() {
       <section className="mx-auto max-w-3xl px-4 py-10 space-y-6 text-sm leading-relaxed text-ink">
         <div>
           <h2 className="text-lg font-bold">1. Scope of Services</h2>
-          <p className="mt-2 text-muted-foreground">Prestige Shine Auto Detailing provides auto detailing services including exterior maintenance, interior deep cleaning, paint correction, and ceramic coating installation, performed at our Miramichi studios or as mobile service at your address.</p>
+          <p className="mt-2 text-muted-foreground">Prestige Shine Auto Detailing provides auto detailing services including full detailing, paint enhancement, paint correction, and ceramic coating installation, performed by appointment, drop-off only, at our dedicated detailing and coating shop in Miramichi.</p>
         </div>
         <div>
           <h2 className="text-lg font-bold">2. Vehicle Assessment & Quotes</h2>
@@ -35,7 +35,7 @@ function Terms() {
         </div>
         <div>
           <h2 className="text-lg font-bold">5. Ceramic Coating Warranty</h2>
-          <p className="mt-2 text-muted-foreground">Registered Prestige Shine 9H ceramic warranties (5–9 years) cover loss of hydrophobic performance under normal use. Warranty requires annual maintenance decontamination at an Prestige Shine studio to stay active. Damage from automated tunnel washes, harsh solvents, accidents, or improper aftercare voids coverage.</p>
+          <p className="mt-2 text-muted-foreground">Ceramic coating warranties correspond to the package installed — 3-Year Ceramic Protection, System X 6-Year Ceramic Coating, or Correction + 6-Year Ceramic — and cover loss of hydrophobic performance under normal use. Warranty requires periodic maintenance decontamination at our Miramichi shop to stay active. Damage from automated tunnel washes, harsh solvents, accidents, or improper aftercare voids coverage.</p>
         </div>
         <div>
           <h2 className="text-lg font-bold">6. Limits of Liability</h2>
@@ -43,7 +43,7 @@ function Terms() {
         </div>
         <div>
           <h2 className="text-lg font-bold">7. Payments</h2>
-          <p className="mt-2 text-muted-foreground">We accept cards, ACH, Apple Pay, and financing via our approved partners. Balances are due on completion unless a payment plan has been signed in advance.</p>
+          <p className="mt-2 text-muted-foreground">We accept cards, ACH, and Apple Pay. Balances are due in full on completion of service.</p>
         </div>
       </section>
     </main>
