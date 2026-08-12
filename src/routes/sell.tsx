@@ -8,7 +8,7 @@ export const Route = createFileRoute("/sell")({
   head: () => ({
     meta: [
       { title: "Book a Free Vehicle Assessment — Prestige Shine Auto Detailing" },
-      { name: "description", content: "Book a free vehicle condition assessment at any Prestige Shine Auto Detailing in Miramichi. We'll evaluate your paint, interior, and recommend the ideal detailing package." },
+      { name: "description", content: "Book a free vehicle condition assessment at Prestige Shine Auto Detailing in Miramichi. We'll evaluate your paint, interior, and recommend the ideal detailing package." },
       { property: "og:title", content: "Free Vehicle Assessment — Prestige Shine Auto Detailing" },
       { property: "og:description", content: "Free Miramichi vehicle detailing assessments — walk out with a clear plan and transparent quote." },
     ],
@@ -57,7 +57,7 @@ function Sell() {
       <PageHeader
         eyebrow="Free Assessment"
         title="Book your free vehicle assessment."
-        subtitle="Bring your vehicle to any Prestige Shine studio — our certified detailers will inspect paint condition, interior, and glass, then recommend the right package with a transparent, no-pressure quote."
+        subtitle="Bring your vehicle to our Miramichi shop by appointment — Kevin will inspect paint condition, interior, and glass, then recommend the right package with a transparent, no-pressure quote."
       />
 
       <section className="mx-auto max-w-3xl px-4 py-12">
@@ -71,7 +71,7 @@ function Sell() {
               </div>
               <h3 className="mt-4 text-xl font-bold text-ink">Assessment booked!</h3>
               <p className="mt-2 text-sm text-muted-foreground">
-                We opened WhatsApp with your request. A certified Prestige Shine detailer will confirm your slot within 2 hours.
+                We opened WhatsApp with your request. Kevin will confirm your appointment slot within 2 hours.
               </p>
               <p className="mt-4 text-xs text-muted-foreground">
                 <strong>Next step:</strong> Look out for a WhatsApp or call from our studio. Bring your vehicle at the agreed time — assessment takes about 20 minutes.
