@@ -8,10 +8,10 @@ const groups = [
     title: "Ceramic Coating",
     items: [
       ["What is a 9H ceramic coating?", "A 9H ceramic coating is a semi-permanent liquid polymer that chemically bonds to your vehicle's paint. It forms a glass-like layer rated 9H on the pencil hardness scale — harder than factory clear coat — providing scratch resistance, UV protection, and extreme hydrophobic properties that cause water and contaminants to bead off effortlessly."],
-      ["How long does a ceramic coating last?", "Prestige Shine applies Gtechniq Crystal Serum Ultra with an EXO v4 topcoat, which carries a 5-year manufacturer-backed warranty when installed by an accredited detailer. With proper maintenance washes, coatings routinely perform well beyond the warranty period."],
+      ["How long does a ceramic coating last?", "Durability depends on the package you choose. We offer 3-Year Ceramic Protection (from $800), the System X 6-Year Ceramic Coating (from $1,200), and Correction + 6-Year Ceramic (from $1,500). Each package is rated for the term in its name when maintained with regular pH-neutral washes."],
       ["Does paint need to be corrected before coating?", "Yes — always. Any swirl marks, light scratches, or water spots trapped beneath the coating become permanent. Prestige Shine includes at minimum a single-stage machine polish in every ceramic package. Two-stage correction is available for vehicles with deeper paint defects."],
       ["Can a ceramic coating be applied over existing wax or sealant?", "No. All existing waxes and sealants must be stripped completely with an IPA (isopropyl alcohol) panel wipe before coating. Prestige Shine performs this decontamination step as standard — no corners are cut."],
-      ["Will the coating prevent rock chips?", "Ceramic coating significantly improves scratch resistance but is not a substitute for paint protection film (PPF). For rock chip protection on the bonnet and front bumper, we recommend a PPF consult — available free at any Prestige Shine studio."],
+      ["Will the coating prevent rock chips?", "No. A ceramic coating significantly improves chemical and UV resistance and makes washing far easier, but it will not stop rock chips. Prestige Shine does not currently install paint protection film."],
       ["How should I maintain a ceramic-coated car?", "Use a pH-neutral, wax-free shampoo and a soft wash mitt. Avoid automated car washes with brushes. Prestige Shine recommends a professional maintenance wash every 4–6 months to inspect the coating and apply a ceramic boost spray."],
     ],
   },
@@ -36,23 +36,14 @@ const groups = [
     ],
   },
   {
-    title: "Mobile Detail",
-    items: [
-      ["Do you offer mobile detailing?", "Yes. Prestige Shine offers mobile express exterior washes and interior deep cleans for clients within a 25-mile radius of each studio. Mobile ceramic coating application is not available — ceramic work requires our controlled studio environment."],
-      ["What do I need to provide for a mobile appointment?", "Access to a flat, shaded surface and a standard outdoor water tap and electrical outlet. We bring our own equipment, chemicals, and water tank if needed. No driveway? Our team can work in a car park with permission."],
-      ["Is mobile detailing the same quality as studio work?", "For wash and interior services, yes — our mobile technicians are studio-trained and use identical products. For paint correction and ceramic coating, studio conditions ensure optimal results and we do not perform these services mobile."],
-      ["How far in advance should I book mobile?", "Mobile slots fill quickly. We recommend booking at least 5–7 days in advance. Same-week slots are occasionally available — check via WhatsApp for last-minute availability."],
-    ],
-  },
-  {
     title: "Booking & Pricing",
     items: [
-      ["How do I book an appointment?", "Use the Book a Free Assessment form on our website, call +1 (506) 251-4451, or message us on WhatsApp. We'll confirm your vehicle, service, and preferred studio or mobile location within a few hours."],
+      ["How do I book an appointment?", "Prestige Shine is appointment only. Use the Get an Estimate form on our website, call +1 (506) 251-4451, or message us on WhatsApp. We'll confirm your vehicle, service and drop-off time at our Miramichi shop within a few hours."],
       ["Are prices fixed or are there surprises?", "All prices are confirmed before work begins. If additional issues are discovered during check-in — like more severe paint damage than expected — we'll photograph the finding and offer a written change order before proceeding. You always authorise what happens next."],
-      ["Do you offer payment plans?", "Yes. Prestige Shine partners with Klarna and a select panel of auto-finance lenders to offer Pay-in-4 (0% interest) and 12–24 month plans for larger ceramic coating packages. See the Financing page for details."],
-      ["What is your cancellation policy?", "We ask for 48 hours' notice to reschedule without charge. Cancellations within 24 hours of a booked studio appointment may incur a $50 cancellation fee to cover reserved bay time. Mobile appointments carry a $25 same-day cancellation fee."],
-      ["Do you offer fleet or corporate detailing?", "Yes. Prestige Shine serves corporate fleets, dealerships, and rental companies. Volume pricing and dedicated scheduling are available — contact kevinohines@gmail.com or call our studio line for a fleet quote."],
-      ["Is there a warranty on your work?", "All ceramic coating installations carry a 5-year warranty registered in the vehicle owner's name. If a coating defect develops within the warranty period, we will inspect and re-apply the affected area at no charge. Paint correction workmanship is guaranteed for 12 months."],
+      ["What does a service cost?", "Full Detail starts at $200 for cars, $225 compact SUVs, $275 mid-size SUVs, $300 large/3-row SUVs, $350 XL SUVs, $300 pickup trucks and $350 large/HD trucks. Full Detail + Paint Enhancement starts at $450 for cars up to $700 for XL SUVs and HD trucks. Paint enhancement starts at $300, 2-step correction at $600 and advanced multi-stage correction at $900. Ceramic packages start at $800. Final pricing is based on vehicle size and condition — excessive pet hair, staining, heavy soiling or unusually neglected vehicles may cost more."],
+      ["What is your cancellation policy?", "We ask for 48 hours' notice to reschedule without charge. Cancellations within 24 hours of a booked appointment may incur a $50 cancellation fee to cover reserved bay time."],
+      ["Do you offer fleet or corporate detailing?", "Yes. Prestige Shine serves corporate fleets, dealerships, and rental companies. Volume pricing and dedicated scheduling are available — contact prestige101shine@gmail.com or call us for a fleet quote."],
+      ["What ceramic packages do you offer?", "Three: 3-Year Ceramic Protection from $800, the System X 6-Year Ceramic Coating from $1,200, and Correction + 6-Year Ceramic from $1,500. Kevin is a System X certified installer and will recommend the right option after reviewing your paint."],
     ],
   },
 ];
@@ -61,7 +52,7 @@ export const Route = createFileRoute("/faqs")({
   head: () => ({
     meta: [
       { title: "Auto Detailing FAQs — Prestige Shine Auto Detailing Miramichi" },
-      { name: "description", content: "Answers to Miramichi drivers' most common questions about ceramic coating, paint correction, interior deep cleans, mobile detailing, and booking." },
+      { name: "description", content: "Answers to Miramichi drivers' most common questions about ceramic coating, paint enhancement, paint correction, interior deep cleans and booking." },
       { property: "og:title", content: "Detailing FAQs — Prestige Shine Auto Detailing" },
       { property: "og:description", content: "Expert answers from Miramichi's certified detailing professionals." },
     ],
@@ -91,7 +82,7 @@ function Faqs() {
       <PageHeader
         eyebrow="Help"
         title="Detailing questions, answered."
-        subtitle="Everything Miramichi vehicle owners ask before, during and after a premium detailing service. Can't find yours? Our studio is one tap away."
+        subtitle="Everything Miramichi vehicle owners ask before, during and after a premium detailing service. Can't find yours? We're one tap away — appointment only, drop-off at our Miramichi shop."
       />
       <section className="mx-auto max-w-3xl px-4 py-12 space-y-8">
         {groups.map((g) => (
