@@ -16,6 +16,6 @@ export const team: TeamMember[] = [
     photo: kevinPhoto.url,
     linkedin: "https://www.linkedin.com/",
     twitter: "https://x.com/",
-    email: "kevinohines@gmail.com",
+    email: "prestige101shine@gmail.com",
   },
 ];
