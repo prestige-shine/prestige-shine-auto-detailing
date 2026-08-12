@@ -27,7 +27,7 @@ import {
   TIME_SLOTS,
   type LeadSubmission,
 } from "@/lib/leads";
-import { calculateEstimate, formatPrice } from "@/lib/pricing";
+import { calculateEstimate, formatPrice, VEHICLE_SIZES, PRICING_CONFIG, type VehicleSizeKey } from "@/lib/pricing";
 
 type Props = {
   open: boolean;
@@ -43,6 +43,7 @@ type FormState = {
   vehicle_model: string;
   vehicle_year: string;
   vehicle_color: string;
+  vehicle_size: VehicleSizeKey | "";
   services: string[];
   other_service: string;
   conditions: string[];
@@ -62,6 +63,7 @@ const EMPTY: FormState = {
   vehicle_model: "",
   vehicle_year: "",
   vehicle_color: "",
+  vehicle_size: "",
   services: [],
   other_service: "",
   conditions: [],
@@ -133,7 +135,7 @@ export function LeadQualificationDialog({ open, onClose, presetServiceKey }: Pro
       case 1:
         return form.full_name.trim() && form.phone.trim() && /.+@.+\..+/.test(form.email);
       case 2:
-        return form.vehicle_make.trim() && form.vehicle_model.trim() && form.vehicle_year.trim();
+        return form.vehicle_make.trim() && form.vehicle_model.trim() && form.vehicle_year.trim() && form.vehicle_size;
       case 3:
         return form.services.length > 0 && (!form.services.includes("other") || form.other_service.trim());
       case 4:
@@ -215,7 +217,15 @@ export function LeadQualificationDialog({ open, onClose, presetServiceKey }: Pro
         services,
         other_service: form.services.includes("other") ? form.other_service.trim() : null,
         conditions: [...form.conditions],
-        condition_notes: form.condition_notes.trim() || null,
+        condition_notes:
+          [
+            form.vehicle_size
+              ? `Vehicle size: ${VEHICLE_SIZES.find((v) => v.key === form.vehicle_size)?.label}`
+              : "",
+            form.condition_notes.trim(),
+          ]
+            .filter(Boolean)
+            .join(" — ") || null,
         photo_urls: form.photos.map((p) => p.path),
         preferred_date: form.preferred_date || null,
         preferred_time: form.preferred_time || null,
@@ -482,6 +492,35 @@ function StepVehicle({ form, setForm }: { form: FormState; setForm: (f: FormStat
             onChange={(e) => setForm({ ...form, vehicle_color: e.target.value })}
           />
         </Field>
+      </div>
+      <div className="mt-6">
+        <Field icon={<Car className="h-3.5 w-3.5" />} label="Vehicle Size">
+          <select
+            className={inputClass}
+            value={form.vehicle_size}
+            onChange={(e) => setForm({ ...form, vehicle_size: e.target.value as VehicleSizeKey })}
+          >
+            <option value="">Select your vehicle size…</option>
+            {VEHICLE_SIZES.map((v) => (
+              <option key={v.key} value={v.key}>
+                {v.label}
+              </option>
+            ))}
+          </select>
+        </Field>
+        <div className="mt-4 rounded-2xl border border-black/10 bg-black/[0.02] p-4">
+          <p className="text-xs font-bold uppercase tracking-wider" style={{ color: BRAND_DARK }}>
+            Vehicle Size Guide
+          </p>
+          <ul className="mt-2 space-y-1.5">
+            {VEHICLE_SIZES.map((v) => (
+              <li key={v.key} className="text-xs text-ink/70">
+                <span className="font-bold text-ink">{v.label}:</span> {v.examples}
+              </li>
+            ))}
+          </ul>
+          <p className="mt-3 text-[11px] text-muted-foreground">{PRICING_CONFIG.notes.fullDetail}</p>
+        </div>
       </div>
     </div>
   );
@@ -852,8 +891,9 @@ function StepPricing() {
           <div>
             <h4 className="text-base font-extrabold text-ink">Prices shown are starting estimates only.</h4>
             <p className="mt-2 text-sm leading-relaxed text-ink/80">
-              Final pricing depends on the actual condition of the vehicle after reviewing your information and
-              uploaded photos. This helps us provide fair and accurate pricing for every customer.
+              {PRICING_CONFIG.notes.estimate} Excessive pet hair, staining, heavy soiling, or unusually neglected
+              vehicles may cost more. Paint enhancement and correction pricing also depends on paint condition, so a
+              photo assessment or in-person inspection may be required.
             </p>
           </div>
         </div>
@@ -881,9 +921,14 @@ function StepReview({ form, goTo }: { form: FormState; goTo: (n: number) => void
       title: "Vehicle",
       step: 2,
       content: (
-        <p>
-          {[form.vehicle_year, form.vehicle_color, form.vehicle_make, form.vehicle_model].filter(Boolean).join(" · ") || "—"}
-        </p>
+        <>
+          <p>
+            {[form.vehicle_year, form.vehicle_color, form.vehicle_make, form.vehicle_model].filter(Boolean).join(" · ") || "—"}
+          </p>
+          <p className="text-xs text-muted-foreground">
+            Size: {VEHICLE_SIZES.find((v) => v.key === form.vehicle_size)?.label ?? "—"}
+          </p>
+        </>
       ),
     },
     {
@@ -967,6 +1012,7 @@ function StepEstimate({
   onEdit: () => void;
 }) {
   const est = calculateEstimate({
+    vehicleSize: form.vehicle_size || null,
     services: form.services,
     conditions: form.conditions,
   });
@@ -976,7 +1022,7 @@ function StepEstimate({
       <SectionHead
         eyebrow="Estimate"
         title="Your Estimated Starting Price"
-        sub={`${est.packageLabel} · ${est.vehicleTypeLabel}`}
+        sub={`${est.serviceLabel} · ${est.vehicleSizeLabel}`}
       />
 
       <div
@@ -1005,6 +1051,9 @@ function StepEstimate({
       <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
         This estimate is based on the information you've provided. Your final quote will be confirmed after
         reviewing your uploaded vehicle photos and your vehicle's overall condition.
+      </p>
+      <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+        {PRICING_CONFIG.notes.estimate}
       </p>
 
       <div className="mt-5 grid gap-2">

@@ -12,20 +12,19 @@ const SERVICE_OPTIONS = [
   "Headlight Restoration",
   "Engine Bay Detail",
   "Leather Conditioning",
-  "PPF Consultation",
   "Ceramic Wheel Coating",
   "Other / Not sure",
 ];
 
 const locations = [
-  { name: "Prestige Shine Auto Detailing", address: "229 Jacqueline Dr, Miramichi, NB E1N 3Z2, Canada", hours: "Mon–Sat 8AM–6PM AST" },
+  { name: "Prestige Shine Auto Detailing", address: "229 Jacqueline Dr, Miramichi, NB E1N 3Z2, Canada", hours: "Appointment Only" },
 ];
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
       { title: "Contact Prestige Shine Auto Detailing — Miramichi, NB" },
-      { name: "description", content: "Contact Prestige Shine Auto Detailing at 229 Jacqueline Dr, Miramichi, NB. Call +1 (506) 251-4451 or email kevinohines@gmail.com to book a detail or request a quote." },
+      { name: "description", content: "Contact Prestige Shine Auto Detailing at 229 Jacqueline Dr, Miramichi, NB. Call +1 (506) 251-4451 or email prestige101shine@gmail.com to book a detail or request a quote." },
       { property: "og:title", content: "Contact — Prestige Shine Auto Detailing" },
       { property: "og:description", content: "Get in touch with Miramichi's premier auto detailing studio — Miramichi, NB and surrounding areas." },
     ],
@@ -82,7 +81,7 @@ function Contact() {
               <select value={form.service} onChange={(e) => setForm({ ...form, service: e.target.value })} className="c-input sm:col-span-2">
                 {SERVICE_OPTIONS.map((s) => <option key={s} value={s}>{s}</option>)}
               </select>
-              <textarea value={form.notes} onChange={(e) => setForm({ ...form, notes: e.target.value })} rows={4} className="c-input sm:col-span-2" placeholder="Any additional notes — current condition, timeline, preferred studio…" />
+              <textarea value={form.notes} onChange={(e) => setForm({ ...form, notes: e.target.value })} rows={4} className="c-input sm:col-span-2" placeholder="Any additional notes — current condition, timeline, preferred appointment time…" />
               <button type="submit" className="sm:col-span-2 inline-flex items-center justify-center gap-2 rounded-xl bg-brand py-3.5 text-sm font-bold text-ink">
                 <MessageCircle className="h-4 w-4" /> Send via WhatsApp
               </button>
@@ -110,7 +109,7 @@ function Contact() {
           </a>
           <div className="flex items-start gap-4 rounded-2xl bg-white border border-border p-5">
             <div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-brand/15 text-ink"><Clock className="h-5 w-5" /></div>
-            <div><p className="font-bold text-ink">Hours</p><p className="text-sm text-muted-foreground">Mon–Sat 8AM–6PM AST · Sun by appointment</p></div>
+            <div><p className="font-bold text-ink">Hours</p><p className="text-sm text-muted-foreground">Appointment Only</p></div>
           </div>
 
           <div className="rounded-2xl border border-border bg-ink p-5 text-white">

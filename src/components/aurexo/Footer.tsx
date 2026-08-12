@@ -18,7 +18,6 @@ const groups: Record<string, { label: string; to: string }[]> = {
     { label: "Book Vehicle Assessment", to: "/sell" },
     { label: "Recent Transformations", to: "/buy" },
     { label: "Studio Locations", to: "/dealerships" },
-    { label: "Payment Plans", to: "/financing" },
     { label: "Compare Packages", to: "/compare" },
   ],
 };
@@ -57,8 +56,7 @@ export function Footer() {
         <Logo variant="light" />
 
         <p className="mt-4 max-w-md text-sm leading-relaxed text-white/70">
-          Prestige Shine Auto Detailing is Miramichi's concierge auto detailing house — ceramic 9H coatings, multi-stage paint
-          correction, and interior deep extractions performed in-studio or at your driveway.
+          Prestige Shine Auto Detailing Miramichi is an appointment-only professional detailing studio specializing in full detailing, paint enhancement, paint correction and professional ceramic coatings.
         </p>
 
         <button
@@ -73,8 +71,7 @@ export function Footer() {
           <div>
             <h4 className="text-sm font-semibold uppercase tracking-wider text-white/60">Studio Hours</h4>
             <p className="mt-3 text-sm leading-relaxed text-white/80">
-              Monday – Friday · 8 AM to 7 PM<br />
-              Saturday · 9 AM to 5 PM · Sunday closed
+              Appointment Only
             </p>
           </div>
           <div>

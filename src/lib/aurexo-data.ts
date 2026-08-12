@@ -124,10 +124,10 @@ export const vehicles: Vehicle[] = [
     summary:
       "Ceramic coating on a Urban Grey HR-V. A light single-stage polish removed dealer-install marring before the 9H coating was applied, giving the flat grey paint noticeably more depth along with UV, chemical, and water-spot resistance.",
   }),
-  v("ford-f150-platinum-full-detail", "Ford F-150 — Platinum Full Detail", 899, 390, 2019, "Express", "Exterior", "Truck", "Ford", "Completed", fordF150.url, {
+  v("ford-f150-platinum-full-detail", "Ford F-150 — Full Detail", 899, 390, 2019, "Express", "Exterior", "Truck", "Ford", "Completed", fordF150.url, {
     tag: "New Project",
     summary:
-      "Platinum-level full detail on a black F-150. Foam pre-wash, iron decontamination, clay treatment, and a gloss-enhancing polish removed wash marring across the large panels, finished with a durable sealant, dressed trim and running boards, and a full interior clean.",
+      "Complete full detail on a black F-150. Foam pre-wash, iron decontamination, clay treatment, and a gloss-enhancing polish removed wash marring across the large panels, finished with a durable sealant, dressed trim and running boards, and a full interior clean.",
   }),
 ];
 

@@ -1,6 +1,6 @@
 import { createFileRoute, notFound } from "@tanstack/react-router";
 import { VehicleDetail } from "@/components/aurexo/VehicleDetail";
-import { vehicles } from "@/lib/aurexo-data";
+import { vehicles, type Vehicle } from "@/lib/aurexo-data";
 
 export const Route = createFileRoute("/listings/$id")({
   head: ({ params }) => {
@@ -28,6 +28,6 @@ export const Route = createFileRoute("/listings/$id")({
 });
 
 function ListingPage() {
-  const { v } = Route.useLoaderData();
+  const { v } = Route.useLoaderData() as { v: Vehicle };
   return <VehicleDetail vehicle={v} />;
 }

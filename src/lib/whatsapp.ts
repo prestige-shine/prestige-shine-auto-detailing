@@ -1,6 +1,6 @@
 // Centralized business identity + WhatsApp lead routing for Prestige Shine Auto Detailing.
 export const BUSINESS_NAME = "Prestige Shine Auto Detailing";
-export const STUDIO_EMAIL = "kevinohines@gmail.com";
+export const STUDIO_EMAIL = "prestige101shine@gmail.com";
 export const STUDIO_ADDRESS = "229 Jacqueline Dr, Miramichi, NB E1N 3Z2, Canada";
 export const SERVICE_AREA = "Miramichi, NB and surrounding areas";
 export const FACEBOOK_URL = "https://www.facebook.com/share/19LTaGPm2C/";

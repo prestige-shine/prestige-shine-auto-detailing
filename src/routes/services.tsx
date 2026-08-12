@@ -21,7 +21,7 @@ const tiers = [
     id: "interior",
     icon: Sparkles,
     name: "Interior Detailing",
-    price: "from $100",
+    price: "priced by vehicle size",
     duration: "2–5 hours",
     idealFor: "Work trucks, family vehicles, pet owners, pre-sale preparation, post-winter resets",
     image: baAfter1.url,
@@ -42,7 +42,7 @@ const tiers = [
     id: "exterior",
     icon: Droplets,
     name: "Exterior Detailing",
-    price: "from $100",
+    price: "priced by vehicle size",
     duration: "2–4 hours",
     idealFor: "Daily drivers, seasonal refreshes, vehicles being prepped for sale or protection",
     image: bmwX5.url,
@@ -63,17 +63,17 @@ const tiers = [
     id: "packages",
     icon: Layers,
     name: "Full Detailing Packages",
-    price: "from $150",
+    price: "cars from $200",
     duration: "4 hours – 1 day",
     idealFor: "Owners who want one complete inside-and-out transformation",
     image: baAfter3.url,
     blurb:
-      "Our Silver, Gold and Platinum packages combine interior and exterior work into a single visit. Pricing scales with vehicle size and condition — cars start at $100 and SUVs and trucks at $150 — and you always know the starting point before we begin. Kevin reviews every vehicle personally and confirms the final quote before any work starts.",
+      "A Full Detail combines complete interior and exterior work in a single appointment. Pricing is set by vehicle size: cars from $200, compact SUVs from $225, mid-size SUVs from $275, large / 3-row SUVs from $300, XL SUVs from $350, pickup trucks from $300 and large / HD trucks from $350. Kevin reviews every vehicle personally and confirms the final quote before any work starts.",
     included: [
-      "Silver: complete interior clean plus exterior wash, decontamination and sealant",
-      "Gold: adds extraction, deeper interior restoration and a gloss-enhancing polish",
-      "Platinum: adds paint refinement and long-term protection for a showroom finish",
-      "Engine bay and door jamb detailing available in higher tiers",
+      "Complete interior clean plus exterior wash, decontamination and protection",
+      "Hot-water extraction and deeper interior restoration where needed",
+      "Optional Full Detail + Paint Enhancement combo — cars from $450 up to $700 for XL SUVs and HD trucks",
+      "Door jamb detailing included",
       "Wheels, tires and trim restored on every package",
       "Photo documentation of the finished vehicle",
     ],
@@ -82,14 +82,16 @@ const tiers = [
     id: "ceramic",
     icon: Shield,
     name: "Ceramic Coating",
-    price: "from $799",
+    price: "from $800",
     duration: "1–3 days",
     idealFor: "New vehicles, high-value cars, owners who want long-term, low-maintenance protection",
     image: audiQ5.url,
     blurb:
       "As a System X certified installer, Kevin applies professional-grade ceramic coatings the way they're meant to be applied: fully prepped, polished, panel-wiped and cured in a controlled environment. The result is a hard, slick, hydrophobic layer that keeps your paint glossy and dramatically easier to wash through every season.",
     included: [
-      "System X certified professional coating products",
+      "3-Year Ceramic Protection — from $800",
+      "System X 6-Year Ceramic Coating — from $1,200",
+      "Correction + 6-Year Ceramic — from $1,500",
       "Full chemical and clay decontamination",
       "Machine polish to remove marring before coating",
       "IPA panel wipe to strip all polishing oils",
@@ -102,34 +104,37 @@ const tiers = [
   {
     id: "paint-protection",
     icon: Gem,
-    name: "Paint Protection",
-    price: "from $249",
+    name: "Full Detail + Paint Enhancement",
+    price: "cars from $450",
     duration: "4 hours – 1 day",
-    idealFor: "Classics, weekend cars, and any vehicle facing salt, sand and UV exposure",
+    idealFor: "Owners who want a complete detail plus noticeably improved gloss in one visit",
     image: pontiacTransAm.url,
     blurb:
-      "Between road salt, gravel and long summer sun, paint in New Brunswick takes a beating. We match the right level of protection to how you actually use the vehicle — from durable sealants to hybrid and ceramic-based products — so the finish stays protected without changing its character.",
+      "Our most popular combination: a complete Full Detail paired with a 1-step paint enhancement that lifts gloss and reduces light swirling in the same appointment. Pricing follows vehicle size — cars from $450, compact SUVs from $475, mid-size SUVs from $550, large / 3-row SUVs from $600, XL SUVs from $700, pickup trucks from $600 and large / HD trucks from $700.",
     included: [
-      "Condition assessment and protection plan for your vehicle",
-      "Decontamination and surface prep before any product is applied",
-      "Durable sealant or hybrid ceramic protection",
-      "UV, salt, bird dropping and water spot resistance",
-      "Trim, plastic and glass protection included",
-      "Wheel and tire protection available",
-      "Maintenance wash schedule tailored to your vehicle",
+      "Complete interior and exterior Full Detail",
+      "Full chemical and clay decontamination before polishing",
+      "1-step machine paint enhancement for added gloss and clarity",
+      "Light swirl and haze reduction",
+      "Protection applied to lock in the finish",
+      "Wheels, tires and trim restored",
+      "Maintenance wash guidance tailored to your vehicle",
     ],
   },
   {
     id: "paint-correction",
     icon: Car,
     name: "Paint Correction",
-    price: "from $399",
+    price: "from $300",
     duration: "1–3 days",
     idealFor: "Swirled, dull, oxidised or previously poorly-washed paint",
     image: corvetteC8.url,
     blurb:
       "Paint correction is where the biggest transformations happen. Kevin measures paint thickness, tests panels, then machine polishes in stages to permanently remove swirls, wash marring and oxidation — instead of filling them in. Under direct light the difference is undeniable: sharper reflections, deeper colour, true clarity.",
     included: [
+      "1-Step Paint Enhancement — from $300",
+      "2-Step Paint Correction — from $600",
+      "Advanced / Multi-Stage Paint Correction — from $900",
       "Paint depth measurement and test-spot panel work",
       "Compounding stage to remove defects",
       "Refining polish for a hologram-free finish",
@@ -146,7 +151,6 @@ const addons = [
   { name: "Headlight Restoration", price: "$59/pair", desc: "Polish and UV-seal oxidised headlight lenses for clarity and longevity." },
   { name: "Engine Bay Detail", price: "$89", desc: "Degrease, rinse, and dress all engine bay plastics and components." },
   { name: "Leather Conditioning", price: "$79", desc: "Clean and condition all leather surfaces with pH-balanced products." },
-  { name: "PPF Consultation", price: "Free", desc: "Expert advice on paint protection film placement — clear bra, full bonnet, or full wrap referral." },
   { name: "Ceramic Wheel Coating", price: "$149", desc: "Pro-grade ceramic coating on all four wheels for brake-dust resistance and easy cleaning." },
 ];
 
@@ -154,9 +158,9 @@ export const Route = createFileRoute("/services")({
   head: () => ({
     meta: [
       { title: "Detailing Services — Prestige Shine Auto Detailing" },
-      { name: "description", content: "Interior detailing, exterior detailing, full detailing packages, System X ceramic coating, paint protection and paint correction in Miramichi, NB." },
+      { name: "description", content: "Interior detailing, exterior detailing, full detail packages from $200, full detail + paint enhancement from $450, System X ceramic coatings from $800 and paint correction in Miramichi, NB." },
       { property: "og:title", content: "Our Six Services — Prestige Shine Auto Detailing" },
-      { property: "og:description", content: "Interior, exterior, full packages, ceramic coating, paint protection and paint correction — done personally by Kevin in Miramichi, NB." },
+      { property: "og:description", content: "Interior, exterior, full detail packages, paint enhancement, ceramic coating and paint correction — done personally by Kevin in Miramichi, NB." },
     ],
   }),
   component: Services,
@@ -172,7 +176,7 @@ function Services() {
       <PageHeader
         eyebrow="Services"
         title="Every service your vehicle deserves."
-        subtitle="Six core services plus a menu of precision add-ons — interior, exterior, full packages, ceramic coating, paint protection and paint correction, performed personally by Kevin at Prestige Shine Auto Detailing in Miramichi, NB."
+        subtitle="Six core services plus a menu of precision add-ons — performed personally by Kevin at Prestige Shine Auto Detailing in Miramichi, NB. Appointment only, drop-off at our dedicated detailing and coating shop."
       />
 
       {/* Swipeable tier carousel */}
@@ -254,6 +258,7 @@ function Services() {
           </div>
 
           <p className="mt-5 text-sm leading-relaxed text-muted-foreground">{tier.blurb}</p>
+          <p className="mt-3 text-xs text-muted-foreground">Prices shown are starting estimates. Final pricing is based on vehicle size and condition. Excessive pet hair, staining, heavy soiling, or unusually neglected vehicles may cost more.</p>
 
           <h3 className="mt-7 text-sm font-bold uppercase tracking-wide text-muted-foreground">What's included</h3>
           <ul className="mt-3 grid gap-2 sm:grid-cols-2">

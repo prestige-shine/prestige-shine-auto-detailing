@@ -16,14 +16,12 @@ import { Route as AboutRouteImport } from './routes/about'
 import { Route as AgentsRouteImport } from './routes/agents'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as BuyRouteImport } from './routes/buy'
-import { Route as CalculatorRouteImport } from './routes/calculator'
 import { Route as ComingSoonRouteImport } from './routes/coming-soon'
 import { Route as CompareRouteImport } from './routes/compare'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as DealershipsRouteImport } from './routes/dealerships'
 import { Route as FaqsRouteImport } from './routes/faqs'
 import { Route as FeaturedRouteImport } from './routes/featured'
-import { Route as FinancingRouteImport } from './routes/financing'
 import { Route as GetEstimateRouteImport } from './routes/get-estimate'
 import { Route as McpRouteImport } from './routes/mcp'
 import { Route as NewArrivalsRouteImport } from './routes/new-arrivals'
@@ -76,11 +74,6 @@ const BuyRoute = BuyRouteImport.update({
   path: '/buy',
   getParentRoute: () => rootRouteImport,
 } as any)
-const CalculatorRoute = CalculatorRouteImport.update({
-  id: '/calculator',
-  path: '/calculator',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const ComingSoonRoute = ComingSoonRouteImport.update({
   id: '/coming-soon',
   path: '/coming-soon',
@@ -109,11 +102,6 @@ const FaqsRoute = FaqsRouteImport.update({
 const FeaturedRoute = FeaturedRouteImport.update({
   id: '/featured',
   path: '/featured',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const FinancingRoute = FinancingRouteImport.update({
-  id: '/financing',
-  path: '/financing',
   getParentRoute: () => rootRouteImport,
 } as any)
 const GetEstimateRoute = GetEstimateRouteImport.update({
@@ -212,14 +200,12 @@ export interface FileRoutesByFullPath {
   '/agents': typeof AgentsRoute
   '/auth': typeof AuthRoute
   '/buy': typeof BuyRoute
-  '/calculator': typeof CalculatorRoute
   '/coming-soon': typeof ComingSoonRoute
   '/compare': typeof CompareRoute
   '/contact': typeof ContactRoute
   '/dealerships': typeof DealershipsRoute
   '/faqs': typeof FaqsRoute
   '/featured': typeof FeaturedRoute
-  '/financing': typeof FinancingRoute
   '/get-estimate': typeof GetEstimateRoute
   '/mcp': typeof McpRoute
   '/new-arrivals': typeof NewArrivalsRoute
@@ -245,14 +231,12 @@ export interface FileRoutesByTo {
   '/agents': typeof AgentsRoute
   '/auth': typeof AuthRoute
   '/buy': typeof BuyRoute
-  '/calculator': typeof CalculatorRoute
   '/coming-soon': typeof ComingSoonRoute
   '/compare': typeof CompareRoute
   '/contact': typeof ContactRoute
   '/dealerships': typeof DealershipsRoute
   '/faqs': typeof FaqsRoute
   '/featured': typeof FeaturedRoute
-  '/financing': typeof FinancingRoute
   '/get-estimate': typeof GetEstimateRoute
   '/mcp': typeof McpRoute
   '/new-arrivals': typeof NewArrivalsRoute
@@ -280,14 +264,12 @@ export interface FileRoutesById {
   '/agents': typeof AgentsRoute
   '/auth': typeof AuthRoute
   '/buy': typeof BuyRoute
-  '/calculator': typeof CalculatorRoute
   '/coming-soon': typeof ComingSoonRoute
   '/compare': typeof CompareRoute
   '/contact': typeof ContactRoute
   '/dealerships': typeof DealershipsRoute
   '/faqs': typeof FaqsRoute
   '/featured': typeof FeaturedRoute
-  '/financing': typeof FinancingRoute
   '/get-estimate': typeof GetEstimateRoute
   '/mcp': typeof McpRoute
   '/new-arrivals': typeof NewArrivalsRoute
@@ -315,14 +297,12 @@ export interface FileRouteTypes {
     | '/agents'
     | '/auth'
     | '/buy'
-    | '/calculator'
     | '/coming-soon'
     | '/compare'
     | '/contact'
     | '/dealerships'
     | '/faqs'
     | '/featured'
-    | '/financing'
     | '/get-estimate'
     | '/mcp'
     | '/new-arrivals'
@@ -348,14 +328,12 @@ export interface FileRouteTypes {
     | '/agents'
     | '/auth'
     | '/buy'
-    | '/calculator'
     | '/coming-soon'
     | '/compare'
     | '/contact'
     | '/dealerships'
     | '/faqs'
     | '/featured'
-    | '/financing'
     | '/get-estimate'
     | '/mcp'
     | '/new-arrivals'
@@ -382,14 +360,12 @@ export interface FileRouteTypes {
     | '/agents'
     | '/auth'
     | '/buy'
-    | '/calculator'
     | '/coming-soon'
     | '/compare'
     | '/contact'
     | '/dealerships'
     | '/faqs'
     | '/featured'
-    | '/financing'
     | '/get-estimate'
     | '/mcp'
     | '/new-arrivals'
@@ -417,14 +393,12 @@ export interface RootRouteChildren {
   AgentsRoute: typeof AgentsRoute
   AuthRoute: typeof AuthRoute
   BuyRoute: typeof BuyRoute
-  CalculatorRoute: typeof CalculatorRoute
   ComingSoonRoute: typeof ComingSoonRoute
   CompareRoute: typeof CompareRoute
   ContactRoute: typeof ContactRoute
   DealershipsRoute: typeof DealershipsRoute
   FaqsRoute: typeof FaqsRoute
   FeaturedRoute: typeof FeaturedRoute
-  FinancingRoute: typeof FinancingRoute
   GetEstimateRoute: typeof GetEstimateRoute
   McpRoute: typeof McpRoute
   NewArrivalsRoute: typeof NewArrivalsRoute
@@ -494,13 +468,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BuyRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/calculator': {
-      id: '/calculator'
-      path: '/calculator'
-      fullPath: '/calculator'
-      preLoaderRoute: typeof CalculatorRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/coming-soon': {
       id: '/coming-soon'
       path: '/coming-soon'
@@ -541,13 +508,6 @@ declare module '@tanstack/react-router' {
       path: '/featured'
       fullPath: '/featured'
       preLoaderRoute: typeof FeaturedRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/financing': {
-      id: '/financing'
-      path: '/financing'
-      fullPath: '/financing'
-      preLoaderRoute: typeof FinancingRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/get-estimate': {
@@ -691,14 +651,12 @@ const rootRouteChildren: RootRouteChildren = {
   AgentsRoute: AgentsRoute,
   AuthRoute: AuthRoute,
   BuyRoute: BuyRoute,
-  CalculatorRoute: CalculatorRoute,
   ComingSoonRoute: ComingSoonRoute,
   CompareRoute: CompareRoute,
   ContactRoute: ContactRoute,
   DealershipsRoute: DealershipsRoute,
   FaqsRoute: FaqsRoute,
   FeaturedRoute: FeaturedRoute,
-  FinancingRoute: FinancingRoute,
   GetEstimateRoute: GetEstimateRoute,
   McpRoute: McpRoute,
   NewArrivalsRoute: NewArrivalsRoute,

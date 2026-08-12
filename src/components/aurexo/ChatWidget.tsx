@@ -19,7 +19,7 @@ const TIERS = [
   { key: "Premium 9H Ceramic Coating & Paint Correction", min: 1899, max: 3499 },
 ] as const;
 
-const WINDOWS = ["This week", "Next week", "Weekend slot", "Mobile at my address"] as const;
+const WINDOWS = ["This week", "Next week", "Weekend slot", "Weekday morning"] as const;
 
 export function ChatWidget() {
   const [open, setOpen] = useState(false);
