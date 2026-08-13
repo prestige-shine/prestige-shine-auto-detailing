@@ -30,7 +30,7 @@ const tierProfile = (v: V) => {
   switch (v.fuel) {
     case "Ceramic":
       return {
-        warranty: "5–9 year ceramic warranty",
+        warranty: "3–6 year System X durability",
         interval: "Annual maintenance decontamination",
         protection: "Chemical + UV + hydrophobic",
         cure: "24h dust-free · 7-day full cure",
@@ -100,7 +100,7 @@ function Compare() {
       <PageHeader
         eyebrow="Value Tool"
         title="Detailing Maintenance vs. Ceramic Paint Protection"
-        subtitle="Weigh wax-and-wash maintenance against Prestige Shine's 9H Ceramic Paint Protection — 5-year cost, gloss, hydrophobic behavior, and resale impact — then stack up to three packages side-by-side."
+        subtitle="Weigh wax-and-wash maintenance against Prestige Shine's System X ceramic coatings — multi-year cost, gloss, hydrophobic behavior, and resale impact — then stack up to three packages side-by-side."
       />
 
       <section className="mx-auto max-w-6xl px-4 py-10">
@@ -120,12 +120,12 @@ function Compare() {
             </div>
 
             {[
-              ["Annual cost", "~$960 / yr", "$1,899 one-time"],
-              ["Protection duration", "2–3 months per wax", "5–9 years"],
+              ["Annual cost", "~$960 / yr", "from $1,200 one-time"],
+              ["Protection duration", "2–3 months per wax", "3–6 years"],
               ["Gloss score", "6 / 10", "10 / 10"],
               ["Hydrophobic score", "3 / 10", "10 / 10"],
-              ["5-year total cost of ownership", "$4,800", "$1,899"],
-              ["Resale bump on trade-in", "+$0", "+$1,500"],
+              ["5-year total cost of ownership", "$4,800", "from $1,200"],
+              ["Resale bump on trade-in", "+$0", "Noticeably better presentation at trade-in"],
               ["Wash time saved", "—", "~40% faster weekly wash"],
             ].map(([k, a, b], i) => (
               <div key={k} className={`contents ${i % 2 ? "" : ""}`}>
