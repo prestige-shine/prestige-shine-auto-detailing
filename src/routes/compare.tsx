@@ -30,7 +30,7 @@ const tierProfile = (v: V) => {
   switch (v.fuel) {
     case "Ceramic":
       return {
-        warranty: "5–9 year ceramic warranty",
+        warranty: "3–6 year System X durability",
         interval: "Annual maintenance decontamination",
         protection: "Chemical + UV + hydrophobic",
         cure: "24h dust-free · 7-day full cure",
