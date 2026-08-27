@@ -1,4 +1,5 @@
 import { supabase } from "@/integrations/supabase/client";
+import { notifyEnquirySubmitted } from "@/lib/notify.functions";
 
 export type LeadSubmission = {
   full_name: string;
@@ -8,6 +9,7 @@ export type LeadSubmission = {
   vehicle_model?: string | null;
   vehicle_year?: string | null;
   vehicle_color?: string | null;
+  vehicle_size?: string | null;
   services: string[];
   other_service?: string | null;
   conditions: string[];
@@ -17,6 +19,7 @@ export type LeadSubmission = {
   preferred_time?: string | null;
   timeline?: string | null;
   schedule_flexible?: boolean | null;
+  estimate_text?: string | null;
   source?: string;
 };
 
@@ -35,9 +38,19 @@ export async function submitLead(payload: LeadSubmission): Promise<{ id: string 
   const { error } = await supabase
     .from("leads")
     .insert({ id, ...payload } as never);
+  // Storage failure = the enquiry was NOT received. Surface it, keep the form intact.
   if (error) throw error;
+
+  // Enquiry is safely stored. Notifications are best-effort from here on:
+  // a failed email/SMS never invalidates the stored enquiry.
+  try {
+    await notifyEnquirySubmitted({ data: { id } });
+  } catch (e) {
+    console.error("[lead] notification dispatch failed", e);
+  }
   return { id };
 }
+
 
 export const SERVICE_OPTIONS = [
   { key: "interior", label: "Interior Detail", desc: "Deep vacuum, steam, extraction, glass." },
