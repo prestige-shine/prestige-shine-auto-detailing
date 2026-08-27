@@ -20,11 +20,8 @@ export type Database = {
           conditions: string[]
           created_at: string
           email: string
-          estimate_text: string | null
           full_name: string
           id: string
-          notified_at: string | null
-          notify_error: string | null
           other_service: string | null
           phone: string
           photo_urls: string[]
@@ -38,7 +35,6 @@ export type Database = {
           vehicle_color: string | null
           vehicle_make: string | null
           vehicle_model: string | null
-          vehicle_size: string | null
           vehicle_year: string | null
         }
         Insert: {
@@ -46,11 +42,8 @@ export type Database = {
           conditions?: string[]
           created_at?: string
           email: string
-          estimate_text?: string | null
           full_name: string
           id?: string
-          notified_at?: string | null
-          notify_error?: string | null
           other_service?: string | null
           phone: string
           photo_urls?: string[]
@@ -64,7 +57,6 @@ export type Database = {
           vehicle_color?: string | null
           vehicle_make?: string | null
           vehicle_model?: string | null
-          vehicle_size?: string | null
           vehicle_year?: string | null
         }
         Update: {
@@ -72,11 +64,8 @@ export type Database = {
           conditions?: string[]
           created_at?: string
           email?: string
-          estimate_text?: string | null
           full_name?: string
           id?: string
-          notified_at?: string | null
-          notify_error?: string | null
           other_service?: string | null
           phone?: string
           photo_urls?: string[]
@@ -90,7 +79,6 @@ export type Database = {
           vehicle_color?: string | null
           vehicle_make?: string | null
           vehicle_model?: string | null
-          vehicle_size?: string | null
           vehicle_year?: string | null
         }
         Relationships: []
