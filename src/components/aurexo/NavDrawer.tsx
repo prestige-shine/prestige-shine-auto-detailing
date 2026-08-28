@@ -11,12 +11,12 @@ type Node = { label: string; to?: string; search?: Record<string, unknown>; chil
 const tree: Node[] = [
   { label: "Home", to: "/" },
   {
-    label: "Detailing Packages",
+    label: "Recent Work",
     children: [
-      { label: "All Packages", to: "/buy" },
-      { label: "New Packages", to: "/new-arrivals" },
-      { label: "Featured", to: "/featured" },
-      { label: "Saved Packages", to: "/saved" },
+      { label: "All Work", to: "/buy" },
+      { label: "Recently Added", to: "/new-arrivals" },
+      { label: "Featured Projects", to: "/featured" },
+      { label: "Saved Projects", to: "/saved" },
     ],
   },
   {
@@ -29,7 +29,6 @@ const tree: Node[] = [
       { label: "About the Studio", to: "/about" },
       { label: "Our Detailers", to: "/agents" },
       { label: "Studio Locations", to: "/dealerships" },
-      { label: "Compare Packages", to: "/compare" },
       { label: "Owner Reviews", to: "/reviews" },
       { label: "Detailing Services", to: "/services" },
       { label: "FAQs", to: "/faqs" },

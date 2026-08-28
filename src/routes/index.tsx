@@ -75,7 +75,6 @@ const TIERS = [
 
 const TOOLS = [
   { label: "Instant Detailing Estimate", sub: "Starting price in 60 s", to: "/get-estimate", icon: DollarSign },
-  { label: "Compare Services", sub: "Side-by-side service view", to: "/compare", icon: BarChart3 },
   { label: "Our Recent Work", sub: "Before & after transformations", to: "/buy", icon: Sparkles },
   { label: "Owner Reviews", sub: "100+ 5-star Google reviews", to: "/reviews", icon: Star },
 ];
@@ -231,7 +230,7 @@ function Home() {
         </div>
       </section>
 
-      {/* Featured Packages */}
+      {/* Recent Completed Vehicles */}
       <section className="mx-auto max-w-6xl px-4 py-14">
         <div className="flex items-baseline justify-between">
           <div>
