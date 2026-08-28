@@ -1,22 +1,12 @@
 import { Link } from "@tanstack/react-router";
-import { Heart, Plus, Check, Camera, Video, ChevronRight } from "lucide-react";
-import type { Vehicle } from "@/lib/aurexo-data";
-import { useCompare } from "@/contexts/CompareContext";
+import { Heart, Camera, Video, ChevronRight } from "lucide-react";
+import { serviceLabel, type Vehicle } from "@/lib/aurexo-data";
 import { useFavorites } from "@/contexts/FavoritesContext";
 
-const tagColors: Record<NonNullable<Vehicle["tag"]>, string> = {
-  "Best Value": "#4338CA",
-  "Premium Build": "#0EA5E9",
-  "New Project": "#84CC16",
-  "Studio Pick": "#F59E0B",
-};
-
 export function VehicleCard({ v }: { v: Vehicle }) {
-  const { has, toggle } = useCompare();
   const favorites = useFavorites();
-  const inCompare = has(v.id);
   const isSaved = favorites.has(v.id);
-  const tagBg = v.tag ? tagColors[v.tag] : undefined;
+  const service = serviceLabel(v);
   return (
     <article className="group relative flex flex-col overflow-hidden rounded-2xl border border-border bg-white transition hover:border-ink/40 hover:shadow-md">
       {/* Full-card click target — sits behind interactive controls */}
@@ -28,17 +18,12 @@ export function VehicleCard({ v }: { v: Vehicle }) {
       />
       <div className="relative z-10 pointer-events-none">
         <img src={v.img} alt={v.title} className="h-44 w-full object-cover" loading="lazy" />
-        {v.tag && (
-          <span
-            className="absolute left-3 top-3 rounded-full px-2.5 py-1 text-[11px] font-bold text-white"
-            style={{ background: tagBg }}
-          >
-            {v.tag}
-          </span>
-        )}
+        <span className="absolute left-3 top-3 rounded-full bg-ink/85 px-2.5 py-1 text-[11px] font-bold text-white">
+          {service}
+        </span>
         <button
           onClick={(e) => { e.preventDefault(); e.stopPropagation(); favorites.toggle(v.id); }}
-          aria-label={isSaved ? `Remove ${v.title} from saved vehicles` : `Save ${v.title}`}
+          aria-label={isSaved ? `Remove ${v.title} from saved projects` : `Save ${v.title}`}
           aria-pressed={isSaved}
           className={`pointer-events-auto absolute right-3 top-3 grid h-11 w-11 place-items-center rounded-full border bg-background/95 transition ${isSaved ? "border-brand text-brand" : "border-border text-ink"}`}
         >
@@ -56,26 +41,19 @@ export function VehicleCard({ v }: { v: Vehicle }) {
       <div className="relative z-10 flex flex-1 flex-col p-4 pointer-events-none">
         <h3 className="truncate font-bold text-ink">{v.title}</h3>
         <p className="mt-1 truncate text-xs text-muted-foreground">
-          {v.body} · {v.year} · {v.fuel} tier · {v.km} min
+          {v.brand} · {v.year} · {v.body}
         </p>
-        <p className="mt-2 text-lg font-extrabold text-ink">{v.price}</p>
+        <p className="mt-2 text-sm font-semibold text-ink">{service} · {v.transmission} finish</p>
         <div className="mt-auto flex items-center justify-between gap-2 border-t border-border pt-3 pointer-events-auto">
-          <button
-            onClick={(e) => { e.preventDefault(); e.stopPropagation(); toggle(v.id); }}
-            aria-pressed={inCompare}
-            className={`inline-flex items-center gap-1 rounded-full border px-3 py-1.5 text-xs font-medium transition ${
-              inCompare ? "border-brand bg-brand text-ink" : "border-border text-ink hover:border-ink"
-            }`}
-          >
-            {inCompare ? <Check className="h-3 w-3" /> : <Plus className="h-3 w-3" />}
-            {inCompare ? "Added" : "Compare"}
-          </button>
+          <span className="inline-flex items-center rounded-full border border-border px-3 py-1.5 text-xs font-medium text-ink">
+            {v.condition}
+          </span>
           <Link
             to="/listings/$id"
             params={{ id: v.id }}
             className="inline-flex items-center gap-1 text-xs font-semibold text-ink hover:text-brand"
           >
-            View details <ChevronRight className="h-3 w-3" />
+            View project <ChevronRight className="h-3 w-3" />
           </Link>
         </div>
       </div>

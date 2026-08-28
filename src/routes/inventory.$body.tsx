@@ -6,9 +6,9 @@ import { PageHeader } from "@/components/aurexo/PageHeader";
 export const Route = createFileRoute("/inventory/$body")({
   head: ({ params }) => ({
     meta: [
-      { title: `${decodeURIComponent(params.body)} Detailing Packages — Prestige Shine` },
-      { name: "description", content: `Prestige Shine detailing packages tailored for ${decodeURIComponent(params.body)} vehicles across Miramichi.` },
-      { property: "og:title", content: `${decodeURIComponent(params.body)} Detailing Packages — Prestige Shine` },
+      { title: `${decodeURIComponent(params.body)} Recent Work — Prestige Shine` },
+      { name: "description", content: `Prestige Shine completed detailing projects for ${decodeURIComponent(params.body)} vehicles across Miramichi.` },
+      { property: "og:title", content: `${decodeURIComponent(params.body)} Recent Work — Prestige Shine` },
     ],
   }),
   component: InventoryByBody,
@@ -22,8 +22,8 @@ function InventoryByBody() {
     <main className="overflow-x-hidden">
       <PageHeader
         eyebrow="By Vehicle Class"
-        title={`${target} Detailing Packages`}
-        subtitle={`${list.length} package${list.length === 1 ? "" : "s"} tuned for ${target} sizing and labor time.`}
+        title={`${target} Projects`}
+        subtitle={`${list.length} completed project${list.length === 1 ? "" : "s"} on ${target} vehicles.`}
       />
       <section className="mx-auto max-w-6xl px-4 py-10">
         {list.length ? (
@@ -32,8 +32,8 @@ function InventoryByBody() {
           </div>
         ) : (
           <div className="rounded-2xl border border-border bg-white p-10 text-center">
-            <p className="text-sm text-muted-foreground">No packages listed for this vehicle class yet.</p>
-            <Link to="/buy" className="mt-5 inline-flex items-center rounded-full bg-ink px-5 py-3 text-sm font-semibold text-white">Browse all packages</Link>
+            <p className="text-sm text-muted-foreground">No completed projects listed for this vehicle class yet.</p>
+            <Link to="/buy" className="mt-5 inline-flex items-center rounded-full bg-ink px-5 py-3 text-sm font-semibold text-white">Browse all work</Link>
           </div>
         )}
       </section>

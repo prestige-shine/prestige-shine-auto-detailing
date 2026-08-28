@@ -14,8 +14,6 @@ import { reportLovableError } from "../lib/lovable-error-reporting";
 import { Header } from "@/components/aurexo/Header";
 import { Footer } from "@/components/aurexo/Footer";
 import { NavDrawer } from "@/components/aurexo/NavDrawer";
-import { CompareProvider } from "@/contexts/CompareContext";
-import { CompareBar } from "@/components/aurexo/CompareBar";
 import { FavoritesProvider } from "@/contexts/FavoritesContext";
 import { ChatWidget } from "@/components/aurexo/ChatWidget";
 import { LeadDialogProvider } from "@/contexts/LeadDialogContext";
@@ -130,11 +128,9 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       <FavoritesProvider>
-        <CompareProvider>
           <LeadDialogProvider>
             <SiteShell />
           </LeadDialogProvider>
-        </CompareProvider>
       </FavoritesProvider>
     </QueryClientProvider>
   );
@@ -150,7 +146,6 @@ function SiteShell() {
         <Outlet />
       </div>
       <Footer />
-      <CompareBar />
       <ChatWidget />
     </div>
   );

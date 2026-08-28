@@ -11,7 +11,7 @@ export const Route = createFileRoute("/listings/$id")({
         {
           name: "description",
           content: v
-            ? `${v.title} · ${v.price}. ${v.fuel} tier for ${v.body} · ~${v.km} min labor. Book with Prestige Shine Auto Detailing in Miramichi.`
+            ? `${v.title} — completed ${v.fuel} work on a ${v.body} by Prestige Shine Auto Detailing in Miramichi, NB.`
             : "Detailing package at Prestige Shine Auto Detailing, Miramichi.",
         },
         { property: "og:title", content: `${v?.title ?? "Detailing Package"} — Prestige Shine` },
