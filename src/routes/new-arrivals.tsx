@@ -6,9 +6,9 @@ import { PageHeader } from "@/components/aurexo/PageHeader";
 export const Route = createFileRoute("/new-arrivals")({
   head: () => ({
     meta: [
-      { title: "New Detailing Packages — Prestige Shine Auto Detailing" },
+      { title: "Recently Added Projects — Prestige Shine Auto Detailing" },
       { name: "description", content: "The latest detailing packages and vehicle transformations added at Prestige Shine Auto Detailing across Miramichi." },
-      { property: "og:title", content: "New Detailing Packages — Prestige Shine Auto Detailing" },
+      { property: "og:title", content: "Recently Added Projects — Prestige Shine Auto Detailing" },
       { property: "og:description", content: "Newest ceramic coating, paint correction, and interior deep clean packages added this month." },
     ],
   }),
@@ -25,8 +25,8 @@ function NewArrivals() {
     <main className="overflow-x-hidden">
       <PageHeader
         eyebrow="Just Added"
-        title="New Detailing Packages"
-        subtitle={`${list.length} fresh packages and current-model-year vehicles booked in this month.`}
+        title="Recently Added Projects"
+        subtitle={`${list.length} recently completed and in-progress projects.`}
       />
       <section className="mx-auto max-w-6xl px-4 py-10">
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -36,7 +36,7 @@ function NewArrivals() {
         </div>
         <div className="mt-8 text-center">
           <Link to="/buy" className="inline-flex items-center gap-2 rounded-full bg-ink px-5 py-3 text-sm font-semibold text-white">
-            Browse all packages
+            Browse all work
           </Link>
         </div>
       </section>

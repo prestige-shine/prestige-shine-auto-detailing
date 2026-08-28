@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useMemo } from "react";
-import { ShieldCheck, Sparkles, Award, ArrowRight, Star, MessageCircle, DollarSign, BarChart3, Calendar, MapPin } from "lucide-react";
+import { ShieldCheck, Sparkles, Award, ArrowRight, Star, MessageCircle, DollarSign, Calendar, MapPin } from "lucide-react";
 import { vehicles } from "@/lib/aurexo-data";
 import { VehicleCard } from "@/components/aurexo/VehicleCard";
 import { PartnersMarquee } from "@/components/aurexo/PartnersMarquee";

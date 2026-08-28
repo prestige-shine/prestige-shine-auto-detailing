@@ -20,7 +20,7 @@ function Saved() {
   const list = vehicles.filter((v) => favorites.has(v.id));
   return (
     <main className="overflow-x-hidden">
-      <PageHeader eyebrow="Your List" title="Saved Detailing Packages" subtitle={list.length ? `${list.length} package${list.length === 1 ? "" : "s"} saved.` : "You haven't saved any packages yet."} />
+      <PageHeader eyebrow="Your List" title="Saved Projects" subtitle={list.length ? `${list.length} project${list.length === 1 ? "" : "s"} saved.` : "You haven't saved any projects yet."} />
       <section className="mx-auto max-w-6xl px-4 py-10">
         {list.length ? (
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
