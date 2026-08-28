@@ -17,7 +17,6 @@ import { Route as AgentsRouteImport } from './routes/agents'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as BuyRouteImport } from './routes/buy'
 import { Route as ComingSoonRouteImport } from './routes/coming-soon'
-import { Route as CompareRouteImport } from './routes/compare'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as DealershipsRouteImport } from './routes/dealerships'
 import { Route as FaqsRouteImport } from './routes/faqs'
@@ -77,11 +76,6 @@ const BuyRoute = BuyRouteImport.update({
 const ComingSoonRoute = ComingSoonRouteImport.update({
   id: '/coming-soon',
   path: '/coming-soon',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const CompareRoute = CompareRouteImport.update({
-  id: '/compare',
-  path: '/compare',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContactRoute = ContactRouteImport.update({
@@ -201,7 +195,6 @@ export interface FileRoutesByFullPath {
   '/auth': typeof AuthRoute
   '/buy': typeof BuyRoute
   '/coming-soon': typeof ComingSoonRoute
-  '/compare': typeof CompareRoute
   '/contact': typeof ContactRoute
   '/dealerships': typeof DealershipsRoute
   '/faqs': typeof FaqsRoute
@@ -232,7 +225,6 @@ export interface FileRoutesByTo {
   '/auth': typeof AuthRoute
   '/buy': typeof BuyRoute
   '/coming-soon': typeof ComingSoonRoute
-  '/compare': typeof CompareRoute
   '/contact': typeof ContactRoute
   '/dealerships': typeof DealershipsRoute
   '/faqs': typeof FaqsRoute
@@ -265,7 +257,6 @@ export interface FileRoutesById {
   '/auth': typeof AuthRoute
   '/buy': typeof BuyRoute
   '/coming-soon': typeof ComingSoonRoute
-  '/compare': typeof CompareRoute
   '/contact': typeof ContactRoute
   '/dealerships': typeof DealershipsRoute
   '/faqs': typeof FaqsRoute
@@ -298,7 +289,6 @@ export interface FileRouteTypes {
     | '/auth'
     | '/buy'
     | '/coming-soon'
-    | '/compare'
     | '/contact'
     | '/dealerships'
     | '/faqs'
@@ -329,7 +319,6 @@ export interface FileRouteTypes {
     | '/auth'
     | '/buy'
     | '/coming-soon'
-    | '/compare'
     | '/contact'
     | '/dealerships'
     | '/faqs'
@@ -361,7 +350,6 @@ export interface FileRouteTypes {
     | '/auth'
     | '/buy'
     | '/coming-soon'
-    | '/compare'
     | '/contact'
     | '/dealerships'
     | '/faqs'
@@ -394,7 +382,6 @@ export interface RootRouteChildren {
   AuthRoute: typeof AuthRoute
   BuyRoute: typeof BuyRoute
   ComingSoonRoute: typeof ComingSoonRoute
-  CompareRoute: typeof CompareRoute
   ContactRoute: typeof ContactRoute
   DealershipsRoute: typeof DealershipsRoute
   FaqsRoute: typeof FaqsRoute
@@ -473,13 +460,6 @@ declare module '@tanstack/react-router' {
       path: '/coming-soon'
       fullPath: '/coming-soon'
       preLoaderRoute: typeof ComingSoonRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/compare': {
-      id: '/compare'
-      path: '/compare'
-      fullPath: '/compare'
-      preLoaderRoute: typeof CompareRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contact': {
@@ -652,7 +632,6 @@ const rootRouteChildren: RootRouteChildren = {
   AuthRoute: AuthRoute,
   BuyRoute: BuyRoute,
   ComingSoonRoute: ComingSoonRoute,
-  CompareRoute: CompareRoute,
   ContactRoute: ContactRoute,
   DealershipsRoute: DealershipsRoute,
   FaqsRoute: FaqsRoute,

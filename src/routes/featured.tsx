@@ -16,7 +16,7 @@ export const Route = createFileRoute("/featured")({
 });
 
 function Featured() {
-  const list = vehicles.filter((v) => v.featured || v.tag === "Studio Pick");
+  const list = vehicles.filter((v) => v.featured);
   return (
     <main className="overflow-x-hidden">
       <PageHeader eyebrow="Studio Picks" title="Featured Detailing Packages" subtitle="Hand-selected packages our certified detailers are recommending this season — from express refreshes to full ceramic transformations." />

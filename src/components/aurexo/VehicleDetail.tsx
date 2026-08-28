@@ -142,7 +142,7 @@ export function VehicleDetail({ vehicle }: { vehicle: Vehicle }) {
       buildWhatsAppHref({
         vehicleClass: vehicle.body,
         serviceTier: `${vehicle.fuel} — ${vehicle.title}`,
-        notes: `Interested in this package: ${vehicle.title} (${vehicle.brand}, ${vehicle.year}). Booking status shown as ${vehicle.condition}. Package price ${vehicle.price}.`,
+        notes: `Interested in work like this project: ${vehicle.title} (${vehicle.brand}, ${vehicle.year}). Booking status shown as ${vehicle.condition}.`,
         source: `package-${vehicle.id}`,
       }),
     [vehicle],
@@ -175,7 +175,7 @@ export function VehicleDetail({ vehicle }: { vehicle: Vehicle }) {
         <nav className="flex items-center gap-1 text-xs text-muted-foreground">
           <Link to="/" className="hover:text-ink">Home</Link>
           <ChevronRight className="h-3 w-3" />
-          <Link to="/buy" className="hover:text-ink">Packages</Link>
+          <Link to="/buy" className="hover:text-ink">Recent Work</Link>
           <ChevronRight className="h-3 w-3" />
           <span className="truncate text-ink">{vehicle.title}</span>
         </nav>
@@ -184,11 +184,6 @@ export function VehicleDetail({ vehicle }: { vehicle: Vehicle }) {
       <section className="mx-auto max-w-6xl px-4 pt-4">
         <div className="relative overflow-hidden rounded-2xl border border-border bg-white">
           <img src={vehicle.img} alt={vehicle.title} className="aspect-[16/9] w-full object-cover" />
-          {vehicle.tag && (
-            <span className="absolute left-4 top-4 rounded-full bg-brand px-3 py-1 text-xs font-bold text-ink">
-              {vehicle.tag}
-            </span>
-          )}
         </div>
       </section>
 
@@ -199,7 +194,6 @@ export function VehicleDetail({ vehicle }: { vehicle: Vehicle }) {
           <p className="mt-2 text-sm text-muted-foreground">{vehicle.summary ?? meta.tagline}</p>
 
           <div className="mt-6 flex flex-wrap items-center gap-3">
-            <span className="text-3xl font-extrabold text-ink">{vehicle.price}</span>
             <span className="rounded-full bg-surface px-3 py-1 text-xs font-semibold text-ink">{vehicle.condition}</span>
             <span className="rounded-full bg-surface px-3 py-1 text-xs font-semibold text-ink">{vehicle.km} min labor</span>
           </div>
@@ -254,9 +248,8 @@ export function VehicleDetail({ vehicle }: { vehicle: Vehicle }) {
 
         <aside className="lg:sticky lg:top-24 lg:self-start">
           <div className="rounded-2xl border border-border bg-white p-5 shadow-sm">
-            <p className="text-xs font-bold uppercase tracking-wider text-brand">Book this package</p>
-            <p className="mt-1 text-2xl font-extrabold text-ink">{vehicle.price}</p>
-            <p className="text-xs text-muted-foreground">Final price is confirmed after your free vehicle assessment.</p>
+            <p className="text-xs font-bold uppercase tracking-wider text-brand">Book work like this</p>
+            <p className="mt-1 text-xs text-muted-foreground">Ask about work like this for your vehicle — pricing is confirmed after a free assessment.</p>
 
             <a
               href={whatsHref}
@@ -305,7 +298,7 @@ export function VehicleDetail({ vehicle }: { vehicle: Vehicle }) {
       </section>
 
       <section className="mx-auto max-w-6xl px-4 pb-16">
-        <h2 className="text-xl font-bold text-ink sm:text-2xl">Related packages</h2>
+        <h2 className="text-xl font-bold text-ink sm:text-2xl">More completed projects</h2>
         <p className="mt-1 text-sm text-muted-foreground">Other detailing work our Miramichi studios have booked recently.</p>
         <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {related.map((v) => (
