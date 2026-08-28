@@ -143,7 +143,7 @@ export function VehicleDetail({ vehicle }: { vehicle: Vehicle }) {
         vehicleClass: vehicle.body,
         serviceTier: `${vehicle.fuel} — ${vehicle.title}`,
         notes: `Interested in work like this project: ${vehicle.title} (${vehicle.brand}, ${vehicle.year}). Booking status shown as ${vehicle.condition}.`,
-        source: `package-${vehicle.id}`,
+        source: `project-${vehicle.id}`,
       }),
     [vehicle],
   );

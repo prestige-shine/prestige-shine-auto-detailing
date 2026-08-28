@@ -32,8 +32,8 @@ function InventoryByBody() {
           </div>
         ) : (
           <div className="rounded-2xl border border-border bg-white p-10 text-center">
-            <p className="text-sm text-muted-foreground">No packages listed for this vehicle class yet.</p>
-            <Link to="/buy" className="mt-5 inline-flex items-center rounded-full bg-ink px-5 py-3 text-sm font-semibold text-white">Browse all packages</Link>
+            <p className="text-sm text-muted-foreground">No completed projects listed for this vehicle class yet.</p>
+            <Link to="/buy" className="mt-5 inline-flex items-center rounded-full bg-ink px-5 py-3 text-sm font-semibold text-white">Browse all work</Link>
           </div>
         )}
       </section>

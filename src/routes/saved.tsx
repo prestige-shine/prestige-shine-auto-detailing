@@ -7,9 +7,9 @@ import { useFavorites } from "@/contexts/FavoritesContext";
 export const Route = createFileRoute("/saved")({
   head: () => ({
     meta: [
-      { title: "Saved Packages — Prestige Shine Auto Detailing" },
-      { name: "description", content: "Your saved detailing packages at Prestige Shine Auto Detailing." },
-      { property: "og:title", content: "Saved Packages — Prestige Shine Auto Detailing" },
+      { title: "Saved Projects — Prestige Shine Auto Detailing" },
+      { name: "description", content: "Your saved detailing projects at Prestige Shine Auto Detailing." },
+      { property: "og:title", content: "Saved Projects — Prestige Shine Auto Detailing" },
     ],
   }),
   component: Saved,
@@ -28,8 +28,8 @@ function Saved() {
           </div>
         ) : (
           <div className="rounded-2xl border border-border bg-white p-10 text-center">
-            <p className="text-sm text-muted-foreground">Tap the heart on any package to save it here.</p>
-            <Link to="/buy" className="mt-5 inline-flex items-center rounded-full bg-ink px-5 py-3 text-sm font-semibold text-white">Browse packages</Link>
+            <p className="text-sm text-muted-foreground">Tap the heart on any project to save it here.</p>
+            <Link to="/buy" className="mt-5 inline-flex items-center rounded-full bg-ink px-5 py-3 text-sm font-semibold text-white">Browse recent work</Link>
           </div>
         )}
       </section>

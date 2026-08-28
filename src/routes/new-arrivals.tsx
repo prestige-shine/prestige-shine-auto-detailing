@@ -7,9 +7,9 @@ export const Route = createFileRoute("/new-arrivals")({
   head: () => ({
     meta: [
       { title: "Recently Added Projects — Prestige Shine Auto Detailing" },
-      { name: "description", content: "The latest detailing packages and vehicle transformations added at Prestige Shine Auto Detailing across Miramichi." },
+      { name: "description", content: "The latest completed vehicle projects added at Prestige Shine Auto Detailing across Miramichi." },
       { property: "og:title", content: "Recently Added Projects — Prestige Shine Auto Detailing" },
-      { property: "og:description", content: "Newest ceramic coating, paint correction, and interior deep clean packages added this month." },
+      { property: "og:description", content: "Newest ceramic coating, paint correction, and interior restoration projects." },
     ],
   }),
   component: NewArrivals,
