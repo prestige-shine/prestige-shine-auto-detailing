@@ -13,12 +13,11 @@ const groups: Record<string, { label: string; to: string }[]> = {
     { label: "Detailing Journal", to: "/news" },
     { label: "Contact", to: "/contact" },
   ],
-  "Packages & Tools": [
+  "Services & Tools": [
     { label: "Instant Detailing Quote", to: "/get-estimate" },
     { label: "Book Vehicle Assessment", to: "/sell" },
-    { label: "Recent Transformations", to: "/buy" },
+    { label: "Recent Work", to: "/buy" },
     { label: "Studio Locations", to: "/dealerships" },
-    { label: "Compare Packages", to: "/compare" },
   ],
 };
 
