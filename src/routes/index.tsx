@@ -241,7 +241,7 @@ function Home() {
           <Link to="/buy" className="inline-flex items-center gap-1 text-sm font-medium text-ink">All work <ArrowRight className="h-4 w-4" /></Link>
         </div>
         <div className="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {featured.map((v) => <VehicleCard key={v.id} v={v} />)}
+          {featured.map((v) => <VehicleCard key={v.id} v={v} verifiedMetadataOnly />)}
         </div>
       </section>
 
