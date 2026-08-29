@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { Heart, Camera, Video, ChevronRight } from "lucide-react";
+import { Heart, ChevronRight } from "lucide-react";
 import { serviceLabel, type Vehicle } from "@/lib/aurexo-data";
 import { useFavorites } from "@/contexts/FavoritesContext";
 
@@ -29,25 +29,14 @@ export function VehicleCard({ v }: { v: Vehicle }) {
         >
           <Heart className="h-5 w-5" fill={isSaved ? "currentColor" : "none"} />
         </button>
-        <div className="absolute bottom-3 left-3 flex items-center gap-2">
-          <span className="flex items-center gap-1 rounded-md bg-black/55 px-2 py-1 text-[11px] font-medium text-white backdrop-blur">
-            <Camera className="h-3 w-3" /> 7
-          </span>
-          <span className="flex items-center gap-1 rounded-md bg-black/55 px-2 py-1 text-[11px] font-medium text-white backdrop-blur">
-            <Video className="h-3 w-3" /> 2
-          </span>
-        </div>
       </div>
       <div className="relative z-10 flex flex-1 flex-col p-4 pointer-events-none">
         <h3 className="truncate font-bold text-ink">{v.title}</h3>
         <p className="mt-1 truncate text-xs text-muted-foreground">
-          {v.brand} · {v.year} · {v.body}
+          {v.brand} · {v.body}
         </p>
         <p className="mt-2 text-sm font-semibold text-ink">{service} · {v.transmission} finish</p>
-        <div className="mt-auto flex items-center justify-between gap-2 border-t border-border pt-3 pointer-events-auto">
-          <span className="inline-flex items-center rounded-full border border-border px-3 py-1.5 text-xs font-medium text-ink">
-            {v.condition}
-          </span>
+        <div className="mt-auto flex items-center justify-end border-t border-border pt-3 pointer-events-auto">
           <Link
             to="/listings/$id"
             params={{ id: v.id }}

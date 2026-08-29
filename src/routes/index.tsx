@@ -77,6 +77,7 @@ const TOOLS = [
   { label: "Instant Detailing Estimate", sub: "Starting price in 60 s", to: "/get-estimate", icon: DollarSign },
   { label: "Our Recent Work", sub: "Before & after transformations", to: "/buy", icon: Sparkles },
   { label: "Owner Reviews", sub: "100+ 5-star Google reviews", to: "/reviews", icon: Star },
+  { label: "Our Services", sub: "Detailing, correction & coatings", to: "/services", icon: Award },
 ];
 
 const waHref = (msg: string) => `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`;
@@ -202,7 +203,7 @@ function Home() {
       <section className="bg-surface py-14">
         <div className="mx-auto max-w-6xl px-4">
           <div className="text-center">
-            <p className="text-xs font-bold uppercase tracking-wide text-brand">Recent Work</p>
+            <p className="text-xs font-bold uppercase tracking-wide text-brand">Recent Transformations</p>
             <h2 className="mt-2 text-2xl font-bold text-ink sm:text-3xl">Recent Work</h2>
             <p className="mt-2 text-sm text-muted-foreground">Real vehicle transformations completed by Prestige Shine Auto Detailing in Miramichi, NB. Every project showcases the craftsmanship, attention to detail, and premium finish our clients expect.</p>
           </div>
