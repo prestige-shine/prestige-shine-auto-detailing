@@ -4,19 +4,19 @@ import { PageHeader } from "@/components/aurexo/PageHeader";
 
 
 const reviews = [
-  { name: "Clifford Strickland", city: "Miramichi, NB", service: "Full Detail", body: "Great service!! Car looked brand new inside and outside. Amazing work! Will definitely be going back!!" },
-  { name: "Rachel & John Gore Tattoo Art", city: "Miramichi, NB", service: "Paint Correction", body: "Fantastic service and attention to detail." },
-  { name: "Paula Carter", city: "Miramichi, NB", service: "Full Detail", body: "Highly recommend! He did an amazing job detailing my car—it looks and smells like new again. Super friendly and great service!" },
-  { name: "Dodie MacCallum", city: "Miramichi, NB", service: "Full Detail", body: "I highly recommend this detailing company! My car looked just as new as when I got it! Thanks so much!! ⭐⭐⭐⭐⭐" },
-  { name: "Kevin McGaghey", city: "Miramichi, NB", service: "Ceramic Coating + Full Detail (2024 Honda HR-V)", body: "Picked up my 2024 Honda HR-V today... detailed and ceramic coated... I think my car looks better than when I picked it up new from the dealer." },
-  { name: "Kelsey Murphy", city: "Miramichi, NB", service: "Quick Winter Wash", body: "I just got the quick winter wash & my car is cleaner than when I bought it. I am so pleased & will definitely be back! Also such a good price 😊" },
-  { name: "Tyson MaColl", city: "Miramichi, NB", service: "Paint Correction + Full Detail", body: "Truck was rough looking before I brought it here. Was absolutely spotless when I got it back and he got all the swirls out of the paint. Price was more than fair as well." },
-  { name: "Melanie Brown Gibbs", city: "Miramichi, NB", service: "Full Detail (SUV)", body: "I just picked up our SUV and am shocked at how clean Kevin got it! The vehicle looks brand new, unreal! His service is top notch as well! We will definitely be back and telling our friends!" },
-  { name: "Jacob Tozer", city: "Miramichi, NB", service: "Full Detail Package", body: "Kevin did an excellent job on our truck. We got the Full Detail package and the truck looks brand new. Very fairly priced for what you get, and he's flexible with scheduling. Will be back for sure. Thanks again!" },
-  { name: "Dekdek Villagracia", city: "Miramichi, NB", service: "Complete Restoration Detail", body: "If your vehicle is looking for a 'SPA' this is the place to be. Very highly recommended! Thanks much for restoring our Chevy Traverse's beauty back. They offer varieties of packages suitable for your needs. You won't be disappointed." },
-  { name: "James M Fisher", city: "Miramichi, NB", service: "Paint Correction & Ceramic Coating", body: "Excellent work done, attention to detail, and a very clean & organized garage." },
-  { name: "Cheryl MacDonald Martin", city: "Miramichi, NB", service: "Full Detail + Paint Enhancement", body: "Top notch cleaning job. Had my SUV there today and it now looks like a new car. Even the paint looks awesome with a new glow. Super friendly guy also. Highly recommend him." },
-  { name: "Noel Milson", city: "Miramichi, NB", service: "Exterior Detail", body: "Excellent service very well done." },
+  { name: "Clifford Strickland", city: "Miramichi, NB", body: "Great service!! Car looked brand new inside and outside. Amazing work! Will definitely be going back!!" },
+  { name: "Rachel & John Gore Tattoo Art", city: "Miramichi, NB", body: "Fantastic service and attention to detail." },
+  { name: "Paula Carter", city: "Miramichi, NB", body: "Highly recommend! He did an amazing job detailing my car—it looks and smells like new again. Super friendly and great service!" },
+  { name: "Dodie MacCallum", city: "Miramichi, NB", body: "I highly recommend this detailing company! My car looked just as new as when I got it! Thanks so much!! ⭐⭐⭐⭐⭐" },
+  { name: "Kevin McGaghey", city: "Miramichi, NB", body: "Picked up my 2024 Honda HR-V today... detailed and ceramic coated... I think my car looks better than when I picked it up new from the dealer." },
+  { name: "Kelsey Murphy", city: "Miramichi, NB", body: "I just got the quick winter wash & my car is cleaner than when I bought it. I am so pleased & will definitely be back! Also such a good price 😊" },
+  { name: "Tyson MaColl", city: "Miramichi, NB", body: "Truck was rough looking before I brought it here. Was absolutely spotless when I got it back and he got all the swirls out of the paint. Price was more than fair as well." },
+  { name: "Melanie Brown Gibbs", city: "Miramichi, NB", body: "I just picked up our SUV and am shocked at how clean Kevin got it! The vehicle looks brand new, unreal! His service is top notch as well! We will definitely be back and telling our friends!" },
+  { name: "Jacob Tozer", city: "Miramichi, NB", body: "Kevin did an excellent job on our truck. We got the Full Detail package and the truck looks brand new. Very fairly priced for what you get, and he's flexible with scheduling. Will be back for sure. Thanks again!" },
+  { name: "Dekdek Villagracia", city: "Miramichi, NB", body: "If your vehicle is looking for a 'SPA' this is the place to be. Very highly recommended! Thanks much for restoring our Chevy Traverse's beauty back. They offer varieties of packages suitable for your needs. You won't be disappointed." },
+  { name: "James M Fisher", city: "Miramichi, NB", body: "Excellent work done, attention to detail, and a very clean & organized garage." },
+  { name: "Cheryl MacDonald Martin", city: "Miramichi, NB", body: "Top notch cleaning job. Had my SUV there today and it now looks like a new car. Even the paint looks awesome with a new glow. Super friendly guy also. Highly recommend him." },
+  { name: "Noel Milson", city: "Miramichi, NB", body: "Excellent service very well done." },
 ];
 
 export const Route = createFileRoute("/reviews")({
