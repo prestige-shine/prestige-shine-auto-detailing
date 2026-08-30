@@ -195,7 +195,7 @@ function Services() {
               const TIcon = t.icon;
               const isActive = active === t.id;
               return (
-                <CarouselItem key={t.id} className="pl-4 sm:basis-2/3 lg:basis-1/2">
+                <CarouselItem key={t.id} className="pl-4 basis-[82%] sm:basis-2/3 lg:basis-1/2">
                   <button
                     type="button"
                     onClick={() => setActive(t.id)}
@@ -234,8 +234,8 @@ function Services() {
               );
             })}
           </CarouselContent>
-          <CarouselPrevious className="hidden sm:flex -left-3" />
-          <CarouselNext className="hidden sm:flex -right-3" />
+          <CarouselPrevious className="-left-2 bg-white/90 shadow-md" />
+          <CarouselNext className="-right-2 bg-white/90 shadow-md" />
         </Carousel>
       </section>
 
