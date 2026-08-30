@@ -234,8 +234,8 @@ function Services() {
               );
             })}
           </CarouselContent>
-          <CarouselPrevious className="-left-2 bg-white/90 shadow-md" />
-          <CarouselNext className="-right-2 bg-white/90 shadow-md" />
+          <CarouselPrevious className="hidden sm:flex -left-2 bg-white/90 shadow-md" />
+          <CarouselNext className="hidden sm:flex -right-2 bg-white/90 shadow-md" />
         </Carousel>
       </section>
 
