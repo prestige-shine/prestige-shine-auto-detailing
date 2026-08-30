@@ -43,7 +43,6 @@ function Reviews() {
                 <div className="flex gap-0.5 text-brand">
                   {Array.from({ length: 5 }).map((_, i) => <Star key={i} className="h-4 w-4" fill="currentColor" strokeWidth={0} />)}
                 </div>
-                <p className="mt-1 text-[11px] font-bold uppercase tracking-wide text-brand">{r.service}</p>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">"{r.body}"</p>
                 <div className="mt-4 border-t border-border pt-3">
                   <p className="text-sm font-semibold text-ink">{r.name}</p>
