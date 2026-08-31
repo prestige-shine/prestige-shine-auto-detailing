@@ -68,3 +68,23 @@ export const checkIsAdmin = createServerFn({ method: "GET" })
     });
     return { isAdmin: !!data, userId: context.userId };
   });
+
+// Called after a lead is saved to record the EmailJS notification outcome.
+// Updates only notified_at / notify_error on the existing row — never creates
+// or deletes leads, so retries never duplicate records.
+export const reportLeadNotification = createServerFn({ method: "POST" })
+  .inputValidator((input: unknown) =>
+    z.object({
+      id: z.string().uuid(),
+      ok: z.boolean(),
+      error: z.string().max(500).optional(),
+    }).parse(input),
+  )
+  .handler(async ({ data }) => {
+    const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
+    const update = data.ok
+      ? { notified_at: new Date().toISOString(), notify_error: null }
+      : { notify_error: data.error ?? "EmailJS notification failed" };
+    await supabaseAdmin.from("leads").update(update).eq("id", data.id);
+    return { ok: true };
+  });
