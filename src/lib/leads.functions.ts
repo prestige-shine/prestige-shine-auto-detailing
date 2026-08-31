@@ -88,3 +88,29 @@ export const reportLeadNotification = createServerFn({ method: "POST" })
     await supabaseAdmin.from("leads").update(update).eq("id", data.id);
     return { ok: true };
   });
+
+// Signs time-limited URLs for a lead's own photos (bucket is private; anon
+// cannot sign). Only signs paths already stored on that lead's row.
+export const signLeadPhotos = createServerFn({ method: "POST" })
+  .inputValidator((input: unknown) =>
+    z.object({ id: z.string().uuid(), paths: z.array(z.string()).max(20) }).parse(input),
+  )
+  .handler(async ({ data }) => {
+    const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
+    const { data: lead } = await supabaseAdmin
+      .from("leads")
+      .select("photo_urls")
+      .eq("id", data.id)
+      .single();
+    const owned: string[] = lead?.photo_urls ?? [];
+    const allowed = data.paths.filter((p) => owned.includes(p));
+    const urls = await Promise.all(
+      allowed.map(async (p) => {
+        const { data: s } = await supabaseAdmin.storage
+          .from("lead-photos")
+          .createSignedUrl(p, 60 * 60 * 24 * 7);
+        return s?.signedUrl ?? null;
+      }),
+    );
+    return urls.filter((u): u is string => !!u);
+  });
