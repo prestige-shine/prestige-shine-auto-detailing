@@ -241,6 +241,50 @@ export function LeadQualificationDialog({ open, onClose, presetServiceKey }: Pro
       };
       const result = await submitLead(payload);
       setSubmitted({ id: result.id });
+
+      // Supabase save succeeded — now notify via EmailJS (never blocks success).
+      void (async () => {
+        // Time-limited signed URLs for the private lead-photos bucket.
+        const signed: string[] = [];
+        for (const p of payload.photo_urls) {
+          try {
+            const { data: s } = await supabase.storage
+              .from("lead-photos")
+              .createSignedUrl(p, 60 * 60 * 24 * 7);
+            if (s?.signedUrl) signed.push(s.signedUrl);
+          } catch {
+            /* photo link optional in the email */
+          }
+        }
+        const res = await sendLeadNotification({
+          customer_name: payload.full_name,
+          customer_phone: payload.phone,
+          customer_email: payload.email,
+          vehicle_make: payload.vehicle_make ?? "",
+          vehicle_model: payload.vehicle_model ?? "",
+          vehicle_year: payload.vehicle_year ?? "",
+          vehicle_colour: payload.vehicle_color ?? "",
+          requested_services: payload.services.join(", "),
+          other_service: payload.other_service ?? "",
+          vehicle_condition: payload.conditions.join(", "),
+          vehicle_size: sizeLabel,
+          preferred_date: payload.preferred_date ?? "",
+          preferred_time: payload.preferred_time ?? "",
+          timeline: payload.timeline ?? "",
+          schedule_flexible:
+            payload.schedule_flexible === null || payload.schedule_flexible === undefined
+              ? ""
+              : payload.schedule_flexible
+                ? "Yes"
+                : "No",
+          photo_url: signed.join("\n"),
+          lead_id: result.id,
+          source_name: "lead-qualifier",
+        });
+        reportLeadNotification({
+          data: { id: result.id, ok: res.sent, error: res.error },
+        }).catch(() => {});
+      })();
     } catch (e: any) {
       setError(e?.message ?? "Submission failed. Please try again.");
     } finally {
