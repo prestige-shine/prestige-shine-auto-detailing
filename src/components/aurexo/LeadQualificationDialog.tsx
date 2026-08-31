@@ -209,6 +209,9 @@ export function LeadQualificationDialog({ open, onClose, presetServiceKey }: Pro
       const services = form.services.map(
         (k) => SERVICE_OPTIONS.find((s) => s.key === k)?.label ?? k,
       );
+      const sizeLabel = form.vehicle_size
+        ? (VEHICLE_SIZES.find((v) => v.key === form.vehicle_size)?.label ?? "")
+        : "";
       const payload: LeadSubmission = {
         full_name: form.full_name.trim(),
         phone: form.phone.trim(),
