@@ -27,6 +27,9 @@ import {
   TIME_SLOTS,
   type LeadSubmission,
 } from "@/lib/leads";
+import { supabase } from "@/integrations/supabase/client";
+import { sendLeadNotification } from "@/lib/emailjs";
+import { reportLeadNotification } from "@/lib/leads.functions";
 import { calculateEstimate, formatPrice, VEHICLE_SIZES, PRICING_CONFIG, type VehicleSizeKey } from "@/lib/pricing";
 
 type Props = {
