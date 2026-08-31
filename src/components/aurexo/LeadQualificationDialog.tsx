@@ -27,9 +27,8 @@ import {
   TIME_SLOTS,
   type LeadSubmission,
 } from "@/lib/leads";
-import { supabase } from "@/integrations/supabase/client";
 import { sendLeadNotification } from "@/lib/emailjs";
-import { reportLeadNotification } from "@/lib/leads.functions";
+import { reportLeadNotification, signLeadPhotos } from "@/lib/leads.functions";
 import { calculateEstimate, formatPrice, VEHICLE_SIZES, PRICING_CONFIG, type VehicleSizeKey } from "@/lib/pricing";
 
 type Props = {
@@ -244,17 +243,12 @@ export function LeadQualificationDialog({ open, onClose, presetServiceKey }: Pro
 
       // Supabase save succeeded — now notify via EmailJS (never blocks success).
       void (async () => {
-        // Time-limited signed URLs for the private lead-photos bucket.
-        const signed: string[] = [];
-        for (const p of payload.photo_urls) {
-          try {
-            const { data: s } = await supabase.storage
-              .from("lead-photos")
-              .createSignedUrl(p, 60 * 60 * 24 * 7);
-            if (s?.signedUrl) signed.push(s.signedUrl);
-          } catch {
-            /* photo link optional in the email */
-          }
+        // Time-limited signed URLs for the private lead-photos bucket (server-side).
+        let signed: string[] = [];
+        if (payload.photo_urls.length > 0) {
+          signed = await signLeadPhotos({
+            data: { id: result.id, paths: payload.photo_urls },
+          }).catch(() => [] as string[]);
         }
         const res = await sendLeadNotification({
           customer_name: payload.full_name,
