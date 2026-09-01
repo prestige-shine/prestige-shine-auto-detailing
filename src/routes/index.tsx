@@ -34,7 +34,7 @@ const BEFORE_AFTER = [
   { id: "sienna-transformation", label: "Family Van Transformation — Toyota Sienna", before: baBefore3.url, after: baAfter3.url, tier: "Full Detail" },
   { id: "corvette-paint-revival", label: "Corvette Paint Revival — Chevrolet Corvette", before: baBefore4.url, after: baAfter4.url, tier: "Paint Correction" },
   { id: "trans-am-revival", label: "Classic Muscle Car Revival — Pontiac Trans Am", before: baBefore5.url, after: baAfter5.url, tier: "Complete Restoration Detail" },
-  { id: "camaro-transformation", label: "Camaro — Before & After", before: camaroBefore.url, after: camaroAfter.url, tier: undefined },
+  { id: "camaro-transformation", label: "Camaro — Before & After", before: camaroBefore.url, after: camaroAfter.url, tier: "Paint Correction" },
 ];
 
 const TIERS = [
