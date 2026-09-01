@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { Heart, Camera, Video, ChevronRight } from "lucide-react";
+import { Heart, ChevronRight } from "lucide-react";
 import { serviceLabel, type Vehicle } from "@/lib/aurexo-data";
 import { useFavorites } from "@/contexts/FavoritesContext";
 
@@ -29,16 +29,6 @@ export function VehicleCard({ v, verifiedMetadataOnly = false }: { v: Vehicle; v
         >
           <Heart className="h-5 w-5" fill={isSaved ? "currentColor" : "none"} />
         </button>
-        {!verifiedMetadataOnly ? (
-          <div className="absolute bottom-3 left-3 flex items-center gap-2">
-            <span className="flex items-center gap-1 rounded-md bg-black/55 px-2 py-1 text-[11px] font-medium text-white backdrop-blur">
-              <Camera className="h-3 w-3" /> 7
-            </span>
-            <span className="flex items-center gap-1 rounded-md bg-black/55 px-2 py-1 text-[11px] font-medium text-white backdrop-blur">
-              <Video className="h-3 w-3" /> 2
-            </span>
-          </div>
-        ) : null}
       </div>
       <div className="relative z-10 flex flex-1 flex-col p-4 pointer-events-none">
         <h3 className="truncate font-bold text-ink">{v.title}</h3>
