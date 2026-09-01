@@ -7,7 +7,7 @@ import baAfter3 from "@/assets/ba-after-3.jpg.asset.json";
 import bmwX5 from "@/assets/bmwx5.jpg.asset.json";
 import audiQ5 from "@/assets/audi_q5.jpg.asset.json";
 import pontiacTransAm from "@/assets/pontiac_trans_am.jpg.asset.json";
-import corvetteC8 from "@/assets/corvette_c8.jpg.asset.json";
+import camaro from "@/assets/camaro.jpg.asset.json";
 import {
   Carousel,
   CarouselContent,
@@ -128,7 +128,7 @@ const tiers = [
     price: "from $300",
     duration: "1–3 days",
     idealFor: "Swirled, dull, oxidised or previously poorly-washed paint",
-    image: corvetteC8.url,
+    image: camaro.url,
     blurb:
       "Paint correction is where the biggest transformations happen. Kevin measures paint thickness, tests panels, then machine polishes in stages to permanently remove swirls, wash marring and oxidation — instead of filling them in. Under direct light the difference is undeniable: sharper reflections, deeper colour, true clarity.",
     included: [

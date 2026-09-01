@@ -22,7 +22,9 @@ import baAfter5 from "@/assets/ba-after-5.jpg.asset.json";
 import bmwX5 from "@/assets/bmwx5.jpg.asset.json";
 import audiQ5 from "@/assets/audi_q5.jpg.asset.json";
 import pontiacTransAm from "@/assets/pontiac_trans_am.jpg.asset.json";
-import corvetteC8 from "@/assets/corvette_c8.jpg.asset.json";
+import camaroBefore from "@/assets/camaro_before.jpg.asset.json";
+import camaroAfter from "@/assets/camaro_after.jpg.asset.json";
+import camaro from "@/assets/camaro.jpg.asset.json";
 
 const HERO_IMG = heroCollage.url;
 
@@ -32,6 +34,7 @@ const BEFORE_AFTER = [
   { id: "sienna-transformation", label: "Family Van Transformation — Toyota Sienna", before: baBefore3.url, after: baAfter3.url, tier: "Full Detail" },
   { id: "corvette-paint-revival", label: "Corvette Paint Revival — Chevrolet Corvette", before: baBefore4.url, after: baAfter4.url, tier: "Paint Correction" },
   { id: "trans-am-revival", label: "Classic Muscle Car Revival — Pontiac Trans Am", before: baBefore5.url, after: baAfter5.url, tier: "Complete Restoration Detail" },
+  { id: "camaro-transformation", label: "Camaro — Before & After", before: camaroBefore.url, after: camaroAfter.url, tier: undefined },
 ];
 
 const TIERS = [
@@ -69,7 +72,7 @@ const TIERS = [
     name: "Paint Correction",
     desc: "1-Step Paint Enhancement from $300, 2-Step Paint Correction from $600, or Advanced / Multi-Stage Correction from $900 — machine polishing that levels swirls, holograms and oxidation.",
     price: "From $300",
-    image: corvetteC8.url,
+    image: camaro.url,
   },
 ];
 
@@ -223,7 +226,7 @@ function Home() {
                 </div>
                 <div className="p-4">
                   <p className="text-sm font-semibold text-ink">{item.label}</p>
-                  <span className="mt-1 inline-block rounded-full bg-brand/15 px-2 py-0.5 text-[11px] font-medium text-ink">{item.tier}</span>
+                  {item.tier ? <span className="mt-1 inline-block rounded-full bg-brand/15 px-2 py-0.5 text-[11px] font-medium text-ink">{item.tier}</span> : null}
                 </div>
               </div>
             ))}

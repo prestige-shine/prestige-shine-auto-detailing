@@ -20,14 +20,14 @@ const STUDIOS = [
     city: "Miramichi Studio",
     addr: "229 Jacqueline Dr, Miramichi, NB E1N 3Z2, Canada",
     hours: "Mon–Sat · 8am–7pm",
-    offers: "Ceramic 9H · Multi-stage correction · Interior extraction · Mobile",
+    offers: "Full detailing · Paint enhancement · Paint correction · Professional ceramic coatings",
   },
 ];
 
 function Locations() {
   return (
     <main className="overflow-x-hidden">
-      <PageHeader eyebrow="Miramichi Coverage" title="Studio Location" subtitle="Our Miramichi studio plus fully mobile service across Miramichi, NB and surrounding areas." />
+      <PageHeader eyebrow="Miramichi Coverage" title="Studio Location" subtitle="Prestige Shine Auto Detailing Miramichi is an appointment-only professional detailing studio specializing in full detailing, paint enhancement, paint correction and professional ceramic coatings." />
       <section className="mx-auto max-w-6xl px-4 py-10">
         <div className="grid gap-4 sm:grid-cols-2">
           {STUDIOS.map((s) => (
