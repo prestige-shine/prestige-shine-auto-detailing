@@ -7,7 +7,6 @@ import baAfter3 from "@/assets/ba-after-3.jpg.asset.json";
 import bmwX5 from "@/assets/bmwx5.jpg.asset.json";
 import audiQ5 from "@/assets/audi_q5.jpg.asset.json";
 import pontiacTransAm from "@/assets/pontiac_trans_am.jpg.asset.json";
-import corvetteC8 from "@/assets/corvette_c8.jpg.asset.json";
 import camaro from "@/assets/camaro.jpg.asset.json";
 import {
   Carousel,
