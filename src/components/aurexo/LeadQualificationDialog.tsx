@@ -200,6 +200,16 @@ export function LeadQualificationDialog({ open, onClose, presetServiceKey }: Pro
     setForm((f) => ({ ...f, photos: f.photos.filter((p) => p.path !== path) }));
   };
 
+  // Normalize empty/skipped values so EmailJS always receives a readable string.
+  function sanitizeEmailValue(value: unknown): string {
+    if (value === null || value === undefined) return "None";
+    if (typeof value === "string" && value.trim() === "") return "None";
+    if (Array.isArray(value) && value.length === 0) return "None";
+    if (Array.isArray(value)) return value.join(", ");
+    const asString = String(value).trim();
+    return asString || "None";
+  }
+
   const doSubmit = async () => {
     if (submitting) return;
     setSubmitting(true);
@@ -251,28 +261,29 @@ export function LeadQualificationDialog({ open, onClose, presetServiceKey }: Pro
           }).catch(() => [] as string[]);
         }
         const res = await sendLeadNotification({
-          customer_name: payload.full_name,
-          customer_phone: payload.phone,
-          customer_email: payload.email,
-          vehicle_make: payload.vehicle_make ?? "",
-          vehicle_model: payload.vehicle_model ?? "",
-          vehicle_year: payload.vehicle_year ?? "",
-          vehicle_colour: payload.vehicle_color ?? "",
-          requested_services: payload.services.join(", "),
-          other_service: payload.other_service ?? "",
-          vehicle_condition: payload.conditions.join(", "),
-          vehicle_size: sizeLabel,
-          preferred_date: payload.preferred_date ?? "",
-          preferred_time: payload.preferred_time ?? "",
-          timeline: payload.timeline ?? "",
-          schedule_flexible:
+          customer_name: sanitizeEmailValue(payload.full_name),
+          customer_phone: sanitizeEmailValue(payload.phone),
+          customer_email: sanitizeEmailValue(payload.email),
+          vehicle_make: sanitizeEmailValue(payload.vehicle_make),
+          vehicle_model: sanitizeEmailValue(payload.vehicle_model),
+          vehicle_year: sanitizeEmailValue(payload.vehicle_year),
+          vehicle_colour: sanitizeEmailValue(payload.vehicle_color),
+          requested_services: sanitizeEmailValue(payload.services),
+          other_service: sanitizeEmailValue(payload.other_service),
+          vehicle_condition: sanitizeEmailValue(payload.conditions),
+          vehicle_size: sanitizeEmailValue(sizeLabel),
+          preferred_date: sanitizeEmailValue(payload.preferred_date),
+          preferred_time: sanitizeEmailValue(payload.preferred_time),
+          timeline: sanitizeEmailValue(payload.timeline),
+          schedule_flexible: sanitizeEmailValue(
             payload.schedule_flexible === null || payload.schedule_flexible === undefined
-              ? ""
+              ? "None"
               : payload.schedule_flexible
                 ? "Yes"
                 : "No",
-          photo_url: signed.join("\n"),
-          lead_id: result.id,
+          ),
+          photo_url: sanitizeEmailValue(signed),
+          lead_id: sanitizeEmailValue(result.id),
           source_name: "lead-qualifier",
         });
         reportLeadNotification({
