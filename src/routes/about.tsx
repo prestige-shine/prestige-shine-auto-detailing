@@ -52,7 +52,7 @@ function About() {
             <p className="text-xs font-bold uppercase tracking-wide text-brand">Our Story</p>
             <h2 className="mt-2 text-2xl font-bold text-ink">Built by Kevin Hines, in Miramichi.</h2>
             <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-              Prestige Shine Auto Detailing is owned and operated by Kevin Hines out of a clean, organised shop at 229 Jacqueline Dr in Miramichi, NB. Kevin is a System X certified ceramic coating installer and a paint correction specialist — every vehicle is polished, coated, and finished by his own hands, whether it's a daily driver, a work truck, or a classic like this Chevelle SS. No rushed production line, no handing your keys to a rotating crew: one detailer, one standard, and a finish local owners keep coming back for.
+              Prestige Shine Auto Detailing is owned and operated by Kevin Hines out of a clean, organised shop at 229 Jacqueline Dr in Miramichi, NB. Kevin is a System X certified ceramic coating installer and a paint correction specialist — every vehicle is personally inspected and quality-controlled by Kevin, whether it's a daily driver, a work truck, or a classic like this Chevelle SS.
             </p>
           </div>
         </div>

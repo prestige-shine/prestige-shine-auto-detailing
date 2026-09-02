@@ -68,7 +68,7 @@ const tiers = [
     idealFor: "Owners who want one complete inside-and-out transformation",
     image: baAfter3.url,
     blurb:
-      "A Full Detail combines complete interior and exterior work in a single appointment. Pricing is set by vehicle size: cars from $200, compact SUVs from $225, mid-size SUVs from $275, large / 3-row SUVs from $300, XL SUVs from $350, pickup trucks from $300 and large / HD trucks from $350. Kevin reviews every vehicle personally and confirms the final quote before any work starts.",
+      "A Full Detail combines complete interior and exterior work in a single appointment. Pricing is set by vehicle size: cars from $200, compact SUVs from $225, mid-size SUVs from $275, large / 3-row SUVs from $300, XL SUVs from $350, pickup trucks from $300 and large / HD trucks from $350. Every vehicle is personally inspected and quality-controlled by Kevin, and the final quote is confirmed before any work starts.",
     included: [
       "Complete interior clean plus exterior wash, decontamination and protection",
       "Hot-water extraction and deeper interior restoration where needed",
@@ -160,7 +160,7 @@ export const Route = createFileRoute("/services")({
       { title: "Detailing Services — Prestige Shine Auto Detailing" },
       { name: "description", content: "Interior detailing, exterior detailing, full detail packages from $200, full detail + paint enhancement from $450, System X ceramic coatings from $800 and paint correction in Miramichi, NB." },
       { property: "og:title", content: "Our Six Services — Prestige Shine Auto Detailing" },
-      { property: "og:description", content: "Interior, exterior, full detail packages, paint enhancement, ceramic coating and paint correction — done personally by Kevin in Miramichi, NB." },
+      { property: "og:description", content: "Interior, exterior, full detail packages, paint enhancement, ceramic coating and paint correction — every vehicle is personally inspected and quality-controlled by Kevin in Miramichi, NB." },
     ],
   }),
   component: Services,
@@ -176,7 +176,7 @@ function Services() {
       <PageHeader
         eyebrow="Services"
         title="Every service your vehicle deserves."
-        subtitle="Six core services plus a menu of precision add-ons — performed personally by Kevin at Prestige Shine Auto Detailing in Miramichi, NB. Appointment only, drop-off at our dedicated detailing and coating shop."
+        subtitle="Six core services plus a menu of precision add-ons — every vehicle is personally inspected and quality-controlled by Kevin at Prestige Shine Auto Detailing in Miramichi, NB. Appointment only, drop-off at our dedicated detailing and coating shop."
       />
 
       {/* Swipeable tier carousel */}
