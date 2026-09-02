@@ -1,0 +1,3 @@
+- [ ] Replace the qualification wizard with a compact AI Concierge chat experience
+- [ ] Add accurate Prestige Shine knowledge and booking/contact guidance
+- [ ] Verify responsive open/minimize behavior and typecheck
