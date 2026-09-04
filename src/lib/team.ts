@@ -12,7 +12,7 @@ export type TeamMember = {
 export const team: TeamMember[] = [
   {
     name: "Kevin Hines",
-    role: "Owner & Founder",
+    role: "Owner, Founder & Certified Detailer",
     photo: kevinPhoto.url,
     linkedin: "https://www.linkedin.com/",
     twitter: "https://x.com/",

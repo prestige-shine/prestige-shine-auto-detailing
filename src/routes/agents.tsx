@@ -6,10 +6,10 @@ import { team } from "@/lib/team";
 export const Route = createFileRoute("/agents")({
   head: () => ({
     meta: [
-      { title: "Our Detailers — Prestige Shine Auto Detailing" },
-      { name: "description", content: "Meet the Prestige Shine Auto Detailing team — certified ceramic coating installers and paint correction specialists across Miramichi." },
-      { property: "og:title", content: "Our Detailers — Prestige Shine Auto Detailing" },
-      { property: "og:description", content: "Certified ceramic and paint correction specialists across Miramichi." },
+      { title: "Meet Your Detailer — Prestige Shine Auto Detailing" },
+      { name: "description", content: "Meet Kevin Hines, owner, founder, certified ceramic coating installer and paint correction specialist at Prestige Shine Auto Detailing in Miramichi." },
+      { property: "og:title", content: "Meet Your Detailer — Prestige Shine Auto Detailing" },
+      { property: "og:description", content: "Meet Kevin Hines, certified ceramic coating installer and paint correction specialist in Miramichi." },
     ],
   }),
   component: Agents,
@@ -18,7 +18,7 @@ export const Route = createFileRoute("/agents")({
 function Agents() {
   return (
     <main className="overflow-x-hidden">
-      <PageHeader eyebrow="The Team" title="Our Detailers" subtitle="Certified installers behind every Prestige Shine package." />
+      <PageHeader eyebrow="Your Detailer" title="Meet Your Detailer" subtitle="Meet Kevin Hines, the certified detailer behind Prestige Shine." />
       <section className="mx-auto max-w-6xl px-4 py-10">
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {team.map((m) => (

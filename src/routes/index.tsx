@@ -152,7 +152,7 @@ function Home() {
           <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
             {[
               { icon: ShieldCheck, num: "System X Certified", label: "Professional Ceramic Coatings" },
-              { icon: Sparkles, num: "Paint Correction Specialists", label: "Restore Gloss & Clarity" },
+              { icon: Sparkles, num: "Paint Correction Specialist", label: "Restore Gloss & Clarity" },
               { icon: MapPin, num: "Serving Miramichi, NB", label: "Locally Owned & Operated" },
             ].map(({ icon: Icon, num, label }) => (
               <div key={label} className="flex flex-col items-center justify-center rounded-2xl border border-border bg-surface p-6 text-center">
@@ -335,7 +335,7 @@ function Home() {
               Get Instant Quote <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
-          <p className="mt-5 text-xs text-white/45">+1 (506) 251-4451 · Miramichi, NB · Mon–Sat 7 am–6 pm</p>
+          <p className="mt-5 text-xs text-white/45">+1 (506) 251-4451 · Miramichi, NB · By Appointment Only</p>
         </div>
       </section>
     </main>

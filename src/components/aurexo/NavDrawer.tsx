@@ -27,8 +27,8 @@ const tree: Node[] = [
     label: "Pages",
     children: [
       { label: "About the Studio", to: "/about" },
-      { label: "Our Detailers", to: "/agents" },
-      { label: "Studio Locations", to: "/dealerships" },
+      { label: "Meet Your Detailer", to: "/agents" },
+      { label: "Our Location", to: "/dealerships" },
       { label: "Owner Reviews", to: "/reviews" },
       { label: "Detailing Services", to: "/services" },
       { label: "FAQs", to: "/faqs" },

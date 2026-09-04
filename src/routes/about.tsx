@@ -28,7 +28,7 @@ function About() {
       <section className="mx-auto max-w-6xl px-4 py-12 grid grid-cols-1 sm:grid-cols-3 gap-4">
         {[
           { i: ShieldCheck, n: "System X Certified Installer", l: "Professional Ceramic Coating Specialist" },
-          { i: Sparkles, n: "Paint Correction Specialists", l: "Restoring Gloss, Depth & Clarity" },
+          { i: Sparkles, n: "Paint Correction Specialist", l: "Restoring Gloss, Depth & Clarity" },
           { i: MapPin, n: "Serving Miramichi, NB", l: "Premium Auto Detailing for Local Vehicle Owners" },
         ].map(({ i: Icon, n, l }) => (
           <div key={l} className="rounded-2xl bg-white border border-border p-5 text-center">
@@ -110,10 +110,10 @@ function About() {
         </div>
       </section>
 
-      {/* Team */}
+      {/* Detailer */}
       <section className="mx-auto max-w-6xl px-4 pb-16">
-        <p className="text-xs font-bold uppercase tracking-wide text-brand">The team</p>
-        <h2 className="mt-1 text-2xl font-bold text-ink">People behind the polish.</h2>
+        <p className="text-xs font-bold uppercase tracking-wide text-brand">Your detailer</p>
+        <h2 className="mt-1 text-2xl font-bold text-ink">The person behind the polish.</h2>
         <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {team.map((m) => (
             <article key={m.name} className="rounded-2xl bg-white border border-border overflow-hidden">

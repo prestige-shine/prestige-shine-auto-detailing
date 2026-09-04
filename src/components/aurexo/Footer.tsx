@@ -17,7 +17,7 @@ const groups: Record<string, { label: string; to: string }[]> = {
     { label: "Instant Detailing Quote", to: "/get-estimate" },
     { label: "Book Vehicle Assessment", to: "/sell" },
     { label: "Recent Work", to: "/buy" },
-    { label: "Studio Locations", to: "/dealerships" },
+    { label: "Our Location", to: "/dealerships" },
   ],
 };
 
@@ -70,7 +70,7 @@ export function Footer() {
           <div>
             <h4 className="text-sm font-semibold uppercase tracking-wider text-white/60">Studio Hours</h4>
             <p className="mt-3 text-sm leading-relaxed text-white/80">
-              Appointment Only
+              By Appointment Only
             </p>
           </div>
           <div>

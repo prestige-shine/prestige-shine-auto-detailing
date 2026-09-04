@@ -176,7 +176,7 @@ function Services() {
       <PageHeader
         eyebrow="Services"
         title="Every service your vehicle deserves."
-        subtitle="Six core services plus a menu of precision add-ons — every vehicle is personally inspected and quality-controlled by Kevin at Prestige Shine Auto Detailing in Miramichi, NB. Appointment only, drop-off at our dedicated detailing and coating shop."
+        subtitle="Six core services plus a menu of precision add-ons — every vehicle is personally inspected and quality-controlled by Kevin at Prestige Shine Auto Detailing in Miramichi, NB. By Appointment Only, with drop-off at our dedicated detailing and coating shop."
       />
 
       {/* Swipeable tier carousel */}

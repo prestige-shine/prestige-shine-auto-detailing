@@ -20,25 +20,25 @@ const groups = [
     items: [
       ["What is paint correction?", "Paint correction is the process of removing surface defects — swirl marks, light scratches, water spots, oxidation, and buffer trails — using machine polishers and a progression of cutting compounds and finishing polishes. The result is a mirror-like clarity that cannot be achieved by washing or waxing alone."],
       ["How long does a correction take?", "A single-stage polish (light swirl removal) typically takes 4–8 hours depending on vehicle size. A full two-stage correction with heavy cutting and refinement can take two full working days. Prestige Shine never rushes this process."],
-      ["Will paint correction remove deep scratches?", "Single-stage correction removes light to moderate swirls and scuffs. Deep scratches that catch a fingernail cannot be polished out without wet-sanding, which removes more clear coat. Our technicians measure paint thickness before any correction work to ensure safe removal of material."],
+      ["Will paint correction remove deep scratches?", "Single-stage correction removes light to moderate swirls and scuffs. Deep scratches that catch a fingernail cannot be polished out without wet-sanding, which removes more clear coat. Kevin measures paint thickness before any correction work to ensure safe removal of material."],
       ["How often should I get a paint correction?", "Most vehicles benefit from a correction every 2–3 years. Applying a ceramic coating after correction dramatically extends the interval because the coating protects the corrected surface from new contamination and micro-scratches."],
-      ["Does paint correction damage the clear coat?", "When performed by trained technicians using correct pad and compound combinations, correction safely removes only a tiny fraction of the clear coat. Prestige Shine measures paint depth at every panel before and after correction to confirm safe thickness margins."],
+      ["Does paint correction damage the clear coat?", "When performed by a trained detailer using correct pad and compound combinations, correction safely removes only a tiny fraction of the clear coat. Prestige Shine measures paint depth at every panel before and after correction to confirm safe thickness margins."],
     ],
   },
   {
     title: "Interior Deep Clean",
     items: [
       ["What does an interior deep clean include?", "Prestige Shine's Full Interior Deep Clean includes a full vacuum, hot-water extraction of all carpet and fabric upholstery, dashboard and trim clay and detail, door card cleaning and conditioning, headliner spot treatment, streak-free window cleaning, odour neutraliser, and UV-protective dressing on all plastics."],
-      ["Can you remove pet hair from upholstery?", "Yes. Pet hair is removed using a combination of rubber squeegees, silicone tools, and a high-powered vacuum before hot-water extraction. Heavily embedded hair may require an add-on treatment — our team will advise during check-in."],
+      ["Can you remove pet hair from upholstery?", "Yes. Pet hair is removed using a combination of rubber squeegees, silicone tools, and a high-powered vacuum before hot-water extraction. Heavily embedded hair may require an add-on treatment — Kevin will advise during check-in."],
       ["How do you remove odours from the interior?", "We treat odours at the source rather than masking them. Prestige Shine uses hot-water extraction on fabrics, an enzyme-based neutraliser spray, and where necessary an ozone generator session to eliminate bacteria-driven smells permanently."],
-      ["Can the leather seats be repaired?", "Prestige Shine's interior service includes a leather clean and condition. Cracking, fading, or colour loss requires leather restoration — available as an add-on. Our technicians will document leather condition with photos and advise on appropriate treatment during check-in."],
+      ["Can the leather seats be repaired?", "Prestige Shine's interior service includes a leather clean and condition. Cracking, fading, or colour loss requires leather restoration — available as an add-on. Kevin will document leather condition with photos and advise on appropriate treatment during check-in."],
       ["How long does an interior deep clean take?", "Most vehicles are completed in 3–5 hours. Heavily soiled interiors with pet hair, staining, or mould may require 6–8 hours. We'll give you a realistic estimate before work begins."],
     ],
   },
   {
     title: "Booking & Pricing",
     items: [
-      ["How do I book an appointment?", "Prestige Shine is appointment only. Use the Get an Estimate form on our website, call +1 (506) 251-4451, or message us on WhatsApp. We'll confirm your vehicle, service and drop-off time at our Miramichi shop within a few hours."],
+      ["How do I book an appointment?", "Prestige Shine operates By Appointment Only. Use the Get an Estimate form on our website, call +1 (506) 251-4451, or message us on WhatsApp. We'll confirm your vehicle, service and drop-off time at our Miramichi shop within a few hours."],
       ["Are prices fixed or are there surprises?", "All prices are confirmed before work begins. If additional issues are discovered during check-in — like more severe paint damage than expected — we'll photograph the finding and offer a written change order before proceeding. You always authorise what happens next."],
       ["What does a service cost?", "Full Detail starts at $200 for cars, $225 compact SUVs, $275 mid-size SUVs, $300 large/3-row SUVs, $350 XL SUVs, $300 pickup trucks and $350 large/HD trucks. Full Detail + Paint Enhancement starts at $450 for cars up to $700 for XL SUVs and HD trucks. Paint enhancement starts at $300, 2-step correction at $600 and advanced multi-stage correction at $900. Ceramic packages start at $800. Final pricing is based on vehicle size and condition — excessive pet hair, staining, heavy soiling or unusually neglected vehicles may cost more."],
       ["What is your cancellation policy?", "We ask for 48 hours' notice to reschedule without charge. Cancellations within 24 hours of a booked appointment may incur a $50 cancellation fee to cover reserved bay time."],
@@ -82,7 +82,7 @@ function Faqs() {
       <PageHeader
         eyebrow="Help"
         title="Detailing questions, answered."
-        subtitle="Everything Miramichi vehicle owners ask before, during and after a premium detailing service. Can't find yours? We're one tap away — appointment only, drop-off at our Miramichi shop."
+        subtitle="Everything Miramichi vehicle owners ask before, during and after a premium detailing service. Can't find yours? We're one tap away — By Appointment Only, with drop-off at our Miramichi shop."
       />
       <section className="mx-auto max-w-3xl px-4 py-12 space-y-8">
         {groups.map((g) => (
