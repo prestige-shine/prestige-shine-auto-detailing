@@ -38,7 +38,7 @@ const groups = [
   {
     title: "Booking & Pricing",
     items: [
-      ["How do I book an appointment?", "Prestige Shine is appointment only. Use the Get an Estimate form on our website, call +1 (506) 251-4451, or message us on WhatsApp. We'll confirm your vehicle, service and drop-off time at our Miramichi shop within a few hours."],
+      ["How do I book an appointment?", "Prestige Shine operates By Appointment Only. Use the Get an Estimate form on our website, call +1 (506) 251-4451, or message us on WhatsApp. We'll confirm your vehicle, service and drop-off time at our Miramichi shop within a few hours."],
       ["Are prices fixed or are there surprises?", "All prices are confirmed before work begins. If additional issues are discovered during check-in — like more severe paint damage than expected — we'll photograph the finding and offer a written change order before proceeding. You always authorise what happens next."],
       ["What does a service cost?", "Full Detail starts at $200 for cars, $225 compact SUVs, $275 mid-size SUVs, $300 large/3-row SUVs, $350 XL SUVs, $300 pickup trucks and $350 large/HD trucks. Full Detail + Paint Enhancement starts at $450 for cars up to $700 for XL SUVs and HD trucks. Paint enhancement starts at $300, 2-step correction at $600 and advanced multi-stage correction at $900. Ceramic packages start at $800. Final pricing is based on vehicle size and condition — excessive pet hair, staining, heavy soiling or unusually neglected vehicles may cost more."],
       ["What is your cancellation policy?", "We ask for 48 hours' notice to reschedule without charge. Cancellations within 24 hours of a booked appointment may incur a $50 cancellation fee to cover reserved bay time."],
@@ -82,7 +82,7 @@ function Faqs() {
       <PageHeader
         eyebrow="Help"
         title="Detailing questions, answered."
-        subtitle="Everything Miramichi vehicle owners ask before, during and after a premium detailing service. Can't find yours? We're one tap away — appointment only, drop-off at our Miramichi shop."
+        subtitle="Everything Miramichi vehicle owners ask before, during and after a premium detailing service. Can't find yours? We're one tap away — By Appointment Only, with drop-off at our Miramichi shop."
       />
       <section className="mx-auto max-w-3xl px-4 py-12 space-y-8">
         {groups.map((g) => (
