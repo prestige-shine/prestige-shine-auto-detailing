@@ -19,7 +19,7 @@ const STUDIOS = [
   {
     city: "Miramichi Studio",
     addr: "229 Jacqueline Dr, Miramichi, NB E1N 3Z2, Canada",
-    hours: "Mon–Sat · 8am–7pm",
+    hours: "By Appointment Only",
     offers: "Full detailing · Paint enhancement · Paint correction · Professional ceramic coatings",
   },
 ];

@@ -17,7 +17,7 @@ const SERVICE_OPTIONS = [
 ];
 
 const locations = [
-  { name: "Prestige Shine Auto Detailing", address: "229 Jacqueline Dr, Miramichi, NB E1N 3Z2, Canada", hours: "Appointment Only" },
+  { name: "Prestige Shine Auto Detailing", address: "229 Jacqueline Dr, Miramichi, NB E1N 3Z2, Canada", hours: "By Appointment Only" },
 ];
 
 export const Route = createFileRoute("/contact")({
@@ -62,7 +62,7 @@ function Contact() {
         <article className="rounded-2xl bg-white border border-border p-6 sm:p-8">
           <h2 className="text-xl font-bold text-ink">Send us a message</h2>
           <p className="mt-1 text-sm text-muted-foreground">
-            Your enquiry is packaged into a legible WhatsApp brief and routed straight to our studio team.
+            Your enquiry is packaged into a legible WhatsApp brief and routed straight to Kevin.
           </p>
 
           {sent ? (
@@ -109,7 +109,7 @@ function Contact() {
           </a>
           <div className="flex items-start gap-4 rounded-2xl bg-white border border-border p-5">
             <div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-brand/15 text-ink"><Clock className="h-5 w-5" /></div>
-            <div><p className="font-bold text-ink">Hours</p><p className="text-sm text-muted-foreground">Appointment Only</p></div>
+            <div><p className="font-bold text-ink">Hours</p><p className="text-sm text-muted-foreground">By Appointment Only</p></div>
           </div>
 
           <div className="rounded-2xl border border-border bg-ink p-5 text-white">
