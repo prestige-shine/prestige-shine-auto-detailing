@@ -93,7 +93,7 @@ function BuyPage() {
 
       <div className="mt-6 grid grid-cols-1 gap-6 lg:grid-cols-[280px_1fr]">
         <aside className="hidden lg:block">
-          <FiltersPanel brandSel={brandSel} setBrandSel={setBrands} bodySel={bodySel} setBodySel={setBodies} fuelSel={fuelSel} setFuelSel={setFuels} transSel={transSel} setTransSel={setTrans} condSel={condSel} setCondSel={setConds} onReset={reset} />
+          <FiltersPanel brandSel={brandSel} setBrandSel={setBrands} bodySel={bodySel} setBodySel={setBodies} fuelSel={fuelSel} setFuelSel={setFuels} transSel={transSel} setTransSel={setTrans} onReset={reset} />
         </aside>
         <div>
           {pageItems.length === 0 ? (
@@ -117,7 +117,7 @@ function BuyPage() {
               <h3 className="flex items-center gap-2 font-bold text-ink"><SlidersHorizontal className="h-4 w-4" /> Filters</h3>
               <button onClick={() => setFiltersOpen(false)} className="grid h-9 w-9 place-items-center rounded-full border border-border"><X className="h-4 w-4" /></button>
             </div>
-            <div className="mt-4"><FiltersPanel brandSel={brandSel} setBrandSel={setBrands} bodySel={bodySel} setBodySel={setBodies} fuelSel={fuelSel} setFuelSel={setFuels} transSel={transSel} setTransSel={setTrans} condSel={condSel} setCondSel={setConds} onReset={reset} /></div>
+            <div className="mt-4"><FiltersPanel brandSel={brandSel} setBrandSel={setBrands} bodySel={bodySel} setBodySel={setBodies} fuelSel={fuelSel} setFuelSel={setFuels} transSel={transSel} setTransSel={setTrans} onReset={reset} /></div>
           </aside>
         </>
       )}
