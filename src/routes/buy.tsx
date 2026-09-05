@@ -1,7 +1,7 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import { SlidersHorizontal, X, ChevronLeft, ChevronRight } from "lucide-react";
-import { vehicles, brands, bodyTypes, fuelTypes, transmissions } from "@/lib/aurexo-data";
+import { vehicles, brands, bodyTypes, fuelTypes } from "@/lib/aurexo-data";
 import { VehicleCard } from "@/components/aurexo/VehicleCard";
 
 const PER_PAGE = 12;
@@ -12,7 +12,6 @@ type Search = {
   brand?: string;
   body?: string;
   fuel?: string;
-  transmission?: string;
 };
 
 export const Route = createFileRoute("/buy")({
@@ -22,7 +21,6 @@ export const Route = createFileRoute("/buy")({
     brand: typeof s.brand === "string" ? s.brand : undefined,
     body: typeof s.body === "string" ? s.body : undefined,
     fuel: typeof s.fuel === "string" ? s.fuel : undefined,
-    transmission: typeof s.transmission === "string" ? s.transmission : undefined,
   }),
   head: () => ({
     meta: [
@@ -42,7 +40,6 @@ function BuyPage() {
   const [brandSel, setBrandSel] = useState<string[]>(search.brand?.split(",").filter(Boolean) ?? []);
   const [bodySel, setBodySel] = useState<string[]>(search.body?.split(",").filter(Boolean) ?? []);
   const [fuelSel, setFuelSel] = useState<string[]>(search.fuel?.split(",").filter(Boolean) ?? []);
-  const [transSel, setTransSel] = useState<string[]>(search.transmission?.split(",").filter(Boolean) ?? []);
   const [sort, setSort] = useState("relevance");
   const [page, setPage] = useState(1);
   const [filtersOpen, setFiltersOpen] = useState(false);
@@ -52,7 +49,6 @@ function BuyPage() {
       if (brandSel.length && !brandSel.includes(v.brand)) return false;
       if (bodySel.length && !bodySel.includes(v.body)) return false;
       if (fuelSel.length && !fuelSel.includes(v.fuel)) return false;
-      if (transSel.length && !transSel.includes(v.transmission)) return false;
       if (search.preset === "featured" && !v.featured) return false;
       if (search.q && !`${v.title} ${v.brand} ${v.body} ${v.fuel}`.toLowerCase().includes(search.q.toLowerCase())) return false;
       return true;
@@ -60,14 +56,13 @@ function BuyPage() {
     if (sort === "oldest") r = [...r].sort((a, b) => a.year - b.year);
     if (sort === "year") r = [...r].sort((a, b) => b.year - a.year);
     return r;
-  }, [brandSel, bodySel, fuelSel, transSel, sort, search.preset, search.q]);
+  }, [brandSel, bodySel, fuelSel, sort, search.preset, search.q]);
 
   const updateFilters = (next: Partial<Search>) => { setPage(1); navigate({ to: "/buy", search: { ...search, ...next } }); };
   const setBrands = (v: string[]) => { setBrandSel(v); updateFilters({ brand: v.length ? v.join(",") : undefined }); };
   const setBodies = (v: string[]) => { setBodySel(v); updateFilters({ body: v.length ? v.join(",") : undefined }); };
   const setFuels = (v: string[]) => { setFuelSel(v); updateFilters({ fuel: v.length ? v.join(",") : undefined }); };
-  const setTrans = (v: string[]) => { setTransSel(v); updateFilters({ transmission: v.length ? v.join(",") : undefined }); };
-  const reset = () => { setBrandSel([]); setBodySel([]); setFuelSel([]); setTransSel([]); setPage(1); navigate({ to: "/buy", search: {} }); };
+  const reset = () => { setBrandSel([]); setBodySel([]); setFuelSel([]); setPage(1); navigate({ to: "/buy", search: {} }); };
 
   const pages = Math.max(1, Math.ceil(list.length / PER_PAGE));
   const safePage = Math.min(page, pages);
@@ -93,7 +88,7 @@ function BuyPage() {
 
       <div className="mt-6 grid grid-cols-1 gap-6 lg:grid-cols-[280px_1fr]">
         <aside className="hidden lg:block">
-          <FiltersPanel brandSel={brandSel} setBrandSel={setBrands} bodySel={bodySel} setBodySel={setBodies} fuelSel={fuelSel} setFuelSel={setFuels} transSel={transSel} setTransSel={setTrans} onReset={reset} />
+          <FiltersPanel brandSel={brandSel} setBrandSel={setBrands} bodySel={bodySel} setBodySel={setBodies} fuelSel={fuelSel} setFuelSel={setFuels} onReset={reset} />
         </aside>
         <div>
           {pageItems.length === 0 ? (
@@ -117,7 +112,7 @@ function BuyPage() {
               <h3 className="flex items-center gap-2 font-bold text-ink"><SlidersHorizontal className="h-4 w-4" /> Filters</h3>
               <button onClick={() => setFiltersOpen(false)} className="grid h-9 w-9 place-items-center rounded-full border border-border"><X className="h-4 w-4" /></button>
             </div>
-            <div className="mt-4"><FiltersPanel brandSel={brandSel} setBrandSel={setBrands} bodySel={bodySel} setBodySel={setBodies} fuelSel={fuelSel} setFuelSel={setFuels} transSel={transSel} setTransSel={setTrans} onReset={reset} /></div>
+            <div className="mt-4"><FiltersPanel brandSel={brandSel} setBrandSel={setBrands} bodySel={bodySel} setBodySel={setBodies} fuelSel={fuelSel} setFuelSel={setFuels} onReset={reset} /></div>
           </aside>
         </>
       )}
@@ -125,7 +120,7 @@ function BuyPage() {
   );
 }
 
-function FiltersPanel(p: { brandSel: string[]; setBrandSel: (s: string[]) => void; bodySel: string[]; setBodySel: (s: string[]) => void; fuelSel: string[]; setFuelSel: (s: string[]) => void; transSel: string[]; setTransSel: (s: string[]) => void; onReset: () => void; }) {
+function FiltersPanel(p: { brandSel: string[]; setBrandSel: (s: string[]) => void; bodySel: string[]; setBodySel: (s: string[]) => void; fuelSel: string[]; setFuelSel: (s: string[]) => void; onReset: () => void; }) {
   const toggle = (arr: string[], val: string, set: (a: string[]) => void) => set(arr.includes(val) ? arr.filter((x) => x !== val) : [...arr, val]);
   return (
     <div className="space-y-5 rounded-2xl border border-border bg-white p-5">
@@ -134,7 +129,6 @@ function FiltersPanel(p: { brandSel: string[]; setBrandSel: (s: string[]) => voi
       <Group title="Car Make"><div className="max-h-52 space-y-2 overflow-y-auto pr-1">{brands.map((b) => <ChkBox key={b} label={b} checked={p.brandSel.includes(b)} onChange={() => toggle(p.brandSel, b, p.setBrandSel)} />)}</div></Group>
       <Group title="Vehicle Class">{bodyTypes.map((b) => <ChkBox key={b.label} label={`${b.label} (${b.count})`} checked={p.bodySel.includes(b.label)} onChange={() => toggle(p.bodySel, b.label, p.setBodySel)} />)}</Group>
       <Group title="Service Performed">{fuelTypes.map((f) => <ChkBox key={f} label={f} checked={p.fuelSel.includes(f)} onChange={() => toggle(p.fuelSel, f, p.setFuelSel)} />)}</Group>
-      <Group title="Finish Focus">{transmissions.map((t) => <ChkBox key={t} label={t} checked={p.transSel.includes(t)} onChange={() => toggle(p.transSel, t, p.setTransSel)} />)}</Group>
     </div>
   );
 }

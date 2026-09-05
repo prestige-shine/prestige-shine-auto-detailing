@@ -26,7 +26,7 @@ function NewArrivals() {
       <PageHeader
         eyebrow="Just Added"
         title="Recently Added Projects"
-        subtitle={`${list.length} recently completed and in-progress projects.`}
+        subtitle={`${list.length} recently completed projects.`}
       />
       <section className="mx-auto max-w-6xl px-4 py-10">
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
