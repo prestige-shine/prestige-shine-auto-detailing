@@ -26,7 +26,6 @@ import { Route as McpRouteImport } from './routes/mcp'
 import { Route as NewArrivalsRouteImport } from './routes/new-arrivals'
 import { Route as NewsRouteImport } from './routes/news'
 import { Route as ReviewsRouteImport } from './routes/reviews'
-import { Route as SavedRouteImport } from './routes/saved'
 import { Route as SellRouteImport } from './routes/sell'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as TermsRouteImport } from './routes/terms'
@@ -123,11 +122,6 @@ const ReviewsRoute = ReviewsRouteImport.update({
   path: '/reviews',
   getParentRoute: () => rootRouteImport,
 } as any)
-const SavedRoute = SavedRouteImport.update({
-  id: '/saved',
-  path: '/saved',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const SellRoute = SellRouteImport.update({
   id: '/sell',
   path: '/sell',
@@ -204,7 +198,6 @@ export interface FileRoutesByFullPath {
   '/new-arrivals': typeof NewArrivalsRoute
   '/news': typeof NewsRoute
   '/reviews': typeof ReviewsRoute
-  '/saved': typeof SavedRoute
   '/sell': typeof SellRoute
   '/services': typeof ServicesRoute
   '/terms': typeof TermsRoute
@@ -234,7 +227,6 @@ export interface FileRoutesByTo {
   '/new-arrivals': typeof NewArrivalsRoute
   '/news': typeof NewsRoute
   '/reviews': typeof ReviewsRoute
-  '/saved': typeof SavedRoute
   '/sell': typeof SellRoute
   '/services': typeof ServicesRoute
   '/terms': typeof TermsRoute
@@ -266,7 +258,6 @@ export interface FileRoutesById {
   '/new-arrivals': typeof NewArrivalsRoute
   '/news': typeof NewsRoute
   '/reviews': typeof ReviewsRoute
-  '/saved': typeof SavedRoute
   '/sell': typeof SellRoute
   '/services': typeof ServicesRoute
   '/terms': typeof TermsRoute
@@ -298,7 +289,6 @@ export interface FileRouteTypes {
     | '/new-arrivals'
     | '/news'
     | '/reviews'
-    | '/saved'
     | '/sell'
     | '/services'
     | '/terms'
@@ -328,7 +318,6 @@ export interface FileRouteTypes {
     | '/new-arrivals'
     | '/news'
     | '/reviews'
-    | '/saved'
     | '/sell'
     | '/services'
     | '/terms'
@@ -359,7 +348,6 @@ export interface FileRouteTypes {
     | '/new-arrivals'
     | '/news'
     | '/reviews'
-    | '/saved'
     | '/sell'
     | '/services'
     | '/terms'
@@ -391,7 +379,6 @@ export interface RootRouteChildren {
   NewArrivalsRoute: typeof NewArrivalsRoute
   NewsRoute: typeof NewsRoute
   ReviewsRoute: typeof ReviewsRoute
-  SavedRoute: typeof SavedRoute
   SellRoute: typeof SellRoute
   ServicesRoute: typeof ServicesRoute
   TermsRoute: typeof TermsRoute
@@ -525,13 +512,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ReviewsRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/saved': {
-      id: '/saved'
-      path: '/saved'
-      fullPath: '/saved'
-      preLoaderRoute: typeof SavedRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/sell': {
       id: '/sell'
       path: '/sell'
@@ -641,7 +621,6 @@ const rootRouteChildren: RootRouteChildren = {
   NewArrivalsRoute: NewArrivalsRoute,
   NewsRoute: NewsRoute,
   ReviewsRoute: ReviewsRoute,
-  SavedRoute: SavedRoute,
   SellRoute: SellRoute,
   ServicesRoute: ServicesRoute,
   TermsRoute: TermsRoute,
