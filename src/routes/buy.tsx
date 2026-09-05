@@ -1,7 +1,7 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import { SlidersHorizontal, X, ChevronLeft, ChevronRight } from "lucide-react";
-import { vehicles, brands, bodyTypes, fuelTypes, transmissions, conditions } from "@/lib/aurexo-data";
+import { vehicles, brands, bodyTypes, fuelTypes, transmissions } from "@/lib/aurexo-data";
 import { VehicleCard } from "@/components/aurexo/VehicleCard";
 
 const PER_PAGE = 12;
@@ -11,7 +11,6 @@ type Search = {
   q?: string;
   brand?: string;
   body?: string;
-  condition?: string;
   fuel?: string;
   transmission?: string;
 };
@@ -22,7 +21,6 @@ export const Route = createFileRoute("/buy")({
     q: typeof s.q === "string" ? s.q : undefined,
     brand: typeof s.brand === "string" ? s.brand : undefined,
     body: typeof s.body === "string" ? s.body : undefined,
-    condition: typeof s.condition === "string" ? s.condition : undefined,
     fuel: typeof s.fuel === "string" ? s.fuel : undefined,
     transmission: typeof s.transmission === "string" ? s.transmission : undefined,
   }),
@@ -45,7 +43,6 @@ function BuyPage() {
   const [bodySel, setBodySel] = useState<string[]>(search.body?.split(",").filter(Boolean) ?? []);
   const [fuelSel, setFuelSel] = useState<string[]>(search.fuel?.split(",").filter(Boolean) ?? []);
   const [transSel, setTransSel] = useState<string[]>(search.transmission?.split(",").filter(Boolean) ?? []);
-  const [condSel, setCondSel] = useState<string[]>(search.condition?.split(",").filter(Boolean) ?? []);
   const [sort, setSort] = useState("relevance");
   const [page, setPage] = useState(1);
   const [filtersOpen, setFiltersOpen] = useState(false);
@@ -56,7 +53,6 @@ function BuyPage() {
       if (bodySel.length && !bodySel.includes(v.body)) return false;
       if (fuelSel.length && !fuelSel.includes(v.fuel)) return false;
       if (transSel.length && !transSel.includes(v.transmission)) return false;
-      if (condSel.length && !condSel.includes(v.condition)) return false;
       if (search.preset === "featured" && !v.featured) return false;
       if (search.q && !`${v.title} ${v.brand} ${v.body} ${v.fuel}`.toLowerCase().includes(search.q.toLowerCase())) return false;
       return true;
@@ -64,15 +60,14 @@ function BuyPage() {
     if (sort === "oldest") r = [...r].sort((a, b) => a.year - b.year);
     if (sort === "year") r = [...r].sort((a, b) => b.year - a.year);
     return r;
-  }, [brandSel, bodySel, fuelSel, transSel, condSel, sort, search.preset, search.q]);
+  }, [brandSel, bodySel, fuelSel, transSel, sort, search.preset, search.q]);
 
   const updateFilters = (next: Partial<Search>) => { setPage(1); navigate({ to: "/buy", search: { ...search, ...next } }); };
   const setBrands = (v: string[]) => { setBrandSel(v); updateFilters({ brand: v.length ? v.join(",") : undefined }); };
   const setBodies = (v: string[]) => { setBodySel(v); updateFilters({ body: v.length ? v.join(",") : undefined }); };
   const setFuels = (v: string[]) => { setFuelSel(v); updateFilters({ fuel: v.length ? v.join(",") : undefined }); };
   const setTrans = (v: string[]) => { setTransSel(v); updateFilters({ transmission: v.length ? v.join(",") : undefined }); };
-  const setConds = (v: string[]) => { setCondSel(v); updateFilters({ condition: v.length ? v.join(",") : undefined }); };
-  const reset = () => { setBrandSel([]); setBodySel([]); setFuelSel([]); setTransSel([]); setCondSel([]); setPage(1); navigate({ to: "/buy", search: {} }); };
+  const reset = () => { setBrandSel([]); setBodySel([]); setFuelSel([]); setTransSel([]); setPage(1); navigate({ to: "/buy", search: {} }); };
 
   const pages = Math.max(1, Math.ceil(list.length / PER_PAGE));
   const safePage = Math.min(page, pages);
