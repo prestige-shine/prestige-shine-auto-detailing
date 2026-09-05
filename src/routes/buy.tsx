@@ -125,7 +125,7 @@ function BuyPage() {
   );
 }
 
-function FiltersPanel(p: { brandSel: string[]; setBrandSel: (s: string[]) => void; bodySel: string[]; setBodySel: (s: string[]) => void; fuelSel: string[]; setFuelSel: (s: string[]) => void; transSel: string[]; setTransSel: (s: string[]) => void; condSel: string[]; setCondSel: (s: string[]) => void; onReset: () => void; }) {
+function FiltersPanel(p: { brandSel: string[]; setBrandSel: (s: string[]) => void; bodySel: string[]; setBodySel: (s: string[]) => void; fuelSel: string[]; setFuelSel: (s: string[]) => void; transSel: string[]; setTransSel: (s: string[]) => void; onReset: () => void; }) {
   const toggle = (arr: string[], val: string, set: (a: string[]) => void) => set(arr.includes(val) ? arr.filter((x) => x !== val) : [...arr, val]);
   return (
     <div className="space-y-5 rounded-2xl border border-border bg-white p-5">
