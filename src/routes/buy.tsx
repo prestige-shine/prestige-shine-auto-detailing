@@ -130,7 +130,7 @@ function FiltersPanel(p: { brandSel: string[]; setBrandSel: (s: string[]) => voi
   return (
     <div className="space-y-5 rounded-2xl border border-border bg-white p-5">
       <div className="flex items-center justify-between"><h4 className="text-sm font-bold text-ink">Filters</h4><button onClick={p.onReset} className="text-xs font-medium text-muted-foreground hover:text-ink">Reset</button></div>
-      <Group title="Booking Status">{conditions.map((c) => <ChkBox key={c} label={c} checked={p.condSel.includes(c)} onChange={() => toggle(p.condSel, c, p.setCondSel)} />)}</Group>
+      
       <Group title="Car Make"><div className="max-h-52 space-y-2 overflow-y-auto pr-1">{brands.map((b) => <ChkBox key={b} label={b} checked={p.brandSel.includes(b)} onChange={() => toggle(p.brandSel, b, p.setBrandSel)} />)}</div></Group>
       <Group title="Vehicle Class">{bodyTypes.map((b) => <ChkBox key={b.label} label={`${b.label} (${b.count})`} checked={p.bodySel.includes(b.label)} onChange={() => toggle(p.bodySel, b.label, p.setBodySel)} />)}</Group>
       <Group title="Service Performed">{fuelTypes.map((f) => <ChkBox key={f} label={f} checked={p.fuelSel.includes(f)} onChange={() => toggle(p.fuelSel, f, p.setFuelSel)} />)}</Group>
