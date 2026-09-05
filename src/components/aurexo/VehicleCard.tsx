@@ -1,11 +1,8 @@
 import { Link } from "@tanstack/react-router";
-import { Heart, ChevronRight } from "lucide-react";
+import { ChevronRight } from "lucide-react";
 import { serviceLabel, type Vehicle } from "@/lib/aurexo-data";
-import { useFavorites } from "@/contexts/FavoritesContext";
 
 export function VehicleCard({ v, verifiedMetadataOnly = false }: { v: Vehicle; verifiedMetadataOnly?: boolean }) {
-  const favorites = useFavorites();
-  const isSaved = favorites.has(v.id);
   const service = serviceLabel(v);
   return (
     <article className="group relative flex flex-col overflow-hidden rounded-2xl border border-border bg-white transition hover:border-ink/40 hover:shadow-md">
@@ -21,27 +18,14 @@ export function VehicleCard({ v, verifiedMetadataOnly = false }: { v: Vehicle; v
         <span className="absolute left-3 top-3 rounded-full bg-ink/85 px-2.5 py-1 text-[11px] font-bold text-white">
           {service}
         </span>
-        <button
-          onClick={(e) => { e.preventDefault(); e.stopPropagation(); favorites.toggle(v.id); }}
-          aria-label={isSaved ? `Remove ${v.title} from saved projects` : `Save ${v.title}`}
-          aria-pressed={isSaved}
-          className={`pointer-events-auto absolute right-3 top-3 grid h-11 w-11 place-items-center rounded-full border bg-background/95 transition ${isSaved ? "border-brand text-brand" : "border-border text-ink"}`}
-        >
-          <Heart className="h-5 w-5" fill={isSaved ? "currentColor" : "none"} />
-        </button>
       </div>
       <div className="relative z-10 flex flex-1 flex-col p-4 pointer-events-none">
         <h3 className="truncate font-bold text-ink">{v.title}</h3>
         <p className="mt-1 truncate text-xs text-muted-foreground">
           {v.brand}{verifiedMetadataOnly ? ` · ${v.body}` : ` · ${v.year} · ${v.body}`}
         </p>
-        <p className="mt-2 text-sm font-semibold text-ink">{service} · {v.transmission} finish</p>
-        <div className={`mt-auto flex items-center border-t border-border pt-3 pointer-events-auto ${verifiedMetadataOnly ? "justify-end" : "justify-between gap-2"}`}>
-          {!verifiedMetadataOnly ? (
-            <span className="inline-flex items-center rounded-full border border-border px-3 py-1.5 text-xs font-medium text-ink">
-              {v.condition}
-            </span>
-          ) : null}
+        <p className="mt-2 text-sm font-semibold text-ink">{service}</p>
+        <div className="mt-auto flex items-center justify-end border-t border-border pt-3 pointer-events-auto">
           <Link
             to="/listings/$id"
             params={{ id: v.id }}
