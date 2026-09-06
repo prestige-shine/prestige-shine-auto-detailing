@@ -21,8 +21,8 @@ const tiers = [
     id: "interior",
     icon: Sparkles,
     name: "Interior Detailing",
-    price: "priced by vehicle size",
-    duration: "2–5 hours",
+    price: "from $200",
+    duration: "Est. 2–5 hours",
     idealFor: "Work trucks, family vehicles, pet owners, pre-sale preparation, post-winter resets",
     image: baAfter1.url,
     blurb:
@@ -42,8 +42,8 @@ const tiers = [
     id: "exterior",
     icon: Droplets,
     name: "Exterior Detailing",
-    price: "priced by vehicle size",
-    duration: "2–4 hours",
+    price: "from $200",
+    duration: "Est. 2–4 hours",
     idealFor: "Daily drivers, seasonal refreshes, vehicles being prepped for sale or protection",
     image: bmwX5.url,
     blurb:
@@ -64,7 +64,7 @@ const tiers = [
     icon: Layers,
     name: "Full Detailing Packages",
     price: "cars from $200",
-    duration: "4 hours – 1 day",
+    duration: "Est. 4 hours – 1 day",
     idealFor: "Owners who want one complete inside-and-out transformation",
     image: baAfter3.url,
     blurb:
@@ -83,7 +83,7 @@ const tiers = [
     icon: Shield,
     name: "Ceramic Coating",
     price: "from $800",
-    duration: "1–3 days",
+    duration: "Est. 1–3 days",
     idealFor: "New vehicles, high-value cars, owners who want long-term, low-maintenance protection",
     image: audiQ5.url,
     blurb:
@@ -106,7 +106,7 @@ const tiers = [
     icon: Gem,
     name: "Full Detail + Paint Enhancement",
     price: "cars from $450",
-    duration: "4 hours – 1 day",
+    duration: "Est. 4 hours – 1 day",
     idealFor: "Owners who want a complete detail plus noticeably improved gloss in one visit",
     image: pontiacTransAm.url,
     blurb:
@@ -126,7 +126,7 @@ const tiers = [
     icon: Car,
     name: "Paint Correction",
     price: "from $300",
-    duration: "1–3 days",
+    duration: "Est. 1–3 days",
     idealFor: "Swirled, dull, oxidised or previously poorly-washed paint",
     image: camaro.url,
     blurb:
@@ -148,10 +148,10 @@ const tiers = [
 ];
 
 const addons = [
-  { name: "Headlight Restoration", price: "$59/pair", desc: "Polish and UV-seal oxidised headlight lenses for clarity and longevity." },
-  { name: "Engine Bay Detail", price: "$89", desc: "Degrease, rinse, and dress all engine bay plastics and components." },
-  { name: "Leather Conditioning", price: "$79", desc: "Clean and condition all leather surfaces with pH-balanced products." },
-  { name: "Ceramic Wheel Coating", price: "$149", desc: "Pro-grade ceramic coating on all four wheels for brake-dust resistance and easy cleaning." },
+  { name: "Headlight Restoration", price: "$59/pair", desc: "Polish and UV-seal oxidised headlight lenses to improve clarity and help protect against future oxidation." },
+  { name: "Engine Bay Detail", price: "$89", desc: "Degrease, rinse and dress accessible engine bay plastics and components." },
+  { name: "Leather Conditioning", price: "$79", desc: "Clean and condition leather seating and trim surfaces with pH-balanced products; does not include repair, dye or odour restoration." },
+  { name: "Ceramic Wheel Coating", price: "$149", desc: "Ceramic coating applied to the accessible faces of all four wheels for brake-dust resistance and easier cleaning. Wheels are cleaned in place; barrel coating and wheel removal are not included." },
 ];
 
 export const Route = createFileRoute("/services")({
@@ -253,9 +253,11 @@ function Services() {
           </div>
 
           <div className="mt-5 flex flex-wrap gap-3 text-sm">
-            <span className="rounded-full bg-surface border border-border px-3 py-1"><strong>Duration:</strong> {tier.duration}</span>
+            <span className="rounded-full bg-surface border border-border px-3 py-1"><strong>Estimated duration:</strong> {tier.duration}</span>
             <span className="rounded-full bg-surface border border-border px-3 py-1"><strong>Ideal for:</strong> {tier.idealFor}</span>
           </div>
+
+          <p className="mt-3 text-xs text-muted-foreground">All durations are estimates and depend on vehicle size, condition, and any add-ons.</p>
 
           <p className="mt-5 text-sm leading-relaxed text-muted-foreground">{tier.blurb}</p>
           <p className="mt-3 text-xs text-muted-foreground">Prices shown are starting estimates. Final pricing is based on vehicle size and condition. Excessive pet hair, staining, heavy soiling, or unusually neglected vehicles may cost more.</p>
