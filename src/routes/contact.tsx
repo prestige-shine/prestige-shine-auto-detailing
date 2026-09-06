@@ -5,9 +5,11 @@ import { PageHeader } from "@/components/aurexo/PageHeader";
 import { buildWhatsAppHref, STUDIO_PHONE, STUDIO_TEL, STUDIO_EMAIL, WHATSAPP_NUMBER } from "@/lib/whatsapp";
 
 const SERVICE_OPTIONS = [
-  "Express Exterior Maintenance",
-  "Full Interior Deep Clean & Extraction",
-  "Premium 9H Ceramic Coating",
+  "Interior Detailing",
+  "Exterior Detailing",
+  "Full Detailing Packages",
+  "Ceramic Coating",
+  "Full Detail + Paint Enhancement",
   "Paint Correction",
   "Headlight Restoration",
   "Engine Bay Detail",
