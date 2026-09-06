@@ -86,7 +86,7 @@ function Sell() {
               <input required value={form.model} onChange={set("model")} className="f-input sm:col-span-2" placeholder="Model (e.g. Camry)" />
               <textarea value={form.condition} onChange={set("condition")} rows={3} className="f-input sm:col-span-2" placeholder="Current condition notes — swirls, stains, odours, scratches…" />
               <input type="date" value={form.date} onChange={set("date")} className="f-input" />
-              <input required value={form.zip} onChange={set("zip")} className="f-input" placeholder="Your ZIP code" />
+              <input required value={form.zip} onChange={set("zip")} className="f-input" placeholder="Your Postal Code" />
               <button type="submit" disabled={submitting} className="sm:col-span-2 inline-flex items-center justify-center gap-2 rounded-xl bg-brand py-3.5 text-sm font-bold text-ink disabled:opacity-60">
                 <MessageCircle className="h-4 w-4" /> {submitting ? "Booking…" : "Book free assessment via WhatsApp"}
               </button>
@@ -100,10 +100,10 @@ function Sell() {
         <h2 className="text-2xl font-bold text-ink">What happens at your assessment</h2>
         <div className="mt-5 grid grid-cols-1 sm:grid-cols-4 gap-3">
           {[
-            { i: Car, t: "1. Vehicle arrives", d: "Park in our reception bay — no rush, we're expecting you." },
-            { i: ClipboardList, t: "2. Paint & interior inspection", d: "Certified detailer inspects paint, glass, upholstery, and trim under studio lighting." },
+            { i: Car, t: "1. Vehicle arrives", d: "Arrive at our Miramichi shop at your scheduled assessment time." },
+            { i: ClipboardList, t: "2. Paint & interior inspection", d: "Kevin will inspect paint, glass, upholstery, and trim under studio lighting." },
             { i: MapPin, t: "3. Custom recommendation", d: "You receive a clear, itemised service recommendation with no obligation to proceed." },
-            { i: Calendar, t: "4. Book your slot", d: "If you're happy with the plan, we schedule your detail right there — same-day slots are often available." },
+            { i: Calendar, t: "4. Book your slot", d: "If you're happy with the plan, we schedule your detail right there." },
           ].map(({ i: Icon, t, d }) => (
             <div key={t} className="rounded-2xl bg-white border border-border p-5">
               <div className="grid h-11 w-11 place-items-center rounded-xl bg-brand/15 text-ink">
