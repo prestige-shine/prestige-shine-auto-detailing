@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { ShieldCheck, Sparkles, MapPin } from "lucide-react";
 import { PageHeader } from "@/components/aurexo/PageHeader";
 import { team } from "@/lib/team";
-import chevelleDetail from "@/assets/chevelle-ss-detail.jpg.asset.json";
+import chevelleDetail from "@/assets/chevelle-ss-detail.jpg";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -43,7 +43,7 @@ function About() {
       <section className="mx-auto max-w-6xl px-4 pb-12">
         <div className="rounded-3xl bg-white border border-border overflow-hidden grid grid-cols-1 lg:grid-cols-2">
           <img
-            src={chevelleDetail.url}
+            src={chevelleDetail}
             alt="Chevrolet Chevelle SS detailed by Prestige Shine Auto Detailing in Miramichi, NB"
             className="h-64 w-full object-cover lg:h-full"
             loading="lazy"
@@ -130,3 +130,4 @@ function About() {
     </main>
   );
 }
+

@@ -211,7 +211,7 @@ function LeadDetail({
   useEffect(() => {
     if (!lead.photo_urls?.length) return;
     sign({ data: { paths: lead.photo_urls } }).then((rows: any[]) => {
-      setPhotoUrls(rows.map((r) => r.url).filter(Boolean));
+      setPhotoUrls(rows.map((r) => r).filter(Boolean));
     });
   }, [lead.id]);
 

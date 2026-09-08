@@ -8,33 +8,33 @@ import { HomeFAQ } from "@/components/aurexo/HomeFAQ";
 import { BookingWidget } from "@/components/aurexo/BookingWidget";
 import { WHATSAPP_NUMBER } from "@/lib/whatsapp";
 import { articles } from "@/lib/articles";
-import heroCollage from "@/assets/hero-collage.png.asset.json";
-import baBefore1 from "@/assets/ba-before-1.jpg.asset.json";
-import baAfter1 from "@/assets/ba-after-1.jpg.asset.json";
-import baBefore2 from "@/assets/ba-before-2.jpg.asset.json";
-import baAfter2 from "@/assets/ba-after-2.jpg.asset.json";
-import baBefore3 from "@/assets/ba-before-3.jpg.asset.json";
-import baAfter3 from "@/assets/ba-after-3.jpg.asset.json";
-import baBefore4 from "@/assets/ba-before-4.jpg.asset.json";
-import baAfter4 from "@/assets/ba-after-4.jpg.asset.json";
-import baBefore5 from "@/assets/ba-before-5.jpg.asset.json";
-import baAfter5 from "@/assets/ba-after-5.jpg.asset.json";
-import bmwX5 from "@/assets/bmwx5.jpg.asset.json";
-import audiQ5 from "@/assets/audi_q5.jpg.asset.json";
-import pontiacTransAm from "@/assets/pontiac_trans_am.jpg.asset.json";
-import camaroBefore from "@/assets/camaro_before.jpg.asset.json";
-import camaroAfter from "@/assets/camaro_after.jpg.asset.json";
-import camaro from "@/assets/camaro.jpg.asset.json";
+import heroCollage from "@/assets/hero-collage.png";
+import baBefore1 from "@/assets/ba-before-1.jpg";
+import baAfter1 from "@/assets/ba-after-1.jpg";
+import baBefore2 from "@/assets/ba-before-2.jpg";
+import baAfter2 from "@/assets/ba-after-2.jpg";
+import baBefore3 from "@/assets/ba-before-3.jpg";
+import baAfter3 from "@/assets/ba-after-3.jpg";
+import baBefore4 from "@/assets/ba-before-4.jpg";
+import baAfter4 from "@/assets/ba-after-4.jpg";
+import baBefore5 from "@/assets/ba-before-5.jpg";
+import baAfter5 from "@/assets/ba-after-5.jpg";
+import bmwX5 from "@/assets/bmwx5.jpg";
+import audiQ5 from "@/assets/audi_q5.jpg";
+import pontiacTransAm from "@/assets/pontiac_trans_am.jpg";
+import camaroBefore from "@/assets/camaro_before.jpg";
+import camaroAfter from "@/assets/camaro_after.jpg";
+import camaro from "@/assets/camaro.jpg";
 
-const HERO_IMG = heroCollage.url;
+const HERO_IMG = heroCollage;
 
 const BEFORE_AFTER = [
-  { id: "bmw-x5-revival", label: "Full Vehicle Revival — BMW X5", before: baBefore2.url, after: baAfter2.url, tier: "Full Detail & Paint Enhancement" },
-  { id: "f150-interior-reset", label: "Work Truck Interior Reset — Ford F-150", before: baBefore1.url, after: baAfter1.url, tier: "Interior Restoration" },
-  { id: "sienna-transformation", label: "Family Van Transformation — Toyota Sienna", before: baBefore3.url, after: baAfter3.url, tier: "Full Detail" },
-  { id: "corvette-paint-revival", label: "Corvette Paint Revival — Chevrolet Corvette", before: baBefore4.url, after: baAfter4.url, tier: "Paint Correction" },
-  { id: "trans-am-revival", label: "Classic Muscle Car Revival — Pontiac Trans Am", before: baBefore5.url, after: baAfter5.url, tier: "Complete Restoration Detail" },
-  { id: "camaro-transformation", label: "Camaro — Before & After", before: camaroBefore.url, after: camaroAfter.url, tier: "Paint Correction" },
+  { id: "bmw-x5-revival", label: "Full Vehicle Revival — BMW X5", before: baBefore2, after: baAfter2, tier: "Full Detail & Paint Enhancement" },
+  { id: "f150-interior-reset", label: "Work Truck Interior Reset — Ford F-150", before: baBefore1, after: baAfter1, tier: "Interior Restoration" },
+  { id: "sienna-transformation", label: "Family Van Transformation — Toyota Sienna", before: baBefore3, after: baAfter3, tier: "Full Detail" },
+  { id: "corvette-paint-revival", label: "Corvette Paint Revival — Chevrolet Corvette", before: baBefore4, after: baAfter4, tier: "Paint Correction" },
+  { id: "trans-am-revival", label: "Classic Muscle Car Revival — Pontiac Trans Am", before: baBefore5, after: baAfter5, tier: "Complete Restoration Detail" },
+  { id: "camaro-transformation", label: "Camaro — Before & After", before: camaroBefore, after: camaroAfter, tier: "Paint Correction" },
 ];
 
 const TIERS = [
@@ -42,37 +42,37 @@ const TIERS = [
     name: "Interior Detailing",
     desc: "Deep vacuum, hot-water extraction, steam sanitizing, leather cleaning and conditioning — every vent, seam and console restored by hand.",
     price: "Priced by size",
-    image: baAfter1.url,
+    image: baAfter1,
   },
   {
     name: "Exterior Detailing",
     desc: "Foam pre-wash, safe two-bucket contact wash, iron and tar decontamination, clay treatment, gloss enhancement and dressed trim, wheels and tires.",
     price: "Priced by size",
-    image: bmwX5.url,
+    image: bmwX5,
   },
   {
     name: "Full Detailing Packages",
     desc: "Complete inside-and-out detailing priced by vehicle size — cars from $200 up to large and HD trucks from $350.",
     price: "Cars from $200",
-    image: baAfter3.url,
+    image: baAfter3,
   },
   {
     name: "Ceramic Coating",
     desc: "3-Year Ceramic Protection from $800, System X 6-Year Ceramic Coating from $1,200, or Correction + 6-Year Ceramic from $1,500 — prepped, polished and coated panel by panel.",
     price: "From $800",
-    image: audiQ5.url,
+    image: audiQ5,
   },
   {
     name: "Full Detail + Paint Enhancement",
     desc: "Our most popular combination — a complete full detail paired with a 1-step paint enhancement. Cars from $450 up to XL SUVs and HD trucks from $700.",
     price: "Cars from $450",
-    image: pontiacTransAm.url,
+    image: pontiacTransAm,
   },
   {
     name: "Paint Correction",
     desc: "1-Step Paint Enhancement from $300, 2-Step Paint Correction from $600, or Advanced / Multi-Stage Correction from $900 — machine polishing that levels swirls, holograms and oxidation.",
     price: "From $300",
-    image: camaro.url,
+    image: camaro,
   },
 ];
 
@@ -341,3 +341,4 @@ function Home() {
     </main>
   );
 }
+

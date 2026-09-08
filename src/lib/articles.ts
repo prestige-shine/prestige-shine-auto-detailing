@@ -1,6 +1,6 @@
-import kevinWorking from "@/assets/kevin-working.jpg.asset.json";
-import hondaHrv from "@/assets/honda_hrv.jpg.asset.json";
-import toyotaRav4 from "@/assets/toyota_rav4.jpg.asset.json";
+import kevinWorking from "@/assets/kevin-working.jpg";
+import hondaHrv from "@/assets/honda_hrv.jpg";
+import toyotaRav4 from "@/assets/toyota_rav4.jpg";
 
 export type Article = {
   slug: string;
@@ -25,7 +25,7 @@ export const articles: Article[] = [
     author: "Kevin Hines",
     category: "Paint Protection",
     readMinutes: 7,
-    cover: kevinWorking.url,
+    cover: kevinWorking,
     body: [
       "Miramichi weather is unforgiving on paint. Between coastal salt air off the Miramichi River, heavy road salt and brine through an Atlantic Canadian winter, and strong summer UV, your car's clearcoat takes more abuse per year than vehicles in milder climates. The question isn't whether to protect it — it's how much protection to pay for.",
       "## What wax actually does (and doesn't do)",
@@ -53,7 +53,7 @@ export const articles: Article[] = [
     author: "Kevin Hines",
     category: "Seasonal Care",
     readMinutes: 6,
-    cover: hondaHrv.url,
+    cover: hondaHrv,
     body: [
       "Miramichi roads see heavy sodium chloride application every winter to keep drivers safe through snow and ice. If you live in Miramichi or the surrounding region, your vehicle's paint, wheels, and undercarriage are under sustained chemical attack for several months of the year.",
       "## The three-phase damage cycle",
@@ -78,7 +78,7 @@ export const articles: Article[] = [
     author: "Kevin Hines",
     category: "Interior Care",
     readMinutes: 8,
-    cover: toyotaRav4.url,
+    cover: toyotaRav4,
     body: [
       "If you own a dog, a toddler, or both — and a Miramichi winter means they've been in your car for months — the interior of your vehicle is a science experiment. Pet hair embeds in seat fabric at an angle that household vacuums can't extract. Pet dander bonds to carpet fibers. Odors penetrate the HVAC system and headliner foam. Here's what actually fixes each problem.",
       "## What a basic 'interior clean' typically includes (and what it misses)",
@@ -100,3 +100,4 @@ export const articles: Article[] = [
 ];
 
 export const findArticle = (slug: string) => articles.find((a) => a.slug === slug);
+

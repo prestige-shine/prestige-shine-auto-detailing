@@ -1,4 +1,4 @@
-import kevinPhoto from "@/assets/kevin-working.jpg.asset.json";
+﻿import kevinPhoto from "@/assets/kevin-working.jpg";
 
 export type TeamMember = {
   name: string;
@@ -13,9 +13,10 @@ export const team: TeamMember[] = [
   {
     name: "Kevin Hines",
     role: "Owner, Founder & Certified Detailer",
-    photo: kevinPhoto.url,
+    photo: kevinPhoto,
     linkedin: "https://www.linkedin.com/",
     twitter: "https://x.com/",
     email: "prestige101shine@gmail.com",
   },
 ];
+

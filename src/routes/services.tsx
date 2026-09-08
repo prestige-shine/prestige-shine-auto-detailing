@@ -2,12 +2,12 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { Check, Sparkles, Droplets, Shield, Plus, Car, Layers, Gem } from "lucide-react";
 import { PageHeader } from "@/components/aurexo/PageHeader";
-import baAfter1 from "@/assets/ba-after-1.jpg.asset.json";
-import baAfter3 from "@/assets/ba-after-3.jpg.asset.json";
-import bmwX5 from "@/assets/bmwx5.jpg.asset.json";
-import audiQ5 from "@/assets/audi_q5.jpg.asset.json";
-import pontiacTransAm from "@/assets/pontiac_trans_am.jpg.asset.json";
-import camaro from "@/assets/camaro.jpg.asset.json";
+import baAfter1 from "@/assets/ba-after-1.jpg";
+import baAfter3 from "@/assets/ba-after-3.jpg";
+import bmwX5 from "@/assets/bmwx5.jpg";
+import audiQ5 from "@/assets/audi_q5.jpg";
+import pontiacTransAm from "@/assets/pontiac_trans_am.jpg";
+import camaro from "@/assets/camaro.jpg";
 import {
   Carousel,
   CarouselContent,
@@ -24,7 +24,7 @@ const tiers = [
     price: "from $200",
     duration: "Est. 2–5 hours",
     idealFor: "Work trucks, family vehicles, pet owners, pre-sale preparation, post-winter resets",
-    image: baAfter1.url,
+    image: baAfter1,
     blurb:
       "Your interior is the part of the vehicle you actually live in. We strip out the salt, sand, spills and pet hair that build up through a Miramichi winter and bring the cabin back to a condition most owners haven't seen since delivery day. Every panel is worked by hand — no blow-and-go, no cover-up dressings.",
     included: [
@@ -45,7 +45,7 @@ const tiers = [
     price: "from $200",
     duration: "Est. 2–4 hours",
     idealFor: "Daily drivers, seasonal refreshes, vehicles being prepped for sale or protection",
-    image: bmwX5.url,
+    image: bmwX5,
     blurb:
       "A proper exterior detail is more than a wash. We decontaminate the paint chemically and mechanically so the surface is truly clean, then enhance the gloss safely — using rinseless-safe technique, clean media and controlled pressure so nothing new is scratched into your finish.",
     included: [
@@ -66,7 +66,7 @@ const tiers = [
     price: "cars from $200",
     duration: "Est. 4 hours – 1 day",
     idealFor: "Owners who want one complete inside-and-out transformation",
-    image: baAfter3.url,
+    image: baAfter3,
     blurb:
       "A Full Detail combines complete interior and exterior work in a single appointment. Pricing is set by vehicle size: cars from $200, compact SUVs from $225, mid-size SUVs from $275, large / 3-row SUVs from $300, XL SUVs from $350, pickup trucks from $300 and large / HD trucks from $350. Every vehicle is personally inspected and quality-controlled by Kevin, and the final quote is confirmed before any work starts.",
     included: [
@@ -85,7 +85,7 @@ const tiers = [
     price: "from $800",
     duration: "Est. 1–3 days",
     idealFor: "New vehicles, high-value cars, owners who want long-term, low-maintenance protection",
-    image: audiQ5.url,
+    image: audiQ5,
     blurb:
       "As a System X certified installer, Kevin applies professional-grade ceramic coatings the way they're meant to be applied: fully prepped, polished, panel-wiped and cured in a controlled environment. The result is a hard, slick, hydrophobic layer that keeps your paint glossy and dramatically easier to wash through every season.",
     included: [
@@ -108,7 +108,7 @@ const tiers = [
     price: "cars from $450",
     duration: "Est. 4 hours – 1 day",
     idealFor: "Owners who want a complete detail plus noticeably improved gloss in one visit",
-    image: pontiacTransAm.url,
+    image: pontiacTransAm,
     blurb:
       "Our most popular combination: a complete Full Detail paired with a 1-step paint enhancement that lifts gloss and reduces light swirling in the same appointment. Pricing follows vehicle size — cars from $450, compact SUVs from $475, mid-size SUVs from $550, large / 3-row SUVs from $600, XL SUVs from $700, pickup trucks from $600 and large / HD trucks from $700.",
     included: [
@@ -128,7 +128,7 @@ const tiers = [
     price: "from $300",
     duration: "Est. 1–3 days",
     idealFor: "Swirled, dull, oxidised or previously poorly-washed paint",
-    image: camaro.url,
+    image: camaro,
     blurb:
       "Paint correction is where the biggest transformations happen. Kevin measures paint thickness, tests panels, then machine polishes in stages to permanently remove swirls, wash marring and oxidation — instead of filling them in. Under direct light the difference is undeniable: sharper reflections, deeper colour, true clarity.",
     included: [
@@ -186,7 +186,7 @@ function Services() {
             <p className="text-xs font-bold uppercase tracking-wide text-brand">Our Services</p>
             <h2 className="mt-1 text-2xl font-bold text-ink">Swipe to explore each service</h2>
           </div>
-          <p className="hidden text-xs text-muted-foreground sm:block">Drag, swipe, or use arrows →</p>
+          <p className="hidden text-xs text-muted-foreground sm:block">Drag, swipe, or use arrows †’</p>
         </div>
 
         <Carousel opts={{ align: "start", loop: true }} className="w-full">
@@ -315,3 +315,4 @@ function Services() {
     </main>
   );
 }
+
