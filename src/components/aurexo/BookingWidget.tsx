@@ -16,14 +16,14 @@ export function BookingWidget() {
   return (
     <section className="mx-auto max-w-5xl px-4 py-16 sm:py-20">
       <div className="text-center">
-        <p className="text-xs font-bold uppercase tracking-wider" style={{ color: BRAND_DARK }}>
+        <p className="text-xs font-bold uppercase tracking-wider" style={{ color: "#84CC16" }}>
           Book Your Detail
         </p>
         <h2 className="mt-2 text-3xl font-extrabold text-ink sm:text-4xl">
           Get your personalized detailing quote
         </h2>
         <p className="mx-auto mt-3 max-w-2xl text-sm text-muted-foreground sm:text-base">
-          Answer a few quick questions about your vehicle and we'll send an accurate estimate — no phone tag required.
+          Answer a few quick questions about your vehicle and Kevin will send an accurate estimate — no phone tag required.
         </p>
       </div>
 

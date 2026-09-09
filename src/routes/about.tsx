@@ -22,7 +22,7 @@ function About() {
       <PageHeader
         eyebrow="About Prestige Shine"
         title="Miramichi's most trusted detailing shop, built from passion."
-        subtitle="Prestige Shine Auto Detailing is owned and operated by Kevin Hines out of our dedicated detailing and coating shop in Miramichi, serving Northeast and Central Miramichi by appointment."
+        subtitle="Prestige Shine Auto Detailing in Miramichi, NB, Canada is an appointment-only professional detailing studio specializing in full detailing, paint enhancement, paint correction, and professional ceramic coatings."
       />
 
       <section className="mx-auto max-w-6xl px-4 py-12 grid grid-cols-1 sm:grid-cols-3 gap-4">
@@ -63,17 +63,17 @@ function About() {
         <div className="rounded-3xl bg-white border border-border p-8 sm:p-12">
           <h2 className="text-2xl font-bold text-ink">Our mission</h2>
           <p className="mt-3 text-muted-foreground leading-relaxed">
-            Every vehicle that comes into our dedicated detailing and coating shop in Miramichi leaves better than when it arrived — not just cleaner, but protected, restored, and documented. We combine professional-grade chemistry with meticulous hand-work and transparent communication so you always know exactly what was done and why.
+            Every vehicle that comes into the dedicated detailing and coating shop in Miramichi leaves better than when it arrived — not just cleaner, but properly cared for, restored, and protected according to the service selected. Kevin combines professional-grade products with meticulous hand-work and transparent communication so you always know what was done and why.
           </p>
           <h3 className="mt-8 text-lg font-bold text-ink">What we stand for</h3>
           <ul className="mt-3 grid sm:grid-cols-2 gap-3 text-sm">
             {[
-              "Certified ceramic coating application on every job",
-              "Paint decontamination and correction before any protection layer",
-              "Transparent, itemised service documentation with before/after photos",
-              "Ceramic coating warranty matched to the package installed",
-              "Eco-responsible chemistry — waterless and low-VOC options available",
-              "On-time completion guaranteed or we reschedule at no charge",
+              "Every vehicle receives a service tailored to its condition, needs, and selected package.",
+              "Paint decontamination and preparation before applying protection, with correction performed when appropriate for the vehicle and selected service.",
+              "Clear service details with before-and-after photos where applicable.",
+              "Ceramic coating care and warranty information is provided according to the specific coating package installed.",
+              "Services are selected based on the vehicle's condition, the requested finish, and the appropriate products and techniques.",
+              "Prestige Shine works by appointment, with each vehicle given the time and attention required for the selected service.",
             ].map((p) => (
               <li key={p} className="flex items-center gap-2 rounded-xl bg-surface p-3">
                 <span className="h-2 w-2 rounded-full bg-brand shrink-0" /> {p}
@@ -85,7 +85,7 @@ function About() {
             <div>
               <h3 className="text-lg font-bold text-ink">The Prestige Shine process</h3>
               <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                Every appointment begins with a thorough paint inspection under specialized lighting. We measure paint condition, identify contaminants, swirl marks, and oxidation before recommending a service. Nothing is assumed — everything is documented.
+                Every appointment begins with a thorough paint inspection under specialized lighting. Kevin assesses the paint condition, identifies contaminants, swirl marks, and oxidation, then recommends the appropriate service based on his findings.
               </p>
             </div>
             <div>
@@ -103,7 +103,7 @@ function About() {
             <div>
               <h3 className="text-lg font-bold text-ink">Aftercare & support</h3>
               <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                Every ceramic-coated vehicle receives a digital care guide. Maintenance washes are logged to your vehicle's profile with updated condition photography, building a documented history that helps maintain resale value.
+                Every ceramic-coated vehicle receives care guidance tailored to the coating and the vehicle's needs. Kevin can also provide recommendations for maintaining the finish between professional detailing appointments.
               </p>
             </div>
           </div>

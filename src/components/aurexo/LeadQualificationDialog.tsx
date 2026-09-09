@@ -282,7 +282,7 @@ export function LeadQualificationDialog({ open, onClose, presetServiceKey }: Pro
                 ? "Yes"
                 : "No",
           ),
-          photo_url: sanitizeEmailValue(signed),
+         photo_url: signed.length > 0 ? signed[0] : "No photos uploaded",
           lead_id: sanitizeEmailValue(result.id),
           source_name: "lead-qualifier",
         });

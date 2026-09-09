@@ -4,19 +4,19 @@ import { Plus, Minus } from "lucide-react";
 const FAQS: { q: string; a: string }[] = [
   {
     q: "How long does a ceramic coating last on a Miramichi-driven vehicle?",
-    a: "It depends on the package. We offer 3-Year Ceramic Protection from $800, the System X 6-Year Ceramic Coating from $1,200, and Correction + 6-Year Ceramic from $1,500. Each is rated for the term in its name when maintained with regular pH-neutral washes — important here, where winter road salt and brine sit on paint for months.",
+    a: "It depends on the package. Kevin offers 3-Year Ceramic Protection from $800, System X 6-Year Ceramic Coating from $1,200, and Correction + 6-Year Ceramic from $1,500. Ceramic coating performance and durability depend on the specific product and proper maintenance, including regular pH-neutral washes.",
   },
   {
     q: "What's the difference between a polish, a paint correction, and full multi-stage correction?",
-    a: "1-Step Paint Enhancement (from $300) improves gloss and reduces light swirls. 2-Step Paint Correction (from $600) targets moderate swirls, oxidation and paint defects. Advanced / Multi-Stage Paint Correction (from $900) is for heavier defects and restoration-level work. Pricing depends on vehicle size and paint condition, so an inspection or photo assessment may be required.",
+    a: "1-Step Paint Enhancement (from $300) improves gloss and reduces the appearance of light swirls. 2-Step Paint Correction (from $600) targets moderate swirls, oxidation, and paint defects. Advanced / Multi-Stage Paint Correction (from $900) is designed for heavier paint defects and more extensive correction work. Pricing depends on vehicle size and paint condition, so an inspection or photo assessment may be required.",
   },
   {
     q: "Can Prestige Shine actually remove heavy pet hair, deep stains, and lingering odours from an interior?",
-    a: "Yes — that's the core of our Full Interior Deep Clean & Extraction. We use hot-water extraction, enzymatic pre-treatments for organic stains, ozone treatment for smoke and pet odour, and rotary brush agitation on carpets and upholstery. Heavy pet hair sessions include a dedicated pass with rubber blades and pneumatic tools before extraction.",
+    a: "Yes — that's the core of Kevin's Full Interior Deep Clean & Extraction. Kevin uses professional cleaning and extraction methods to treat carpets, upholstery, and interior surfaces. Heavy pet-hair jobs may require additional preparation before extraction, depending on the vehicle's condition.",
   },
   {
     q: "Do you come to me, or do I drop my vehicle off?",
-    a: "Prestige Shine operates By Appointment Only, and all work is completed at our dedicated detailing and coating shop in Miramichi. You book a time, drop the vehicle off, and we handle everything from there — it keeps dust, lighting and cure conditions controlled for correction and coating work.",
+    a: "Prestige Shine operates By Appointment Only, and all work is completed at the dedicated detailing and coating shop in Miramichi. You book a time, drop the vehicle off, and Kevin handles everything from there — keeping dust, lighting, and cure conditions controlled for correction and coating work.",
   },
   {
     q: "What does a Full Detail cost?",
@@ -34,9 +34,9 @@ export function HomeFAQ() {
     <section aria-labelledby="faq-heading" className="mx-auto max-w-4xl px-4 py-16">
       <div className="text-center">
         <p className="text-xs font-bold uppercase tracking-wide text-brand">Frequently Asked</p>
-        <h2 id="faq-heading" className="mt-1 text-3xl font-bold text-ink sm:text-4xl">Miramichi owners ask us…</h2>
+        <h2 id="faq-heading" className="mt-1 text-3xl font-bold text-ink sm:text-4xl">Miramichi owners ask…</h2>
         <p className="mx-auto mt-2 max-w-xl text-sm text-muted-foreground">
-          The most common questions we field before, during, and after a high-end detailing appointment.
+          Answers to the most common questions before, during, and after a high-end detailing appointment at Prestige Shine Auto.
         </p>
       </div>
       <div className="mt-8 divide-y divide-border rounded-2xl border border-border bg-white">

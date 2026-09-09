@@ -57,14 +57,14 @@ function Contact() {
       <PageHeader
         eyebrow="Contact"
         title="Talk to a real Miramichi detailer."
-        subtitle="One Miramichi studio, direct phone line, and instant WhatsApp handoff — no bots, no hold music."
+        subtitle="Direct communication with a locally owned, owner-operated detailing studio."
       />
 
       <section className="mx-auto max-w-6xl px-4 py-12 grid grid-cols-1 gap-6 lg:grid-cols-[1.2fr_1fr]">
         <article className="rounded-2xl bg-white border border-border p-6 sm:p-8">
           <h2 className="text-xl font-bold text-ink">Send us a message</h2>
           <p className="mt-1 text-sm text-muted-foreground">
-            Your enquiry is packaged into a legible WhatsApp brief and routed straight to Kevin.
+            Your enquiry is packaged into a legible WhatsApp brief and sent directly to Prestige Shine.
           </p>
 
           {sent ? (
@@ -115,7 +115,7 @@ function Contact() {
           </div>
 
           <div className="rounded-2xl border border-border bg-ink p-5 text-white">
-            <p className="text-xs font-bold uppercase tracking-wide text-brand">Our location</p>
+            <p className="text-xs font-bold uppercase tracking-wide text-brand">Studio location</p>
             <ul className="mt-2 space-y-2">
               {locations.map((l) => (
                 <li key={l.name} className="flex items-start gap-2 text-sm text-white/80">

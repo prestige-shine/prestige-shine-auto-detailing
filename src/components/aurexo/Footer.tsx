@@ -17,7 +17,7 @@ const groups: Record<string, { label: string; to: string }[]> = {
     { label: "Instant Detailing Quote", to: "/get-estimate" },
     { label: "Book Vehicle Assessment", to: "/sell" },
     { label: "Recent Work", to: "/buy" },
-    { label: "Our Location", to: "/dealerships" },
+    { label: "Studio Location", to: "/dealerships" },
   ],
 };
 

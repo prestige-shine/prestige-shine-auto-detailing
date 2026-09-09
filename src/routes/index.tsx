@@ -151,7 +151,7 @@ function Home() {
         <div className="mx-auto max-w-6xl px-4 py-10">
           <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
             {[
-              { icon: ShieldCheck, num: "System X Certified", label: "Professional Ceramic Coatings" },
+              { icon: ShieldCheck, num: "System X Certified Installer", label: "Professional Ceramic Coatings" },
               { icon: Sparkles, num: "Paint Correction Specialist", label: "Restore Gloss & Clarity" },
               { icon: MapPin, num: "Serving Miramichi, NB", label: "Locally Owned & Operated" },
             ].map(({ icon: Icon, num, label }) => (
@@ -208,7 +208,7 @@ function Home() {
           <div className="text-center">
             <p className="text-xs font-bold uppercase tracking-wide text-brand">Recent Transformations</p>
             <h2 className="mt-2 text-2xl font-bold text-ink sm:text-3xl">Recent Work</h2>
-            <p className="mt-2 text-sm text-muted-foreground">Real vehicle transformations completed by Prestige Shine Auto Detailing in Miramichi, NB. Every project showcases the craftsmanship, attention to detail, and premium finish our clients expect.</p>
+            <p className="mt-2 text-sm text-muted-foreground">Real vehicle transformations completed by Prestige Shine Auto Detailing in Miramichi, NB. Every project showcases the craftsmanship, attention to detail, and premium finish clients expect from Prestige Shine.</p>
           </div>
           <div className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {BEFORE_AFTER.map((item) => (
@@ -326,7 +326,7 @@ function Home() {
             <Sparkles className="h-3.5 w-3.5" /> Limited Slots Available
           </span>
           <h2 className="mt-4 text-3xl font-extrabold text-white sm:text-4xl">Ready for a Flawless Finish?</h2>
-          <p className="mt-3 text-sm text-white/65">Message us on WhatsApp and get a personalised quote within 2 hours.</p>
+          <p className="mt-3 text-sm text-white/65">Real vehicle transformations completed by Prestige Shine Auto Detailing in Miramichi, NB. Every project showcases the craftsmanship, attention to detail, and premium finish clients expect from Prestige Shine.</p>
           <div className="mt-6 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
             <a href={waHref(ctaMsg)} target="_blank" rel="noreferrer" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-brand px-6 py-3 text-sm font-semibold text-ink transition hover:bg-brand/90">
               <MessageCircle className="h-4 w-4" /> Book via WhatsApp
