@@ -7,7 +7,7 @@ import { buildWhatsAppHref, STUDIO_PHONE, STUDIO_TEL, STUDIO_EMAIL, WHATSAPP_NUM
 const SERVICE_OPTIONS = [
   "Interior Detailing",
   "Exterior Detailing",
-  "Full Detailing Packages",
+  "Full Detailing",
   "Ceramic Coating",
   "Full Detail + Paint Enhancement",
   "Paint Correction",

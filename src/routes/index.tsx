@@ -51,7 +51,7 @@ const TIERS = [
     image: bmwX5,
   },
   {
-    name: "Full Detailing Packages",
+    name: "Full Detailing",
     desc: "Complete inside-and-out detailing priced by vehicle size — cars from $200 up to large and HD trucks from $350.",
     price: "Cars from $200",
     image: baAfter3,

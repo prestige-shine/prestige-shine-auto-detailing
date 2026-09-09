@@ -62,7 +62,7 @@ const tiers = [
   {
     id: "packages",
     icon: Layers,
-    name: "Full Detailing Packages",
+    name: "Full Detailing",
     price: "cars from $200",
     duration: "Est. 4 hours – 1 day",
     idealFor: "Owners who want one complete inside-and-out transformation",
