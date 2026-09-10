@@ -71,7 +71,7 @@ function About() {
               "Every vehicle receives a service tailored to its condition, needs, and selected package.",
               "Paint decontamination and preparation before applying protection, with correction performed when appropriate for the vehicle and selected service.",
               "Clear service details with before-and-after photos where applicable.",
-              "Ceramic coating care and warranty information is provided according to the specific coating package installed.",
+              "Ceramic coating care and applicable manufacturer warranty information will be provided based on the specific System X coating package installed.",
               "Services are selected based on the vehicle's condition, the requested finish, and the appropriate products and techniques.",
               "Prestige Shine works by appointment, with each vehicle given the time and attention required for the selected service.",
             ].map((p) => (

@@ -126,10 +126,19 @@ export function Footer() {
           <Social href={`https://wa.me/${WHATSAPP_NUMBER}`} label="WhatsApp"><MessageCircle className="h-4 w-4" /></Social>
         </div>
 
-        <div className="mt-10 flex flex-wrap items-center justify-between gap-3 text-xs text-white/40">
-          <p>© 2026 Prestige Shine Auto Detailing · Miramichi, NB. All rights reserved.</p>
-          <Link to="/terms" className="hover:text-white/70">Terms of Service</Link>
-        </div>
+        <div className="mt-10 flex flex-col gap-5 border-t border-white/10 pt-8 text-xs text-white/40 sm:flex-row sm:items-center sm:justify-between">
+  <p>© 2026 Prestige Shine Auto Detailing · Miramichi, NB. All rights reserved.</p>
+
+  <div className="flex items-center gap-4 sm:mr-auto sm:ml-60">
+    <Link to="/privacy" className="hover:text-white/70">
+      Privacy Policy
+    </Link>
+
+    <Link to="/terms" className="hover:text-white/70">
+      Terms of Service
+    </Link>
+  </div>
+</div>
       </div>
     </footer>
   );

@@ -14,8 +14,8 @@ const tree: Node[] = [
     label: "Recent Work",
     children: [
       { label: "All Work", to: "/buy" },
-      { label: "Recently Added", to: "/new-arrivals" },
-      { label: "Featured Projects", to: "/featured" },
+      { label: "Recent Work", to: "/new-arrivals" },
+      { label: "Featured Work", to: "/featured" },
     ],
   },
   {

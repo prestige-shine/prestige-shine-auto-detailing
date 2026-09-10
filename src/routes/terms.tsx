@@ -35,7 +35,7 @@ function Terms() {
         </div>
         <div>
           <h2 className="text-lg font-bold">5. Ceramic Coating Warranty</h2>
-          <p className="mt-2 text-muted-foreground">Ceramic coating warranties correspond to the package installed — 3-Year Ceramic Protection, System X 6-Year Ceramic Coating, or Correction + 6-Year Ceramic — and cover loss of hydrophobic performance under normal use. Warranty requires periodic maintenance decontamination at our Miramichi shop to stay active. Damage from automated tunnel washes, harsh solvents, accidents, or improper aftercare voids coverage.</p>
+          <p className="mt-2 text-muted-foreground">Ceramic coating protection and any applicable manufacturer warranty vary by the specific System X coating package installed. Warranty eligibility, coverage, registration, inspection requirements, and maintenance conditions are governed by the applicable System X manufacturer warranty terms. Applicable System X warranty coverage is subject to the manufacturer’s warranty terms, including required maintenance and annual inspections by an approved applicator.</p>
         </div>
         <div>
           <h2 className="text-lg font-bold">6. Limits of Liability</h2>

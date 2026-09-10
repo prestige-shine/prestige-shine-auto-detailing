@@ -1,5 +1,5 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
-import { Star, MessageCircle } from "lucide-react";
+import { createFileRoute } from "@tanstack/react-router";
+import { Star, MessageCircle, ExternalLink } from "lucide-react";
 import { PageHeader } from "@/components/aurexo/PageHeader";
 
 
@@ -53,13 +53,32 @@ function Reviews() {
           ))}
         </div>
         <div className="mt-10 rounded-2xl border border-border bg-white p-6 text-center">
-          <p className="text-sm text-muted-foreground">
-            Worked with us?{" "}
-            <Link to="/contact" className="inline-flex items-center gap-1 font-semibold text-ink underline underline-offset-2 hover:text-brand">
-              <MessageCircle className="h-3.5 w-3.5" /> Share your review
-            </Link>
-          </p>
-        </div>
+  <p className="text-sm text-muted-foreground">
+    Worked with Prestige Shine?
+  </p>
+
+  <div className="mt-4 flex flex-col items-center justify-center gap-3 sm:flex-row">
+    <a
+      href="https://search.google.com/local/writereview?placeid=ChIJYeXTLRf1oUwREAfbF-oZjrE"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="inline-flex items-center justify-center gap-2 rounded-full bg-ink px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-brand"
+    >
+      <MessageCircle className="h-4 w-4" />
+      Share your review
+    </a>
+
+    <a
+      href="https://www.google.com/maps/search/?api=1&query=Prestige%20Shine%20Auto%20Detailing%20Miramichi&query_place_id=ChIJYeXTLRf1oUwREAfbF-oZjrE"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="inline-flex items-center justify-center gap-2 rounded-full border border-border bg-white px-5 py-2.5 text-sm font-semibold text-ink transition-colors hover:border-brand hover:text-brand"
+    >
+      Read More Reviews on Google
+      <ExternalLink className="h-4 w-4" />
+    </a>
+  </div>
+</div>
       </section>
     </main>
   );

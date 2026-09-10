@@ -24,6 +24,7 @@ import { Route as FeaturedRouteImport } from './routes/featured'
 import { Route as GetEstimateRouteImport } from './routes/get-estimate'
 import { Route as NewArrivalsRouteImport } from './routes/new-arrivals'
 import { Route as NewsRouteImport } from './routes/news'
+import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as ReviewsRouteImport } from './routes/reviews'
 import { Route as SellRouteImport } from './routes/sell'
 import { Route as ServicesRouteImport } from './routes/services'
@@ -108,6 +109,11 @@ const NewsRoute = NewsRouteImport.update({
   path: '/news',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ReviewsRoute = ReviewsRouteImport.update({
   id: '/reviews',
   path: '/reviews',
@@ -169,6 +175,7 @@ export interface FileRoutesByFullPath {
   '/get-estimate': typeof GetEstimateRoute
   '/new-arrivals': typeof NewArrivalsRoute
   '/news': typeof NewsRoute
+  '/privacy': typeof PrivacyRoute
   '/reviews': typeof ReviewsRoute
   '/sell': typeof SellRoute
   '/services': typeof ServicesRoute
@@ -194,6 +201,7 @@ export interface FileRoutesByTo {
   '/get-estimate': typeof GetEstimateRoute
   '/new-arrivals': typeof NewArrivalsRoute
   '/news': typeof NewsRoute
+  '/privacy': typeof PrivacyRoute
   '/reviews': typeof ReviewsRoute
   '/sell': typeof SellRoute
   '/services': typeof ServicesRoute
@@ -221,6 +229,7 @@ export interface FileRoutesById {
   '/get-estimate': typeof GetEstimateRoute
   '/new-arrivals': typeof NewArrivalsRoute
   '/news': typeof NewsRoute
+  '/privacy': typeof PrivacyRoute
   '/reviews': typeof ReviewsRoute
   '/sell': typeof SellRoute
   '/services': typeof ServicesRoute
@@ -248,6 +257,7 @@ export interface FileRouteTypes {
     | '/get-estimate'
     | '/new-arrivals'
     | '/news'
+    | '/privacy'
     | '/reviews'
     | '/sell'
     | '/services'
@@ -273,6 +283,7 @@ export interface FileRouteTypes {
     | '/get-estimate'
     | '/new-arrivals'
     | '/news'
+    | '/privacy'
     | '/reviews'
     | '/sell'
     | '/services'
@@ -299,6 +310,7 @@ export interface FileRouteTypes {
     | '/get-estimate'
     | '/new-arrivals'
     | '/news'
+    | '/privacy'
     | '/reviews'
     | '/sell'
     | '/services'
@@ -326,6 +338,7 @@ export interface RootRouteChildren {
   GetEstimateRoute: typeof GetEstimateRoute
   NewArrivalsRoute: typeof NewArrivalsRoute
   NewsRoute: typeof NewsRoute
+  PrivacyRoute: typeof PrivacyRoute
   ReviewsRoute: typeof ReviewsRoute
   SellRoute: typeof SellRoute
   ServicesRoute: typeof ServicesRoute
@@ -443,6 +456,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof NewsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/reviews': {
       id: '/reviews'
       path: '/reviews'
@@ -536,6 +556,7 @@ const rootRouteChildren: RootRouteChildren = {
   GetEstimateRoute: GetEstimateRoute,
   NewArrivalsRoute: NewArrivalsRoute,
   NewsRoute: NewsRoute,
+  PrivacyRoute: PrivacyRoute,
   ReviewsRoute: ReviewsRoute,
   SellRoute: SellRoute,
   ServicesRoute: ServicesRoute,

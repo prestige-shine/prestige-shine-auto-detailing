@@ -15,6 +15,9 @@ export const Route = createFileRoute("/dealerships")({
   component: Locations,
 });
 
+const GOOGLE_MAPS_URL =
+  "https://www.google.com/maps/search/?api=1&query=Prestige%20Shine%20Auto%20Detailing%2C%20229%20Jacqueline%20Dr%2C%20Miramichi%2C%20NB%20E1N%203Z2";
+
 const STUDIOS = [
   {
     city: "Miramichi Studio",
@@ -33,7 +36,17 @@ function Locations() {
           {STUDIOS.map((s) => (
             <div key={s.city} className="rounded-2xl border border-border bg-white p-6">
               <h3 className="text-xl font-bold text-ink">{s.city}</h3>
-              <p className="mt-3 flex items-start gap-2 text-sm text-muted-foreground"><MapPin className="mt-0.5 h-4 w-4 text-brand" />{s.addr}</p>
+              <p className="mt-3 flex items-start gap-2 text-sm text-muted-foreground">
+  <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-brand" />
+  <a
+    href={GOOGLE_MAPS_URL}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="hover:text-brand hover:underline underline-offset-2"
+  >
+    {s.addr}
+  </a>
+</p>
               <p className="mt-2 flex items-start gap-2 text-sm text-muted-foreground"><Clock className="mt-0.5 h-4 w-4 text-brand" />{s.hours}</p>
               <p className="mt-2 flex items-start gap-2 text-sm text-muted-foreground"><Phone className="mt-0.5 h-4 w-4 text-brand" /><a href={`tel:${STUDIO_TEL}`} className="hover:text-ink">{STUDIO_PHONE}</a></p>
               <p className="mt-4 text-xs font-semibold uppercase tracking-wider text-brand">Services offered</p>

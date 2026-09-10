@@ -26,13 +26,13 @@ const tiers = [
     idealFor: "Work trucks, family vehicles, pet owners, pre-sale preparation, post-winter resets",
     image: baAfter1,
     blurb:
-      "Your interior is the part of the vehicle you actually live in. We strip out the salt, sand, spills and pet hair that build up through a Miramichi winter and bring the cabin back to a condition most owners haven't seen since delivery day. Every panel is worked by hand — no blow-and-go, no cover-up dressings.",
+      "Your interior is the part of the vehicle you actually live in. Prestige Shine removes the salt, sand, spills, and pet hair that build up through a Miramichi winter, helping restore the cabin to a clean, refreshed condition. Every panel is carefully cleaned by hand — no blow-and-go service and no simply covering up dirt with heavy dressings.",
     included: [
       "Full vacuum of seats, carpets, trunk and every crevice",
       "Hot-water extraction of carpets and fabric upholstery",
       "Steam cleaning of vents, seams and hard-to-reach trim",
       "Leather cleaned and conditioned with pH-balanced products",
-      "Dashboard, console and door cards detailed and UV-protected",
+      "Dashboard, console, and door-card detailing with UV-protective treatment",
       "Pet hair and salt stain removal",
       "Odour neutralising treatment",
       "Streak-free interior glass",
@@ -47,7 +47,7 @@ const tiers = [
     idealFor: "Daily drivers, seasonal refreshes, vehicles being prepped for sale or protection",
     image: bmwX5,
     blurb:
-      "A proper exterior detail is more than a wash. We decontaminate the paint chemically and mechanically so the surface is truly clean, then enhance the gloss safely — using rinseless-safe technique, clean media and controlled pressure so nothing new is scratched into your finish.",
+      "A proper exterior detail is more than a wash. Prestige Shine chemically and mechanically decontaminates the paint to leave the surface thoroughly clean, then safely enhances the gloss using rinseless-safe techniques, clean wash media, and controlled pressure designed to minimise the risk of introducing new scratches or marring.",
     included: [
       "Foam pre-soak and safe two-bucket contact wash",
       "Iron fallout, tar and bug removal",
@@ -87,7 +87,7 @@ const tiers = [
     idealFor: "New vehicles, high-value cars, owners who want long-term, low-maintenance protection",
     image: audiQ5,
     blurb:
-      "As a System X certified installer, Kevin applies professional-grade ceramic coatings the way they're meant to be applied: fully prepped, polished, panel-wiped and cured in a controlled environment. The result is a hard, slick, hydrophobic layer that keeps your paint glossy and dramatically easier to wash through every season.",
+      "As a System X certified installer, Kevin applies professional-grade ceramic coatings with careful preparation, including paint correction where required, panel wiping, and controlled curing conditions. The result is a hard, slick, hydrophobic surface that enhances gloss, improves resistance to environmental contamination, and makes routine washing easier. Product durability and any applicable manufacturer warranty depend on the specific System X product, its warranty terms, and proper maintenance.",
     included: [
       "3-Year Ceramic Protection — from $800",
       "System X 6-Year Ceramic Coating — from $1,200",
@@ -110,7 +110,7 @@ const tiers = [
     idealFor: "Owners who want a complete detail plus noticeably improved gloss in one visit",
     image: pontiacTransAm,
     blurb:
-      "Our most popular combination: a complete Full Detail paired with a 1-step paint enhancement that lifts gloss and reduces light swirling in the same appointment. Pricing follows vehicle size — cars from $450, compact SUVs from $475, mid-size SUVs from $550, large / 3-row SUVs from $600, XL SUVs from $700, pickup trucks from $600 and large / HD trucks from $700.",
+      "Prestige Shine most popular combination: a complete Full Detail paired with a 1-step paint enhancement that lifts gloss and reduces light swirling in the same appointment. Pricing follows vehicle size — cars from $450, compact SUVs from $475, mid-size SUVs from $550, large / 3-row SUVs from $600, XL SUVs from $700, pickup trucks from $600 and large / HD trucks from $700.",
     included: [
       "Complete interior and exterior Full Detail",
       "Full chemical and clay decontamination before polishing",
@@ -130,7 +130,7 @@ const tiers = [
     idealFor: "Swirled, dull, oxidised or previously poorly-washed paint",
     image: camaro,
     blurb:
-      "Paint correction is where the biggest transformations happen. Kevin measures paint thickness, tests panels, then machine polishes in stages to permanently remove swirls, wash marring and oxidation — instead of filling them in. Under direct light the difference is undeniable: sharper reflections, deeper colour, true clarity.",
+      "Paint correction is where some of the biggest transformations happen. Kevin measures paint thickness, assesses the condition of the panels, and machine polishes in stages to reduce or remove swirls, wash marring, and oxidation rather than simply filling them in. Under direct light, the difference can be striking — sharper reflections, richer colour, and a clearer, more refined finish.",
     included: [
       "1-Step Paint Enhancement — from $300",
       "2-Step Paint Correction — from $600",

@@ -50,7 +50,7 @@ function GetEstimate() {
           </button>
           <div className="mt-8 flex flex-wrap gap-x-6 gap-y-3 text-xs text-white/70">
             <span className="inline-flex items-center gap-1"><Camera className="h-4 w-4 text-brand" /> Photo-based quoting</span>
-            <span className="inline-flex items-center gap-1"><Clock className="h-4 w-4 text-brand" /> Quotes back within hours</span>
+            <span className="inline-flex items-center gap-1"><Clock className="h-4 w-4 text-brand" /> Fast estimate response</span>
             <span className="inline-flex items-center gap-1"><ShieldCheck className="h-4 w-4 text-brand" /> No obligation</span>
           </div>
         </div>
@@ -60,8 +60,8 @@ function GetEstimate() {
         <div className="grid gap-6 sm:grid-cols-3">
           {[
             { n: 1, t: "Tell us about your vehicle", d: "Make, model, year, and current condition." },
-            { n: 2, t: "Upload a few photos", d: "So we can price accurately without a site visit." },
-            { n: 3, t: "Get your quote", d: "A detailer reviews your info and sends pricing." },
+            { n: 2, t: "Upload a few photos", d: "Get an estimate without a site visit." },
+            { n: 3, t: "Get your quote", d: "Kevin reviews your info and sends pricing." },
           ].map((s) => (
             <div key={s.n} className="rounded-3xl border border-border bg-white p-6">
               <div className="grid h-10 w-10 place-items-center rounded-full bg-brand text-sm font-extrabold text-ink">
