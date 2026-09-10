@@ -34,7 +34,7 @@ const BEFORE_AFTER = [
   { id: "sienna-transformation", label: "Family Van Transformation — Toyota Sienna", before: baBefore3, after: baAfter3, tier: "Full Detail" },
   { id: "corvette-paint-revival", label: "Corvette Paint Revival — Chevrolet Corvette", before: baBefore4, after: baAfter4, tier: "Paint Correction" },
   { id: "trans-am-revival", label: "Classic Muscle Car Revival — Pontiac Trans Am", before: baBefore5, after: baAfter5, tier: "Complete Restoration Detail" },
-  { id: "camaro-transformation", label: "Camaro — Before & After", before: camaroBefore, after: camaroAfter, tier: "Paint Correction" },
+  { id: "camaro-transformation", label: "Classic Camaro Paint Correction — Before & After", before: camaroBefore, after: camaroAfter, tier: "Paint Correction" },
 ];
 
 const TIERS = [
@@ -77,7 +77,7 @@ const TIERS = [
 ];
 
 const TOOLS = [
-  { label: "Instant Detailing Estimate", sub: "Starting price in 60 s", to: "/get-estimate", icon: DollarSign },
+  { label: "Detailing Estimate", sub: "Quick estimate, no obligation", to: "/get-estimate", icon: DollarSign },
   { label: "Our Recent Work", sub: "Before & after transformations", to: "/buy", icon: Sparkles },
   { label: "Owner Reviews", sub: "100+ 5-star Google reviews", to: "/reviews", icon: Star },
   { label: "Our Services", sub: "Detailing, correction & coatings", to: "/services", icon: Award },
