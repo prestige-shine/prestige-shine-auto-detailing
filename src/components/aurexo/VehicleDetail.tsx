@@ -16,6 +16,97 @@ import { vehicles as allVehicles, serviceLabel } from "@/lib/aurexo-data";
 import { VehicleCard } from "./VehicleCard";
 import { buildWhatsAppHref, STUDIO_PHONE, STUDIO_TEL } from "@/lib/whatsapp";
 
+// Before-gallery images
+import chevelleBefore1 from "@/assets/projects/chevelle before 1.jpg";
+import chevelleBefore2 from "@/assets/projects/chevelle before 2.jpg";
+import chevelleBefore3 from "@/assets/projects/chevelle before 3.jpg";
+import chevelleBefore4 from "@/assets/projects/chevelle before 4.jpg";
+import chevelleBefore5 from "@/assets/projects/chevelle before 5.jpg";
+
+import transAmBefore1 from "@/assets/projects/trans am before 1.jpg";
+import transAmBefore2 from "@/assets/projects/trans am before 2.jpg";
+import transAmBefore3 from "@/assets/projects/trans am before 3.jpg";
+import transAmBefore4 from "@/assets/projects/trans am before 4.jpg";
+import transAmBefore5 from "@/assets/projects/trans am before 5.jpg";
+
+import c8Before1 from "@/assets/projects/c8 before 1.jpg";
+import c8Before2 from "@/assets/projects/c8 before 2.jpg";
+import c8Before3 from "@/assets/projects/c8 before 3.jpg";
+import c8Before4 from "@/assets/projects/c8 before 4.jpg";
+import c8Before5 from "@/assets/projects/c8 before 5.jpg";
+
+import bmwBefore1 from "@/assets/projects/bmw before 1.jpg";
+import bmwBefore2 from "@/assets/projects/bmw before 2.jpg";
+import bmwBefore3 from "@/assets/projects/bmw before 3.jpg";
+
+import belAirBefore1 from "@/assets/projects/bel air before 1.jpg";
+import belAirBefore2 from "@/assets/projects/bel air before 2.jpg";
+
+import hrvBefore1 from "@/assets/projects/hrv before 1.jpg";
+import hrvBefore2 from "@/assets/projects/hrv before 2.jpg";
+import hrvBefore3 from "@/assets/projects/hrv before 3.jpg";
+import hrvBefore4 from "@/assets/projects/hrv before 4.jpg";
+import hrvBefore5 from "@/assets/projects/hrv before 5.jpg";
+
+import fordBefore1 from "@/assets/projects/ford before 1.jpg";
+import fordBefore2 from "@/assets/projects/ford before 2.jpg";
+import fordBefore3 from "@/assets/projects/ford before 3.jpg";
+import fordBefore4 from "@/assets/projects/ford before 4.jpg";
+import fordBefore5 from "@/assets/projects/ford before 5.jpg";
+
+const BEFORE_GALLERIES: Record<string, string[]> = {
+  "pontiac-trans-am-restoration-detail": [
+    transAmBefore1,
+    transAmBefore2,
+    transAmBefore3,
+    transAmBefore4,
+    transAmBefore5,
+  ],
+
+  "corvette-c8-ceramic-coating": [
+    c8Before1,
+    c8Before2,
+    c8Before3,
+    c8Before4,
+    c8Before5,
+  ],
+
+  "bmw-x5-full-detail": [
+    bmwBefore1,
+    bmwBefore2,
+    bmwBefore3,
+  ],
+
+  "chevelle-ss-paint-correction": [
+    chevelleBefore1,
+    chevelleBefore2,
+    chevelleBefore3,
+    chevelleBefore4,
+    chevelleBefore5,
+  ],
+
+  "chevrolet-bel-air-paint-correction": [
+    belAirBefore1,
+    belAirBefore2,
+  ],
+
+  "honda-hrv-ceramic-coating": [
+    hrvBefore1,
+    hrvBefore2,
+    hrvBefore3,
+    hrvBefore4,
+    hrvBefore5,
+  ],
+
+  "ford-f150-platinum-full-detail": [
+    fordBefore1,
+    fordBefore2,
+    fordBefore3,
+    fordBefore4,
+    fordBefore5,
+  ],
+};
+
 const TIER_META: Record<
   Vehicle["fuel"],
   {
@@ -160,15 +251,23 @@ const TIER_META: Record<
   },
 };
 
+type GalleryType = "before" | "finished";
+
 export function VehicleDetail({ vehicle }: { vehicle: Vehicle }) {
   const meta = TIER_META[vehicle.fuel];
   const service = serviceLabel(vehicle);
   const [shareToast, setShareToast] = useState<string | null>(null);
 
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+  const [lightboxType, setLightboxType] =
+    useState<GalleryType>("finished");
   const [touchStartX, setTouchStartX] = useState<number | null>(null);
 
   const gallery = vehicle.gallery ?? [];
+  const beforeGallery = BEFORE_GALLERIES[vehicle.id] ?? [];
+
+  const activeGallery =
+    lightboxType === "before" ? beforeGallery : gallery;
 
   const whatsHref = useMemo(
     () =>
@@ -209,7 +308,11 @@ export function VehicleDetail({ vehicle }: { vehicle: Vehicle }) {
     }
   };
 
-  const openLightbox = (index: number) => {
+  const openLightbox = (
+    index: number,
+    type: GalleryType = "finished",
+  ) => {
+    setLightboxType(type);
     setLightboxIndex(index);
     document.body.style.overflow = "hidden";
   };
@@ -221,17 +324,20 @@ export function VehicleDetail({ vehicle }: { vehicle: Vehicle }) {
   };
 
   const showPrevious = () => {
-    if (lightboxIndex === null || gallery.length === 0) return;
+    if (lightboxIndex === null || activeGallery.length === 0) return;
 
     setLightboxIndex(
-      (lightboxIndex - 1 + gallery.length) % gallery.length,
+      (lightboxIndex - 1 + activeGallery.length) %
+        activeGallery.length,
     );
   };
 
   const showNext = () => {
-    if (lightboxIndex === null || gallery.length === 0) return;
+    if (lightboxIndex === null || activeGallery.length === 0) return;
 
-    setLightboxIndex((lightboxIndex + 1) % gallery.length);
+    setLightboxIndex(
+      (lightboxIndex + 1) % activeGallery.length,
+    );
   };
 
   const handleTouchStart = (event: React.TouchEvent) => {
@@ -320,7 +426,59 @@ export function VehicleDetail({ vehicle }: { vehicle: Vehicle }) {
             />
           </div>
 
-          {/* Compact project gallery */}
+          {/* Before gallery */}
+          {beforeGallery.length > 0 && (
+            <section className="mt-8">
+              <div className="mb-3 flex items-end justify-between gap-4">
+                <div>
+                  <p className="text-xs font-bold uppercase tracking-wider text-brand">
+                    Project Photos
+                  </p>
+
+                  <h2 className="mt-1 text-lg font-bold text-ink">
+                    Before
+                  </h2>
+
+                  <p className="mt-1 text-xs text-muted-foreground">
+                    See the vehicle condition before the work was completed.
+                  </p>
+                </div>
+
+                <p className="shrink-0 text-xs text-muted-foreground">
+                  {beforeGallery.length} photos
+                </p>
+              </div>
+
+              <div className="grid grid-cols-3 gap-3 sm:grid-cols-4 lg:grid-cols-5">
+                {beforeGallery.map((image, index) => (
+                  <button
+                    key={`${vehicle.id}-before-${index}`}
+                    type="button"
+                    onClick={() => openLightbox(index, "before")}
+                    className="group relative overflow-hidden rounded-xl border border-border bg-white text-left focus:outline-none focus:ring-2 focus:ring-brand focus:ring-offset-2"
+                    aria-label={`View ${vehicle.title} before photo ${index + 1}`}
+                  >
+                    <img
+                      src={image}
+                      alt={`${vehicle.title} — before ${index + 1}`}
+                      loading="lazy"
+                      className="aspect-[4/3] w-full object-cover transition duration-300 group-hover:scale-105"
+                    />
+
+                    <span className="absolute inset-0 bg-black/0 transition group-hover:bg-black/10" />
+
+                    {index === 0 && (
+                      <span className="absolute bottom-1.5 left-1.5 rounded-md bg-black/70 px-1.5 py-0.5 text-[9px] font-semibold text-white">
+                        View
+                      </span>
+                    )}
+                  </button>
+                ))}
+              </div>
+            </section>
+          )}
+
+          {/* Finished-result gallery */}
           {gallery.length > 0 && (
             <section className="mt-8">
               <div className="mb-3 flex items-end justify-between gap-4">
@@ -332,7 +490,10 @@ export function VehicleDetail({ vehicle }: { vehicle: Vehicle }) {
                   <h2 className="mt-1 text-lg font-bold text-ink">
                     Finished result
                   </h2>
-                  <p className="mt-1 text-xs text-muted-foreground"> Click any photo to view it full screen.</p>
+
+                  <p className="mt-1 text-xs text-muted-foreground">
+                    See the finished vehicle after the work was completed. Click any photo to view it full screen.
+                  </p>
                 </div>
 
                 <p className="shrink-0 text-xs text-muted-foreground">
@@ -340,20 +501,20 @@ export function VehicleDetail({ vehicle }: { vehicle: Vehicle }) {
                 </p>
               </div>
 
-              <div className="grid grid-cols-5 gap-2">
+              <div className="grid grid-cols-3 gap-3 sm:grid-cols-4 lg:grid-cols-5">
                 {gallery.map((image, index) => (
                   <button
                     key={`${vehicle.id}-gallery-${index}`}
                     type="button"
-                    onClick={() => openLightbox(index)}
+                    onClick={() => openLightbox(index, "finished")}
                     className="group relative overflow-hidden rounded-xl border border-border bg-white text-left focus:outline-none focus:ring-2 focus:ring-brand focus:ring-offset-2"
-                    aria-label={`View ${vehicle.title} photo ${index + 1}`}
+                    aria-label={`View ${vehicle.title} finished result photo ${index + 1}`}
                   >
                     <img
                       src={image}
                       alt={`${vehicle.title} — finished result ${index + 1}`}
                       loading="lazy"
-                      className="aspect-[4/3] w-full object-cover transition duration-300 group-hover:scale-105"
+                      className="aspect-[3/2] w-full object-cover transition duration-300 group-hover:scale-105 sm:aspect-[4/3]"
                     />
 
                     <span className="absolute inset-0 bg-black/0 transition group-hover:bg-black/10" />
@@ -504,7 +665,7 @@ export function VehicleDetail({ vehicle }: { vehicle: Vehicle }) {
       </section>
 
       {/* Gallery lightbox */}
-      {lightboxIndex !== null && gallery.length > 0 && (
+      {lightboxIndex !== null && activeGallery.length > 0 && (
         <div
           className="fixed inset-0 z-[100] flex flex-col bg-black/95"
           role="dialog"
@@ -515,9 +676,17 @@ export function VehicleDetail({ vehicle }: { vehicle: Vehicle }) {
         >
           {/* Top controls */}
           <div className="flex items-center justify-between px-4 py-4 sm:px-6">
-            <p className="text-sm font-medium text-white/80">
-              {vehicle.title}
-            </p>
+            <div>
+              <p className="text-sm font-medium text-white/80">
+                {vehicle.title}
+              </p>
+
+              <p className="mt-0.5 text-xs font-medium text-white/50">
+                {lightboxType === "before"
+                  ? "Before"
+                  : "Finished result"}
+              </p>
+            </div>
 
             <button
               type="button"
@@ -532,15 +701,17 @@ export function VehicleDetail({ vehicle }: { vehicle: Vehicle }) {
           {/* Main viewer */}
           <div className="relative flex min-h-0 flex-1 items-center justify-center px-4 sm:px-16">
             <img
-              src={gallery[lightboxIndex]}
-              alt={`${vehicle.title} — finished result ${
-                lightboxIndex + 1
-              }`}
+              src={activeGallery[lightboxIndex]}
+              alt={`${vehicle.title} — ${
+                lightboxType === "before"
+                  ? "before"
+                  : "finished result"
+              } ${lightboxIndex + 1}`}
               className="max-h-[75vh] max-w-[92vw] select-none object-contain sm:max-h-[78vh]"
               draggable={false}
             />
 
-            {gallery.length > 1 && (
+            {activeGallery.length > 1 && (
               <>
                 <button
                   type="button"
@@ -565,15 +736,15 @@ export function VehicleDetail({ vehicle }: { vehicle: Vehicle }) {
 
           {/* Counter */}
           <div className="pb-3 text-center text-xs font-medium text-white/70">
-            {lightboxIndex + 1} / {gallery.length}
+            {lightboxIndex + 1} / {activeGallery.length}
           </div>
 
           {/* Thumbnail strip */}
           <div className="overflow-x-auto px-4 pb-5">
             <div className="mx-auto flex w-max gap-2">
-              {gallery.map((image, index) => (
+              {activeGallery.map((image, index) => (
                 <button
-                  key={`lightbox-thumb-${index}`}
+                  key={`lightbox-thumb-${lightboxType}-${index}`}
                   type="button"
                   onClick={() => setLightboxIndex(index)}
                   className={`overflow-hidden rounded-lg border-2 transition ${
@@ -581,7 +752,11 @@ export function VehicleDetail({ vehicle }: { vehicle: Vehicle }) {
                       ? "border-white"
                       : "border-transparent opacity-60 hover:opacity-100"
                   }`}
-                  aria-label={`View photo ${index + 1}`}
+                  aria-label={`View ${
+                    lightboxType === "before"
+                      ? "before"
+                      : "finished result"
+                  } photo ${index + 1}`}
                 >
                   <img
                     src={image}
@@ -615,7 +790,9 @@ function Spec({
 }) {
   return (
     <div className="rounded-xl border border-border bg-white p-3">
-      <div className="flex items-center gap-2 text-brand">{icon}</div>
+      <div className="flex items-center gap-2 text-brand">
+        {icon}
+      </div>
 
       <p className="mt-2 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
         {label}

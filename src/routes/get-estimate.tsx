@@ -33,14 +33,13 @@ function GetEstimate() {
       <section className="bg-ink text-white">
         <div className="mx-auto max-w-5xl px-4 py-16 sm:py-24">
           <span className="inline-flex items-center gap-2 rounded-full bg-brand/15 px-3 py-1 text-xs font-bold text-brand ring-1 ring-brand/30">
-            <Sparkles className="h-3.5 w-3.5" /> 8-step vehicle assessment
+            <Sparkles className="h-3.5 w-3.5" /> 9-step vehicle assessment
           </span>
           <h1 className="mt-4 max-w-3xl text-4xl font-extrabold leading-tight sm:text-6xl">
             Get your <span className="text-brand">personalized</span> detailing estimate.
           </h1>
           <p className="mt-4 max-w-2xl text-base text-white/75">
-            Photo-based, accurate quotes for every vehicle. Tell us about your car, upload a few photos, and Kevin
-            will send fair pricing built for your vehicle's actual condition.
+            Photo-based, accurate quotes for every vehicle. Tell me about your car, upload a few photos, and I’ll send you a fair estimate based on your vehicle’s actual condition.
           </p>
           <button
             onClick={() => open()}

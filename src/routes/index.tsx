@@ -140,7 +140,7 @@ function Home() {
               Get Instant Quote <ArrowRight className="h-4 w-4" />
             </Link>
             <Link to="/sell" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl border border-white/25 bg-white/10 px-6 py-3 text-sm font-semibold text-white backdrop-blur transition hover:bg-white/20">
-              Book Free Vehicle Assessment
+              Free Vehicle Assessment
             </Link>
           </div>
         </div>

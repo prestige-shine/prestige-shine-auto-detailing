@@ -78,6 +78,12 @@ import rav3 from "@/assets/projects/rav 3.jpg";
 import rav4 from "@/assets/projects/rav 4.jpg";
 import rav5 from "@/assets/projects/rav 5.jpg";
 
+import hondaHrv1 from "@/assets/projects/honda hrv 1.jpg";
+import hondaHrv2 from "@/assets/projects/honda hrv 2.jpg";
+import hondaHrv3 from "@/assets/projects/honda hrv 3.jpg";
+import hondaHrv4 from "@/assets/projects/honda hrv 4.jpg";
+import hondaHrv5 from "@/assets/projects/honda hrv 5.jpg";
+
 export type Condition = "Booked" | "In Progress" | "Completed";
 
 export type Vehicle = {
@@ -334,6 +340,13 @@ export const vehicles: Vehicle[] = [
     "Completed",
     hondaHrv,
     {
+      gallery: [
+    hondaHrv1,
+    hondaHrv2,
+    hondaHrv3,
+    hondaHrv4,
+    hondaHrv5,
+      ],
       summary:
         "Ceramic coating on a Urban Grey HR-V. A light single-stage polish removed dealer-install marring before the 9H coating was applied, giving the flat grey paint noticeably more depth along with UV, chemical, and water-spot resistance.",
     },
