@@ -39,7 +39,7 @@ function GetEstimate() {
             Get your <span className="text-brand">personalized</span> detailing estimate.
           </h1>
           <p className="mt-4 max-w-2xl text-base text-white/75">
-            Photo-based, accurate quotes for every vehicle. Tell me about your car, upload a few photos, and I’ll send you a fair estimate based on your vehicle’s actual condition.
+            Photo-based, accurate quotes for every vehicle. Tell us about your car, upload a few photos, and Kevin will send you a fair estimate based on your vehicle’s actual condition.
           </p>
           <button
             onClick={() => open()}
