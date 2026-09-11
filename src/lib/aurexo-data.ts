@@ -152,7 +152,7 @@ export const vehicles: Vehicle[] = [
         transAm5,
       ],
       summary:
-        "A full restoration detail on a black Trans Am. Decontamination wash, clay treatment, and multi-stage machine polishing removed years of swirl marks and oxidation from the single-stage-sensitive panels, followed by a durable sealant, trim restoration, and wheel and tire detailing to bring the finish back to a deep, wet black.",
+        "A full restoration detail on a black Trans Am. A decontamination wash, clay treatment, and multi-stage machine polishing addressed years of swirl marks and oxidation on the single-stage paint, followed by a durable sealant, trim restoration, and wheel and tire detailing to restore a deep, glossy black finish.",
     },
   ),
 
@@ -177,7 +177,7 @@ export const vehicles: Vehicle[] = [
         audiQ55,
       ],
       summary:
-        "Nano-ceramic coating applied to a Daytona Grey Q5. The paint was chemically decontaminated, clayed, and machine polished before a 9H base and top coat were applied panel by panel, with coated wheel faces, glass, and gloss-black trim for long-term hydrophobic protection.",
+        "Nano-ceramic coating applied to a Daytona Grey Q5. The paint was chemically decontaminated, clayed, and machine polished before the selected System X coating was applied panel by panel. Wheel faces, glass, and gloss-black trim were also treated to provide a clean, glossy finish and enhanced hydrophobic protection.",
     },
   ),
 
@@ -201,7 +201,7 @@ export const vehicles: Vehicle[] = [
         rav5,
       ],
       summary:
-        "Ceramic coating on a Cavalry Blue RAV4 daily driver. Iron and tar removal, clay decontamination, and a refining polish preceded the 9H coating, locking in gloss on the paint while adding easy-clean protection to the black cladding and alloy wheels.",
+        "Ceramic coating applied to a Cavalry Blue RAV4 daily driver. Iron and tar removal, clay decontamination, and a refining polish prepared the paint before the selected System X coating was applied. The paint received a glossy, protected finish, while the black cladding and alloy wheels were also treated for easier maintenance and enhanced hydrophobic protection.",
     },
   ),
 
@@ -226,7 +226,7 @@ export const vehicles: Vehicle[] = [
         c85,
       ],
       summary:
-        "9H ceramic coating on a Hypersonic Grey C8. Every panel was decontaminated and polished to remove light wash marring before coating, with special attention to the front splitter, side intakes, and gloss-black wheels so the metallic flake pops under direct light.",
+        "Ceramic coating applied to a Hypersonic Grey C8. Every panel was decontaminated and polished to remove light wash marring before the selected System X coating was applied. Special attention was given to the front splitter, side intakes, and gloss-black wheels to enhance the vehicle’s finish and bring out the metallic flake under direct light.",
     },
   ),
 
@@ -250,7 +250,7 @@ export const vehicles: Vehicle[] = [
         bmw5,
       ],
       summary:
-        "Complete inside-and-out detail on an X5. Two-bucket contact wash, bug and tar removal, wheel and wheel-barrel cleaning, and a spray sealant outside; full vacuum, interior wipe-down, and streak-free glass inside for a factory-fresh presentation.",
+        "Complete inside-and-out detail on an X5. A two-bucket contact wash, bug and tar removal, wheel and wheel-barrel cleaning, and spray sealant were completed outside. Inside, the vehicle received a full vacuum, interior wipe-down, and streak-free glass cleaning for a clean, refreshed presentation.",
     },
   ),
 
@@ -348,7 +348,7 @@ export const vehicles: Vehicle[] = [
     hondaHrv5,
       ],
       summary:
-        "Ceramic coating on a Urban Grey HR-V. A light single-stage polish removed dealer-install marring before the 9H coating was applied, giving the flat grey paint noticeably more depth along with UV, chemical, and water-spot resistance.",
+        "Ceramic coating applied to an Urban Grey HR-V. A light single-stage polish removed dealer-installed marring before the selected System X coating was applied, giving the flat grey paint noticeably more depth while adding protection against UV exposure, chemical contaminants, and everyday environmental elements.",
     },
   ),
 

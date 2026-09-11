@@ -440,7 +440,7 @@ export function VehicleDetail({ vehicle }: { vehicle: Vehicle }) {
                   </h2>
 
                   <p className="mt-1 text-xs text-muted-foreground">
-                    See the vehicle condition before the work was completed.
+                    See the vehicle condition before the work was completed. Click any photo to view it full screen.
                   </p>
                 </div>
 

@@ -61,11 +61,11 @@ function About() {
       {/* Mission & values */}
       <section className="mx-auto max-w-6xl px-4 pb-12">
         <div className="rounded-3xl bg-white border border-border p-8 sm:p-12">
-          <h2 className="text-2xl font-bold text-ink">Our mission</h2>
+          <h2 className="text-2xl font-bold text-ink">Mission</h2>
           <p className="mt-3 text-muted-foreground leading-relaxed">
             Every vehicle that comes into the dedicated detailing and coating shop in Miramichi leaves better than when it arrived — not just cleaner, but properly cared for, restored, and protected according to the service selected. Kevin combines professional-grade products with meticulous hand-work and transparent communication so you always know what was done and why.
           </p>
-          <h3 className="mt-8 text-lg font-bold text-ink">What we stand for</h3>
+          <h3 className="mt-8 text-lg font-bold text-ink">What We Stand For</h3>
           <ul className="mt-3 grid sm:grid-cols-2 gap-3 text-sm">
             {[
               "Every vehicle receives a service tailored to its condition, needs, and selected package.",
@@ -83,15 +83,15 @@ function About() {
 
           <div className="mt-10 grid gap-8 border-t border-border pt-10 lg:grid-cols-2">
             <div>
-              <h3 className="text-lg font-bold text-ink">The Prestige Shine process</h3>
+              <h3 className="text-lg font-bold text-ink">The Prestige Shine Process</h3>
               <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
                 Every appointment begins with a thorough paint inspection under specialized lighting. Kevin assesses the paint condition, identifies contaminants, swirl marks, and oxidation, then recommends the appropriate service based on his findings.
               </p>
             </div>
             <div>
-              <h3 className="text-lg font-bold text-ink">Shop quality standards</h3>
+              <h3 className="text-lg font-bold text-ink">Shop Quality Standards</h3>
               <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-               Kevin is a System X certified installer and works out of our dedicated detailing and coating shop in Miramichi — no dust, no humidity surprises, no shortcuts.
+               Kevin is a System X certified installer and operates Prestige Shine from his dedicated detailing and coating shop in Miramichi, where vehicles are prepared and coated in a professional environment with careful attention to cleanliness, surface preparation, and application.
               </p>
             </div>
             <div>
@@ -101,7 +101,7 @@ function About() {
               </p>
             </div>
             <div>
-              <h3 className="text-lg font-bold text-ink">Aftercare & support</h3>
+              <h3 className="text-lg font-bold text-ink">Aftercare & Support</h3>
               <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
                 Every ceramic-coated vehicle receives care guidance tailored to the coating and the vehicle's needs. Kevin can also provide recommendations for maintaining the finish between professional detailing appointments.
               </p>
