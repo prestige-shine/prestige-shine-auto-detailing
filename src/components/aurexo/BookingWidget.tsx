@@ -36,7 +36,7 @@ export function BookingWidget() {
         <div className="grid gap-8 p-8 sm:p-12 lg:grid-cols-[1.2fr_1fr] lg:items-center">
           <div className="text-white">
             <span className="inline-flex items-center gap-2 rounded-full bg-white/15 px-3 py-1 text-xs font-bold ring-1 ring-white/25">
-              <Sparkles className="h-3.5 w-3.5" /> 8-step assessment
+              <Sparkles className="h-3.5 w-3.5" /> 9-step assessment
             </span>
             <h3 className="mt-4 text-3xl font-extrabold leading-tight sm:text-4xl">
               Tell us about your car. We'll take care of the rest.
