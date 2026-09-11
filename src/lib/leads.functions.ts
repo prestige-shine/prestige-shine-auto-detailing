@@ -114,3 +114,51 @@ export const signLeadPhotos = createServerFn({ method: "POST" })
     );
     return urls.filter((u): u is string => !!u);
   });
+
+  export const subscribeToMailchimp = createServerFn({ method: "POST" })
+  .inputValidator((input: unknown) =>
+    z.object({
+      email: z.string().email(),
+    }).parse(input),
+  )
+  .handler(async ({ data }) => {
+    const apiKey = process.env.MAILCHIMP_API_KEY;
+    const serverPrefix = process.env.MAILCHIMP_SERVER_PREFIX;
+    const audienceId = process.env.MAILCHIMP_AUDIENCE_ID;
+
+    if (!apiKey || !serverPrefix || !audienceId) {
+      throw new Error("Mailchimp is not configured");
+    }
+
+    const { createHash } = await import("node:crypto");
+
+    const email = data.email.trim().toLowerCase();
+
+    const subscriberHash = createHash("md5")
+      .update(email)
+      .digest("hex");
+
+    const response = await fetch(
+      `https://${serverPrefix}.api.mailchimp.com/3.0/lists/${audienceId}/members/${subscriberHash}`,
+      {
+        method: "PUT",
+        headers: {
+          Authorization: `Basic ${Buffer.from(`anystring:${apiKey}`).toString("base64")}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email_address: email,
+          status_if_new: "pending",
+        }),
+      },
+    );
+
+    if (!response.ok) {
+      const error = await response.json().catch(() => null);
+      throw new Error(
+        error?.detail ?? "Unable to subscribe to Mailchimp",
+      );
+    }
+
+    return { ok: true };
+  });
