@@ -18,7 +18,7 @@ export type LeadEmailParams = {
   preferred_time: string;
   timeline: string;
   schedule_flexible: string;
-  photo_url: string;
+ photo_urls: string[];
   lead_id: string;
   source_name: "lead-qualifier";
 };

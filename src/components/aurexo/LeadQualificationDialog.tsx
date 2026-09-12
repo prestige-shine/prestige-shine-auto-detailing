@@ -232,15 +232,7 @@ export function LeadQualificationDialog({ open, onClose, presetServiceKey }: Pro
         services,
         other_service: form.services.includes("other") ? form.other_service.trim() : null,
         conditions: [...form.conditions],
-        condition_notes:
-          [
-            form.vehicle_size
-              ? `Vehicle size: ${VEHICLE_SIZES.find((v) => v.key === form.vehicle_size)?.label}`
-              : "",
-            form.condition_notes.trim(),
-          ]
-            .filter(Boolean)
-            .join(" — ") || null,
+       condition_notes: form.condition_notes.trim() || null,
         photo_urls: form.photos.map((p) => p.path),
         preferred_date: form.preferred_date || null,
         preferred_time: form.preferred_time || null,
@@ -270,7 +262,7 @@ export function LeadQualificationDialog({ open, onClose, presetServiceKey }: Pro
           vehicle_colour: sanitizeEmailValue(payload.vehicle_color),
           requested_services: sanitizeEmailValue(payload.services),
           other_service: sanitizeEmailValue(payload.other_service),
-          vehicle_condition: sanitizeEmailValue(payload.conditions),
+         vehicle_condition: sanitizeEmailValue(payload.condition_notes),
           vehicle_size: sanitizeEmailValue(sizeLabel),
           preferred_date: sanitizeEmailValue(payload.preferred_date),
           preferred_time: sanitizeEmailValue(payload.preferred_time),
@@ -282,7 +274,7 @@ export function LeadQualificationDialog({ open, onClose, presetServiceKey }: Pro
                 ? "Yes"
                 : "No",
           ),
-         photo_url: signed.length > 0 ? signed[0] : "No photos uploaded",
+         photo_urls: signed.length > 0 ? signed : [],
           lead_id: sanitizeEmailValue(result.id),
           source_name: "lead-qualifier",
         });
@@ -1072,11 +1064,13 @@ function StepEstimate({
     conditions: form.conditions,
   });
 
+  const hasCustomService = form.services.includes("other");
+
   return (
     <div>
       <SectionHead
         eyebrow="Estimate"
-        title="Your Estimated Starting Price"
+        title={hasCustomService ? "Your Custom Estimate" : "Your Estimated Starting Price"}
         sub={`${est.serviceLabel} · ${est.vehicleSizeLabel}`}
       />
 
@@ -1084,29 +1078,52 @@ function StepEstimate({
         className="rounded-3xl border-2 p-6 text-center"
         style={{
           borderColor: BRAND,
-          background: "linear-gradient(135deg, rgba(132,204,22,0.10), rgba(132,204,22,0.02))",
+          background:
+            "linear-gradient(135deg, rgba(132,204,22,0.10), rgba(132,204,22,0.02))",
         }}
       >
-        <p className="text-xs font-bold uppercase tracking-wider" style={{ color: BRAND_DARK }}>
-          {est.isRange ? "Estimated Price Range" : "Estimated Starting Price"}
+        <p
+          className="text-xs font-bold uppercase tracking-wider"
+          style={{ color: BRAND_DARK }}
+        >
+          {hasCustomService
+            ? "Custom Estimate"
+            : est.isRange
+              ? "Estimated Price Range"
+              : "Estimated Starting Price"}
         </p>
+
         <p className="mt-2 text-4xl font-extrabold text-ink sm:text-5xl">
-          {est.isRange ? `${formatPrice(est.low)} – ${formatPrice(est.high)}` : formatPrice(est.low)}
+          {hasCustomService
+            ? "Custom Estimate"
+            : est.isRange
+              ? `${formatPrice(est.low)} – ${formatPrice(est.high)}`
+              : formatPrice(est.low)}
         </p>
-        <div className="mx-auto mt-5 max-w-sm space-y-1 text-left">
-          {est.breakdown.map((b) => (
-            <div key={b.label} className="flex items-center justify-between text-xs text-ink/70">
-              <span>{b.label}</span>
-              <span className="font-bold text-ink">{formatPrice(b.amount)}</span>
-            </div>
-          ))}
-        </div>
+
+        {!hasCustomService && (
+          <div className="mx-auto mt-5 max-w-sm space-y-1 text-left">
+            {est.breakdown.map((b) => (
+              <div
+                key={b.label}
+                className="flex items-center justify-between text-xs text-ink/70"
+              >
+                <span>{b.label}</span>
+                <span className="font-bold text-ink">
+                  {formatPrice(b.amount)}
+                </span>
+              </div>
+            ))}
+          </div>
+        )}
       </div>
 
       <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-        This estimate is based on the information you've provided. Your final quote will be confirmed after
-        reviewing your uploaded vehicle photos and your vehicle's overall condition.
+        {hasCustomService
+          ? "This request requires a custom estimate. Your details and uploaded photos will be reviewed before pricing is confirmed."
+          : "This estimate is based on the information you've provided. Your final quote will be confirmed after reviewing your uploaded vehicle photos and your vehicle's overall condition."}
       </p>
+
       <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
         {PRICING_CONFIG.notes.estimate}
       </p>
@@ -1130,10 +1147,17 @@ function StepEstimate({
       </div>
 
       <div className="mt-8 rounded-3xl border border-black/10 bg-black/[0.02] p-6 text-center">
-        <h4 className="text-lg font-extrabold text-ink">Happy with your estimated starting price?</h4>
+        <h4 className="text-lg font-extrabold text-ink">
+          {hasCustomService
+            ? "Ready to request your custom estimate?"
+            : "Happy with your estimated starting price?"}
+        </h4>
+
         <p className="mt-2 text-sm text-muted-foreground">
-          Submit your request and we'll personally review everything before confirming your final quote.
+          Submit your request and we'll personally review everything before
+          confirming your final quote.
         </p>
+
         <div className="mt-5 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
           <button
             type="button"
@@ -1142,9 +1166,16 @@ function StepEstimate({
             className="inline-flex w-full items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-extrabold text-white shadow-lg transition disabled:opacity-60 sm:w-auto"
             style={{ backgroundColor: BRAND }}
           >
-            {submitting ? <Loader2 className="h-4 w-4 animate-spin" /> : <Check className="h-4 w-4" />}
-            {submitting ? "Submitting…" : "Continue & Request My Estimate"}
+            {submitting ? (
+              <Loader2 className="h-4 w-4 animate-spin" />
+            ) : (
+              <Check className="h-4 w-4" />
+            )}
+            {submitting
+              ? "Submitting…"
+              : "Continue & Request My Estimate"}
           </button>
+
           <button
             type="button"
             disabled={submitting}
