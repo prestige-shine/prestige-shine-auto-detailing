@@ -129,7 +129,7 @@ export function Footer() {
         <button
           type="button"
           onClick={() => open()}
-          className="mt-6 inline-flex items-center gap-2 rounded-full bg-brand px-6 py-3 text-sm font-extrabold text-ink shadow-lg transition hover:opacity-90"
+          className="mt-6 inline-flex items-center gap-2 rounded-full bg-brand px-6 py-3 text-sm font-extrabold text-white shadow-lg transition hover:opacity-90"
         >
           <Sparkles className="h-4 w-4" />
           Get My Personalized Quote
@@ -187,7 +187,7 @@ export function Footer() {
               disabled={
                 subscribeStatus === "submitting" || !marketingConsent
               }
-              className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-brand text-ink transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50"
+              className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-brand text-white transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50"
             >
               <ArrowRight className="h-4 w-4" />
             </button>

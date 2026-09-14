@@ -604,7 +604,7 @@ export function VehicleDetail({ vehicle }: { vehicle: Vehicle }) {
               href={whatsHref}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-full bg-brand py-3 text-sm font-bold text-ink"
+              className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-full bg-brand py-3 text-sm font-bold text-white"
             >
               <MessageCircle className="h-4 w-4" />
               Book on WhatsApp

@@ -17,7 +17,7 @@ export function Header({ onMenuClick }: Props) {
           <button
             type="button"
             onClick={() => open()}
-            className="inline-flex items-center gap-2 rounded-full bg-brand px-4 py-2 text-sm font-bold text-ink shadow-sm transition hover:opacity-90 sm:px-5"
+            className="inline-flex items-center gap-2 rounded-full bg-brand px-4 py-2 text-sm font-bold text-white shadow-sm transition hover:opacity-90 sm:px-5"
           >
             <Sparkles className="h-4 w-4" />
             <span>Book Now</span>

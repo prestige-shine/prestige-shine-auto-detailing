@@ -52,10 +52,12 @@ export const PRICING_CONFIG = {
   ceramicWithCorrection: 1500,
 
   /** Optional add-on services. */
-  addOns: {
-    "engine-bay": 89,
-    "headlight": 59,
-  } as Record<string, number>,
+addOns: {
+  "engine-bay": 89,
+  headlight: 59,
+  "leather-conditioning": 79,
+  "ceramic-wheel-coating": 149,
+},
 
   /** Each reported vehicle-condition issue adds this much. */
   conditionSurcharge: 25,
@@ -100,7 +102,7 @@ function servicePrice(key: string, size: VehicleSizeKey): number | null {
     case "ceramic-correction":
       return c.ceramicWithCorrection;
     default:
-      return c.addOns[key] ?? null;
+      return c.addOns[key as keyof typeof c.addOns] ?? null;
   }
 }
 
@@ -108,6 +110,7 @@ export type EstimateInput = {
   /** Optional — when unknown we show a range covering every vehicle size. */
   vehicleSize?: VehicleSizeKey | null;
   services: string[];
+  addons?: string[];
   conditions: string[];
 };
 
@@ -172,20 +175,39 @@ export function calculateEstimate(input: EstimateInput): EstimateResult {
       : cfg.conditionSurcharge;
   }
 
-  const low = baseLow + conditionTotal;
-  const high = Math.round((baseHigh + conditionTotal) * cfg.rangeUpperMultiplier);
+const addonTotal = (input.addons ?? []).reduce(
+  (sum, key) => sum + (cfg.addOns[key as keyof typeof cfg.addOns] ?? 0),
+  0,
+);
+
+const low = baseLow + addonTotal + conditionTotal;
+const high =
+  Math.round(baseHigh * cfg.rangeUpperMultiplier) +
+  addonTotal +
+  conditionTotal;
 
   const priced = input.services.filter((s) => servicePrice(s, sizes[0]) !== null);
   const serviceLabelText = priced.length
     ? priced.map(serviceLabel).join(" + ")
     : "Custom request";
 
-  const breakdown = [
-    { label: `${serviceLabelText} — starting base`, amount: baseLow },
-    ...(conditionTotal
-      ? [{ label: `Vehicle condition (${input.conditions.length} noted)`, amount: conditionTotal }]
-      : []),
-  ];
+ const breakdown = [
+  { label: `${serviceLabelText} — starting base`, amount: baseLow },
+
+  ...(input.addons ?? []).map((key) => ({
+    label: serviceLabel(key),
+    amount: cfg.addOns[key as keyof typeof cfg.addOns] ?? 0,
+  })),
+
+  ...(conditionTotal
+    ? [
+        {
+          label: `Vehicle condition (${input.conditions.length} noted)`,
+          amount: conditionTotal,
+        },
+      ]
+    : []),
+];
 
   return {
     vehicleSizeLabel: input.vehicleSize

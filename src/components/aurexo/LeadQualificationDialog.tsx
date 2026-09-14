@@ -35,6 +35,7 @@ type Props = {
   open: boolean;
   onClose: () => void;
   presetServiceKey?: string;
+  presetAddonKeys?: string[];
 };
 
 type FormState = {
@@ -47,6 +48,7 @@ type FormState = {
   vehicle_color: string;
   vehicle_size: VehicleSizeKey | "";
   services: string[];
+  addons: string[];
   other_service: string;
   conditions: string[];
   condition_notes: string;
@@ -67,6 +69,7 @@ const EMPTY: FormState = {
   vehicle_color: "",
   vehicle_size: "",
   services: [],
+  addons: [],
   other_service: "",
   conditions: [],
   condition_notes: "",
@@ -89,10 +92,38 @@ const STEP_TITLES = [
   "Your estimate",
 ];
 
-const BRAND = "#84CC16";
-const BRAND_DARK = "#3f6212";
+const BRAND = "#0066ff";
+const BRAND_DARK = "#0052cc";
 
-export function LeadQualificationDialog({ open, onClose, presetServiceKey }: Props) {
+const ADDON_OPTIONS = [
+  {
+    key: "headlight",
+    label: "Headlight Restoration",
+    price: 59,
+  },
+  {
+    key: "engine-bay",
+    label: "Engine Bay Detail",
+    price: 89,
+  },
+  {
+    key: "leather-conditioning",
+    label: "Leather Conditioning",
+    price: 79,
+  },
+  {
+    key: "ceramic-wheel-coating",
+    label: "Ceramic Wheel Coating",
+    price: 149,
+  },
+];
+
+export function LeadQualificationDialog({
+  open,
+  onClose,
+  presetServiceKey,
+  presetAddonKeys,
+}: Props) {
   const [step, setStep] = useState(1);
   const [form, setForm] = useState<FormState>(EMPTY);
   const [submitting, setSubmitting] = useState(false);
@@ -111,9 +142,10 @@ export function LeadQualificationDialog({ open, onClose, presetServiceKey }: Pro
       setForm({
         ...EMPTY,
         services: presetServiceKey ? [presetServiceKey] : [],
+        addons: presetAddonKeys ? [...presetAddonKeys] : [],
       });
     }
-  }, [open, presetServiceKey]);
+  }, [open, presetServiceKey, presetAddonKeys]);
 
   useEffect(() => {
     scrollRef.current?.scrollTo({ top: 0, behavior: "smooth" });
@@ -166,6 +198,15 @@ export function LeadQualificationDialog({ open, onClose, presetServiceKey }: Pro
     }));
   };
 
+  const toggleAddon = (key: string) => {
+  setForm((f) => ({
+    ...f,
+    addons: f.addons.includes(key)
+      ? f.addons.filter((a) => a !== key)
+      : [...f.addons, key],
+  }));
+};
+
   const toggleCondition = (label: string) => {
     setForm((f) => ({
       ...f,
@@ -215,9 +256,14 @@ export function LeadQualificationDialog({ open, onClose, presetServiceKey }: Pro
     setSubmitting(true);
     setError(null);
     try {
-      const services = form.services.map(
-        (k) => SERVICE_OPTIONS.find((s) => s.key === k)?.label ?? k,
-      );
+     const services = [
+  ...form.services.map(
+    (k) => SERVICE_OPTIONS.find((s) => s.key === k)?.label ?? k,
+  ),
+  ...form.addons.map(
+    (k) => ADDON_OPTIONS.find((a) => a.key === k)?.label ?? k,
+  ),
+];
       const sizeLabel = form.vehicle_size
         ? (VEHICLE_SIZES.find((v) => v.key === form.vehicle_size)?.label ?? "")
         : "";
@@ -262,7 +308,10 @@ export function LeadQualificationDialog({ open, onClose, presetServiceKey }: Pro
           vehicle_colour: sanitizeEmailValue(payload.vehicle_color),
           requested_services: sanitizeEmailValue(payload.services),
           other_service: sanitizeEmailValue(payload.other_service),
-         vehicle_condition: sanitizeEmailValue(payload.condition_notes),
+              vehicle_condition: sanitizeEmailValue([
+        ...payload.conditions,
+        ...(payload.condition_notes ? [payload.condition_notes] : []),
+      ]),
           vehicle_size: sanitizeEmailValue(sizeLabel),
           preferred_date: sanitizeEmailValue(payload.preferred_date),
           preferred_time: sanitizeEmailValue(payload.preferred_time),
@@ -354,8 +403,13 @@ export function LeadQualificationDialog({ open, onClose, presetServiceKey }: Pro
               {step === 1 && <StepCustomer form={form} setForm={setForm} />}
               {step === 2 && <StepVehicle form={form} setForm={setForm} />}
               {step === 3 && (
-                <StepServices form={form} setForm={setForm} toggleService={toggleService} />
-              )}
+  <StepServices
+    form={form}
+    setForm={setForm}
+    toggleService={toggleService}
+    toggleAddon={toggleAddon}
+  />
+)}
               {step === 4 && (
                 <StepCondition
                   form={form}
@@ -577,10 +631,12 @@ function StepServices({
   form,
   setForm,
   toggleService,
+  toggleAddon,
 }: {
   form: FormState;
   setForm: (f: FormState) => void;
   toggleService: (k: string) => void;
+  toggleAddon: (k: string) => void;
 }) {
   return (
     <div>
@@ -600,7 +656,7 @@ function StepServices({
               className="group relative flex items-start gap-3 rounded-2xl border-2 p-4 text-left transition"
               style={{
                 borderColor: selected ? BRAND : "rgba(0,0,0,0.08)",
-                background: selected ? "rgba(132,204,22,0.06)" : "white",
+                background: selected ? "rgba(0,102,255,0.06)" : "white",
               }}
             >
               <div
@@ -640,6 +696,69 @@ function StepServices({
           </Field>
         </div>
       )}
+      <div className="mt-8">
+  <p className="text-xs font-bold uppercase tracking-wider text-brand">
+    Optional Add-ons
+  </p>
+
+  <p className="mt-1 text-sm text-muted-foreground">
+    Enhance your selected service with any of these optional extras.
+  </p>
+
+  <div className="mt-4 grid gap-3 sm:grid-cols-2">
+    {ADDON_OPTIONS.map((addon) => {
+      const selected = form.addons.includes(addon.key);
+
+      return (
+        <button
+          key={addon.key}
+          type="button"
+          onClick={() => toggleAddon(addon.key)}
+          className="relative flex items-start gap-3 rounded-2xl border-2 p-4 text-left transition"
+          style={{
+            borderColor: selected ? BRAND : "rgba(0,0,0,0.08)",
+            background: selected ? "rgba(0,102,255,0.06)" : "white",
+          }}
+        >
+          <div
+            className="grid h-10 w-10 shrink-0 place-items-center rounded-xl"
+            style={{
+              backgroundColor: selected ? BRAND : "rgba(0,0,0,0.04)",
+              color: selected ? "white" : BRAND_DARK,
+            }}
+          >
+            <Sparkles className="h-5 w-5" />
+          </div>
+
+          <div className="min-w-0 flex-1">
+            <div className="flex items-center justify-between gap-2">
+              <p className="text-sm font-bold text-ink">
+                {addon.label}
+              </p>
+
+              <span className="shrink-0 text-xs font-bold text-brand">
+                ${addon.price}
+              </span>
+            </div>
+
+            <p className="mt-1 text-xs text-muted-foreground">
+              {selected ? "Added to your estimate" : "Optional add-on"}
+            </p>
+          </div>
+
+          {selected && (
+            <div
+              className="absolute right-3 top-3 grid h-5 w-5 place-items-center rounded-full"
+              style={{ backgroundColor: BRAND }}
+            >
+              <Check className="h-3 w-3 text-white" strokeWidth={3} />
+            </div>
+          )}
+        </button>
+      );
+    })}
+  </div>
+</div> 
     </div>
   );
 }
@@ -671,7 +790,7 @@ function StepCondition({
               className="flex items-center justify-between rounded-2xl border-2 px-3.5 py-3 text-left text-xs font-semibold transition sm:text-sm"
               style={{
                 borderColor: selected ? BRAND : "rgba(0,0,0,0.08)",
-                background: selected ? "rgba(132,204,22,0.08)" : "white",
+                background: selected ? "rgba(0,102,255,0.08)" : "white",
                 color: selected ? BRAND_DARK : "#0b0f17",
               }}
             >
@@ -751,7 +870,7 @@ function StepPhotos({
         className="rounded-3xl border-2 border-dashed p-8 text-center transition"
         style={{
           borderColor: dragOver ? BRAND : "rgba(0,0,0,0.15)",
-          background: dragOver ? "rgba(132,204,22,0.06)" : "rgba(0,0,0,0.02)",
+          background: dragOver ? "rgba(0,102,255,0.06)" : "rgba(0,0,0,0.02)",
         }}
       >
         <div
@@ -876,7 +995,7 @@ function StepScheduling({ form, setForm }: { form: FormState; setForm: (f: FormS
                 className="rounded-2xl border-2 px-4 py-3 text-left text-sm font-semibold transition"
                 style={{
                   borderColor: selected ? BRAND : "rgba(0,0,0,0.08)",
-                  background: selected ? "rgba(132,204,22,0.08)" : "white",
+                  background: selected ? "rgba(0,102,255,0.08)" : "white",
                   color: selected ? BRAND_DARK : "#0b0f17",
                 }}
               >
@@ -925,7 +1044,7 @@ function StepPricing() {
         style={{
           borderColor: BRAND,
           background:
-            "linear-gradient(135deg, rgba(132,204,22,0.08), rgba(132,204,22,0.02))",
+            "linear-gradient(135deg, rgba(0,102,255,0.08), rgba(0,102,255,0.02))",
         }}
       >
         <div className="flex items-start gap-3">
@@ -946,7 +1065,7 @@ function StepPricing() {
         </div>
       </div>
       <p className="mt-4 text-center text-xs text-muted-foreground">
-        By continuing you agree to be contacted by our team about your enquiry.
+        By continuing you agree to be contacted by Prestige Shine Auto about your enquiry.
       </p>
     </div>
   );
@@ -992,6 +1111,22 @@ function StepReview({ form, goTo }: { form: FormState; goTo: (n: number) => void
         </p>
       ),
     },
+
+{
+  title: "Add-ons",
+  step: 3,
+  content: (
+    <p>
+      {form.addons
+        .map(
+          (k) =>
+            ADDON_OPTIONS.find((a) => a.key === k)?.label ?? k,
+        )
+        .join(", ") || "None selected"}
+    </p>
+  ),
+},
+
     {
       title: "Condition",
       step: 4,
@@ -1058,11 +1193,12 @@ function StepEstimate({
   onSubmit: () => void;
   onEdit: () => void;
 }) {
-  const est = calculateEstimate({
-    vehicleSize: form.vehicle_size || null,
-    services: form.services,
-    conditions: form.conditions,
-  });
+const est = calculateEstimate({
+  vehicleSize: form.vehicle_size || null,
+  services: form.services,
+  addons: form.addons,
+  conditions: form.conditions,
+});
 
   const hasCustomService = form.services.includes("other");
 
@@ -1079,7 +1215,7 @@ function StepEstimate({
         style={{
           borderColor: BRAND,
           background:
-            "linear-gradient(135deg, rgba(132,204,22,0.10), rgba(132,204,22,0.02))",
+            "linear-gradient(135deg, rgba(0,102,255,0.10), rgba(0,102,255,0.02))",
         }}
       >
         <p
@@ -1154,7 +1290,7 @@ function StepEstimate({
         </h4>
 
         <p className="mt-2 text-sm text-muted-foreground">
-          Submit your request and we'll personally review everything before
+          Submit your request and everything will be reviewed before
           confirming your final quote.
         </p>
 
@@ -1195,7 +1331,7 @@ function SuccessView({ onClose }: { onClose: () => void }) {
     <div className="flex flex-col items-center justify-center py-14 text-center">
       <div
         className="grid h-24 w-24 place-items-center rounded-full"
-        style={{ backgroundColor: "rgba(132,204,22,0.15)" }}
+        style={{ backgroundColor: "rgba(0,102,255,0.15)" }}
       >
         <div
           className="grid h-16 w-16 place-items-center rounded-full"
@@ -1206,11 +1342,10 @@ function SuccessView({ onClose }: { onClose: () => void }) {
       </div>
       <h3 className="mt-6 text-3xl font-extrabold text-ink">Thank you!</h3>
       <p className="mt-3 max-w-md text-sm text-muted-foreground">
-        Your assessment has been sent to our detailing team. We'll review your photos and details, and get back to
-        you with a personalized estimate within a few hours.
+        Your assessment has been sent to Kevin at Prestige Shine Auto Detailing. He’ll review your photos and details and get back to you with a personalized estimate within a few hours.
       </p>
       <div className="mt-8 rounded-2xl bg-black/[0.03] px-6 py-4 text-xs text-ink/70">
-        A confirmation will also be sent to your email and phone.
+        Thank you for choosing Prestige Shine Auto Detailing. 
       </div>
       <button
         onClick={onClose}

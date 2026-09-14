@@ -136,7 +136,7 @@ function Home() {
             Appointment-only, drop-off detailing at our dedicated detailing and coating shop in Miramichi — full detailing, paint enhancement, paint correction and professional ceramic coatings.
           </p>
           <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
-            <Link to="/get-estimate" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-brand px-6 py-3 text-sm font-semibold text-ink transition hover:bg-brand/90">
+            <Link to="/get-estimate" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-brand px-6 py-3 text-sm font-semibold text-white transition hover:bg-brand/90">
               Get Instant Quote <ArrowRight className="h-4 w-4" />
             </Link>
             <Link to="/sell" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl border border-white/25 bg-white/10 px-6 py-3 text-sm font-semibold text-white backdrop-blur transition hover:bg-white/20">
@@ -221,7 +221,7 @@ function Home() {
                   <div className="w-px bg-brand/40" />
                   <div className="relative flex-1">
                     <img src={item.after} alt={`After — ${item.label}`} className="h-40 w-full object-cover" loading="lazy" />
-                    <span className="absolute right-2 top-2 rounded-full bg-brand px-2 py-0.5 text-[11px] font-bold text-ink">After</span>
+                    <span className="absolute right-2 top-2 rounded-full bg-brand px-2 py-0.5 text-[11px] font-bold text-white">After</span>
                   </div>
                 </div>
                 <div className="p-4">
@@ -328,7 +328,7 @@ function Home() {
           <h2 className="mt-4 text-3xl font-extrabold text-white sm:text-4xl">Ready for a Flawless Finish?</h2>
           <p className="mt-3 text-sm text-white/65">Real vehicle transformations completed by Prestige Shine Auto Detailing in Miramichi, NB. Every project showcases the craftsmanship, attention to detail, and premium finish clients expect from Prestige Shine.</p>
           <div className="mt-6 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
-            <a href={waHref(ctaMsg)} target="_blank" rel="noreferrer" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-brand px-6 py-3 text-sm font-semibold text-ink transition hover:bg-brand/90">
+            <a href={waHref(ctaMsg)} target="_blank" rel="noreferrer" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-brand px-6 py-3 text-sm font-semibold text-white transition hover:bg-brand/90">
               <MessageCircle className="h-4 w-4" /> Book via WhatsApp
             </a>
             <Link to="/get-estimate" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl border border-white/20 px-6 py-3 text-sm font-semibold text-white transition hover:border-white/50">

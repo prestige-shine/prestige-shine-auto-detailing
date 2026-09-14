@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
+import { useLeadDialog } from "@/contexts/LeadDialogContext";
 import { Check, Sparkles, Droplets, Shield, Plus, Car, Layers, Gem } from "lucide-react";
 import { PageHeader } from "@/components/aurexo/PageHeader";
 import baAfter1 from "@/assets/ba-after-1.jpg";
@@ -148,10 +149,30 @@ const tiers = [
 ];
 
 const addons = [
-  { name: "Headlight Restoration", price: "$59/pair", desc: "Polish and UV-seal oxidised headlight lenses to improve clarity and help protect against future oxidation." },
-  { name: "Engine Bay Detail", price: "$89", desc: "Degrease, rinse and dress accessible engine bay plastics and components." },
-  { name: "Leather Conditioning", price: "$79", desc: "Clean and condition leather seating and trim surfaces with pH-balanced products; does not include repair, dye or odour restoration." },
-  { name: "Ceramic Wheel Coating", price: "$149", desc: "Ceramic coating applied to the accessible faces of all four wheels for brake-dust resistance and easier cleaning. Wheels are cleaned in place; barrel coating and wheel removal are not included." },
+  {
+    key: "headlight",
+    name: "Headlight Restoration",
+    price: "$59",
+    desc: "Polish and UV-seal oxidised headlight lenses to improve clarity and help protect against future oxidation.",
+  },
+  {
+    key: "engine-bay",
+    name: "Engine Bay Detail",
+    price: "$89",
+    desc: "Degrease, rinse and dress accessible engine bay plastics and components.",
+  },
+  {
+    key: "leather-conditioning",
+    name: "Leather Conditioning",
+    price: "$79",
+    desc: "Clean and condition leather seating and trim surfaces with pH-balanced products; does not include repair, dye or odour restoration.",
+  },
+  {
+    key: "ceramic-wheel-coating",
+    name: "Ceramic Wheel Coating",
+    price: "$149",
+    desc: "Ceramic coating applied to the accessible faces of all four wheels for brake-dust resistance and easier cleaning. Wheels are cleaned in place; barrel coating and wheel removal are not included.",
+  },
 ];
 
 export const Route = createFileRoute("/services")({
@@ -168,8 +189,19 @@ export const Route = createFileRoute("/services")({
 
 function Services() {
   const [active, setActive] = useState(tiers[0].id);
+  const [selectedAddons, setSelectedAddons] = useState<string[]>([]);
+  const { open } = useLeadDialog();
+
   const tier = tiers.find((t) => t.id === active)!;
-  const Icon = tier.icon;
+const Icon = tier.icon;
+
+const toggleAddon = (key: string) => {
+  setSelectedAddons((current) =>
+    current.includes(key)
+      ? current.filter((item) => item !== key)
+      : [...current, key],
+  );
+};
 
   return (
     <main className="overflow-x-hidden">
@@ -213,7 +245,7 @@ function Services() {
                       <div className="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/25 to-transparent" />
                       <div className="absolute inset-x-0 bottom-0 p-5 text-white">
                         <div className="flex items-center gap-2">
-                          <span className="grid h-9 w-9 place-items-center rounded-full bg-brand text-ink">
+                          <span className="grid h-9 w-9 place-items-center rounded-full bg-brand text-white">
                             <TIcon className="h-4 w-4" />
                           </span>
                           <span className="rounded-full bg-white/15 px-2 py-0.5 text-[11px] font-bold backdrop-blur">
@@ -224,7 +256,7 @@ function Services() {
                         <p className="mt-1 text-xs text-white/70">{t.duration}</p>
                       </div>
                       {isActive && (
-                        <span className="absolute right-3 top-3 rounded-full bg-brand px-2 py-0.5 text-[11px] font-bold text-ink">
+                        <span className="absolute right-3 top-3 rounded-full bg-brand px-2 py-0.5 text-[11px] font-bold text-white">
                           Selected
                         </span>
                       )}
@@ -266,7 +298,7 @@ function Services() {
           <ul className="mt-3 grid gap-2 sm:grid-cols-2">
             {tier.included.map((item) => (
               <li key={item} className="flex items-start gap-3 rounded-xl border border-border bg-surface/40 p-3">
-                <span className="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-brand text-ink">
+                <span className="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-brand text-white">
                   <Check className="h-3 w-3" strokeWidth={3} />
                 </span>
                 <span className="text-sm text-ink leading-snug">{item}</span>
@@ -279,16 +311,22 @@ function Services() {
               href="https://wa.me/15062514451?text=Hi%20Prestige Shine%2C%20I%27d%20like%20to%20book%20a%20detailing%20appointment."
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center gap-2 rounded-xl bg-brand px-6 py-3 text-sm font-bold text-ink"
+              className="inline-flex items-center gap-2 rounded-xl bg-brand px-6 py-3 text-sm font-bold text-white"
             >
               Book this service
             </a>
-            <a
-              href="/get-estimate"
-              className="inline-flex items-center gap-2 rounded-xl border border-border bg-white px-6 py-3 text-sm font-semibold text-ink hover:border-ink transition"
-            >
-              Get an estimate
-            </a>
+            <button
+  type="button"
+  onClick={() =>
+    open({
+      serviceKey: active,
+      addonKeys: selectedAddons,
+    })
+  }
+  className="inline-flex items-center gap-2 rounded-xl border border-border bg-white px-6 py-3 text-sm font-semibold text-ink hover:border-ink transition"
+>
+  Get an estimate
+</button>
           </div>
         </article>
       </section>
@@ -298,18 +336,47 @@ function Services() {
         <p className="text-xs font-bold uppercase tracking-wide text-brand">Enhance your detail</p>
         <h2 className="mt-1 text-2xl font-bold text-ink">Add-on services</h2>
         <div className="mt-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {addons.map((a) => (
-            <div key={a.name} className="rounded-2xl bg-white border border-border p-5">
-              <div className="flex items-center justify-between gap-2">
-                <h3 className="font-bold text-ink">{a.name}</h3>
-                <span className="shrink-0 rounded-full bg-brand/15 px-3 py-1 text-xs font-bold text-ink">{a.price}</span>
-              </div>
-              <p className="mt-2 text-sm text-muted-foreground">{a.desc}</p>
-              <div className="mt-3 flex items-center gap-1 text-xs font-semibold text-brand">
-                <Plus className="h-3 w-3" /> Add to any service
-              </div>
-            </div>
-          ))}
+          {addons.map((a) => {
+  const isSelected = selectedAddons.includes(a.key);
+
+  return (
+    <button
+      key={a.key}
+      type="button"
+      onClick={() => toggleAddon(a.key)}
+      className={`rounded-2xl border p-5 text-left transition ${
+        isSelected
+          ? "border-brand bg-brand/5 ring-2 ring-brand/20"
+          : "border-border bg-white hover:border-brand/40"
+      }`}
+    >
+      <div className="flex items-center justify-between gap-2">
+        <h3 className="font-bold text-ink">{a.name}</h3>
+
+        <span className="shrink-0 rounded-full bg-brand/15 px-3 py-1 text-xs font-bold text-ink">
+          {a.price}
+        </span>
+      </div>
+
+      <p className="mt-2 text-sm text-muted-foreground">{a.desc}</p>
+
+      <div className="mt-3 flex items-center gap-1 text-xs font-semibold text-brand">
+        {isSelected ? (
+          <>
+            <Check className="h-3 w-3" />
+            Added
+          </>
+        ) : (
+          <>
+            <Plus className="h-3 w-3" />
+            Add to any service
+          </>
+        )}
+      </div>
+    </button>
+  );
+})}
+
         </div>
       </section>
     </main>

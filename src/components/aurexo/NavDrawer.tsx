@@ -106,7 +106,7 @@ export function NavDrawer({ open, onClose }: Props) {
 
         <a
           href={`tel:${STUDIO_TEL}`}
-          className="flex items-center justify-center gap-2 border-t border-white/10 bg-brand py-4 font-semibold text-ink"
+          className="flex items-center justify-center gap-2 border-t border-white/10 bg-brand py-4 font-semibold text-white"
         >
           <Phone className="h-4 w-4" />
           {STUDIO_PHONE}

@@ -60,7 +60,7 @@ export function ChatWidget() {
         type="button"
         onClick={() => setOpen((v) => !v)}
         aria-label={open ? "Minimize concierge chat" : "Open Prestige Shine concierge chat"}
-        className="fixed bottom-5 right-5 z-[100] grid h-12 w-12 place-items-center rounded-full bg-brand text-ink shadow-lg shadow-brand/40 ring-2 ring-white/40 transition hover:scale-105"
+        className="fixed bottom-5 right-5 z-[100] grid h-12 w-12 place-items-center rounded-full bg-brand text-white shadow-lg shadow-brand/40 ring-2 ring-white/40 transition hover:scale-105"
       >
         {open ? <Minus className="h-5 w-5" /> : <MessageCircle className="h-5 w-5" />}
       </button>
@@ -73,7 +73,7 @@ export function ChatWidget() {
         }`}
       >
         <div className="flex items-center gap-2.5 border-b border-white/10 px-3 py-2.5">
-          <div className="grid h-8 w-8 place-items-center rounded-full bg-brand text-xs font-extrabold text-ink">PS</div>
+          <div className="grid h-8 w-8 place-items-center rounded-full bg-brand text-xs font-extrabold text-white">PS</div>
           <div className="min-w-0 flex-1">
             <p className="truncate text-[13px] font-semibold">Prestige Shine Concierge</p>
             <p className="text-[10px] text-white/55">Miramichi, NB · usually replies instantly</p>

@@ -43,7 +43,7 @@ function GetEstimate() {
           </p>
           <button
             onClick={() => open()}
-            className="mt-8 inline-flex items-center gap-2 rounded-full bg-brand px-7 py-4 text-sm font-extrabold text-ink shadow-xl transition hover:scale-[1.02]"
+            className="mt-8 inline-flex items-center gap-2 rounded-full bg-brand px-7 py-4 text-sm font-extrabold text-white shadow-xl transition hover:scale-[1.02]"
           >
             Start My Assessment <ArrowRight className="h-4 w-4" />
           </button>
@@ -63,7 +63,7 @@ function GetEstimate() {
             { n: 3, t: "Get your quote", d: "Kevin reviews your info and sends pricing." },
           ].map((s) => (
             <div key={s.n} className="rounded-3xl border border-border bg-white p-6">
-              <div className="grid h-10 w-10 place-items-center rounded-full bg-brand text-sm font-extrabold text-ink">
+              <div className="grid h-10 w-10 place-items-center rounded-full bg-brand text-sm font-extrabold text-white">
                 {s.n}
               </div>
               <p className="mt-4 text-base font-bold text-ink">{s.t}</p>

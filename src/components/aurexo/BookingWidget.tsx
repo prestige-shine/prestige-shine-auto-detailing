@@ -1,8 +1,8 @@
 import { ArrowRight, ShieldCheck, Sparkles, Camera, Clock } from "lucide-react";
 import { useLeadDialog } from "@/contexts/LeadDialogContext";
 
-const BRAND = "#84CC16";
-const BRAND_DARK = "#3f6212";
+const BRAND = "#0066ff";
+const BRAND_DARK = "#0052cc";
 
 const BENEFITS = [
   { icon: Sparkles, label: "Personalized estimate", desc: "Priced to your vehicle's real condition." },
@@ -16,7 +16,7 @@ export function BookingWidget() {
   return (
     <section className="mx-auto max-w-5xl px-4 py-16 sm:py-20">
       <div className="text-center">
-        <p className="text-xs font-bold uppercase tracking-wider" style={{ color: "#84CC16" }}>
+        <p className="text-xs font-bold uppercase tracking-wider" style={{ color: "#0066ff" }}>
           Book Your Detail
         </p>
         <h2 className="mt-2 text-3xl font-extrabold text-ink sm:text-4xl">
