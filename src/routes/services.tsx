@@ -218,7 +218,7 @@ const toggleAddon = (key: string) => {
             <p className="text-xs font-bold uppercase tracking-wide text-brand">Our Services</p>
             <h2 className="mt-1 text-2xl font-bold text-ink">Swipe to explore each service</h2>
           </div>
-          <p className="hidden text-xs text-muted-foreground sm:block">Drag, swipe, or use arrows †’</p>
+          <p className="hidden text-xs text-muted-foreground sm:block">Drag, swipe, or use arrows to move</p>
         </div>
 
         <Carousel opts={{ align: "start", loop: true }} className="w-full">
