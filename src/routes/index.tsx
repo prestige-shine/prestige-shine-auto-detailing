@@ -130,7 +130,7 @@ function Home() {
             <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-brand" /> Serving All of Miramichi
           </span>
           <h1 className="mt-5 max-w-4xl text-4xl font-extrabold leading-[1.05] tracking-tight text-white sm:text-6xl lg:text-7xl">
-            Concierge Auto Detailing,<br /><span className="text-brand">Perfected in Miramichi.</span>
+            Concierge Auto Detailing,<br /><span className="text-brand [-webkit-text-stroke:1.5px_#E2ECF5]">Perfected in Miramichi.</span>
           </h1>
           <p className="mt-5 max-w-2xl text-base text-white/75 sm:text-lg">
             Appointment-only, drop-off detailing at our dedicated detailing and coating shop in Miramichi — full detailing, paint enhancement, paint correction and professional ceramic coatings.
