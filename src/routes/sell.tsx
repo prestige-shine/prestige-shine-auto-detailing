@@ -71,10 +71,10 @@ function Sell() {
               </div>
               <h3 className="mt-4 text-xl font-bold text-ink">Assessment booked!</h3>
               <p className="mt-2 text-sm text-muted-foreground">
-                We opened WhatsApp with your request. Kevin will confirm your appointment slot within 2 hours.
+                WhatsApp is open with your request. Kevin will review the details and confirm your appointment.
               </p>
               <p className="mt-4 text-xs text-muted-foreground">
-                <strong>Next step:</strong> Look out for a WhatsApp or call from our studio. Bring your vehicle at the agreed time — assessment takes about 20 minutes.
+                <strong>Next step:</strong> Look out for a WhatsApp message or call from Prestige Shine Auto. Bring your vehicle at the agreed time — Kevin will assess the vehicle and discuss the work with you.
               </p>
             </div>
           ) : (
