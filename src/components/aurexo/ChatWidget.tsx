@@ -2,7 +2,6 @@ import { useEffect, useRef, useState } from "react";
 import { MessageCircle, X, Send, Minus } from "lucide-react";
 import { useServerFn } from "@tanstack/react-start";
 import { askConcierge } from "@/lib/chat.functions";
-import logoAsset from "@/assets/prestige-shine-logo.png";
 
 type Msg = { role: "user" | "assistant"; content: string };
 
@@ -74,9 +73,7 @@ export function ChatWidget() {
         }`}
       >
         <div className="flex items-center gap-2.5 border-b border-white/10 px-3 py-2.5">
-          <div className="grid h-8 w-8 place-items-center rounded-full bg-ink">
-            <img src={logoAsset} alt="Prestige Shine Auto Detailing" className="h-8 w-8 rounded-full object-contain" />
-          </div>
+          <div className="grid h-8 w-8 place-items-center rounded-full bg-brand text-xs font-extrabold text-white">PS</div>
           <div className="min-w-0 flex-1">
             <p className="truncate text-[13px] font-semibold">Prestige Shine Concierge</p>
             <p className="text-[10px] text-white/55">Miramichi, NB · usually replies instantly</p>
@@ -97,7 +94,7 @@ export function ChatWidget() {
               <div
                 className={`max-w-[85%] whitespace-pre-wrap rounded-2xl px-3 py-2 leading-relaxed ${
                   m.role === "user"
-                    ? "bg-brand font-semibold text-white"
+                    ? "bg-brand font-semibold text-ink"
                     : "border border-white/10 bg-white/5 text-white/90"
                 }`}
               >
@@ -148,7 +145,7 @@ export function ChatWidget() {
             type="submit"
             disabled={busy || !input.trim()}
             aria-label="Send message"
-            className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-brand text-white disabled:opacity-40"
+            className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-brand text-ink disabled:opacity-40"
           >
             <Send className="h-4 w-4" />
           </button>
