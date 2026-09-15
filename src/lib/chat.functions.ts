@@ -40,22 +40,31 @@ const Messages = z.object({
 export const askConcierge = createServerFn({ method: "POST" })
   .inputValidator((data: unknown) => Messages.parse(data))
   .handler(async ({ data }) => {
-    const key = process.env["LOVABLE_API_KEY"];
-    if (!key) {
-      return { ok: false as const, error: "The assistant isn't configured yet. Please call (506) 251-4451." };
-    }
+    
+   const key = process.env["GEMINI_API_KEY"];
+if (!key) {
+  return { ok: false as const, error: "The assistant isn't configured yet. Please call (506) 251-4451." };
+}
 
-    const res = await fetch("https://ai.gateway.lovable.dev/v1/responses", {
-      method: "POST",
-      headers: { "Content-Type": "application/json", Authorization: `Bearer ${key}` },
-      body: JSON.stringify({
-        model: "openai/gpt-5.6-sol",
-        input: [
-          { role: "system", content: SYSTEM_PROMPT },
-          ...data.messages.map((m) => ({ role: m.role, content: m.content })),
-        ],
-      }),
-    });
+const res = await fetch(
+  "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent",
+  {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "x-goog-api-key": key,
+    },
+    body: JSON.stringify({
+      systemInstruction: {
+        parts: [{ text: SYSTEM_PROMPT }],
+      },
+      contents: data.messages.map((m) => ({
+        role: m.role === "assistant" ? "model" : "user",
+        parts: [{ text: m.content }],
+      })),
+    }),
+  },
+);
 
     if (!res.ok) {
       const body = await res.text().catch(() => "");
