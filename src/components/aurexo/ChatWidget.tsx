@@ -1,9 +1,26 @@
 import { useEffect, useRef, useState } from "react";
-import { MessageCircle, X, Send, Minus } from "lucide-react";
+import { MessageCircle, X, Send, Minus, Mic } from "lucide-react";
 import { useServerFn } from "@tanstack/react-start";
 import { askConcierge } from "@/lib/chat.functions";
 
 type Msg = { role: "user" | "assistant"; content: string };
+
+type SpeechRecognitionResultEvent = Event & {
+  results: ArrayLike<ArrayLike<{ transcript: string }>>;
+};
+
+type SpeechRecognitionLike = {
+  continuous: boolean;
+  interimResults: boolean;
+  lang: string;
+  onend: (() => void) | null;
+  onerror: (() => void) | null;
+  onresult: ((event: SpeechRecognitionResultEvent) => void) | null;
+  start: () => void;
+  stop: () => void;
+};
+
+type SpeechRecognitionConstructor = new () => SpeechRecognitionLike;
 
 const GREETING =
   "Hi! I'm the Prestige Shine concierge. Ask me about ceramic coatings, paint correction, interior detailing, or how booking works.";
@@ -19,8 +36,60 @@ export function ChatWidget() {
   const [messages, setMessages] = useState<Msg[]>([{ role: "assistant", content: GREETING }]);
   const [input, setInput] = useState("");
   const [busy, setBusy] = useState(false);
+  const [speechAvailable, setSpeechAvailable] = useState(false);
+  const [listening, setListening] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
+  const recognitionRef = useRef<SpeechRecognitionLike | null>(null);
   const ask = useServerFn(askConcierge);
+
+  useEffect(() => {
+    const speechWindow = window as Window & {
+      SpeechRecognition?: SpeechRecognitionConstructor;
+      webkitSpeechRecognition?: SpeechRecognitionConstructor;
+    };
+    const Recognition = speechWindow.SpeechRecognition ?? speechWindow.webkitSpeechRecognition;
+
+    if (!Recognition) return;
+
+    const recognition = new Recognition();
+    recognition.continuous = false;
+    recognition.interimResults = false;
+    recognition.lang = "en-CA";
+    recognition.onresult = (event) => {
+      const transcript = Array.from({ length: event.results.length }, (_, index) =>
+        event.results[index]?.[0]?.transcript ?? "",
+      ).join("");
+      if (transcript.trim()) setInput(transcript.trim());
+    };
+    recognition.onend = () => setListening(false);
+    recognition.onerror = () => setListening(false);
+
+    recognitionRef.current = recognition;
+    setSpeechAvailable(true);
+
+    return () => {
+      recognition.stop();
+      recognitionRef.current = null;
+    };
+  }, []);
+
+  const toggleListening = () => {
+    const recognition = recognitionRef.current;
+    if (!recognition) return;
+
+    if (listening) {
+      recognition.stop();
+      setListening(false);
+      return;
+    }
+
+    try {
+      recognition.start();
+      setListening(true);
+    } catch {
+      setListening(false);
+    }
+  };
 
   useEffect(() => {
     scrollRef.current?.scrollTo({ top: scrollRef.current.scrollHeight, behavior: "smooth" });
@@ -141,6 +210,21 @@ export function ChatWidget() {
             placeholder="Ask about detailing or booking…"
             className="min-w-0 flex-1 rounded-full border border-white/12 bg-white/6 px-3 py-2 text-[13px] text-white outline-none placeholder:text-white/40 focus:border-brand"
           />
+          {speechAvailable && (
+            <button
+              type="button"
+              onClick={toggleListening}
+              aria-label={listening ? "Stop listening" : "Use voice input"}
+              aria-pressed={listening}
+              className={`grid h-9 w-9 shrink-0 place-items-center rounded-full border transition ${
+                listening
+                  ? "border-brand bg-brand text-ink"
+                  : "border-white/15 text-white/70 hover:border-brand hover:text-white"
+              }`}
+            >
+              <Mic className="h-4 w-4" />
+            </button>
+          )}
           <button
             type="submit"
             disabled={busy || !input.trim()}
