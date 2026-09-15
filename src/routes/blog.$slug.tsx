@@ -72,7 +72,7 @@ function ArticlePage() {
 </div>
         <div className="mt-10 rounded-2xl bg-surface p-6 text-center">
           <p className="text-sm font-semibold text-ink">Ready to book?</p>
-          <Link to="/get-estimate" className="mt-3 inline-flex items-center rounded-full bg-brand px-5 py-3 text-sm font-bold text-ink">Get an instant detailing quote</Link>
+          <Link to="/get-estimate" className="mt-3 inline-flex items-center rounded-full bg-brand px-5 py-3 text-sm font-bold text-white">Get an instant detailing quote</Link>
         </div>
       </article>
     </main>

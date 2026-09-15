@@ -84,7 +84,7 @@ function Contact() {
                 {SERVICE_OPTIONS.map((s) => <option key={s} value={s}>{s}</option>)}
               </select>
               <textarea value={form.notes} onChange={(e) => setForm({ ...form, notes: e.target.value })} rows={4} className="c-input sm:col-span-2" placeholder="Any additional notes — current condition, timeline, preferred appointment time…" />
-              <button type="submit" className="sm:col-span-2 inline-flex items-center justify-center gap-2 rounded-xl bg-brand py-3.5 text-sm font-bold text-ink">
+              <button type="submit" className="sm:col-span-2 inline-flex items-center justify-center gap-2 rounded-xl bg-brand py-3.5 text-sm font-bold text-white">
                 <MessageCircle className="h-4 w-4" /> Send via WhatsApp
               </button>
               <style>{`.c-input{width:100%;border:1px solid var(--border);border-radius:0.75rem;padding:0.75rem 1rem;font-size:0.875rem;background:white;outline:none}.c-input:focus{border-color:var(--ink)}`}</style>

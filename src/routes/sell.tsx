@@ -87,7 +87,7 @@ function Sell() {
               <textarea value={form.condition} onChange={set("condition")} rows={3} className="f-input sm:col-span-2" placeholder="Current condition notes — swirls, stains, odours, scratches…" />
               <input type="date" value={form.date} onChange={set("date")} className="f-input" />
               <input required value={form.zip} onChange={set("zip")} className="f-input" placeholder="Your Postal Code" />
-              <button type="submit" disabled={submitting} className="sm:col-span-2 inline-flex items-center justify-center gap-2 rounded-xl bg-brand py-3.5 text-sm font-bold text-ink disabled:opacity-60">
+              <button type="submit" disabled={submitting} className="sm:col-span-2 inline-flex items-center justify-center gap-2 rounded-xl bg-brand py-3.5 text-sm font-bold text-white disabled:opacity-60">
                 <MessageCircle className="h-4 w-4" /> {submitting ? "Booking…" : "Book free assessment via WhatsApp"}
               </button>
               <style>{`.f-input{width:100%;border:1px solid var(--border);border-radius:0.75rem;padding:0.75rem 1rem;font-size:0.875rem;background:white;outline:none}.f-input:focus{border-color:var(--ink)}`}</style>

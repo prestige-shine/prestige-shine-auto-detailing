@@ -23,7 +23,7 @@ function ComingSoon() {
         <h1 className="mt-6 text-3xl font-bold text-ink sm:text-4xl">This service is launching soon</h1>
         <p className="mt-3 text-sm text-muted-foreground">We're detailing the final touches. In the meantime, explore our existing ceramic, correction, and interior packages.</p>
         <div className="mt-8 flex flex-wrap justify-center gap-3">
-          <Link to="/services" className="rounded-full bg-brand px-5 py-3 text-sm font-bold text-ink">See services</Link>
+          <Link to="/services" className="rounded-full bg-brand px-5 py-3 text-sm font-bold text-white">See services</Link>
           <Link to="/get-estimate" className="rounded-full border border-ink px-5 py-3 text-sm font-semibold text-ink">Get a quote</Link>
         </div>
       </section>

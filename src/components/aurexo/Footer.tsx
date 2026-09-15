@@ -327,7 +327,7 @@ function Social({
       target="_blank"
       rel="noreferrer"
       aria-label={label}
-      className="grid h-11 w-11 place-items-center rounded-full border border-white/15 text-white/80 transition hover:border-brand hover:bg-brand hover:text-ink"
+      className="grid h-11 w-11 place-items-center rounded-full border border-white/15 text-white/80 transition hover:border-brand hover:bg-brand hover:text-white"
     >
       {children}
     </a>

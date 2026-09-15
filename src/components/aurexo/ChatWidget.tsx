@@ -94,7 +94,7 @@ export function ChatWidget() {
               <div
                 className={`max-w-[85%] whitespace-pre-wrap rounded-2xl px-3 py-2 leading-relaxed ${
                   m.role === "user"
-                    ? "bg-brand font-semibold text-ink"
+                    ? "bg-brand font-semibold text-white"
                     : "border border-white/10 bg-white/5 text-white/90"
                 }`}
               >
@@ -145,7 +145,7 @@ export function ChatWidget() {
             type="submit"
             disabled={busy || !input.trim()}
             aria-label="Send message"
-            className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-brand text-ink disabled:opacity-40"
+            className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-brand text-white disabled:opacity-40"
           >
             <Send className="h-4 w-4" />
           </button>
