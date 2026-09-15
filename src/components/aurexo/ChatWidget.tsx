@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { MessageCircle, X, Send, Minus } from "lucide-react";
 import { useServerFn } from "@tanstack/react-start";
 import { askConcierge } from "@/lib/chat.functions";
+import logoAsset from "@/assets/prestige-shine-logo.png";
 
 type Msg = { role: "user" | "assistant"; content: string };
 
@@ -73,7 +74,9 @@ export function ChatWidget() {
         }`}
       >
         <div className="flex items-center gap-2.5 border-b border-white/10 px-3 py-2.5">
-          <div className="grid h-8 w-8 place-items-center rounded-full bg-brand text-xs font-extrabold text-white">PS</div>
+          <div className="grid h-8 w-8 place-items-center rounded-full bg-ink">
+            <img src={logoAsset} alt="Prestige Shine Auto Detailing" className="h-8 w-8 rounded-full object-contain" />
+          </div>
           <div className="min-w-0 flex-1">
             <p className="truncate text-[13px] font-semibold">Prestige Shine Concierge</p>
             <p className="text-[10px] text-white/55">Miramichi, NB · usually replies instantly</p>

@@ -73,7 +73,7 @@ function Contact() {
                 <Check className="h-7 w-7" strokeWidth={3} />
               </div>
               <h3 className="mt-3 text-lg font-bold text-ink">Message delivered!</h3>
-              <p className="mt-1 text-sm text-muted-foreground">We opened WhatsApp with your brief. A detailer will follow up shortly.</p>
+              <p className="mt-1 text-sm text-muted-foreground">WhatsApp is open with your brief. Kevin will follow up shortly.</p>
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2">
