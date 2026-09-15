@@ -40,7 +40,7 @@ const Messages = z.object({
 export const askConcierge = createServerFn({ method: "POST" })
   .inputValidator((data: unknown) => Messages.parse(data))
   .handler(async ({ data }) => {
-    
+
    const key = process.env["GEMINI_API_KEY"];
 if (!key) {
   return { ok: false as const, error: "The assistant isn't configured yet. Please call (506) 251-4451." };
@@ -78,19 +78,19 @@ const res = await fetch(
       return { ok: false as const, error: "Sorry, I couldn't answer that just now. Please try again." };
     }
 
-    const json = (await res.json()) as {
-      output_text?: string;
-      output?: Array<{ content?: Array<{ type?: string; text?: string }> }>;
+   const json = (await res.json()) as {
+  candidates?: Array<{
+    content?: {
+      parts?: Array<{ text?: string }>;
     };
+  }>;
+};
 
-    const text =
-      json.output_text ??
-      json.output
-        ?.flatMap((o) => o.content ?? [])
-        .filter((c) => c.type === "output_text" || typeof c.text === "string")
-        .map((c) => c.text ?? "")
-        .join("")
-        .trim();
+const text =
+  json.candidates?.[0]?.content?.parts
+    ?.map((part) => part.text ?? "")
+    .join("")
+    .trim();
 
     if (!text) {
       return { ok: false as const, error: "Sorry, I couldn't answer that just now. Please try again." };
