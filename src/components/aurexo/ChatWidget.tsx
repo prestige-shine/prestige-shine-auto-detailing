@@ -31,6 +31,19 @@ const QUICK = [
   "Tell me about ceramic coating",
 ];
 
+const stripMarkdown = (text: string) =>
+  text
+    .replace(/!\[([^\]]*)\]\([^)]*\)/g, "$1")
+    .replace(/\[([^\]]+)\]\([^)]*\)/g, "$1")
+    .replace(/```[\s\S]*?```/g, "")
+    .replace(/`([^`]+)`/g, "$1")
+    .replace(/^\s{0,3}#{1,6}\s+/gm, "")
+    .replace(/^\s*[-*+]\s+/gm, "")
+    .replace(/^\s*\d+[.)]\s+/gm, "")
+    .replace(/[*_~]/g, "")
+    .replace(/\s+/g, " ")
+    .trim();
+
 export function ChatWidget() {
   const [open, setOpen] = useState(false);
   const [messages, setMessages] = useState<Msg[]>([{ role: "assistant", content: GREETING }]);
@@ -41,6 +54,22 @@ export function ChatWidget() {
   const scrollRef = useRef<HTMLDivElement>(null);
   const recognitionRef = useRef<SpeechRecognitionLike | null>(null);
   const ask = useServerFn(askConcierge);
+
+  const speakAssistantResponse = (text: string) => {
+    if (!("speechSynthesis" in window) || typeof SpeechSynthesisUtterance === "undefined") return;
+
+    const plainText = stripMarkdown(text);
+    if (!plainText) return;
+
+    window.speechSynthesis.cancel();
+    window.speechSynthesis.speak(new SpeechSynthesisUtterance(plainText));
+  };
+
+  useEffect(() => {
+    return () => {
+      if ("speechSynthesis" in window) window.speechSynthesis.cancel();
+    };
+  }, []);
 
   useEffect(() => {
     const speechWindow = window as Window & {
@@ -110,6 +139,7 @@ export function ChatWidget() {
         ...prev,
         { role: "assistant", content: res.ok ? res.reply : res.error },
       ]);
+      if (res.ok) speakAssistantResponse(res.reply);
     } catch {
       setMessages((prev) => [
         ...prev,
