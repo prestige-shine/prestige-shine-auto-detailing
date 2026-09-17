@@ -170,7 +170,7 @@ function Home() {
         <div className="text-center">
           <p className="text-xs font-bold uppercase tracking-wide text-brand">Our Services</p>
           <h2 className="mt-2 text-2xl font-bold text-ink sm:text-3xl">Six Services, One Standard of Finish</h2>
-          <p className="mt-2 text-sm text-muted-foreground">From interior resets to System X ceramic coatings — every vehicle is personally inspected and quality-controlled by Kevin and priced to your vehicle's size and condition.</p>
+          <p className="mt-2 text-sm text-muted-foreground">From interior resets to System X ceramic coatings — every vehicle is personally inspected and quality-controlled by Kevin and priced according to your vehicle's size and condition.</p>
           <p className="mx-auto mt-2 max-w-2xl text-xs text-muted-foreground">Prices shown are starting estimates. Final pricing is based on vehicle size and condition. Excessive pet hair, staining, heavy soiling, or unusually neglected vehicles may cost more.</p>
         </div>
         <div className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
