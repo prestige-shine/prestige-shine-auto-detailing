@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { MessageCircle, X, Send, Minus, Mic } from "lucide-react";
+import { Check, MessageCircle, X, Send, Minus, Mic } from "lucide-react";
 import { useServerFn } from "@tanstack/react-start";
 import logoAsset from "@/assets/prestige-shine-logo.png";
 import { askConcierge } from "@/lib/chat.functions";
@@ -145,18 +145,10 @@ export function ChatWidget() {
       interimTranscriptRef.current = "";
       sessionResultsRef.current.clear();
       setInput(`${inputBeforeDictationRef.current} ${finalizedTranscriptRef.current}`.trim());
-      if (dictationActiveRef.current) {
-        if (restartTimerRef.current) clearTimeout(restartTimerRef.current);
-        restartTimerRef.current = setTimeout(startRecognition, 120);
-      }
     };
-    recognition.onerror = (event) => {
+    recognition.onerror = () => {
       recognitionRunningRef.current = false;
       setListening(false);
-      if (["not-allowed", "service-not-allowed", "audio-capture"].includes(event.error ?? "")) {
-        dictationActiveRef.current = false;
-        setDictationActive(false);
-      }
     };
 
     recognitionRef.current = recognition;
@@ -175,9 +167,10 @@ export function ChatWidget() {
     const recognition = recognitionRef.current;
     if (!recognition) return;
 
+    const wasDictationActive = dictationActiveRef.current;
     dictationActiveRef.current = true;
     setDictationActive(true);
-    if (!dictationActive) {
+    if (!wasDictationActive) {
       inputBeforeDictationRef.current = input;
       finalizedTranscriptRef.current = "";
       sessionFinalizedTranscriptRef.current = "";
@@ -195,6 +188,14 @@ export function ChatWidget() {
       recognitionRunningRef.current = false;
       setListening(false);
     }
+  };
+
+  const finishDictation = () => {
+    dictationActiveRef.current = false;
+    setDictationActive(false);
+    if (restartTimerRef.current) clearTimeout(restartTimerRef.current);
+    if (recognitionRunningRef.current) recognitionRef.current?.stop();
+    setListening(false);
   };
 
   const cancelDictation = () => {
@@ -360,15 +361,17 @@ export function ChatWidget() {
                   onClick={cancelDictation}
                   className="rounded-full border border-white/15 px-2.5 py-1 text-[11px] text-white/75 transition hover:border-white/40 hover:text-white"
                 >
-                  Cancel Dictation
+                  Cancel
                 </button>
                 <button
                   type="button"
-                  onClick={startDictation}
-                  disabled={listening}
+                  onClick={finishDictation}
                   className="rounded-full bg-brand px-2.5 py-1 text-[11px] font-semibold text-white transition hover:bg-brand/90 disabled:cursor-default disabled:opacity-50"
                 >
-                  Dictate
+                  <span className="inline-flex items-center gap-1">
+                    <Check className="h-3 w-3" />
+                    Done
+                  </span>
                 </button>
               </div>
             </div>
