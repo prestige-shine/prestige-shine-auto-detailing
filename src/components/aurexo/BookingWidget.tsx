@@ -14,7 +14,7 @@ const BENEFITS = [
 export function BookingWidget() {
   const { open } = useLeadDialog();
   return (
-    <section className="mx-auto max-w-5xl px-4 py-16 sm:py-20">
+    <section className="mx-auto max-w-5xl px-4 pb-16 pt-12 sm:pb-20 sm:pt-16">
       <div className="text-center">
         <p className="text-xs font-bold uppercase tracking-wider" style={{ color: "#0066ff" }}>
           Book Your Detail

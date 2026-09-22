@@ -203,7 +203,7 @@ function Home() {
       {/* Before / After Gallery */}
       <BookingWidget />
 
-      <section className="bg-surface py-14">
+      <section className="bg-surface pb-14 pt-10">
         <div className="mx-auto max-w-6xl px-4">
           <div className="text-center">
             <p className="text-xs font-bold uppercase tracking-wide text-brand">Recent Transformations</p>
@@ -235,7 +235,7 @@ function Home() {
       </section>
 
       {/* Recent Completed Vehicles */}
-      <section className="mx-auto max-w-6xl px-4 py-14">
+      <section className="mx-auto max-w-6xl px-4 pb-14 pt-10">
         <div className="flex items-baseline justify-between">
           <div>
             <p className="text-xs font-bold uppercase tracking-wide text-brand">Featured</p>
