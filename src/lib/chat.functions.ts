@@ -42,21 +42,17 @@ const Messages = z.object({
 export const askConcierge = createServerFn({ method: "POST" })
   .inputValidator((data: unknown) => Messages.parse(data))
   .handler(async ({ data }) => {
+    const key = process.env["GEMINI_API_KEY"];
 
-   const key = process.env["GEMINI_API_KEY"];
-if (!key) {
-  return { ok: false as const, error: "The assistant isn't configured yet. Please call (506) 251-4451." };
-}
+    if (!key) {
+      return {
+        ok: false as const,
+        error:
+          "The assistant isn't configured yet. Please call (506) 251-4451.",
+      };
+    }
 
-const res = await fetch(
-  "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash-lite:generateContent",
-  {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "x-goog-api-key": key,
-    },
-    body: JSON.stringify({
+    const requestBody = {
       systemInstruction: {
         parts: [{ text: SYSTEM_PROMPT }],
       },
@@ -64,41 +60,84 @@ const res = await fetch(
         role: m.role === "assistant" ? "model" : "user",
         parts: [{ text: m.content }],
       })),
-    }),
-  },
-);
+    };
+
+    let res: Response | null = null;
+
+    for (let attempt = 0; attempt < 3; attempt++) {
+      res = await fetch(
+        "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash-lite:generateContent",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "x-goog-api-key": key,
+          },
+          body: JSON.stringify(requestBody),
+        },
+      );
+
+      if (res.status !== 503) break;
+
+      if (attempt < 2) {
+        await new Promise((resolve) =>
+          setTimeout(resolve, 500 * (attempt + 1)),
+        );
+      }
+    }
+
+    if (!res) {
+      return {
+        ok: false as const,
+        error: "Sorry, I couldn't answer that just now. Please try again.",
+      };
+    }
 
     if (!res.ok) {
       const body = await res.text().catch(() => "");
+
       if (res.status === 429) {
-        return { ok: false as const, error: "Lots of questions coming in right now — please try again in a moment." };
+        return {
+          ok: false as const,
+          error:
+            "Lots of questions coming in right now — please try again in a moment.",
+        };
       }
+
       if (res.status === 402 || res.status === 403) {
-        return { ok: false as const, error: "The assistant is temporarily unavailable. Please reach Kevin at (506) 251-4451." };
+        return {
+          ok: false as const,
+          error:
+            "The assistant is temporarily unavailable. Please reach Kevin at (506) 251-4451.",
+        };
       }
+
       console.error("AI gateway error", res.status, body);
+
       return {
-  ok: false as const,
-  error: `Gemini error ${res.status}: ${body}`,
-};
+        ok: false as const,
+        error: "Sorry, I couldn't answer that just now. Please try again.",
+      };
     }
 
-   const json = (await res.json()) as {
-  candidates?: Array<{
-    content?: {
-      parts?: Array<{ text?: string }>;
+    const json = (await res.json()) as {
+      candidates?: Array<{
+        content?: {
+          parts?: Array<{ text?: string }>;
+        };
+      }>;
     };
-  }>;
-};
 
-const text =
-  json.candidates?.[0]?.content?.parts
-    ?.map((part) => part.text ?? "")
-    .join("")
-    .trim();
+    const text = json.candidates?.[0]?.content?.parts
+      ?.map((part) => part.text ?? "")
+      .join("")
+      .trim();
 
     if (!text) {
-      return { ok: false as const, error: "Sorry, I couldn't answer that just now. Please try again." };
+      return {
+        ok: false as const,
+        error: "Sorry, I couldn't answer that just now. Please try again.",
+      };
     }
 
     return { ok: true as const, reply: text };
