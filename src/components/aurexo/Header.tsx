@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
-import { Logo } from "./Logo";
-import { Sparkles } from "lucide-react";
+import logoAsset from "@/assets/prestige-shine-lgo.png";
+import { CalendarPlus } from "lucide-react";
 import { useLeadDialog } from "@/contexts/LeadDialogContext";
 
 type Props = { onMenuClick: () => void };
@@ -12,7 +12,12 @@ export function Header({ onMenuClick }: Props) {
     <header className="sticky top-0 z-40 w-full border-b border-border bg-background/95 backdrop-blur">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4">
         <Link to="/" aria-label="Prestige Shine Auto Detailing home">
-          <Logo />
+          <img
+  src={logoAsset}
+  alt="Prestige Shine Auto Detailing, Miramichi, NB"
+  className="h-14 w-14 sm:h-16 sm:w-16 lg:h-[4.5rem] lg:w-[4.5rem] object-contain scale-110"
+  loading="eager"
+/>
         </Link>
 
         {/* Desktop navigation */}
@@ -80,7 +85,7 @@ export function Header({ onMenuClick }: Props) {
             onClick={() => open()}
             className="inline-flex items-center gap-2 rounded-full bg-brand px-4 py-2 text-sm font-bold text-white shadow-sm transition hover:opacity-90 sm:px-5"
           >
-            <Sparkles className="h-4 w-4" />
+            <CalendarPlus className="h-4 w-4" />
             <span>Book Now</span>
           </button>
 

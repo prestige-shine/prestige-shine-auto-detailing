@@ -1,6 +1,19 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { Reveal } from "@/components/aurexo/Reveal";
 import { useMemo } from "react";
-import { ShieldCheck, Sparkles, Award, ArrowRight, Star, MessageCircle, DollarSign, Calendar, MapPin } from "lucide-react";
+import {
+  ShieldCheck,
+  Paintbrush,
+  CalendarClock,
+  Images,
+  Award,
+  ArrowRight,
+  Star,
+  MessageCircle,
+  DollarSign,
+  Calendar,
+  MapPin,
+} from "lucide-react";
 import { vehicles } from "@/lib/aurexo-data";
 import { VehicleCard } from "@/components/aurexo/VehicleCard";
 import { PartnersMarquee } from "@/components/aurexo/PartnersMarquee";
@@ -29,12 +42,48 @@ import camaro from "@/assets/camaro.jpg";
 const HERO_IMG = heroCollage;
 
 const BEFORE_AFTER = [
-  { id: "bmw-x5-revival", label: "Full Vehicle Revival — BMW X5", before: baBefore2, after: baAfter2, tier: "Full Detail & Paint Enhancement" },
-  { id: "f150-interior-reset", label: "Work Truck Interior Reset — Ford F-150", before: baBefore1, after: baAfter1, tier: "Interior Restoration" },
-  { id: "sienna-transformation", label: "Family Van Transformation — Toyota Sienna", before: baBefore3, after: baAfter3, tier: "Full Detail" },
-  { id: "corvette-paint-revival", label: "Corvette Paint Revival — Chevrolet Corvette", before: baBefore4, after: baAfter4, tier: "Paint Correction" },
-  { id: "trans-am-revival", label: "Classic Muscle Car Revival — Pontiac Trans Am", before: baBefore5, after: baAfter5, tier: "Complete Restoration Detail" },
-  { id: "camaro-transformation", label: "Classic Camaro Paint Correction — Before & After", before: camaroBefore, after: camaroAfter, tier: "Paint Correction" },
+  {
+    id: "bmw-x5-revival",
+    label: "Full Vehicle Revival — BMW X5",
+    before: baBefore2,
+    after: baAfter2,
+    tier: "Full Detail & Paint Enhancement",
+  },
+  {
+    id: "f150-interior-reset",
+    label: "Work Truck Interior Reset — Ford F-150",
+    before: baBefore1,
+    after: baAfter1,
+    tier: "Interior Restoration",
+  },
+  {
+    id: "sienna-transformation",
+    label: "Family Van Transformation — Toyota Sienna",
+    before: baBefore3,
+    after: baAfter3,
+    tier: "Full Detail",
+  },
+  {
+    id: "corvette-paint-revival",
+    label: "Corvette Paint Revival — Chevrolet Corvette",
+    before: baBefore4,
+    after: baAfter4,
+    tier: "Paint Correction",
+  },
+  {
+    id: "trans-am-revival",
+    label: "Classic Muscle Car Revival — Pontiac Trans Am",
+    before: baBefore5,
+    after: baAfter5,
+    tier: "Complete Restoration Detail",
+  },
+  {
+    id: "camaro-transformation",
+    label: "Classic Camaro Paint Correction — Before & After",
+    before: camaroBefore,
+    after: camaroAfter,
+    tier: "Paint Correction",
+  },
 ];
 
 const TIERS = [
@@ -77,39 +126,117 @@ const TIERS = [
 ];
 
 const TOOLS = [
-  { label: "Detailing Estimate", sub: "Quick estimate, no obligation", to: "/get-estimate", icon: DollarSign },
-  { label: "Our Recent Work", sub: "Before & after transformations", to: "/buy", icon: Sparkles },
-  { label: "Owner Reviews", sub: "100+ 5-star Google reviews", to: "/reviews", icon: Star },
-  { label: "Our Services", sub: "Detailing, correction & coatings", to: "/services", icon: Award },
+  {
+    label: "Detailing Estimate",
+    sub: "Quick estimate, no obligation",
+    to: "/get-estimate",
+    icon: DollarSign,
+  },
+  {
+    label: "Our Recent Work",
+    sub: "Before & after transformations",
+    to: "/buy",
+    icon: Images,
+  },
+  {
+    label: "Owner Reviews",
+    sub: "100+ 5-star Google reviews",
+    to: "/reviews",
+    icon: Star,
+  },
+  {
+    label: "Our Services",
+    sub: "Detailing, correction & coatings",
+    to: "/services",
+    icon: Award,
+  },
 ];
 
-const waHref = (msg: string) => `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`;
+const waHref = (msg: string) =>
+  `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`;
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Prestige Shine Auto Detailing — Concierge Auto Detailing in Miramichi" },
-      { name: "description", content: "Premium auto detailing in Miramichi. Appointment-only full detailing, paint enhancement, paint correction and professional ceramic coatings in Miramichi, NB." },
-      { property: "og:title", content: "Prestige Shine Auto Detailing — Concierge Auto Detailing in Miramichi" },
-      { property: "og:description", content: "Full detailing, paint enhancement, paint correction and ceramic coatings. Appointment only in Miramichi, NB." },
+      {
+        title:
+          "Prestige Shine Auto Detailing — Concierge Auto Detailing in Miramichi",
+      },
+      {
+        name: "description",
+        content:
+          "Premium auto detailing in Miramichi. Appointment-only full detailing, paint enhancement, paint correction and professional ceramic coatings in Miramichi, NB.",
+      },
+      {
+        property: "og:title",
+        content:
+          "Prestige Shine Auto Detailing — Concierge Auto Detailing in Miramichi",
+      },
+      {
+        property: "og:description",
+        content:
+          "Full detailing, paint enhancement, paint correction and ceramic coatings. Appointment only in Miramichi, NB.",
+      },
       { property: "og:type", content: "website" },
       { property: "og:image", content: HERO_IMG },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "Prestige Shine Auto Detailing — Miramichi" },
-      { name: "twitter:description", content: "Concierge auto detailing perfected in Miramichi." },
-      { name: "application/ld+json", content: JSON.stringify({ "@context": "https://schema.org", "@type": ["LocalBusiness", "AutoDetailing"], "name": "Prestige Shine Auto Detailing", "description": "Premium auto detailing, ceramic coating, and paint correction in Miramichi, NB.", "telephone": "+15062514451", "email": "prestige101shine@gmail.com", "url": "https://prestige-shine-auto-detailing.lovable.app", "address": { "@type": "PostalAddress", "streetAddress": "229 Jacqueline Dr", "addressLocality": "Miramichi", "addressRegion": "NB", "postalCode": "E1N 3Z2", "addressCountry": "CA" }, "areaServed": "Miramichi, NB and surrounding areas", "sameAs": ["https://www.facebook.com/share/19LTaGPm2C/"], "priceRange": "$$$", "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "100" } }) },
+      {
+        name: "twitter:title",
+        content: "Prestige Shine Auto Detailing — Miramichi",
+      },
+      {
+        name: "twitter:description",
+        content: "Concierge auto detailing perfected in Miramichi.",
+      },
+      {
+        name: "application/ld+json",
+        content: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": ["LocalBusiness", "AutoDetailing"],
+          name: "Prestige Shine Auto Detailing",
+          description:
+            "Premium auto detailing, ceramic coating, and paint correction in Miramichi, NB.",
+          telephone: "+15062514451",
+          email: "prestige101shine@gmail.com",
+          url: "https://prestige-shine-auto-detailing.lovable.app",
+          address: {
+            "@type": "PostalAddress",
+            streetAddress: "229 Jacqueline Dr",
+            addressLocality: "Miramichi",
+            addressRegion: "NB",
+            postalCode: "E1N 3Z2",
+            addressCountry: "CA",
+          },
+          areaServed: "Miramichi, NB and surrounding areas",
+          sameAs: ["https://www.facebook.com/share/19LTaGPm2C/"],
+          priceRange: "$$$",
+          aggregateRating: {
+            "@type": "AggregateRating",
+            ratingValue: "4.9",
+            reviewCount: "100",
+          },
+        }),
+      },
     ],
-    links: [
-      { rel: "preload", as: "image", href: HERO_IMG },
-    ],
+    links: [{ rel: "preload", as: "image", href: HERO_IMG }],
   }),
   component: Home,
 });
 
 function Home() {
-  const featured = useMemo(() => [...vehicles.filter((v) => v.featured), ...vehicles.filter((v) => !v.featured)].slice(0, 4), []);
+  const featured = useMemo(
+    () =>
+      [
+        ...vehicles.filter((v) => v.featured),
+        ...vehicles.filter((v) => !v.featured),
+      ].slice(0, 4),
+    [],
+  );
+
   const latestArticles = useMemo(() => articles.slice(0, 3), []);
-  const ctaMsg = "Hi Prestige Shine Auto Detailing — I'd like to book a free vehicle assessment in Miramichi. Please send me available slots.";
+
+  const ctaMsg =
+    "Hi Prestige Shine Auto Detailing — I'd like to book a free vehicle assessment in Miramichi. Please send me available slots.";
 
   return (
     <main className="overflow-x-hidden">
@@ -127,19 +254,37 @@ function Home() {
         <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-ink/70" />
         <div className="relative mx-auto flex min-h-[88vh] max-w-6xl flex-col items-center justify-center px-4 py-20 text-center">
           <span className="inline-flex items-center gap-2 rounded-full bg-brand/15 px-3 py-1 text-xs font-semibold text-brand ring-1 ring-brand/30">
-            <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-brand" /> Serving All of Miramichi
+            <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-brand" />{" "}
+            Serving All of Miramichi
           </span>
+
           <h1 className="mt-5 max-w-4xl text-4xl font-extrabold leading-[1.05] tracking-tight text-white sm:text-6xl lg:text-7xl">
-            Concierge Auto Detailing,<br /><span className="text-brand [-webkit-text-stroke:1.5px_#E2ECF5]">Perfected in Miramichi.</span>
+            Prestige Shine Auto Detailing,
+            <br />
+            <span className="text-brand [-webkit-text-stroke:2px_#E2ECF5] sm:[-webkit-text-stroke:1.5px_#E2ECF5]">
+  Perfected in Miramichi.
+</span>
           </h1>
+
           <p className="mt-5 max-w-2xl text-base text-white/75 sm:text-lg">
-            Appointment-only, drop-off detailing at our dedicated detailing and coating shop in Miramichi — full detailing, paint enhancement, paint correction and professional ceramic coatings.
+            Appointment-only, drop-off detailing at our dedicated detailing
+            and coating shop in Miramichi. Kevin is a System X certified
+            installer, providing professional ceramic coatings alongside full
+            detailing, paint enhancement, and paint correction.
           </p>
+
           <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
-            <Link to="/get-estimate" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-brand px-6 py-3 text-sm font-semibold text-white transition hover:bg-brand/90">
+            <Link
+              to="/get-estimate"
+              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-brand px-6 py-3 text-sm font-semibold text-white transition hover:bg-brand/90"
+            >
               Get Instant Quote <ArrowRight className="h-4 w-4" />
             </Link>
-            <Link to="/sell" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl border border-white/25 bg-white/10 px-6 py-3 text-sm font-semibold text-white backdrop-blur transition hover:bg-white/20">
+
+            <Link
+              to="/sell"
+              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl border border-white/25 bg-white/10 px-6 py-3 text-sm font-semibold text-white backdrop-blur transition hover:bg-white/20"
+            >
               Free Vehicle Assessment
             </Link>
           </div>
@@ -151,13 +296,32 @@ function Home() {
         <div className="mx-auto max-w-6xl px-4 py-10">
           <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
             {[
-              { icon: ShieldCheck, num: "System X Certified Installer", label: "Professional Ceramic Coatings" },
-              { icon: Sparkles, num: "Paint Correction Specialist", label: "Restore Gloss & Clarity" },
-              { icon: MapPin, num: "Serving Miramichi, NB", label: "Locally Owned & Operated" },
+              {
+                icon: ShieldCheck,
+                num: "System X Certified Installer",
+                label: "Professional Ceramic Coatings",
+              },
+              {
+                icon: Paintbrush,
+                num: "Paint Correction Specialist",
+                label: "Restore Gloss & Clarity",
+              },
+              {
+                icon: MapPin,
+                num: "Serving Miramichi, NB",
+                label: "Locally Owned & Operated",
+              },
             ].map(({ icon: Icon, num, label }) => (
-              <div key={label} className="flex flex-col items-center justify-center rounded-2xl border border-border bg-surface p-6 text-center">
-                <div className="grid h-12 w-12 place-items-center rounded-full bg-brand/15"><Icon className="h-6 w-6 text-ink" /></div>
-                <p className="mt-3 text-2xl font-extrabold text-ink sm:text-3xl">{num}</p>
+              <div
+                key={label}
+                className="flex flex-col items-center justify-center rounded-2xl border border-border bg-surface p-6 text-center"
+              >
+                <div className="grid h-12 w-12 place-items-center rounded-full bg-brand/15">
+                  <Icon className="h-6 w-6 text-ink" />
+                </div>
+                <p className="mt-3 text-2xl font-extrabold text-ink sm:text-3xl">
+                  {num}
+                </p>
                 <p className="mt-1 text-sm text-muted-foreground">{label}</p>
               </div>
             ))}
@@ -168,34 +332,59 @@ function Home() {
       {/* Service Tiers — image-forward */}
       <section className="mx-auto max-w-6xl px-4 py-14">
         <div className="text-center">
-          <p className="text-xs font-bold uppercase tracking-wide text-brand">Our Services</p>
-          <h2 className="mt-2 text-2xl font-bold text-ink sm:text-3xl">Six Services, One Standard of Finish</h2>
-          <p className="mt-2 text-sm text-muted-foreground">From interior resets to System X ceramic coatings — every vehicle is personally inspected and quality-controlled by Kevin and priced according to your vehicle's size and condition.</p>
-          <p className="mx-auto mt-2 max-w-2xl text-xs text-muted-foreground">Prices shown are starting estimates. Final pricing is based on vehicle size and condition. Excessive pet hair, staining, heavy soiling, or unusually neglected vehicles may cost more.</p>
+          <p className="text-xs font-bold uppercase tracking-wide text-brand">
+            Our Services
+          </p>
+          <h2 className="mt-2 text-2xl font-bold text-ink sm:text-3xl">
+            Six Services, One Standard of Finish
+          </h2>
+          <p className="mt-2 text-sm text-muted-foreground">
+            From interior resets to System X ceramic coatings — every vehicle
+            is personally inspected and quality-controlled by Kevin and priced
+            according to your vehicle's size and condition.
+          </p>
+          <p className="mx-auto mt-2 max-w-2xl text-xs text-muted-foreground">
+            Prices shown are starting estimates. Final pricing is based on
+            vehicle size and condition. Excessive pet hair, staining, heavy
+            soiling, or unusually neglected vehicles may cost more.
+          </p>
         </div>
+
         <div className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {TIERS.map((t) => (
-            <article key={t.name} className="group flex flex-col overflow-hidden rounded-3xl border border-border bg-white transition hover:-translate-y-1 hover:border-ink/40 hover:shadow-xl">
-              <div className="relative aspect-[4/3] overflow-hidden">
-                <img
-                  src={t.image}
-                  alt={t.name}
-                  loading="lazy"
-                  className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-ink/70 via-transparent to-transparent" />
-                <span className="absolute left-3 top-3 rounded-full bg-white/95 px-3 py-1 text-[11px] font-bold text-ink shadow-sm">
-                  {t.price}
-                </span>
-              </div>
-              <div className="flex flex-1 flex-col p-5">
-                <h3 className="font-bold text-ink">{t.name}</h3>
-                <p className="mt-2 flex-1 text-sm text-muted-foreground">{t.desc}</p>
-                <Link to="/services" className="mt-4 inline-flex items-center gap-1 self-start rounded-full bg-brand px-3 py-1.5 text-xs font-bold text-brand-foreground transition hover:bg-brand/90">
-                  Learn more <ArrowRight className="h-3 w-3" />
-                </Link>
-              </div>
-            </article>
+            <Reveal key={t.name}>
+              <article className="group flex h-full flex-col overflow-hidden rounded-3xl border border-border bg-white transition hover:-translate-y-1 hover:border-ink/40 hover:shadow-xl">
+                <div className="relative aspect-[4/3] overflow-hidden">
+                  <img
+                    src={t.image}
+                    alt={t.name}
+                    loading="lazy"
+                    className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                  />
+
+                  <div className="absolute inset-0 bg-gradient-to-t from-ink/70 via-transparent to-transparent" />
+
+                  <span className="absolute left-3 top-3 rounded-full bg-white/95 px-3 py-1 text-[11px] font-bold text-ink shadow-sm">
+                    {t.price}
+                  </span>
+                </div>
+
+                <div className="flex flex-1 flex-col p-5">
+                  <h3 className="font-bold text-ink">{t.name}</h3>
+
+                  <p className="mt-2 flex-1 text-sm text-muted-foreground">
+                    {t.desc}
+                  </p>
+
+                  <Link
+                    to="/services"
+                    className="mt-4 inline-flex items-center gap-1 self-start rounded-full bg-brand px-3 py-1.5 text-xs font-bold text-brand-foreground transition hover:bg-brand/90"
+                  >
+                    Learn more <ArrowRight className="h-3 w-3" />
+                  </Link>
+                </div>
+              </article>
+            </Reveal>
           ))}
         </div>
       </section>
@@ -206,29 +395,69 @@ function Home() {
       <section className="bg-surface pb-14 pt-10">
         <div className="mx-auto max-w-6xl px-4">
           <div className="text-center">
-            <p className="text-xs font-bold uppercase tracking-wide text-brand">Recent Transformations</p>
-            <h2 className="mt-2 text-2xl font-bold text-ink sm:text-3xl">Recent Work</h2>
-            <p className="mt-2 text-sm text-muted-foreground">Real vehicle transformations completed by Prestige Shine Auto Detailing in Miramichi, NB. Every project showcases the craftsmanship, attention to detail, and premium finish clients expect from Prestige Shine.</p>
+            <p className="text-xs font-bold uppercase tracking-wide text-brand">
+              Recent Transformations
+            </p>
+
+            <h2 className="mt-2 text-2xl font-bold text-ink sm:text-3xl">
+              Recent Work
+            </h2>
+
+            <p className="mt-2 text-sm text-muted-foreground">
+              Real vehicle transformations completed by Prestige Shine Auto
+              Detailing in Miramichi, NB. Every project showcases the
+              craftsmanship, attention to detail, and premium finish clients
+              expect from Prestige Shine.
+            </p>
           </div>
+
           <div className="mt-8 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {BEFORE_AFTER.map((item) => (
-              <div key={item.id} className="overflow-hidden rounded-2xl border border-border bg-white">
-                <div className="flex">
-                  <div className="relative flex-1">
-                    <img src={item.before} alt={`Before — ${item.label}`} className="h-40 w-full object-cover" loading="lazy" />
-                    <span className="absolute left-2 top-2 rounded-full bg-ink/80 px-2 py-0.5 text-[11px] font-bold text-white">Before</span>
+              <Reveal key={item.id}>
+                <div className="group overflow-hidden rounded-2xl border border-border bg-white transition duration-300 hover:-translate-y-1 hover:border-ink/40 hover:shadow-xl">
+                  <div className="flex">
+                    <div className="relative flex-1 overflow-hidden">
+                      <img
+                        src={item.before}
+                        alt={`Before — ${item.label}`}
+                        className="h-40 w-full object-cover transition duration-500 group-hover:scale-105"
+                        loading="lazy"
+                      />
+
+                      <span className="absolute left-2 top-2 rounded-full bg-ink/80 px-2 py-0.5 text-[11px] font-bold text-white">
+                        Before
+                      </span>
+                    </div>
+
+                    <div className="w-px bg-brand/40" />
+
+                    <div className="relative flex-1 overflow-hidden">
+                      <img
+                        src={item.after}
+                        alt={`After — ${item.label}`}
+                        className="h-40 w-full object-cover transition duration-500 group-hover:scale-105"
+                        loading="lazy"
+                      />
+
+                      <span className="absolute right-2 top-2 rounded-full bg-brand px-2 py-0.5 text-[11px] font-bold text-white">
+                        After
+                      </span>
+                    </div>
                   </div>
-                  <div className="w-px bg-brand/40" />
-                  <div className="relative flex-1">
-                    <img src={item.after} alt={`After — ${item.label}`} className="h-40 w-full object-cover" loading="lazy" />
-                    <span className="absolute right-2 top-2 rounded-full bg-brand px-2 py-0.5 text-[11px] font-bold text-white">After</span>
+
+                  <div className="p-4">
+                    <p className="text-sm font-semibold text-ink">
+                      {item.label}
+                    </p>
+
+                    {item.tier ? (
+                      <span className="mt-1 inline-block rounded-full bg-brand/15 px-2 py-0.5 text-[11px] font-medium text-ink">
+                        {item.tier}
+                      </span>
+                    ) : null}
                   </div>
                 </div>
-                <div className="p-4">
-                  <p className="text-sm font-semibold text-ink">{item.label}</p>
-                  {item.tier ? <span className="mt-1 inline-block rounded-full bg-brand/15 px-2 py-0.5 text-[11px] font-medium text-ink">{item.tier}</span> : null}
-                </div>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -238,13 +467,28 @@ function Home() {
       <section className="mx-auto max-w-6xl px-4 pb-14 pt-10">
         <div className="flex items-baseline justify-between">
           <div>
-            <p className="text-xs font-bold uppercase tracking-wide text-brand">Featured</p>
-            <h2 className="mt-1 text-2xl font-bold text-ink">Recent Completed Vehicles</h2>
+            <p className="text-xs font-bold uppercase tracking-wide text-brand">
+              Featured
+            </p>
+            <h2 className="mt-1 text-2xl font-bold text-ink">
+              Recent Completed Vehicles
+            </h2>
           </div>
-          <Link to="/buy" className="inline-flex items-center gap-1 text-sm font-medium text-ink">All work <ArrowRight className="h-4 w-4" /></Link>
+
+          <Link
+            to="/buy"
+            className="inline-flex items-center gap-1 text-sm font-medium text-ink"
+          >
+            All work <ArrowRight className="h-4 w-4" />
+          </Link>
         </div>
+
         <div className="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {featured.map((v) => <VehicleCard key={v.id} v={v} verifiedMetadataOnly />)}
+          {featured.map((v) => (
+            <Reveal key={v.id}>
+              <VehicleCard v={v} verifiedMetadataOnly />
+            </Reveal>
+          ))}
         </div>
       </section>
 
@@ -252,16 +496,28 @@ function Home() {
       <section className="border-y border-border bg-surface py-14">
         <div className="mx-auto max-w-6xl px-4">
           <div className="text-center">
-            <p className="text-xs font-bold uppercase tracking-wide text-brand">Tools</p>
-            <h2 className="mt-2 text-2xl font-bold text-ink">Everything You Need to Decide</h2>
+            <p className="text-xs font-bold uppercase tracking-wide text-brand">
+              Tools
+            </p>
+            <h2 className="mt-2 text-2xl font-bold text-ink">
+              Everything You Need to Decide
+            </h2>
           </div>
+
           <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {TOOLS.map(({ label, sub, to, icon: Icon }) => (
-              <Link key={label} to={to} className="flex flex-col items-center rounded-2xl border border-border bg-white p-6 text-center transition hover:border-ink/40 hover:shadow-md">
-                <div className="grid h-12 w-12 place-items-center rounded-full bg-brand/15"><Icon className="h-6 w-6 text-ink" /></div>
-                <p className="mt-3 font-bold text-ink">{label}</p>
-                <p className="mt-1 text-xs text-muted-foreground">{sub}</p>
-              </Link>
+              <Reveal key={label}>
+                <Link
+                  to={to}
+                  className="group flex flex-col items-center rounded-2xl border border-border bg-white p-6 text-center transition duration-300 hover:-translate-y-1 hover:border-ink/40 hover:shadow-xl"
+                >
+                  <div className="grid h-12 w-12 place-items-center rounded-full bg-brand/15 transition duration-300 group-hover:scale-105">
+                    <Icon className="h-6 w-6 text-ink" />
+                  </div>
+                  <p className="mt-3 font-bold text-ink">{label}</p>
+                  <p className="mt-1 text-xs text-muted-foreground">{sub}</p>
+                </Link>
+              </Reveal>
             ))}
           </div>
         </div>
@@ -273,13 +529,22 @@ function Home() {
       <section className="mx-auto max-w-6xl px-4 py-14">
         <div className="flex items-end justify-between gap-4">
           <div>
-            <p className="text-xs font-bold uppercase tracking-wide text-brand">From the Journal</p>
-            <h2 className="mt-1 text-2xl font-bold text-ink sm:text-3xl">Detailing Guides & Miramichi Insights</h2>
+            <p className="text-xs font-bold uppercase tracking-wide text-brand">
+              From the Journal
+            </p>
+            <h2 className="mt-1 text-2xl font-bold text-ink sm:text-3xl">
+              Detailing Guides & Miramichi Insights
+            </h2>
           </div>
-          <Link to="/news" className="hidden sm:inline-flex items-center gap-1 text-sm font-medium text-ink">
+
+          <Link
+            to="/news"
+            className="hidden items-center gap-1 text-sm font-medium text-ink sm:inline-flex"
+          >
             All articles <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
+
         <div className="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {latestArticles.map((a) => (
             <Link
@@ -295,23 +560,39 @@ function Home() {
                   loading="lazy"
                   className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
                 />
+
                 <span className="absolute left-3 top-3 rounded-full bg-white/95 px-3 py-1 text-[11px] font-bold text-ink">
                   {a.category}
                 </span>
               </div>
+
               <div className="p-5">
-                <h3 className="font-bold text-ink line-clamp-2 group-hover:text-brand">{a.title}</h3>
-                <p className="mt-2 text-sm text-muted-foreground line-clamp-2">{a.excerpt}</p>
+                <h3 className="line-clamp-2 font-bold text-ink group-hover:text-brand">
+                  {a.title}
+                </h3>
+
+                <p className="mt-2 line-clamp-2 text-sm text-muted-foreground">
+                  {a.excerpt}
+                </p>
+
                 <div className="mt-3 flex items-center gap-3 text-[11px] text-muted-foreground">
-                  <span className="inline-flex items-center gap-1"><Calendar className="h-3 w-3" /> {a.date}</span>
-                  {a.readMinutes ? <span>· {a.readMinutes} min read</span> : null}
+                  <span className="inline-flex items-center gap-1">
+                    <Calendar className="h-3 w-3" /> {a.date}
+                  </span>
+                  {a.readMinutes ? (
+                    <span>· {a.readMinutes} min read</span>
+                  ) : null}
                 </div>
               </div>
             </Link>
           ))}
         </div>
+
         <div className="mt-6 sm:hidden">
-          <Link to="/news" className="inline-flex items-center gap-1 text-sm font-medium text-ink">
+          <Link
+            to="/news"
+            className="inline-flex items-center gap-1 text-sm font-medium text-ink"
+          >
             All articles <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
@@ -323,22 +604,43 @@ function Home() {
       <section className="bg-ink py-16">
         <div className="mx-auto max-w-6xl px-4 text-center">
           <span className="inline-flex items-center gap-2 rounded-full bg-brand/15 px-3 py-1 text-xs font-semibold text-brand ring-1 ring-brand/30">
-            <Sparkles className="h-3.5 w-3.5" /> Limited Slots Available
+            <CalendarClock className="h-3.5 w-3.5" /> Limited Slots Available
           </span>
-          <h2 className="mt-4 text-3xl font-extrabold text-white sm:text-4xl">Ready for a Flawless Finish?</h2>
-          <p className="mt-3 text-sm text-white/65">Real vehicle transformations completed by Prestige Shine Auto Detailing in Miramichi, NB. Every project showcases the craftsmanship, attention to detail, and premium finish clients expect from Prestige Shine.</p>
+
+          <h2 className="mt-4 text-3xl font-extrabold text-white sm:text-4xl">
+            Ready for a Flawless Finish?
+          </h2>
+
+          <p className="mt-3 text-sm text-white/65">
+            Real vehicle transformations completed by Prestige Shine Auto
+            Detailing in Miramichi, NB. Every project showcases the
+            craftsmanship, attention to detail, and premium finish clients
+            expect from Prestige Shine.
+          </p>
+
           <div className="mt-6 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
-            <a href={waHref(ctaMsg)} target="_blank" rel="noreferrer" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-brand px-6 py-3 text-sm font-semibold text-white transition hover:bg-brand/90">
+            <a
+              href={waHref(ctaMsg)}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-brand px-6 py-3 text-sm font-semibold text-white transition hover:bg-brand/90"
+            >
               <MessageCircle className="h-4 w-4" /> Book via WhatsApp
             </a>
-            <Link to="/get-estimate" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl border border-white/20 px-6 py-3 text-sm font-semibold text-white transition hover:border-white/50">
+
+            <Link
+              to="/get-estimate"
+              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl border border-white/20 px-6 py-3 text-sm font-semibold text-white transition hover:border-white/50"
+            >
               Get Instant Quote <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
-          <p className="mt-5 text-xs text-white/45">+1 (506) 251-4451 · Miramichi, NB · By Appointment Only</p>
+
+          <p className="mt-5 text-xs text-white/45">
+            +1 (506) 251-4451 · Miramichi, NB · By Appointment Only
+          </p>
         </div>
       </section>
     </main>
   );
 }
-

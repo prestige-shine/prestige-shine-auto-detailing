@@ -4,7 +4,7 @@ import { PageHeader } from "@/components/aurexo/PageHeader";
 export const Route = createFileRoute("/terms")({
   head: () => ({
     meta: [
-      { title: "Terms of Service — Prestige Shine Auto Detailing" },
+      { title: "Terms of Service: Prestige Shine Auto Detailing" },
       {
         name: "description",
         content:
@@ -12,7 +12,7 @@ export const Route = createFileRoute("/terms")({
       },
       {
         property: "og:title",
-        content: "Terms of Service — Prestige Shine Auto Detailing",
+        content: "Terms of Service: Prestige Shine Auto Detailing",
       },
     ],
   }),

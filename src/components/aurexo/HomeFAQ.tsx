@@ -12,19 +12,19 @@ const FAQS: { q: string; a: string }[] = [
   },
   {
     q: "Can Prestige Shine actually remove heavy pet hair, deep stains, and lingering odours from an interior?",
-    a: "Yes — that's the core of Kevin's Full Interior Deep Clean & Extraction. Kevin uses professional cleaning and extraction methods to treat carpets, upholstery, and interior surfaces. Heavy pet-hair jobs may require additional preparation before extraction, depending on the vehicle's condition.",
+    a: "Yes, that's the core of Kevin's Full Interior Deep Clean & Extraction. Kevin uses professional cleaning and extraction methods to treat carpets, upholstery, and interior surfaces. Heavy pet-hair jobs may require additional preparation before extraction, depending on the vehicle's condition.",
   },
   {
     q: "Do you come to me, or do I drop my vehicle off?",
-    a: "Prestige Shine operates By Appointment Only, and all work is completed at the dedicated detailing and coating shop in Miramichi. You book a time, drop the vehicle off, and Kevin handles everything from there — keeping dust, lighting, and cure conditions controlled for correction and coating work.",
+    a: "Prestige Shine operates By Appointment Only, and all work is completed at the dedicated detailing and coating shop in Miramichi. You book a time, drop the vehicle off, and Kevin handles everything from there, keeping dust, lighting, and cure conditions controlled for correction and coating work.",
   },
   {
     q: "What does a Full Detail cost?",
-    a: "Full Detail starts at $200 for cars, $225 for compact SUVs, $275 for mid-size SUVs, $300 for large / 3-row SUVs, $350 for XL SUVs, $300 for pickup trucks and $350 for large / HD trucks. Prefer the popular combination? Full Detail + Paint Enhancement starts at $450 for cars and $700 for XL SUVs and HD trucks. Final pricing is based on vehicle size and condition — excessive pet hair, staining, heavy soiling or unusually neglected vehicles may cost more.",
+    a: "Full Detail starts at $200 for cars, $225 for compact SUVs, $275 for mid-size SUVs, $300 for large / 3-row SUVs, $350 for XL SUVs, $300 for pickup trucks and $350 for large / HD trucks. Prefer the popular combination? Full Detail + Paint Enhancement starts at $450 for cars and $700 for XL SUVs and HD trucks. Final pricing is based on vehicle size and condition, excessive pet hair, staining, heavy soiling or unusually neglected vehicles may cost more.",
   },
   {
     q: "Are the prices on your website final?",
-    a: "No — prices shown are starting estimates. Final pricing is confirmed after reviewing vehicle size, condition, and any additional factors that may affect the scope of work. Kevin personally reviews your photos and details before confirming a quote, and nothing starts until you approve it.",
+    a: "No, prices shown are starting estimates. Final pricing is confirmed after reviewing vehicle size, condition, and any additional factors that may affect the scope of work. Kevin personally reviews your photos and details before confirming a quote, and nothing starts until you approve it.",
   },
 ];
 

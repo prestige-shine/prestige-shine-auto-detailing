@@ -7,13 +7,14 @@ import {
   Star,
   ChevronRight,
   ChevronLeft,
-  Sparkles,
+  Wrench,
   Car,
   X,
 } from "lucide-react";
 import type { Vehicle } from "@/lib/aurexo-data";
 import { vehicles as allVehicles, serviceLabel } from "@/lib/aurexo-data";
 import { VehicleCard } from "./VehicleCard";
+import { Reveal } from "./Reveal";
 import { buildWhatsAppHref, STUDIO_PHONE, STUDIO_TEL } from "@/lib/whatsapp";
 
 // Before-gallery images
@@ -118,7 +119,7 @@ const TIER_META: Record<
 > = {
   Ceramic: {
     tagline:
-      "Nano-ceramic protection with multi-stage prep — deep gloss and hydrophobic performance.",
+      "Nano-ceramic protection with multi-stage prep, deep gloss and hydrophobic performance.",
     includes: [
       "Foam bath + touchless pre-wash",
       "Iron & tar chemical decontamination",
@@ -185,7 +186,7 @@ const TIER_META: Record<
 
   Interior: {
     tagline:
-      "Full interior deep clean & extraction — pet hair, stains, odour, and grime handled at the fiber level.",
+      "Full interior deep clean & extraction: pet hair, stains, odour, and grime handled at the fiber level.",
     includes: [
       "Full interior vacuum + air blowout",
       "Rubber-blade pet hair removal",
@@ -219,7 +220,7 @@ const TIER_META: Record<
 
   Express: {
     tagline:
-      "Complete full detail — inside-and-out wash, decontamination, interior clean, and protection.",
+      "Complete full detail: inside-and-out wash, decontamination, interior clean, and protection.",
     includes: [
       "Foam bath + touchless pre-wash",
       "Two-bucket contact wash",
@@ -273,7 +274,7 @@ export function VehicleDetail({ vehicle }: { vehicle: Vehicle }) {
     () =>
       buildWhatsAppHref({
         vehicleClass: vehicle.body,
-        serviceTier: `${service} — ${vehicle.title}`,
+        serviceTier: `${service} | ${vehicle.title}`,
         notes: `Interested in work like this project: ${vehicle.title} (${vehicle.brand}, ${vehicle.year}).`,
         source: `project-${vehicle.id}`,
       }),
@@ -383,283 +384,306 @@ export function VehicleDetail({ vehicle }: { vehicle: Vehicle }) {
 
       {/* Primary project image */}
       <section className="mx-auto max-w-6xl px-4 pt-4">
-        <div className="relative overflow-hidden rounded-2xl border border-border bg-white">
-          <img
-            src={vehicle.img}
-            alt={vehicle.title}
-            className="aspect-[16/9] w-full object-cover"
-          />
-        </div>
+        <Reveal>
+          <div className="relative overflow-hidden rounded-2xl border border-border bg-white">
+            <img
+              src={vehicle.img}
+              alt={vehicle.title}
+              className="aspect-[16/9] w-full object-cover"
+            />
+          </div>
+        </Reveal>
       </section>
 
       <section className="mx-auto grid max-w-6xl gap-8 px-4 py-8 lg:grid-cols-[1fr_360px]">
         <div>
-          <p className="text-xs font-bold uppercase tracking-wider text-brand">
-            {service}
-          </p>
+          <Reveal>
+            <div>
+              <p className="text-xs font-bold uppercase tracking-wider text-brand">
+                {service}
+              </p>
 
-          <h1 className="mt-2 text-2xl font-bold text-ink sm:text-3xl">
-            {vehicle.title}
-          </h1>
+              <h1 className="mt-2 text-2xl font-bold text-ink sm:text-3xl">
+                {vehicle.title}
+              </h1>
 
-          <p className="mt-2 text-sm text-muted-foreground">
-            {vehicle.summary ?? meta.tagline}
-          </p>
+              <p className="mt-2 text-sm text-muted-foreground">
+                {vehicle.summary ?? meta.tagline}
+              </p>
 
-          <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-3">
-            <Spec
-              icon={<Car className="h-4 w-4" />}
-              label="Vehicle"
-              value={`${vehicle.brand} · ${vehicle.year}`}
-            />
+              <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-3">
+                <Spec
+                  icon={<Car className="h-4 w-4" />}
+                  label="Vehicle"
+                  value={`${vehicle.brand} · ${vehicle.year}`}
+                />
 
-            <Spec
-              icon={<Sparkles className="h-4 w-4" />}
-              label="Service Performed"
-              value={service}
-            />
+                <Spec
+                  icon={<Wrench className="h-4 w-4" />}
+                  label="Service Performed"
+                  value={service}
+                />
 
-            <Spec
-              icon={<Star className="h-4 w-4" />}
-              label="Vehicle Class"
-              value={vehicle.body}
-            />
-          </div>
+                <Spec
+                  icon={<Star className="h-4 w-4" />}
+                  label="Vehicle Class"
+                  value={vehicle.body}
+                />
+              </div>
+            </div>
+          </Reveal>
 
           {/* Before gallery */}
           {beforeGallery.length > 0 && (
-            <section className="mt-8">
-              <div className="mb-3 flex items-end justify-between gap-4">
-                <div>
-                  <p className="text-xs font-bold uppercase tracking-wider text-brand">
-                    Project Photos
-                  </p>
+            <Reveal>
+              <section className="mt-8">
+                <div className="mb-3 flex items-end justify-between gap-4">
+                  <div>
+                    <p className="text-xs font-bold uppercase tracking-wider text-brand">
+                      Project Photos
+                    </p>
 
-                  <h2 className="mt-1 text-lg font-bold text-ink">
-                    Before
-                  </h2>
+                    <h2 className="mt-1 text-lg font-bold text-ink">
+                      Before
+                    </h2>
 
-                  <p className="mt-1 text-xs text-muted-foreground">
-                    See the vehicle condition before the work was completed. Click any photo to view it full screen.
+                    <p className="mt-1 text-xs text-muted-foreground">
+                      See the vehicle condition before the work was completed. Click any photo to view it full screen.
+                    </p>
+                  </div>
+
+                  <p className="shrink-0 text-xs text-muted-foreground">
+                    {beforeGallery.length} photos
                   </p>
                 </div>
 
-                <p className="shrink-0 text-xs text-muted-foreground">
-                  {beforeGallery.length} photos
-                </p>
-              </div>
+                <div className="grid grid-cols-3 gap-3 sm:grid-cols-4 lg:grid-cols-5">
+                  {beforeGallery.map((image, index) => (
+                    <button
+                      key={`${vehicle.id}-before-${index}`}
+                      type="button"
+                      onClick={() => openLightbox(index, "before")}
+                      className="group relative overflow-hidden rounded-xl border border-border bg-white text-left focus:outline-none focus:ring-2 focus:ring-brand focus:ring-offset-2"
+                      aria-label={`View ${vehicle.title} before photo ${index + 1}`}
+                    >
+                      <img
+                        src={image}
+                        alt={`${vehicle.title} | before ${index + 1}`}
+                        loading="lazy"
+                        className="aspect-[4/3] w-full object-cover transition duration-300 group-hover:scale-105"
+                      />
 
-              <div className="grid grid-cols-3 gap-3 sm:grid-cols-4 lg:grid-cols-5">
-                {beforeGallery.map((image, index) => (
-                  <button
-                    key={`${vehicle.id}-before-${index}`}
-                    type="button"
-                    onClick={() => openLightbox(index, "before")}
-                    className="group relative overflow-hidden rounded-xl border border-border bg-white text-left focus:outline-none focus:ring-2 focus:ring-brand focus:ring-offset-2"
-                    aria-label={`View ${vehicle.title} before photo ${index + 1}`}
-                  >
-                    <img
-                      src={image}
-                      alt={`${vehicle.title} — before ${index + 1}`}
-                      loading="lazy"
-                      className="aspect-[4/3] w-full object-cover transition duration-300 group-hover:scale-105"
-                    />
+                      <span className="absolute inset-0 bg-black/0 transition group-hover:bg-black/10" />
 
-                    <span className="absolute inset-0 bg-black/0 transition group-hover:bg-black/10" />
-
-                    {index === 0 && (
-                      <span className="absolute bottom-1.5 left-1.5 rounded-md bg-black/70 px-1.5 py-0.5 text-[9px] font-semibold text-white">
-                        View
-                      </span>
-                    )}
-                  </button>
-                ))}
-              </div>
-            </section>
+                      {index === 0 && (
+                        <span className="absolute bottom-1.5 left-1.5 rounded-md bg-black/70 px-1.5 py-0.5 text-[9px] font-semibold text-white">
+                          View
+                        </span>
+                      )}
+                    </button>
+                  ))}
+                </div>
+              </section>
+            </Reveal>
           )}
 
           {/* Finished-result gallery */}
           {gallery.length > 0 && (
-            <section className="mt-8">
-              <div className="mb-3 flex items-end justify-between gap-4">
-                <div>
-                  <p className="text-xs font-bold uppercase tracking-wider text-brand">
-                    Project Photos
-                  </p>
+            <Reveal>
+              <section className="mt-8">
+                <div className="mb-3 flex items-end justify-between gap-4">
+                  <div>
+                    <p className="text-xs font-bold uppercase tracking-wider text-brand">
+                      Project Photos
+                    </p>
 
-                  <h2 className="mt-1 text-lg font-bold text-ink">
-                    Finished result
-                  </h2>
+                    <h2 className="mt-1 text-lg font-bold text-ink">
+                      Finished result
+                    </h2>
 
-                  <p className="mt-1 text-xs text-muted-foreground">
-                    See the finished vehicle after the work was completed. Click any photo to view it full screen.
+                    <p className="mt-1 text-xs text-muted-foreground">
+                      See the finished vehicle after the work was completed. Click any photo to view it full screen.
+                    </p>
+                  </div>
+
+                  <p className="shrink-0 text-xs text-muted-foreground">
+                    {gallery.length} photos
                   </p>
                 </div>
 
-                <p className="shrink-0 text-xs text-muted-foreground">
-                  {gallery.length} photos
-                </p>
-              </div>
+                <div className="grid grid-cols-3 gap-3 sm:grid-cols-4 lg:grid-cols-5">
+                  {gallery.map((image, index) => (
+                    <button
+                      key={`${vehicle.id}-gallery-${index}`}
+                      type="button"
+                      onClick={() => openLightbox(index, "finished")}
+                      className="group relative overflow-hidden rounded-xl border border-border bg-white text-left focus:outline-none focus:ring-2 focus:ring-brand focus:ring-offset-2"
+                      aria-label={`View ${vehicle.title} finished result photo ${index + 1}`}
+                    >
+                      <img
+                        src={image}
+                        alt={`${vehicle.title} | finished result ${index + 1}`}
+                        loading="lazy"
+                        className="aspect-[3/2] w-full object-cover transition duration-300 group-hover:scale-105 sm:aspect-[4/3]"
+                      />
 
-              <div className="grid grid-cols-3 gap-3 sm:grid-cols-4 lg:grid-cols-5">
-                {gallery.map((image, index) => (
-                  <button
-                    key={`${vehicle.id}-gallery-${index}`}
-                    type="button"
-                    onClick={() => openLightbox(index, "finished")}
-                    className="group relative overflow-hidden rounded-xl border border-border bg-white text-left focus:outline-none focus:ring-2 focus:ring-brand focus:ring-offset-2"
-                    aria-label={`View ${vehicle.title} finished result photo ${index + 1}`}
-                  >
-                    <img
-                      src={image}
-                      alt={`${vehicle.title} — finished result ${index + 1}`}
-                      loading="lazy"
-                      className="aspect-[3/2] w-full object-cover transition duration-300 group-hover:scale-105 sm:aspect-[4/3]"
-                    />
+                      <span className="absolute inset-0 bg-black/0 transition group-hover:bg-black/10" />
 
-                    <span className="absolute inset-0 bg-black/0 transition group-hover:bg-black/10" />
-
-                    {index === 0 && (
-                      <span className="absolute bottom-1.5 left-1.5 rounded-md bg-black/70 px-1.5 py-0.5 text-[9px] font-semibold text-white">
-                        View
-                      </span>
-                    )}
-                  </button>
-                ))}
-              </div>
-            </section>
+                      {index === 0 && (
+                        <span className="absolute bottom-1.5 left-1.5 rounded-md bg-black/70 px-1.5 py-0.5 text-[9px] font-semibold text-white">
+                          View
+                        </span>
+                      )}
+                    </button>
+                  ))}
+                </div>
+              </section>
+            </Reveal>
           )}
 
-          <div className="mt-6 rounded-2xl border border-border bg-white p-5">
-            <p className="text-xs font-bold uppercase tracking-wider text-brand">
-              Recommended for
-            </p>
+          <Reveal>
+            <div className="mt-6 rounded-2xl border border-border bg-white p-5">
+              <p className="text-xs font-bold uppercase tracking-wider text-brand">
+                Recommended for
+              </p>
 
-            <p className="mt-2 text-sm text-ink">
-              {meta.recommendedFor}
-            </p>
-          </div>
+              <p className="mt-2 text-sm text-ink">
+                {meta.recommendedFor}
+              </p>
+            </div>
+          </Reveal>
+
+          <Reveal>
+            <div className="mt-8">
+              <h2 className="text-lg font-bold text-ink">
+                What's included
+              </h2>
+
+              <ul className="mt-3 grid grid-cols-1 gap-2 sm:grid-cols-2">
+                {meta.includes.map((item) => (
+                  <li
+                    key={item}
+                    className="flex items-start gap-2 text-sm text-ink"
+                  >
+                    <span className="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-brand/15 text-ink">
+                      <Check className="h-3 w-3" />
+                    </span>
+
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </Reveal>
 
           <div className="mt-8">
-            <h2 className="text-lg font-bold text-ink">
-              What's included
-            </h2>
-
-            <ul className="mt-3 grid grid-cols-1 gap-2 sm:grid-cols-2">
-              {meta.includes.map((item) => (
-                <li
-                  key={item}
-                  className="flex items-start gap-2 text-sm text-ink"
-                >
-                  <span className="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-brand/15 text-ink">
-                    <Check className="h-3 w-3" />
-                  </span>
-
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div className="mt-8">
-            <h2 className="text-lg font-bold text-ink">
-              Our 3-step process
-            </h2>
+            <Reveal>
+              <h2 className="text-lg font-bold text-ink">
+                Our 3-step process
+              </h2>
+            </Reveal>
 
             <ol className="mt-3 grid gap-3 sm:grid-cols-3">
               {meta.process.map((p, i) => (
-                <li
-                  key={p.step}
-                  className="rounded-2xl border border-border bg-white p-4"
-                >
-                  <p className="text-xs font-bold uppercase tracking-wider text-brand">
-                    Step {i + 1}
-                  </p>
+                <Reveal key={p.step} delay={i * 0.05}>
+                  <li className="h-full rounded-2xl border border-border bg-white p-4">
+                    <p className="text-xs font-bold uppercase tracking-wider text-brand">
+                      Step {i + 1}
+                    </p>
 
-                  <p className="mt-1 text-sm font-bold text-ink">
-                    {p.step}
-                  </p>
+                    <p className="mt-1 text-sm font-bold text-ink">
+                      {p.step}
+                    </p>
 
-                  <p className="mt-1 text-xs text-muted-foreground">
-                    {p.body}
-                  </p>
-                </li>
+                    <p className="mt-1 text-xs text-muted-foreground">
+                      {p.body}
+                    </p>
+                  </li>
+                </Reveal>
               ))}
             </ol>
           </div>
         </div>
 
         <aside className="lg:sticky lg:top-24 lg:self-start">
-          <div className="rounded-2xl border border-border bg-white p-5 shadow-sm">
-            <p className="text-xs font-bold uppercase tracking-wider text-brand">
-              Book work like this
-            </p>
-
-            <p className="mt-1 text-xs text-muted-foreground">
-              Ask about work like this for your vehicle — pricing is confirmed
-              after a free assessment.
-            </p>
-
-            <a
-              href={whatsHref}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-full bg-brand py-3 text-sm font-bold text-white"
-            >
-              <MessageCircle className="h-4 w-4" />
-              Book on WhatsApp
-            </a>
-
-            <a
-              href={`tel:${STUDIO_TEL}`}
-              className="mt-2 inline-flex w-full items-center justify-center gap-2 rounded-full border border-ink py-3 text-sm font-semibold text-ink"
-            >
-              Call {STUDIO_PHONE}
-            </a>
-
-            <button
-              type="button"
-              onClick={handleShare}
-              className="mt-2 inline-flex w-full items-center justify-center gap-2 rounded-full border border-border py-2 text-xs font-semibold text-ink hover:border-ink"
-            >
-              <Share2 className="h-3.5 w-3.5" />
-              Share this project
-            </button>
-
-            <div className="mt-5 border-t border-border pt-4 text-xs text-muted-foreground">
-              <p className="font-semibold text-ink">
-                Free vehicle assessment
+          <Reveal>
+            <div className="rounded-2xl border border-border bg-white p-5 shadow-sm">
+              <p className="text-xs font-bold uppercase tracking-wider text-brand">
+                Book work like this
               </p>
 
-              <p className="mt-1">
-                Kevin inspects paint condition and interior, then provides an
-                estimate — on us.
+              <p className="mt-1 text-xs text-muted-foreground">
+                Ask about work like this for your vehicle. Pricing is confirmed
+                after a free assessment.
               </p>
 
-              <Link
-                to="/sell"
-                className="mt-2 inline-block font-semibold text-brand"
+              <a
+                href={whatsHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-full bg-brand py-3 text-sm font-bold text-white"
               >
-                Book free assessment →
-              </Link>
+                <MessageCircle className="h-4 w-4" />
+                Book on WhatsApp
+              </a>
+
+              <a
+                href={`tel:${STUDIO_TEL}`}
+                className="mt-2 inline-flex w-full items-center justify-center gap-2 rounded-full border border-ink py-3 text-sm font-semibold text-ink"
+              >
+                Call {STUDIO_PHONE}
+              </a>
+
+              <button
+                type="button"
+                onClick={handleShare}
+                className="mt-2 inline-flex w-full items-center justify-center gap-2 rounded-full border border-border py-2 text-xs font-semibold text-ink hover:border-ink"
+              >
+                <Share2 className="h-3.5 w-3.5" />
+                Share this project
+              </button>
+
+              <div className="mt-5 border-t border-border pt-4 text-xs text-muted-foreground">
+                <p className="font-semibold text-ink">
+                  Free vehicle assessment
+                </p>
+
+                <p className="mt-1">
+                  Kevin inspects paint condition and interior, then provides an
+                  estimate at no charge.
+                </p>
+
+                <Link
+                  to="/sell"
+                  className="mt-2 inline-block font-semibold text-brand"
+                >
+                  Book free assessment →
+                </Link>
+              </div>
             </div>
-          </div>
+          </Reveal>
         </aside>
       </section>
 
       <section className="mx-auto max-w-6xl px-4 pb-16">
-        <h2 className="text-xl font-bold text-ink sm:text-2xl">
-          More completed projects
-        </h2>
+        <Reveal>
+          <div>
+            <h2 className="text-xl font-bold text-ink sm:text-2xl">
+              More completed projects
+            </h2>
 
-        <p className="mt-1 text-sm text-muted-foreground">
-          Other detailing work completed by Prestige Shine Auto Detailing in
-          Miramichi.
-        </p>
+            <p className="mt-1 text-sm text-muted-foreground">
+              Other detailing work completed by Prestige Shine Auto Detailing in
+              Miramichi.
+            </p>
+          </div>
+        </Reveal>
 
         <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {related.map((v) => (
-            <VehicleCard key={v.id} v={v} />
+            <Reveal key={v.id}>
+              <VehicleCard v={v} />
+            </Reveal>
           ))}
         </div>
       </section>

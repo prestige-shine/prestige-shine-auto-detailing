@@ -133,7 +133,7 @@ const v = (
 export const vehicles: Vehicle[] = [
   v(
     "pontiac-trans-am-restoration-detail",
-    "Pontiac Trans Am — Paint Correction",
+    "Pontiac Trans Am: Paint Correction",
     540,
     2002,
     "Correction",
@@ -158,7 +158,7 @@ export const vehicles: Vehicle[] = [
 
   v(
     "audi-q5-ceramic-coating",
-    "Audi Q5 — Ceramic Coating",
+    "Audi Q5: Ceramic Coating",
     480,
     2023,
     "Ceramic",
@@ -183,7 +183,7 @@ export const vehicles: Vehicle[] = [
 
   v(
     "toyota-rav4-ceramic-coating",
-    "Toyota RAV4 — Ceramic Coating",
+    "Toyota RAV4: Ceramic Coating",
     450,
     2023,
     "Ceramic",
@@ -207,7 +207,7 @@ export const vehicles: Vehicle[] = [
 
   v(
     "corvette-c8-ceramic-coating",
-    "Chevrolet Corvette C8 — Ceramic Coating",
+    "Chevrolet Corvette C8: Ceramic Coating",
     510,
     2022,
     "Ceramic",
@@ -232,7 +232,7 @@ export const vehicles: Vehicle[] = [
 
   v(
     "bmw-x5-full-detail",
-    "BMW X5 — Full Detail",
+    "BMW X5: Full Detail",
     300,
     2021,
     "Express",
@@ -256,7 +256,7 @@ export const vehicles: Vehicle[] = [
 
   v(
     "chevelle-ss-paint-correction",
-    "Chevrolet Chevelle SS — Paint Correction",
+    "Chevrolet Chevelle SS: Paint Correction",
     570,
     1966,
     "Correction",
@@ -281,7 +281,7 @@ export const vehicles: Vehicle[] = [
 
   v(
     "honda-odyssey-interior-restoration",
-    "Honda Odyssey — Interior Restoration",
+    "Honda Odyssey: Interior Restoration",
     330,
     2022,
     "Interior",
@@ -305,7 +305,7 @@ export const vehicles: Vehicle[] = [
 
   v(
     "chevrolet-bel-air-paint-correction",
-    "Chevrolet Bel Air — Paint Correction",
+    "Chevrolet Bel Air: Paint Correction",
     600,
     1957,
     "Correction",
@@ -330,7 +330,7 @@ export const vehicles: Vehicle[] = [
 
   v(
     "honda-hrv-ceramic-coating",
-    "Honda HR-V — Ceramic Coating",
+    "Honda HR-V: Ceramic Coating",
     420,
     2024,
     "Ceramic",
@@ -354,7 +354,7 @@ export const vehicles: Vehicle[] = [
 
   v(
     "ford-f150-platinum-full-detail",
-    "Ford F-150 — Full Detail",
+    "Ford F-150: Full Detail",
     390,
     2019,
     "Express",

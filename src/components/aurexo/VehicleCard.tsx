@@ -6,7 +6,7 @@ export function VehicleCard({ v, verifiedMetadataOnly = false }: { v: Vehicle; v
   const service = serviceLabel(v);
   return (
     <article className="group relative flex flex-col overflow-hidden rounded-2xl border border-border bg-white transition hover:border-ink/40 hover:shadow-md">
-      {/* Full-card click target — sits behind interactive controls */}
+      {/* Full-card click target, sits behind interactive controls */}
       <Link
         to="/listings/$id"
         params={{ id: v.id }}

@@ -8,7 +8,7 @@ import {
   ArrowRight,
   Facebook,
   MessageCircle,
-  Sparkles,
+  Calculator,
 } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import { Logo } from "./Logo";
@@ -131,7 +131,7 @@ export function Footer() {
           onClick={() => open()}
           className="mt-6 inline-flex items-center gap-2 rounded-full bg-brand px-6 py-3 text-sm font-extrabold text-white shadow-lg transition hover:opacity-90"
         >
-          <Sparkles className="h-4 w-4" />
+          <Calculator className="h-4 w-4" />
           Get My Personalized Quote
           <ArrowRight className="h-4 w-4" />
         </button>

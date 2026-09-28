@@ -13,10 +13,17 @@ import {
   Clock,
   Upload,
   Trash2,
-  Sparkles,
+  ClipboardCheck,
   Info,
   Loader2,
   Edit3,
+  Plus,
+  Armchair,
+  Droplets,
+  Layers,
+  ShieldCheck,
+  Paintbrush,
+  Wrench,
 } from "lucide-react";
 import {
   submitLead,
@@ -117,6 +124,23 @@ const ADDON_OPTIONS = [
     price: 149,
   },
 ];
+
+const SERVICE_ICONS = {
+  "Interior Detail": Armchair,
+  "Exterior Detail": Droplets,
+  "Full Detail": Layers,
+  "Full Detail + Paint Enhancement": Paintbrush,
+  "1-Step Paint Enhancement": Paintbrush,
+  "2-Step Paint Correction": Paintbrush,
+  "Advanced / Multi-Stage Paint Correction": Paintbrush,
+  "3-Year Ceramic Protection": ShieldCheck,
+  "System X 6-Year Ceramic Coating": ShieldCheck,
+  "Correction + 6-Year Ceramic": ShieldCheck,
+  "Engine Bay Detail": Wrench,
+  "Headlight Restoration": Wrench,
+  "Maintenance Detail": Layers,
+  "Other": Wrench,
+};
 
 export function LeadQualificationDialog({
   open,
@@ -289,7 +313,7 @@ export function LeadQualificationDialog({
       const result = await submitLead(payload);
       setSubmitted({ id: result.id });
 
-      // Supabase save succeeded — now notify via EmailJS (never blocks success).
+      // Supabase save succeeded, now notify via EmailJS (never blocks success).
       void (async () => {
         // Time-limited signed URLs for the private lead-photos bucket (server-side).
         let signed: string[] = [];
@@ -358,7 +382,7 @@ export function LeadQualificationDialog({
               className="grid h-8 w-8 place-items-center rounded-full"
               style={{ backgroundColor: BRAND }}
             >
-              <Sparkles className="h-4 w-4 text-white" />
+              <ClipboardCheck className="h-4 w-4 text-white" />
             </div>
             <div className="leading-tight">
               <p className="text-xs font-bold uppercase tracking-wider" style={{ color: BRAND_DARK }}>
@@ -647,8 +671,9 @@ function StepServices({
       />
       <div className="grid gap-3 sm:grid-cols-2">
         {SERVICE_OPTIONS.map((s) => {
-          const selected = form.services.includes(s.key);
-          return (
+  const selected = form.services.includes(s.key);
+  const ServiceIcon = SERVICE_ICONS[s.label as keyof typeof SERVICE_ICONS] ?? Wrench;
+return (
             <button
               key={s.key}
               type="button"
@@ -666,7 +691,7 @@ function StepServices({
                   color: selected ? "white" : BRAND_DARK,
                 }}
               >
-                <Sparkles className="h-5 w-5" />
+                <ServiceIcon className="h-5 w-5" />
               </div>
               <div className="min-w-0 flex-1">
                 <p className="text-sm font-bold text-ink">{s.label}</p>
@@ -727,7 +752,7 @@ function StepServices({
               color: selected ? "white" : BRAND_DARK,
             }}
           >
-            <Sparkles className="h-5 w-5" />
+            <Plus className="h-5 w-5" />
           </div>
 
           <div className="min-w-0 flex-1">
@@ -777,7 +802,7 @@ function StepCondition({
       <SectionHead
         eyebrow="Vehicle Condition"
         title="Tell us about your vehicle"
-        sub="Select anything that applies — this helps us prepare and price accurately."
+        sub="Select anything that applies, this helps us prepare and price accurately."
       />
       <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
         {CONDITION_OPTIONS.map((c) => {
@@ -813,7 +838,7 @@ function StepCondition({
           <textarea
             rows={4}
             className={inputClass}
-            placeholder="Optional — problem areas, allergies, previous coatings, timeline sensitivity..."
+            placeholder="Optional, problem areas, allergies, previous coatings, timeline sensitivity..."
             value={form.condition_notes}
             onChange={(e) => setForm({ ...form, condition_notes: e.target.value })}
           />
@@ -1089,10 +1114,10 @@ function StepReview({ form, goTo }: { form: FormState; goTo: (n: number) => void
       content: (
         <>
           <p>
-            {[form.vehicle_year, form.vehicle_color, form.vehicle_make, form.vehicle_model].filter(Boolean).join(" · ") || "—"}
+            {[form.vehicle_year, form.vehicle_color, form.vehicle_make, form.vehicle_model].filter(Boolean).join(" · ") || "Not provided"}
           </p>
           <p className="text-xs text-muted-foreground">
-            Size: {VEHICLE_SIZES.find((v) => v.key === form.vehicle_size)?.label ?? "—"}
+            Size: {VEHICLE_SIZES.find((v) => v.key === form.vehicle_size)?.label ?? "Not provided"}
           </p>
         </>
       ),
@@ -1104,7 +1129,7 @@ function StepReview({ form, goTo }: { form: FormState; goTo: (n: number) => void
         <p>
           {form.services
             .map((k) => SERVICE_OPTIONS.find((s) => s.key === k)?.label ?? k)
-            .join(", ") || "—"}
+            .join(", ") || "Not provided"}
           {form.services.includes("other") && form.other_service && (
             <span className="block text-xs text-muted-foreground">Other: {form.other_service}</span>
           )}
@@ -1149,7 +1174,7 @@ function StepReview({ form, goTo }: { form: FormState; goTo: (n: number) => void
         <>
           <p>{form.preferred_date} · {form.preferred_time}</p>
           <p className="text-xs text-muted-foreground">
-            Timeline: {form.timeline || "—"} · Flexible: {form.schedule_flexible || "—"}
+            Timeline: {form.timeline || "Not provided"} · Flexible: {form.schedule_flexible || "Not provided"}
           </p>
         </>
       ),

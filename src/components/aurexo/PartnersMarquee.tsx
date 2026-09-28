@@ -12,7 +12,7 @@ export function PartnersMarquee() {
           <p className="text-xs font-bold uppercase tracking-wide text-brand">Trusted Brands</p>
           <h2 id="partners-heading" className="mt-1 text-2xl font-bold">Professional Brands Prestige Shine Uses & Trusts</h2>
           <p className="mt-2 text-sm text-white/60">
-            Prestige Shine uses professional-grade products from industry-trusted detailing brands — the same chemistry used on concours-winning vehicles.
+            Prestige Shine uses professional-grade products from industry-trusted detailing brands, the same chemistry used on concours-winning vehicles.
           </p>
         </div>
       </div>

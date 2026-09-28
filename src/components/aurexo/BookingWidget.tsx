@@ -1,11 +1,11 @@
-import { ArrowRight, ShieldCheck, Sparkles, Camera, Clock } from "lucide-react";
+import { ArrowRight, ShieldCheck, Camera, Clock, Calculator, ClipboardCheck } from "lucide-react";
 import { useLeadDialog } from "@/contexts/LeadDialogContext";
 
 const BRAND = "#0066ff";
 const BRAND_DARK = "#0052cc";
 
 const BENEFITS = [
-  { icon: Sparkles, label: "Personalized estimate", desc: "Priced to your vehicle's real condition." },
+  { icon: Calculator, label: "Personalized estimate", desc: "Priced to your vehicle's real condition." },
   { icon: Camera, label: "Photo-based quoting", desc: "Upload photos for accurate pricing." },
   { icon: Clock, label: "Fast turnaround", desc: "Most quotes back within a few hours." },
   { icon: ShieldCheck, label: "No obligation", desc: "Get pricing before you commit." },
@@ -23,7 +23,7 @@ export function BookingWidget() {
           Get your personalized detailing quote
         </h2>
         <p className="mx-auto mt-3 max-w-2xl text-sm text-muted-foreground sm:text-base">
-          Answer a few quick questions about your vehicle and Kevin will send an accurate estimate — no phone tag required.
+          Answer a few quick questions about your vehicle and Kevin will send an accurate estimate, no phone tag required.
         </p>
       </div>
 
@@ -36,7 +36,7 @@ export function BookingWidget() {
         <div className="grid gap-8 p-8 sm:p-12 lg:grid-cols-[1.2fr_1fr] lg:items-center">
           <div className="text-white">
             <span className="inline-flex items-center gap-2 rounded-full bg-white/15 px-3 py-1 text-xs font-bold ring-1 ring-white/25">
-              <Sparkles className="h-3.5 w-3.5" /> 9-step assessment
+              <ClipboardCheck className="h-3.5 w-3.5" /> 9-step assessment
             </span>
             <h3 className="mt-4 text-3xl font-extrabold leading-tight sm:text-4xl">
               Tell us about your car. We'll take care of the rest.

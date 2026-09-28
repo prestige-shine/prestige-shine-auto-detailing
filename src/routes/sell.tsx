@@ -57,7 +57,7 @@ function Sell() {
       <PageHeader
         eyebrow="Free Assessment"
         title="Book your free vehicle assessment."
-        subtitle="Bring your vehicle to our Miramichi shop by appointment — Kevin will inspect paint condition, interior, and glass, then recommend the right package with a transparent, no-pressure quote."
+        subtitle="Bring your vehicle to our Miramichi shop by appointment. Kevin will inspect paint condition, interior, and glass, then recommend the right package with a transparent, no-pressure quote."
       />
 
       <section className="mx-auto max-w-3xl px-4 py-12">
@@ -74,7 +74,7 @@ function Sell() {
                 WhatsApp is open with your request. Kevin will review the details and confirm your appointment.
               </p>
               <p className="mt-4 text-xs text-muted-foreground">
-                <strong>Next step:</strong> Look out for a WhatsApp message or call from Prestige Shine Auto. Bring your vehicle at the agreed time — Kevin will assess the vehicle and discuss the work with you.
+                <strong>Next step:</strong> Look out for a WhatsApp message or call from Prestige Shine Auto. Bring your vehicle at the agreed time. Kevin will assess the vehicle and discuss the work with you.
               </p>
             </div>
           ) : (
