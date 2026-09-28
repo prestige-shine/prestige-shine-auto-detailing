@@ -77,7 +77,10 @@ const res = await fetch(
         return { ok: false as const, error: "The assistant is temporarily unavailable. Please reach Kevin at (506) 251-4451." };
       }
       console.error("AI gateway error", res.status, body);
-      return { ok: false as const, error: "Sorry, I couldn't answer that just now. Please try again." };
+      return {
+  ok: false as const,
+  error: `Gemini error ${res.status}: ${body}`,
+};
     }
 
    const json = (await res.json()) as {
