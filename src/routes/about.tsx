@@ -125,7 +125,7 @@ function About() {
               <img
                 src={systemXCertificate}
                 alt="System X certified ceramic coating installer certificate"
-                className="h-full w-full object-cover"
+                className="h-full w-full object-contain p-4 sm:p-6"
                 loading="lazy"
               />
             </div>
