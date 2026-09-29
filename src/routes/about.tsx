@@ -115,9 +115,7 @@ function About() {
               </h2>
 
               <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                Kevin is a System X certified ceramic coating installer, trained
-                to install professional System X coating systems according to
-                the manufacturer's requirements.
+                Kevin Hines is a authorized System X applicator, having completed the required training and certification to apply System X ceramic coatings. This certification ensures that every vehicle receives a professional-grade application, maximizing the protection and longevity of the coating. Prestige Shine takes pride in commitment to delivering the highest quality detailing services to clients in Miramichi and beyond.
               </p>
             </div>
 
