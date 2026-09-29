@@ -881,6 +881,38 @@ function StepPhotos({
         sub="Uploading photos helps us provide a faster and more accurate estimate."
       />
 
+      {(form.photos.length > 0 || uploadingCount > 0) && (
+        <div className="mb-3 mt-5">
+          <p className="mb-2 text-xs font-bold uppercase tracking-wider text-ink/70">
+            Uploaded ({form.photos.length})
+            {uploadingCount > 0 && <span className="ml-2 text-muted-foreground">· {uploadingCount} uploading…</span>}
+          </p>
+          <div className="grid grid-cols-3 gap-3 sm:grid-cols-4">
+            {form.photos.map((p) => (
+              <div key={p.path} className="group relative aspect-square overflow-hidden rounded-xl border border-black/10">
+                <img src={p.previewUrl} alt={p.name} className="h-full w-full object-cover" />
+                <button
+                  onClick={() => removePhoto(p.path)}
+                  aria-label="Remove"
+                  className="absolute right-1 top-1 grid h-7 w-7 place-items-center rounded-full bg-black/70 text-white opacity-0 transition group-hover:opacity-100"
+                >
+                  <Trash2 className="h-3.5 w-3.5" />
+                </button>
+              </div>
+            ))}
+            {uploadingCount > 0 &&
+              Array.from({ length: uploadingCount }).map((_, i) => (
+                <div
+                  key={`up-${i}`}
+                  className="grid aspect-square place-items-center rounded-xl border border-dashed border-black/15 bg-black/[0.02]"
+                >
+                  <Loader2 className="h-5 w-5 animate-spin text-ink/40" />
+                </div>
+              ))}
+          </div>
+        </div>
+      )}
+
       <div
         onDragOver={(e) => {
           e.preventDefault();
@@ -939,37 +971,6 @@ function StepPhotos({
         </div>
       </div>
 
-      {(form.photos.length > 0 || uploadingCount > 0) && (
-        <div className="mt-5">
-          <p className="mb-2 text-xs font-bold uppercase tracking-wider text-ink/70">
-            Uploaded ({form.photos.length})
-            {uploadingCount > 0 && <span className="ml-2 text-muted-foreground">· {uploadingCount} uploading…</span>}
-          </p>
-          <div className="grid grid-cols-3 gap-3 sm:grid-cols-4">
-            {form.photos.map((p) => (
-              <div key={p.path} className="group relative aspect-square overflow-hidden rounded-xl border border-black/10">
-                <img src={p.previewUrl} alt={p.name} className="h-full w-full object-cover" />
-                <button
-                  onClick={() => removePhoto(p.path)}
-                  aria-label="Remove"
-                  className="absolute right-1 top-1 grid h-7 w-7 place-items-center rounded-full bg-black/70 text-white opacity-0 transition group-hover:opacity-100"
-                >
-                  <Trash2 className="h-3.5 w-3.5" />
-                </button>
-              </div>
-            ))}
-            {uploadingCount > 0 &&
-              Array.from({ length: uploadingCount }).map((_, i) => (
-                <div
-                  key={`up-${i}`}
-                  className="grid aspect-square place-items-center rounded-xl border border-dashed border-black/15 bg-black/[0.02]"
-                >
-                  <Loader2 className="h-5 w-5 animate-spin text-ink/40" />
-                </div>
-              ))}
-          </div>
-        </div>
-      )}
     </div>
   );
 }

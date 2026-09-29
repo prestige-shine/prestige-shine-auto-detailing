@@ -31,7 +31,7 @@ const FAQS: { q: string; a: string }[] = [
 export function HomeFAQ() {
   const [open, setOpen] = useState<number | null>(0);
   return (
-    <section aria-labelledby="faq-heading" className="mx-auto max-w-4xl px-4 pb-16 pt-12">
+    <section aria-labelledby="faq-heading" className="mx-auto max-w-4xl px-4 pb-10 pt-8">
       <div className="text-center">
         <p className="text-xs font-bold uppercase tracking-wide text-brand">Frequently Asked</p>
         <h2 id="faq-heading" className="mt-1 text-3xl font-bold text-ink sm:text-4xl">Miramichi owners ask…</h2>

@@ -38,6 +38,7 @@ import pontiacTransAm from "@/assets/pontiac_trans_am.jpg";
 import camaroBefore from "@/assets/camaro_before.jpg";
 import camaroAfter from "@/assets/camaro_after.jpg";
 import camaro from "@/assets/camaro.jpg";
+import systemXCertificate from "@/assets/certifications/certificate.jpeg";
 
 const HERO_IMG = heroCollage;
 
@@ -329,8 +330,44 @@ function Home() {
         </div>
       </section>
 
+      {/* System X Certification */}
+      <section className="mx-auto mt-6 max-w-6xl px-4 pb-12">
+        <Reveal>
+          <div className="grid grid-cols-1 overflow-hidden rounded-3xl border border-border bg-white lg:grid-cols-2">
+            <div className="flex flex-col items-start justify-center p-8 sm:p-12">
+              <p className="text-xs font-bold uppercase tracking-wide text-brand">
+                System X Certification
+              </p>
+              <h2 className="mt-2 text-2xl font-bold text-ink">
+                Kevin, System X Certified Installer
+              </h2>
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                Kevin is trained to install professional System X ceramic
+                coating systems according to the manufacturer's requirements.
+                Explore ceramic coating services prepared and applied with care
+                at our Miramichi shop.
+              </p>
+              <Link
+                to="/about"
+                className="mt-5 inline-flex min-h-10 items-center gap-2 rounded-xl bg-brand px-4 py-2 text-sm font-semibold text-brand-foreground transition hover:bg-brand/90"
+              >
+                Learn More <ArrowRight className="h-4 w-4" />
+              </Link>
+            </div>
+            <div className="min-h-[280px] bg-surface sm:min-h-[360px]">
+              <img
+                src={systemXCertificate}
+                alt="System X certified ceramic coating installer certificate"
+                className="h-full w-full object-contain p-4 sm:p-6"
+                loading="lazy"
+              />
+            </div>
+          </div>
+        </Reveal>
+      </section>
+
       {/* Service Tiers — image-forward */}
-      <section className="mx-auto max-w-6xl px-4 py-14">
+      <section className="mx-auto max-w-6xl px-4 py-8">
         <div className="text-center">
           <p className="text-xs font-bold uppercase tracking-wide text-brand">
             Our Services
@@ -392,7 +429,7 @@ function Home() {
       {/* Before / After Gallery */}
       <BookingWidget />
 
-      <section className="bg-surface pb-14 pt-10">
+      <section className="bg-surface pb-8 pt-6">
         <div className="mx-auto max-w-6xl px-4">
           <div className="text-center">
             <p className="text-xs font-bold uppercase tracking-wide text-brand">
