@@ -40,7 +40,7 @@ const tree: Node[] = [
 ];
 
 function TreeItem({ node, depth = 0, onNavigate }: { node: Node; depth?: number; onNavigate: () => void }): ReactNode {
-  const [open, setOpen] = useState(depth === 0);
+  const [open, setOpen] = useState(false);
   const hasChildren = !!node.children?.length;
 
   if (!hasChildren && node.to) {
@@ -98,7 +98,7 @@ export function NavDrawer({ open, onClose }: Props) {
           </button>
         </div>
 
-        <div className="flex-1 divide-y divide-white/10 overflow-y-auto px-5 py-4">
+        <div key={open ? "open" : "closed"} className="flex-1 divide-y divide-white/10 overflow-y-auto px-5 py-4">
           {tree.map((n) => (
             <TreeItem key={n.label} node={n} onNavigate={onClose} />
           ))}
