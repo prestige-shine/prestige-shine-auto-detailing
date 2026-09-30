@@ -100,43 +100,49 @@ function About() {
         </Reveal>
       </section>
 
-      {/* System X Certification */}
-      <section className="mx-auto max-w-6xl px-4 pb-12">
-        <Reveal>
-          <div className="grid grid-cols-1 overflow-hidden rounded-3xl border border-border bg-white lg:grid-cols-2">
-            {/* Text */}
-            <div className="flex flex-col justify-center p-8 sm:p-12">
-              <p className="text-xs font-bold uppercase tracking-wide text-brand">
-                System X Certification
-              </p>
+   {/* System X Certification */}
+<section className="mx-auto max-w-6xl px-4 pb-12">
+  <Reveal>
+    <div className="grid grid-cols-1 overflow-hidden rounded-3xl border border-border bg-white lg:grid-cols-2">
+      {/* Text */}
+      <div className="flex flex-col justify-center p-8 sm:p-12">
+        <p className="text-xs font-bold uppercase tracking-wide text-brand">
+          System X Certification
+        </p>
 
-              <h2 className="mt-2 text-2xl font-bold text-ink">
-                Certified Ceramic Coating Installer
-              </h2>
+        <h2 className="mt-2 text-2xl font-bold text-ink">
+          Certified Ceramic Coating Installer
+        </h2>
 
-              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                Kevin Hines is a authorized System X applicator, having completed the required training and certification to apply System X ceramic coatings. This certification ensures that every vehicle receives a professional-grade application, maximizing the protection and longevity of the coating. Kevin takes pride in commitment to delivering the highest quality detailing services to clients in Miramichi and beyond.
-              </p>
-            </div>
+        <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+          Kevin Hines is an authorized System X applicator, having completed
+          the required training and certification to apply System X ceramic
+          coatings. This certification reflects the training and quality
+          standards required for professional System X applications. Kevin
+          personally handles the preparation and application process at the
+          Prestige Shine shop in Miramichi.
+        </p>
+      </div>
 
-            <div className="min-h-[420px] bg-surface lg:min-h-0">
-              <img
-                src={systemXCertificate}
-                alt="System X certified ceramic coating installer certificate"
-                className="h-full w-full object-contain p-4 sm:p-6"
-                loading="lazy"
-              />
-            </div>
-          </div>
-        </Reveal>
-      </section>
+      {/* Certificate */}
+      <div className="min-h-[320px] bg-surface sm:min-h-[380px] lg:min-h-0">
+        <img
+          src={systemXCertificate}
+          alt="System X certified ceramic coating installer certificate"
+          className="h-full w-full object-contain"
+          loading="lazy"
+        />
+      </div>
+    </div>
+  </Reveal>
+</section>
 
       {/* Mission & values */}
       <section className="mx-auto max-w-6xl px-4 pb-12">
         <Reveal>
           <div className="rounded-3xl border border-border bg-white p-8 sm:p-12">
             <h2 className="text-2xl font-bold text-ink">Mission</h2>
-            <p className="mt-3 leading-relaxed text-muted-foreground">
+            <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
               Every vehicle that comes into the dedicated detailing and coating
               shop in Miramichi leaves better than when it arrived — not just
               cleaner, but properly cared for, restored, and protected
