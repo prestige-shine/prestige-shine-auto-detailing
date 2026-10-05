@@ -23,6 +23,7 @@ import { WHATSAPP_NUMBER } from "@/lib/whatsapp";
 import { articles } from "@/lib/articles";
 import heroCollage from "@/assets/hero-collage.png";
 import prestigeShineLogo from "@/assets/prestige-shine-logo.png";
+import prestigeShineSocialImage from "@/assets/prestige-shine-lgo.jpg";
 import baBefore1 from "@/assets/ba-before-1.jpg";
 import baAfter1 from "@/assets/ba-after-1.jpg";
 import baBefore2 from "@/assets/ba-before-2.jpg";
@@ -183,7 +184,7 @@ export const Route = createFileRoute("/")({
       },
       {
         property: "og:image",
-        content: prestigeShineLogo,
+        content: prestigeShineSocialImage,
       },
       {
         name: "twitter:card",
@@ -200,7 +201,7 @@ export const Route = createFileRoute("/")({
       },
       {
         name: "twitter:image",
-        content: prestigeShineLogo,
+        content: prestigeShineSocialImage,
       },
       {
         name: "application/ld+json",
