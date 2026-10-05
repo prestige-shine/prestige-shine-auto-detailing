@@ -22,6 +22,7 @@ import { BookingWidget } from "@/components/aurexo/BookingWidget";
 import { WHATSAPP_NUMBER } from "@/lib/whatsapp";
 import { articles } from "@/lib/articles";
 import heroCollage from "@/assets/hero-collage.png";
+import prestigeShineLogo from "@/assets/prestige-shine-logo.png";
 import baBefore1 from "@/assets/ba-before-1.jpg";
 import baAfter1 from "@/assets/ba-after-1.jpg";
 import baBefore2 from "@/assets/ba-before-2.jpg";
@@ -160,34 +161,46 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       {
-        title:
-          "Prestige Shine Auto Detailing — Concierge Auto Detailing in Miramichi",
+        title: "Prestige Shine Auto Detailing | Miramichi, NB",
       },
       {
         name: "description",
         content:
-          "Premium auto detailing in Miramichi. Appointment-only full detailing, paint enhancement, paint correction and professional ceramic coatings in Miramichi, NB.",
+          "Prestige Shine Auto Detailing provides professional interior and exterior detailing, paint enhancement, paint correction, and ceramic coating services in Miramichi, NB.",
       },
       {
         property: "og:title",
-        content:
-          "Prestige Shine Auto Detailing — Concierge Auto Detailing in Miramichi",
+        content: "Prestige Shine Auto Detailing | Miramichi, NB",
       },
       {
         property: "og:description",
         content:
-          "Full detailing, paint enhancement, paint correction and ceramic coatings. Appointment only in Miramichi, NB.",
+          "Professional auto detailing, paint correction, paint enhancement, and ceramic coating services in Miramichi, NB.",
       },
-      { property: "og:type", content: "website" },
-      { property: "og:image", content: HERO_IMG },
-      { name: "twitter:card", content: "summary_large_image" },
+      {
+        property: "og:type",
+        content: "website",
+      },
+      {
+        property: "og:image",
+        content: prestigeShineLogo,
+      },
+      {
+        name: "twitter:card",
+        content: "summary_large_image",
+      },
       {
         name: "twitter:title",
-        content: "Prestige Shine Auto Detailing — Miramichi",
+        content: "Prestige Shine Auto Detailing | Miramichi, NB",
       },
       {
         name: "twitter:description",
-        content: "Concierge auto detailing perfected in Miramichi.",
+        content:
+          "Professional auto detailing, paint correction, paint enhancement, and ceramic coating services in Miramichi, NB.",
+      },
+      {
+        name: "twitter:image",
+        content: prestigeShineLogo,
       },
       {
         name: "application/ld+json",
@@ -196,10 +209,9 @@ export const Route = createFileRoute("/")({
           "@type": ["LocalBusiness", "AutoDetailing"],
           name: "Prestige Shine Auto Detailing",
           description:
-            "Premium auto detailing, ceramic coating, and paint correction in Miramichi, NB.",
+            "Professional auto detailing, ceramic coating, paint correction, and paint enhancement services in Miramichi, NB.",
           telephone: "+15062514451",
           email: "prestige101shine@gmail.com",
-          url: "https://prestige-shine-auto-detailing.lovable.app",
           address: {
             "@type": "PostalAddress",
             streetAddress: "229 Jacqueline Dr",
@@ -208,7 +220,10 @@ export const Route = createFileRoute("/")({
             postalCode: "E1N 3Z2",
             addressCountry: "CA",
           },
-          areaServed: "Miramichi, NB and surrounding areas",
+          areaServed: {
+            "@type": "City",
+            name: "Miramichi",
+          },
           sameAs: ["https://www.facebook.com/share/19LTaGPm2C/"],
           priceRange: "$$$",
           aggregateRating: {
@@ -253,6 +268,7 @@ function Home() {
         />
         <div className="absolute inset-0 bg-ink/25" />
         <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-ink/70" />
+
         <div className="relative mx-auto flex min-h-[88vh] max-w-6xl flex-col items-center justify-center px-4 py-20 text-center">
           <span className="inline-flex items-center gap-2 rounded-full bg-brand/15 px-3 py-1 text-xs font-semibold text-brand ring-1 ring-brand/30">
             <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-brand" />{" "}
@@ -263,8 +279,8 @@ function Home() {
             Prestige Shine Auto Detailing,
             <br />
             <span className="text-brand [-webkit-text-stroke:2px_#E2ECF5] sm:[-webkit-text-stroke:1.5px_#E2ECF5]">
-  Perfected in Miramichi.
-</span>
+              Perfected in Miramichi.
+            </span>
           </h1>
 
           <p className="mt-5 max-w-2xl text-base text-white/75 sm:text-lg">
@@ -320,9 +336,11 @@ function Home() {
                 <div className="grid h-12 w-12 place-items-center rounded-full bg-brand/15">
                   <Icon className="h-6 w-6 text-ink" />
                 </div>
+
                 <p className="mt-3 text-2xl font-extrabold text-ink sm:text-3xl">
                   {num}
                 </p>
+
                 <p className="mt-1 text-sm text-muted-foreground">{label}</p>
               </div>
             ))}
@@ -330,47 +348,48 @@ function Home() {
         </div>
       </section>
 
-     {/* System X Certification */}
-<section className="mx-auto mt-6 max-w-6xl px-4 pb-12">
-  <Reveal>
-    <div className="grid grid-cols-1 overflow-hidden rounded-3xl border border-border bg-white lg:grid-cols-2">
-      {/* Text */}
-      <div className="flex flex-col items-start justify-center p-8 sm:p-12">
-        <p className="text-xs font-bold uppercase tracking-wide text-brand">
-          System X Certification
-        </p>
+      {/* System X Certification */}
+      <section className="mx-auto mt-6 max-w-6xl px-4 pb-12">
+        <Reveal>
+          <div className="grid grid-cols-1 overflow-hidden rounded-3xl border border-border bg-white lg:grid-cols-2">
+            {/* Text */}
+            <div className="flex flex-col items-start justify-center p-8 sm:p-12">
+              <p className="text-xs font-bold uppercase tracking-wide text-brand">
+                System X Certification
+              </p>
 
-        <h2 className="mt-2 text-2xl font-bold text-ink">
-          Kevin, System X Certified Installer
-        </h2>
+              <h2 className="mt-2 text-2xl font-bold text-ink">
+                Kevin, System X Certified Installer
+              </h2>
 
-        <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-          Kevin Hines is an authorized System X applicator, trained to meet the
-          quality process standards required for professional System X ceramic
-          coating applications. Explore ceramic coating services prepared and
-          applied with care at the Prestige Shine shop in Miramichi.
-        </p>
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                Kevin Hines is an authorized System X applicator, trained to
+                meet the quality process standards required for professional
+                System X ceramic coating applications. Explore ceramic coating
+                services prepared and applied with care at the Prestige Shine
+                shop in Miramichi.
+              </p>
 
-        <Link
-          to="/about"
-          className="mt-5 inline-flex min-h-10 items-center gap-2 rounded-xl bg-brand px-4 py-2 text-sm font-semibold text-brand-foreground transition hover:bg-brand/90"
-        >
-          Learn More <ArrowRight className="h-4 w-4" />
-        </Link>
-      </div>
+              <Link
+                to="/about"
+                className="mt-5 inline-flex min-h-10 items-center gap-2 rounded-xl bg-brand px-4 py-2 text-sm font-semibold text-brand-foreground transition hover:bg-brand/90"
+              >
+                Learn More <ArrowRight className="h-4 w-4" />
+              </Link>
+            </div>
 
-      {/* Certificate */}
-      <div className="min-h-[320px] bg-surface sm:min-h-[380px] lg:min-h-0">
-        <img
-          src={systemXCertificate}
-          alt="System X certified ceramic coating installer certificate"
-          className="h-full w-full object-contain"
-          loading="lazy"
-        />
-      </div>
-    </div>
-  </Reveal>
-</section>
+            {/* Certificate */}
+            <div className="min-h-[320px] bg-surface sm:min-h-[380px] lg:min-h-0">
+              <img
+                src={systemXCertificate}
+                alt="System X certified ceramic coating installer certificate"
+                className="h-full w-full object-contain"
+                loading="lazy"
+              />
+            </div>
+          </div>
+        </Reveal>
+      </section>
 
       {/* Service Tiers — image-forward */}
       <section className="mx-auto max-w-6xl px-4 py-8">
@@ -378,14 +397,17 @@ function Home() {
           <p className="text-xs font-bold uppercase tracking-wide text-brand">
             Our Services
           </p>
+
           <h2 className="mt-2 text-2xl font-bold text-ink sm:text-3xl">
             Six Services, One Standard of Finish
           </h2>
+
           <p className="mt-2 text-sm text-muted-foreground">
             From interior resets to System X ceramic coatings — every vehicle
             is personally inspected and quality-controlled by Kevin and priced
             according to your vehicle's size and condition.
           </p>
+
           <p className="mx-auto mt-2 max-w-2xl text-xs text-muted-foreground">
             Prices shown are starting estimates. Final pricing is based on
             vehicle size and condition. Excessive pet hair, staining, heavy
@@ -513,6 +535,7 @@ function Home() {
             <p className="text-xs font-bold uppercase tracking-wide text-brand">
               Featured
             </p>
+
             <h2 className="mt-1 text-2xl font-bold text-ink">
               Recent Completed Vehicles
             </h2>
@@ -542,6 +565,7 @@ function Home() {
             <p className="text-xs font-bold uppercase tracking-wide text-brand">
               Tools
             </p>
+
             <h2 className="mt-2 text-2xl font-bold text-ink">
               Everything You Need to Decide
             </h2>
@@ -557,7 +581,9 @@ function Home() {
                   <div className="grid h-12 w-12 place-items-center rounded-full bg-brand/15 transition duration-300 group-hover:scale-105">
                     <Icon className="h-6 w-6 text-ink" />
                   </div>
+
                   <p className="mt-3 font-bold text-ink">{label}</p>
+
                   <p className="mt-1 text-xs text-muted-foreground">{sub}</p>
                 </Link>
               </Reveal>
@@ -575,6 +601,7 @@ function Home() {
             <p className="text-xs font-bold uppercase tracking-wide text-brand">
               From the Journal
             </p>
+
             <h2 className="mt-1 text-2xl font-bold text-ink sm:text-3xl">
               Detailing Guides & Miramichi Insights
             </h2>
@@ -622,6 +649,7 @@ function Home() {
                   <span className="inline-flex items-center gap-1">
                     <Calendar className="h-3 w-3" /> {a.date}
                   </span>
+
                   {a.readMinutes ? (
                     <span>· {a.readMinutes} min read</span>
                   ) : null}
