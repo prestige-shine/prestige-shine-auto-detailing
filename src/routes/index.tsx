@@ -696,7 +696,7 @@ function Home() {
               rel="noreferrer"
               className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-brand px-6 py-3 text-sm font-semibold text-white transition hover:bg-brand/90"
             >
-              <MessageCircle className="h-4 w-4" /> Book via WhatsApp
+              <MessageCircle className="h-4 w-4" /> Book Now
             </a>
 
             <Link
