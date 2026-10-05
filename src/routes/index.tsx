@@ -166,7 +166,7 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Prestige Shine Auto Detailing provides professional interior and exterior detailing, paint enhancement, paint correction, and ceramic coating services in Miramichi, NB.",
+          "Professional auto detailing, paint correction, paint enhancement, and ceramic coating services in Miramichi, NB.",
       },
       {
         property: "og:title",
