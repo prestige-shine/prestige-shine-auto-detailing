@@ -143,7 +143,7 @@ const TOOLS = [
   },
   {
     label: "Owner Reviews",
-    sub: "100+ 5-star Google reviews",
+    sub: "120+ 5-star Google reviews",
     to: "/reviews",
     icon: Star,
   },
@@ -230,12 +230,18 @@ export const Route = createFileRoute("/")({
           aggregateRating: {
             "@type": "AggregateRating",
             ratingValue: "4.9",
-            reviewCount: "100",
+            reviewCount: "122",
           },
         }),
       },
     ],
-    links: [{ rel: "preload", as: "image", href: HERO_IMG }],
+    links: [
+      { rel: "preload", as: "image", href: HERO_IMG },
+      {
+        rel: "canonical",
+        href: "https://prestigeshineautodetailing.ca/",
+      },
+    ],
   }),
   component: Home,
 });
@@ -285,10 +291,11 @@ function Home() {
           </h1>
 
           <p className="mt-5 max-w-2xl text-base text-white/75 sm:text-lg">
-            Appointment-only, drop-off detailing at our dedicated detailing
-            and coating shop in Miramichi. Kevin is a System X certified
-            installer, providing professional ceramic coatings alongside full
-            detailing, paint enhancement, and paint correction.
+            Prestige Shine is appointment-only, with limited availability each
+            month. Booking in advance is recommended. Drop-off detailing is
+            completed at our dedicated shop in Miramichi. Kevin is a System X
+            certified installer, providing professional ceramic coatings
+            alongside full detailing, paint enhancement, and paint correction.
           </p>
 
           <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
@@ -676,7 +683,7 @@ function Home() {
       <section className="bg-ink py-16">
         <div className="mx-auto max-w-6xl px-4 text-center">
           <span className="inline-flex items-center gap-2 rounded-full bg-brand/15 px-3 py-1 text-xs font-semibold text-brand ring-1 ring-brand/30">
-            <CalendarClock className="h-3.5 w-3.5" /> Limited Slots Available
+            <CalendarClock className="h-3.5 w-3.5" /> Limited Availability Each Month
           </span>
 
           <h2 className="mt-4 text-3xl font-extrabold text-white sm:text-4xl">

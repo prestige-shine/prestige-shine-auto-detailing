@@ -129,6 +129,12 @@ export const Route = createFileRoute("/faqs")({
           "Expert answers from Miramichi's certified detailing professionals.",
       },
     ],
+    links: [
+      {
+        rel: "canonical",
+        href: "https://prestigeshineautodetailing.ca/faqs",
+      },
+    ],
     scripts: [
       {
         type: "application/ld+json",

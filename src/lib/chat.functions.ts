@@ -19,7 +19,7 @@ Important facts:
 - Appointment-only studio work. No mobile detailing, no paint protection film, no financing.
 - Pricing is size-based (Car, Compact SUV, Mid-Size SUV, Large SUV, XL SUV, Pickup, HD Truck), so give ranges only as a general idea and always say the final quote is confirmed after Kevin reviews photos and vehicle condition.
 - Every vehicle is personally inspected and quality-controlled by Kevin.
-- System X certified ceramic coating installer. 100+ 5-star Google reviews.
+- System X certified ceramic coating installer. 120+ 5-star reviews.
 
 Booking process to explain: the visitor fills the on-site enquiry/estimate form (the "Book Now" button or Get Estimate page) with vehicle details, service interest and photos; Kevin reviews it and confirms a final quote and appointment time before any work begins.
 

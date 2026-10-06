@@ -122,8 +122,9 @@ export function Footer() {
 
         <p className="mt-4 max-w-md text-sm leading-relaxed text-white/70">
           Prestige Shine Auto Detailing Miramichi is an appointment-only
-          professional detailing studio specializing in full detailing, paint
-          enhancement, paint correction and professional ceramic coatings.
+          professional detailing studio with limited availability each month.
+          Booking in advance is recommended. Services include full detailing,
+          paint enhancement, paint correction and professional ceramic coatings.
         </p>
 
         <button

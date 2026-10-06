@@ -1918,7 +1918,7 @@ function SuccessView({
       <p className="mt-3 max-w-md text-sm text-muted-foreground">
         Your assessment has been sent to Kevin at Prestige Shine Auto
         Detailing. He’ll review your photos and details and get back
-        to you with a personalized estimate within a few hours.
+        to you with a personalized estimate.
       </p>
 
       <div className="mt-8 rounded-2xl bg-black/[0.03] px-6 py-4 text-xs text-ink/70">

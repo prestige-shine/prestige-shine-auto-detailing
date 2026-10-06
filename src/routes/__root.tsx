@@ -17,6 +17,7 @@ import { NavDrawer } from "@/components/aurexo/NavDrawer";
 import { FavoritesProvider } from "@/contexts/FavoritesContext";
 import { ChatWidget } from "@/components/aurexo/ChatWidget";
 import { LeadDialogProvider } from "@/contexts/LeadDialogContext";
+import prestigeShineSocialImage from "@/assets/prestige-shine-lgo.jpg";
 
 function NotFoundComponent() {
   return (
@@ -92,8 +93,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "Prestige Shine Auto Detailing — Concierge Auto Detailing in Miramichi" },
       { name: "twitter:description", content: "Premium auto detailing in Miramichi. Ceramic 9H coating, multi-stage paint correction, interior hot-water extraction — concierge results." },
-      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/YMZYjIvWsdd8fXxicrdz7ROCf262/social-images/social-1783234986742-1000143751.webp" },
-      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/YMZYjIvWsdd8fXxicrdz7ROCf262/social-images/social-1783234986742-1000143751.webp" },
+      { property: "og:image", content: prestigeShineSocialImage },
+      { name: "twitter:image", content: prestigeShineSocialImage },
     ],
     links: [
       {

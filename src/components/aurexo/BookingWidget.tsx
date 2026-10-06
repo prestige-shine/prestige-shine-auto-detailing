@@ -7,7 +7,7 @@ const BRAND_DARK = "#0052cc";
 const BENEFITS = [
   { icon: Calculator, label: "Personalized estimate", desc: "Priced to your vehicle's real condition." },
   { icon: Camera, label: "Photo-based quoting", desc: "Upload photos for accurate pricing." },
-  { icon: Clock, label: "Fast turnaround", desc: "Most quotes back within a few hours." },
+  { icon: Clock, label: "Quote process", desc: "Kevin reviews your vehicle details before pricing." },
   { icon: ShieldCheck, label: "No obligation", desc: "Get pricing before you commit." },
 ];
 

@@ -16,7 +16,7 @@ const FAQS: { q: string; a: string }[] = [
   },
   {
     q: "Do you come to me, or do I drop my vehicle off?",
-    a: "Prestige Shine operates By Appointment Only, and all work is completed at the dedicated detailing and coating shop in Miramichi. You book a time, drop the vehicle off, and Kevin handles everything from there, keeping dust, lighting, and cure conditions controlled for correction and coating work.",
+    a: "Prestige Shine is appointment-only, with limited availability each month. Booking in advance is recommended. All work is completed at the dedicated detailing and coating shop in Miramichi. You book a time, drop the vehicle off, and Kevin handles everything from there, keeping dust, lighting, and cure conditions controlled for correction and coating work.",
   },
   {
     q: "What does a Full Detail cost?",

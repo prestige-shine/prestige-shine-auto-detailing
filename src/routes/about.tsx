@@ -28,6 +28,12 @@ export const Route = createFileRoute("/about")({
           "Miramichi's appointment-only auto detailing shop — ceramic coatings, paint correction, and interior deep cleans.",
       },
     ],
+    links: [
+      {
+        rel: "canonical",
+        href: "https://prestigeshineautodetailing.ca/about",
+      },
+    ],
   }),
   component: About,
 });
@@ -204,7 +210,7 @@ function About() {
               <div>
                 <h3 className="text-lg font-bold text-ink">Recognition</h3>
                 <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                  Prestige Shine has earned 100+ 5-star Google reviews from
+                  Prestige Shine has earned 120+ 5-star Google reviews from
                   Miramichi vehicle owners, with repeat clients for ceramic
                   coatings, paint correction, interior restoration, and full
                   detail packages — the recognition that matters most is a

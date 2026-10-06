@@ -80,7 +80,7 @@ export const Route = createFileRoute("/reviews")({
       {
         name: "description",
         content:
-          "100+ 5-star Google reviews from Miramichi vehicle owners on Prestige Shine's ceramic coatings, paint correction, and interior deep cleaning services.",
+          "120+ 5-star Google reviews from Miramichi vehicle owners on Prestige Shine's ceramic coatings, paint correction, and interior deep cleaning services.",
       },
       {
         property: "og:title",
@@ -92,6 +92,12 @@ export const Route = createFileRoute("/reviews")({
           "What Miramichi drivers say about Prestige Shine's detailing services.",
       },
     ],
+    links: [
+      {
+        rel: "canonical",
+        href: "https://prestigeshineautodetailing.ca/reviews",
+      },
+    ],
   }),
   component: Reviews,
 });
@@ -101,7 +107,7 @@ function Reviews() {
     <main className="overflow-x-hidden">
       <PageHeader
         eyebrow="Reviews"
-        title="100+ 5-star Google reviews from Miramichi drivers."
+        title="120+ 5-star Google reviews from Miramichi drivers."
         subtitle="Genuine feedback from vehicle owners across Miramichi, NB and surrounding areas who've experienced the Prestige Shine difference."
       />
 

@@ -63,7 +63,7 @@ export function buildLeadMessage(p: LeadPayload) {
     lines.push("", "── Notes ──", note);
   }
 
-  lines.push("", `Submitted via: ${p.source ?? "prestige-shine-auto-detailing.lovable.app"}`);
+  lines.push("", `Submitted via: ${p.source ?? "prestigeshineautodetailing.ca"}`);
   return lines.join("\n");
 }
 

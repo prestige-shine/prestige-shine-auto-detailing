@@ -208,6 +208,12 @@ export const Route = createFileRoute("/services")({
           "Interior, exterior, full detail packages, paint enhancement, ceramic coating and paint correction every vehicle is personally inspected and quality-controlled by Kevin in Miramichi, NB.",
       },
     ],
+    links: [
+      {
+        rel: "canonical",
+        href: "https://prestigeshineautodetailing.ca/services",
+      },
+    ],
   }),
   component: Services,
 });
