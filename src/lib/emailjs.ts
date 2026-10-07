@@ -12,6 +12,10 @@ export type LeadEmailParams = {
   vehicle_make: string;
   vehicle_model: string;
   vehicle_year: string;
+  year: string;
+  make: string;
+  model: string;
+  service: string;
   vehicle_colour: string;
   requested_services: string;
   other_service: string;
@@ -71,7 +75,13 @@ export async function sendLeadNotification(
     await emailjs.send(
       cfg.serviceId,
       cfg.templateId,
-      { ...params },
+      {
+        ...params,
+        year: params.vehicle_year,
+        make: params.vehicle_make,
+        model: params.vehicle_model,
+        service: params.requested_services,
+      },
       { publicKey: cfg.publicKey },
     );
 
