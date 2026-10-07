@@ -117,10 +117,10 @@ export function Footer() {
 
   return (
     <footer className="bg-ink text-white">
-      <div className="mx-auto max-w-6xl px-5 py-12">
+      <div className="mx-auto max-w-6xl px-5 py-8">
         <Logo variant="light" />
 
-        <p className="mt-4 max-w-md text-sm leading-relaxed text-white/70">
+        <p className="mt-3 max-w-md text-sm leading-relaxed text-white/70">
           Prestige Shine Auto Detailing Miramichi is an appointment-only
           professional detailing studio with limited availability each month.
           Booking in advance is recommended. Services include full detailing,
@@ -130,14 +130,14 @@ export function Footer() {
         <button
           type="button"
           onClick={() => open()}
-          className="mt-6 inline-flex items-center gap-2 rounded-full bg-brand px-6 py-3 text-sm font-extrabold text-white shadow-lg transition hover:opacity-90"
+          className="mt-4 inline-flex items-center gap-2 rounded-full bg-brand px-6 py-3 text-sm font-extrabold text-white shadow-lg transition hover:opacity-90"
         >
           <Calculator className="h-4 w-4" />
           Get My Personalized Quote
           <ArrowRight className="h-4 w-4" />
         </button>
 
-        <div className="mt-8 grid gap-6 sm:grid-cols-2">
+        <div className="mt-6 grid gap-6 sm:grid-cols-2">
           <div>
             <h4 className="text-sm font-semibold uppercase tracking-wider text-white/60">
               Studio Hours
@@ -162,7 +162,7 @@ export function Footer() {
         {/* Mailing list */}
         <form
           onSubmit={handleSubscribe}
-          className="mt-8"
+          className="mt-6"
         >
           <div className="flex items-center rounded-full border border-white/15 bg-white/[0.07] pl-5 pr-1.5 py-1.5">
             <input
@@ -235,13 +235,13 @@ export function Footer() {
           )}
         </form>
 
-        <div className="mt-8">
+        <div className="mt-6">
           {Object.entries(groups).map(([k, v]) => (
             <AccordionRow key={k} title={k} items={v} />
           ))}
         </div>
 
-        <div className="mt-8 space-y-4 border-t border-white/10 pt-8">
+        <div className="mt-6 space-y-3 border-t border-white/10 pt-6">
           <div className="flex items-center gap-3 text-sm text-white/85">
             <Phone className="h-4 w-4 shrink-0 text-brand" />
             <a
@@ -270,7 +270,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-8 flex items-center gap-3 border-t border-white/10 pt-8">
+        <div className="mt-6 flex items-center gap-3 border-t border-white/10 pt-6">
           <Social
             href={FACEBOOK_URL}
             label="Facebook"
@@ -286,13 +286,13 @@ export function Footer() {
           </Social>
         </div>
 
-        <div className="mt-10 flex flex-col gap-5 border-t border-white/10 pt-8 text-xs text-white/40 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-8 flex flex-col gap-5 border-t border-white/10 pt-6 text-xs text-white/40 sm:flex-row sm:items-center sm:justify-between">
           <p>
             © 2026 Prestige Shine Auto Detailing · Miramichi, NB. All rights
             reserved.
           </p>
 
-          <div className="flex items-center gap-4 sm:mr-auto sm:ml-60">
+          <div className="flex items-center gap-4">
             <Link
               to="/privacy"
               className="hover:text-white/70"

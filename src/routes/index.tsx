@@ -680,24 +680,24 @@ function Home() {
       <HomeFAQ />
 
       {/* Bottom CTA */}
-      <section className="bg-ink py-16">
+      <section className="bg-ink py-10">
         <div className="mx-auto max-w-6xl px-4 text-center">
           <span className="inline-flex items-center gap-2 rounded-full bg-brand/15 px-3 py-1 text-xs font-semibold text-brand ring-1 ring-brand/30">
             <CalendarClock className="h-3.5 w-3.5" /> Limited Availability Each Month
           </span>
 
-          <h2 className="mt-4 text-3xl font-extrabold text-white sm:text-4xl">
+          <h2 className="mt-3 text-3xl font-extrabold text-white sm:text-4xl">
             Ready for a Flawless Finish?
           </h2>
 
-          <p className="mt-3 text-sm text-white/65">
+          <p className="mt-2 text-sm text-white/65">
             Real vehicle transformations completed by Prestige Shine Auto
             Detailing in Miramichi, NB. Every project showcases the
             craftsmanship, attention to detail, and premium finish clients
             expect from Prestige Shine.
           </p>
 
-          <div className="mt-6 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
+          <div className="mt-4 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
             <a
               href={waHref(ctaMsg)}
               target="_blank"
@@ -715,7 +715,7 @@ function Home() {
             </Link>
           </div>
 
-          <p className="mt-5 text-xs text-white/45">
+          <p className="mt-4 text-xs text-white/45">
             +1 (506) 251-4451 · Miramichi, NB · By Appointment Only
           </p>
         </div>
