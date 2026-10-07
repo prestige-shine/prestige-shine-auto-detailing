@@ -730,7 +730,7 @@ function StepCustomer({
       <SectionHead
         eyebrow="Customer Information"
         title="Let's start with you"
-        sub="We'll use this to send your personalized estimate and confirm your appointment."
+        sub="Kevin will use these details to prepare your personalized estimate and confirm your appointment."
       />
 
       <div className="grid gap-4">
@@ -808,7 +808,7 @@ function StepVehicle({
       <SectionHead
         eyebrow="Vehicle Information"
         title="Tell us about your vehicle"
-        sub="This helps us match the right products and time estimate."
+        sub="This helps Kevin select suitable products and estimate the time required."
       />
 
       <div className="grid gap-4 sm:grid-cols-2">
@@ -1233,7 +1233,7 @@ function StepPhotos({
       <SectionHead
         eyebrow="Photo Upload"
         title="Upload photos of your vehicle"
-        sub="Uploading photos helps us provide a faster and more accurate estimate."
+        sub="Uploading photos helps Kevin prepare a faster, more accurate estimate."
       />
 
       {(form.photos.length > 0 || uploadingCount > 0) && (
@@ -1748,13 +1748,14 @@ function StepEstimate({
   });
 
   const hasCustomService = form.services.includes("other");
+  const requiresCustomQuote = hasCustomService || est.requiresCustomQuote;
 
   return (
     <div>
       <SectionHead
         eyebrow="Estimate"
         title={
-          hasCustomService
+          requiresCustomQuote
             ? "Your Custom Estimate"
             : "Your Estimated Starting Price"
         }
@@ -1773,7 +1774,7 @@ function StepEstimate({
           className="text-xs font-bold uppercase tracking-wider"
           style={{ color: BRAND_DARK }}
         >
-          {hasCustomService
+          {requiresCustomQuote
             ? "Custom Estimate"
             : est.isRange
               ? "Estimated Price Range"
@@ -1781,14 +1782,16 @@ function StepEstimate({
         </p>
 
         <p className="mt-2 text-4xl font-extrabold text-ink sm:text-5xl">
-          {hasCustomService
+          {est.requiresCustomQuote
+            ? `Starting at ${formatPrice(PRICING_CONFIG.ceramicPackagesStartingAt)}`
+            : hasCustomService
             ? "Custom Estimate"
             : est.isRange
               ? `${formatPrice(est.low)} – ${formatPrice(est.high)}`
               : formatPrice(est.low)}
         </p>
 
-        {!hasCustomService && (
+        {!requiresCustomQuote && (
           <div className="mx-auto mt-5 max-w-sm space-y-1 text-left">
             {est.breakdown.map((b) => (
               <div
@@ -1807,14 +1810,18 @@ function StepEstimate({
       </div>
 
       <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-        {hasCustomService
+        {est.requiresCustomQuote
+          ? PRICING_CONFIG.notes.ceramic
+          : hasCustomService
           ? "This request requires a custom estimate. Your details and uploaded photos will be reviewed before pricing is confirmed."
           : "This estimate is based on the information you've provided. Your final quote will be confirmed after reviewing your uploaded vehicle photos and your vehicle's overall condition."}
       </p>
 
-      <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-        {PRICING_CONFIG.notes.estimate}
-      </p>
+      {!est.requiresCustomQuote && (
+        <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+          {PRICING_CONFIG.notes.estimate}
+        </p>
+      )}
 
       <div className="mt-5 grid gap-2">
         {[

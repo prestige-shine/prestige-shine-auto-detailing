@@ -18,6 +18,8 @@ export const VEHICLE_SIZES = [
 
 export type VehicleSizeKey = (typeof VEHICLE_SIZES)[number]["key"];
 
+const ceramicPackagesStartingAt = 1000;
+
 export const PRICING_CONFIG = {
   currency: "$",
 
@@ -43,13 +45,11 @@ export const PRICING_CONFIG = {
     "hd-truck": 700,
   } as Record<VehicleSizeKey, number>,
 
-  /** Flat starting prices for correction and ceramic services. */
+  /** Flat starting prices for correction services. */
   paintEnhancement: 300,
   paintCorrection2Step: 600,
   paintCorrectionAdvanced: 900,
-  ceramic3Year: 800,
-  ceramic6Year: 1200,
-  ceramicWithCorrection: 1500,
+  ceramicPackagesStartingAt,
 
   /** Optional add-on services. */
 addOns: {
@@ -75,8 +75,16 @@ addOns: {
       "Paint enhancement and correction pricing depends on vehicle size and paint condition. An in-person inspection or photo assessment may be required before a final quote is confirmed.",
     estimate:
       "Prices shown are starting estimates. Final pricing is confirmed after reviewing vehicle size, condition, and any additional factors that may affect the scope of work.",
+    ceramic:
+      `Professional Ceramic Coating Packages starting at $${ceramicPackagesStartingAt.toLocaleString()}, with final pricing depending on vehicle size, paint condition, preparation required and coating package selected.`,
   },
 } as const;
+
+const CERAMIC_SERVICE_KEYS = new Set([
+  "ceramic-3",
+  "ceramic-6",
+  "ceramic-correction",
+]);
 
 /** Starting price used by the estimator, keyed by service option. */
 function servicePrice(key: string, size: VehicleSizeKey): number | null {
@@ -96,11 +104,9 @@ function servicePrice(key: string, size: VehicleSizeKey): number | null {
     case "paint-correction-advanced":
       return c.paintCorrectionAdvanced;
     case "ceramic-3":
-      return c.ceramic3Year;
     case "ceramic-6":
-      return c.ceramic6Year;
     case "ceramic-correction":
-      return c.ceramicWithCorrection;
+      return null;
     default:
       return c.addOns[key as keyof typeof c.addOns] ?? null;
   }
@@ -117,6 +123,7 @@ export type EstimateInput = {
 export type EstimateResult = {
   vehicleSizeLabel: string;
   serviceLabel: string;
+  requiresCustomQuote: boolean;
   isRange: boolean;
   low: number;
   high: number;
@@ -186,7 +193,9 @@ const high =
   addonTotal +
   conditionTotal;
 
-  const priced = input.services.filter((s) => servicePrice(s, sizes[0]) !== null);
+  const priced = input.services.filter(
+    (s) => servicePrice(s, sizes[0]) !== null || CERAMIC_SERVICE_KEYS.has(s),
+  );
   const serviceLabelText = priced.length
     ? priced.map(serviceLabel).join(" + ")
     : "Custom request";
@@ -214,6 +223,9 @@ const high =
       ? VEHICLE_SIZES.find((v) => v.key === input.vehicleSize)!.label
       : "All vehicle sizes",
     serviceLabel: serviceLabelText,
+    requiresCustomQuote: input.services.some((s) =>
+      CERAMIC_SERVICE_KEYS.has(s),
+    ),
     isRange: !input.vehicleSize || high > low,
     low,
     high,

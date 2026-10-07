@@ -35,9 +35,10 @@ export const articles: Article[] = [
       "## Ceramic coating: what it actually does",
       "A professional ceramic coating forms a durable protective layer over the clearcoat and provides hydrophobic behavior, helping water and contaminants release more easily from the surface. It can also provide resistance to many common environmental contaminants and make routine maintenance easier.",
       "A ceramic coating is not a substitute for careful washing and maintenance, and it should not be considered scratch-proof. Its performance and longevity depend on the specific product, installation, vehicle use, and ongoing maintenance.",
-      "- 3-Year Ceramic Protection: from $800",
-      "- System X 6-Year Ceramic Coating: from $1,200",
-      "- Correction + 6-Year Ceramic: from $1,500 (paint correction performed first, then coated)",
+      "- 3-Year Ceramic Protection",
+      "- System X 6-Year Ceramic Coating",
+      "- Correction + 6-Year Ceramic (paint correction performed first, then coated)",
+      "Professional Ceramic Coating Packages starting at $1,000, with final pricing depending on vehicle size, paint condition, preparation required and coating package selected.",
       "## The Miramichi-specific math",
       "Winter road salt and brine are an unavoidable part of driving in Atlantic Canada. Keeping the vehicle clean and maintaining its protective layer can help reduce the amount of road film and contaminants left sitting on the paint.",
       "A ceramic coating can make regular washing and maintenance easier by providing a hydrophobic surface and an additional layer of protection against everyday environmental exposure. The coating still requires proper care, especially during the winter months.",
@@ -128,4 +129,3 @@ export const articles: Article[] = [
 ];
 
 export const findArticle = (slug: string) => articles.find((a) => a.slug === slug);
-

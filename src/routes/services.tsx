@@ -95,7 +95,7 @@ const tiers = [
     id: "ceramic",
     icon: Shield,
     name: "Ceramic Coating",
-    price: "from $800",
+    price: "from $1,000",
     duration: "Est. 1–3 days",
     idealFor:
       "New vehicles, high-value cars, owners who want long-term, low-maintenance protection",
@@ -103,9 +103,10 @@ const tiers = [
     blurb:
       "As a System X certified installer, Kevin applies professional-grade ceramic coatings with careful preparation, including paint correction where required, panel wiping, and controlled curing conditions. The result is a hard, slick, hydrophobic surface that enhances gloss, improves resistance to environmental contamination, and makes routine washing easier. Product durability and any applicable manufacturer warranty depend on the specific System X product, its warranty terms, and proper maintenance.",
     included: [
-      "3-Year Ceramic Protection: from $800",
-      "System X 6-Year Ceramic Coating: from $1,200",
-      "Correction + 6-Year Ceramic: from $1,500",
+      "3-Year Ceramic Protection",
+      "System X 6-Year Ceramic Coating",
+      "Correction + 6-Year Ceramic",
+      "Professional Ceramic Coating Packages starting at $1,000, with final pricing depending on vehicle size, paint condition, preparation required and coating package selected.",
       "Full chemical and clay decontamination",
       "Machine polish to remove marring before coating",
       "IPA panel wipe to strip all polishing oils",
@@ -196,7 +197,7 @@ export const Route = createFileRoute("/services")({
       {
         name: "description",
         content:
-          "Interior detailing, exterior detailing, full detail packages from $200, full detail + paint enhancement from $450, System X ceramic coatings from $800 and paint correction in Miramichi, NB.",
+          "Interior detailing, exterior detailing, full detail packages from $200, full detail + paint enhancement from $450, professional ceramic coating packages starting at $1,000 and paint correction in Miramichi, NB.",
       },
       {
         property: "og:title",
@@ -239,7 +240,7 @@ function Services() {
       <PageHeader
         eyebrow="Services"
         title="Every service your vehicle deserves."
-        subtitle="Six core services plus a menu of precision add-ons. Every vehicle is personally inspected and quality-controlled by Kevin at Prestige Shine Auto Detailing in Miramichi, NB. By Appointment Only, with drop-off at our dedicated detailing and coating shop."
+        subtitle="Six core services plus a menu of precision add-ons. Every vehicle is personally inspected and quality-controlled by Kevin at Prestige Shine Auto Detailing in Miramichi, NB. By Appointment Only, with drop-off at Kevin's dedicated detailing and coating shop."
       />
 
       {/* Swipeable tier carousel */}

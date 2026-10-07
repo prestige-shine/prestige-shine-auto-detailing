@@ -21,7 +21,7 @@ function ComingSoon() {
           <Clock className="h-8 w-8" />
         </div>
         <h1 className="mt-6 text-3xl font-bold text-ink sm:text-4xl">This service is launching soon</h1>
-        <p className="mt-3 text-sm text-muted-foreground">We're detailing the final touches. In the meantime, explore our existing ceramic, correction, and interior packages.</p>
+        <p className="mt-3 text-sm text-muted-foreground">Kevin is preparing this service for launch. In the meantime, explore the current ceramic, correction, and interior packages.</p>
         <div className="mt-8 flex flex-wrap justify-center gap-3">
           <Link to="/services" className="rounded-full bg-brand px-5 py-3 text-sm font-bold text-white">See services</Link>
           <Link to="/get-estimate" className="rounded-full border border-ink px-5 py-3 text-sm font-semibold text-ink">Get a quote</Link>

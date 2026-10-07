@@ -39,10 +39,10 @@ export function BookingWidget() {
               <ClipboardCheck className="h-3.5 w-3.5" /> 9-step assessment
             </span>
             <h3 className="mt-4 text-3xl font-extrabold leading-tight sm:text-4xl">
-              Tell us about your car. We'll take care of the rest.
+              Tell Kevin about your car. He'll take it from there.
             </h3>
             <p className="mt-3 text-sm text-white/85">
-              A professional vehicle assessment that helps us understand your needs, so you get fair, accurate pricing every time.
+              A professional vehicle assessment helps Kevin understand your needs and prepare fair, accurate pricing.
             </p>
             <button
               onClick={() => open()}

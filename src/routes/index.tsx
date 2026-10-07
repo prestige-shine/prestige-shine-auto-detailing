@@ -110,8 +110,8 @@ const TIERS = [
   },
   {
     name: "Ceramic Coating",
-    desc: "3-Year Ceramic Protection from $800, System X 6-Year Ceramic Coating from $1,200, or Correction + 6-Year Ceramic from $1,500 — prepped, polished and coated panel by panel.",
-    price: "From $800",
+    desc: "Professional Ceramic Coating Packages starting at $1,000, with final pricing depending on vehicle size, paint condition, preparation required and coating package selected — prepped, polished and coated panel by panel.",
+    price: "From $1,000",
     image: audiQ5,
   },
   {
@@ -293,7 +293,7 @@ function Home() {
           <p className="mt-5 max-w-2xl text-base text-white/75 sm:text-lg">
             Prestige Shine is appointment-only, with limited availability each
             month. Booking in advance is recommended. Drop-off detailing is
-            completed at our dedicated shop in Miramichi. Kevin is a System X
+            completed at Kevin's dedicated shop in Miramichi. Kevin is a System X
             certified installer, providing professional ceramic coatings
             alongside full detailing, paint enhancement, and paint correction.
           </p>

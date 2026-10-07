@@ -44,7 +44,7 @@ function GetEstimate() {
               </h1>
 
               <p className="mt-4 max-w-2xl text-base text-white/75">
-                Photo-based, accurate quotes for every vehicle. Tell us about your car, upload a few photos, and Kevin will send you a fair estimate based on your vehicle’s actual condition.
+                Photo-based, accurate quotes for every vehicle. Share details about your car and upload a few photos. Kevin will review them and prepare a fair estimate based on your vehicle’s actual condition.
               </p>
 
               <button

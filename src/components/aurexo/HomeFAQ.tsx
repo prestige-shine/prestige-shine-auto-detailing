@@ -4,7 +4,7 @@ import { Plus, Minus } from "lucide-react";
 const FAQS: { q: string; a: string }[] = [
   {
     q: "How long does a ceramic coating last on a Miramichi-driven vehicle?",
-    a: "It depends on the package. Kevin offers 3-Year Ceramic Protection from $800, System X 6-Year Ceramic Coating from $1,200, and Correction + 6-Year Ceramic from $1,500. Ceramic coating performance and durability depend on the specific product and proper maintenance, including regular pH-neutral washes.",
+    a: "It depends on the package. Kevin offers 3-Year Ceramic Protection, System X 6-Year Ceramic Coating, and Correction + 6-Year Ceramic. Professional Ceramic Coating Packages starting at $1,000, with final pricing depending on vehicle size, paint condition, preparation required and coating package selected. Ceramic coating performance and durability depend on the specific product and proper maintenance, including regular pH-neutral washes.",
   },
   {
     q: "What's the difference between a polish, a paint correction, and full multi-stage correction?",

@@ -14,7 +14,7 @@ const groups = [
       ],
       [
         "How long does a ceramic coating last?",
-        "Durability and applicable manufacturer warranty coverage depend on the specific System X coating installed. Our ceramic coating options include 3-Year Ceramic Protection (from $800), System X 6-Year Ceramic Coating (from $1,200), and Correction + 6-Year Ceramic (from $1,500). The applicable System X warranty terms, registration, inspection requirements, and maintenance conditions apply to the specific product installed.",
+        "Durability and applicable manufacturer warranty coverage depend on the specific System X coating installed. Our options include 3-Year Ceramic Protection, System X 6-Year Ceramic Coating, and Correction + 6-Year Ceramic. Professional Ceramic Coating Packages starting at $1,000, with final pricing depending on vehicle size, paint condition, preparation required and coating package selected. The applicable System X warranty terms, registration, inspection requirements, and maintenance conditions apply to the specific product installed.",
       ],
       [
         "Does paint need to be corrected before coating?",
@@ -93,7 +93,7 @@ const groups = [
       ],
       [
         "Are prices fixed or are there surprises?",
-        "All pricing is confirmed before work begins. If additional issues are discovered during check-in, such as more severe paint damage than initially expected, Kevin will document the condition with photos and explain any additional work and associated cost before proceeding. No additional work will be carried out without your approval. Full Detail starts at $200 for cars, with pricing varying by vehicle size: $225 for compact SUVs, $275 for mid-size SUVs, $300 for large/3-row SUVs, $350 for XL SUVs, $300 for pickup trucks, and $350 for large/HD trucks. Full Detail + Paint Enhancement starts at $450 for cars and can range up to $700 for XL SUVs and HD trucks. Paint enhancement starts at $300, two-step correction at $600, and advanced multi-stage correction at $900. Ceramic coating packages start at $800. Final pricing depends on the vehicle's size, condition, and the level of service required. Excessive pet hair, staining, heavy soiling, or unusually neglected vehicles may require additional charges. Kevin will confirm the final price before work begins.",
+        "All pricing is confirmed before work begins. If additional issues are discovered during check-in, such as more severe paint damage than initially expected, Kevin will document the condition with photos and explain any additional work and associated cost before proceeding. No additional work will be carried out without your approval. Full Detail starts at $200 for cars, with pricing varying by vehicle size: $225 for compact SUVs, $275 for mid-size SUVs, $300 for large/3-row SUVs, $350 for XL SUVs, $300 for pickup trucks, and $350 for large/HD trucks. Full Detail + Paint Enhancement starts at $450 for cars and can range up to $700 for XL SUVs and HD trucks. Paint enhancement starts at $300, two-step correction at $600, and advanced multi-stage correction at $900. Professional Ceramic Coating Packages starting at $1,000, with final pricing depending on vehicle size, paint condition, preparation required and coating package selected. Excessive pet hair, staining, heavy soiling, or unusually neglected vehicles may require additional charges. Kevin will confirm the final price before work begins.",
       ],
       [
         "What is your cancellation policy?",
@@ -101,7 +101,7 @@ const groups = [
       ],
       [
         "What ceramic packages do you offer?",
-        "Three ceramic coating options are available: 3-Year Ceramic Protection from $800, System X 6-Year Ceramic Coating from $1,200, and Correction + 6-Year Ceramic from $1,500. Kevin is a System X certified installer and will recommend the appropriate option after reviewing the condition of your paint. Product durability and any applicable manufacturer warranty are subject to the specific System X product, warranty terms, and required maintenance.",
+        "Three ceramic coating options are available: 3-Year Ceramic Protection, System X 6-Year Ceramic Coating, and Correction + 6-Year Ceramic. Professional Ceramic Coating Packages starting at $1,000, with final pricing depending on vehicle size, paint condition, preparation required and coating package selected. Kevin is a System X certified installer and will recommend the appropriate option after reviewing the condition of your paint. Product durability and any applicable manufacturer warranty are subject to the specific System X product, warranty terms, and required maintenance.",
       ],
     ],
   },
@@ -126,7 +126,7 @@ export const Route = createFileRoute("/faqs")({
       {
         property: "og:description",
         content:
-          "Expert answers from Miramichi's certified detailing professionals.",
+          "Answers to Miramichi detailing questions from Kevin Hines.",
       },
     ],
     links: [
@@ -164,7 +164,7 @@ function Faqs() {
       <PageHeader
         eyebrow="Help"
         title="Detailing questions, answered."
-        subtitle="Everything Miramichi vehicle owners ask before, during and after a premium detailing service. Can't find yours? We're one tap away — By Appointment Only, with drop-off at our Miramichi shop."
+        subtitle="Everything Miramichi vehicle owners ask before, during and after a premium detailing service. Need help? Contact Kevin — by appointment, with drop-off at his Miramichi shop."
       />
 
       <section className="mx-auto max-w-3xl space-y-8 px-4 py-12">
