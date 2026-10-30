@@ -203,9 +203,11 @@ export const Route = createFileRoute("/")({
         name: "twitter:image",
         content: prestigeShineSocialImage,
       },
+    ],
+    scripts: [
       {
-        name: "application/ld+json",
-        content: JSON.stringify({
+        type: "application/ld+json",
+        children: JSON.stringify({
           "@context": "https://schema.org",
           "@type": ["LocalBusiness", "AutoDetailing"],
           name: "Prestige Shine Auto Detailing",
@@ -227,12 +229,7 @@ export const Route = createFileRoute("/")({
           },
           sameAs: ["https://www.facebook.com/share/19LTaGPm2C/"],
           priceRange: "$$$",
-          aggregateRating: {
-            "@type": "AggregateRating",
-            ratingValue: "4.9",
-            reviewCount: "122",
-          },
-        }),
+        }).replace(/</g, "\\u003c"),
       },
     ],
     links: [

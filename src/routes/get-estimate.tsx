@@ -12,7 +12,7 @@ export const Route = createFileRoute("/get-estimate")({
       { property: "og:title", content: "Get a Personalized Estimate — Prestige Shine Miramichi" },
       { property: "og:description", content: "Photo-based, accurate detailing quotes from Miramichi's premier studio." },
     ],
-    links: [{ rel: "canonical", href: "/get-estimate" }],
+    links: [{ rel: "canonical", href: "https://prestigeshineautodetailing.ca/get-estimate" }],
   }),
   component: GetEstimate,
 });

@@ -31,7 +31,7 @@ export const Route = createFileRoute("/contact")({
       { property: "og:title", content: "Contact — Prestige Shine Auto Detailing" },
       { property: "og:description", content: "Get in touch with Miramichi's premier auto detailing studio — Miramichi, NB and surrounding areas." },
     ],
-    links: [{ rel: "canonical", href: "/contact" }],
+    links: [{ rel: "canonical", href: "https://prestigeshineautodetailing.ca/contact" }],
   }),
   component: Contact,
 });
