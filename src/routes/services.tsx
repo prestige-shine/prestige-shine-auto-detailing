@@ -240,7 +240,7 @@ function Services() {
     <main className="overflow-x-hidden">
       <PageHeader
         eyebrow="Services"
-        title="Every service your vehicle deserves."
+        title="Professional Auto Detailing Services in Miramichi, NB"
         subtitle="Six core services plus a menu of precision add-ons. Every vehicle is personally inspected and quality-controlled by Kevin at Prestige Shine Auto Detailing in Miramichi, NB. By Appointment Only, with drop-off at Kevin's dedicated detailing and coating shop."
       />
 
@@ -422,6 +422,73 @@ function Services() {
             </div>
           </article>
         </Reveal>
+      </section>
+
+      <section
+        aria-labelledby="service-details-heading"
+        className="mx-auto max-w-6xl px-4 pb-12"
+      >
+        <div className="mb-6 max-w-3xl">
+          <p className="text-xs font-bold uppercase tracking-wide text-brand">
+            Service details
+          </p>
+          <h2
+            id="service-details-heading"
+            className="mt-2 text-2xl font-bold text-ink sm:text-3xl"
+          >
+            What each detail includes
+          </h2>
+          <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+            Compare the work included in each service, who it suits, and the
+            current starting prices. Final pricing depends on vehicle size and
+            condition.
+          </p>
+        </div>
+
+        <div className="grid gap-5 lg:grid-cols-2">
+          {tiers.map((service) => (
+            <article
+              key={service.id}
+              className="rounded-3xl border border-border bg-white p-6 shadow-sm sm:p-8"
+            >
+              <div className="flex flex-wrap items-start justify-between gap-3">
+                <h3 className="text-xl font-extrabold text-ink">
+                  {service.name}
+                </h3>
+                <span className="rounded-full bg-brand/10 px-3 py-1 text-sm font-bold text-ink">
+                  {service.price}
+                </span>
+              </div>
+
+              <p className="mt-2 text-sm font-medium text-muted-foreground">
+                {service.duration} · Ideal for: {service.idealFor}
+              </p>
+
+              <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+                {service.blurb}
+              </p>
+
+              <h4 className="mt-5 text-sm font-bold uppercase tracking-wide text-ink">
+                Included in this service
+              </h4>
+              <ul className="mt-3 grid gap-2 sm:grid-cols-2">
+                {service.included.map((item) => (
+                  <li
+                    key={item}
+                    className="flex items-start gap-2 text-sm leading-snug text-muted-foreground"
+                  >
+                    <Check
+                      aria-hidden="true"
+                      className="mt-0.5 h-4 w-4 shrink-0 text-brand"
+                      strokeWidth={3}
+                    />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </article>
+          ))}
+        </div>
       </section>
 
       {/* Ceramic coating certifications */}
