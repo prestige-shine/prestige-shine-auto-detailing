@@ -14,6 +14,19 @@ import {
 import { PageHeader } from "@/components/aurexo/PageHeader";
 import { Reveal } from "@/components/aurexo/Reveal";
 import { CertificationCards } from "@/components/aurexo/CertificationCards";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import {
+  PRICING_CONFIG,
+  VEHICLE_SIZES,
+  formatPrice,
+  type VehicleSizeKey,
+} from "@/lib/pricing";
 import baAfter1 from "@/assets/ba-after-1.jpg";
 import baAfter3 from "@/assets/ba-after-3.jpg";
 import bmwX5 from "@/assets/bmwx5.jpg";
@@ -191,6 +204,16 @@ const addons = [
   },
 ];
 
+function tierStartingPrice(tier: (typeof tiers)[number], size: VehicleSizeKey) {
+  if (tier.id === "packages") {
+    return `From ${formatPrice(PRICING_CONFIG.fullDetail[size])}`;
+  }
+  if (tier.id === "paint-protection") {
+    return `From ${formatPrice(PRICING_CONFIG.combo[size])}`;
+  }
+  return tier.price;
+}
+
 export const Route = createFileRoute("/services")({
   head: () => ({
     meta: [
@@ -209,6 +232,8 @@ export const Route = createFileRoute("/services")({
         content:
           "Interior, exterior, full detail packages, paint enhancement, ceramic coating and paint correction every vehicle is personally inspected and quality-controlled by Kevin in Miramichi, NB.",
       },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [
       {
@@ -223,6 +248,7 @@ export const Route = createFileRoute("/services")({
 function Services() {
   const [active, setActive] = useState(tiers[0].id);
   const [selectedAddons, setSelectedAddons] = useState<string[]>([]);
+  const [selectedSize, setSelectedSize] = useState<VehicleSizeKey>("car");
   const { open } = useLeadDialog();
 
   const tier = tiers.find((t) => t.id === active)!;
@@ -257,6 +283,38 @@ function Services() {
           </div>
           <p className="hidden text-xs text-muted-foreground sm:block">
             Drag, swipe, or use arrows to move
+          </p>
+        </div>
+
+        <div className="mb-5 grid gap-2 sm:w-72">
+          <label
+            htmlFor="service-vehicle-size"
+            className="text-sm font-semibold text-ink"
+          >
+            Vehicle size
+          </label>
+          <Select
+            value={selectedSize}
+            onValueChange={(value) => {
+              const matchingSize = VEHICLE_SIZES.find(
+                (vehicleSize) => vehicleSize.key === value,
+              );
+              if (matchingSize) setSelectedSize(matchingSize.key);
+            }}
+          >
+            <SelectTrigger id="service-vehicle-size" className="h-10 bg-white">
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent>
+              {VEHICLE_SIZES.map((vehicleSize) => (
+                <SelectItem key={vehicleSize.key} value={vehicleSize.key}>
+                  {vehicleSize.label}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+          <p className="text-xs text-muted-foreground">
+            Updates Full Detailing and Full Detail + Paint Enhancement pricing.
           </p>
         </div>
 
@@ -301,7 +359,7 @@ function Services() {
                             </span>
 
                             <span className="rounded-full bg-white/15 px-2 py-0.5 text-[11px] font-bold backdrop-blur">
-                              {t.price}
+                              {tierStartingPrice(t, selectedSize)}
                             </span>
                           </div>
 
@@ -346,7 +404,7 @@ function Services() {
                   {tier.name}
                 </h2>
                 <p className="mt-1 text-xl font-bold text-brand">
-                  {tier.price}
+                  {tierStartingPrice(tier, selectedSize)}
                 </p>
               </div>
             </div>
@@ -456,7 +514,7 @@ function Services() {
                   {service.name}
                 </h3>
                 <span className="rounded-full bg-brand/10 px-3 py-1 text-sm font-bold text-ink">
-                  {service.price}
+                  {tierStartingPrice(service, selectedSize)}
                 </span>
               </div>
 
