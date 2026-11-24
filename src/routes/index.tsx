@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Reveal } from "@/components/aurexo/Reveal";
-import { useMemo, useState } from "react";
+import { useMemo } from "react";
 import {
   ShieldCheck,
   Paintbrush,
@@ -86,24 +86,6 @@ const BEFORE_AFTER = [
     before: camaroBefore,
     after: camaroAfter,
     tier: "Paint Correction",
-  },
-];
-
-const REVIEW_HIGHLIGHTS = [
-  {
-    name: "Clifford Strickland",
-    quote:
-      "Great service!! Car looked brand new inside and outside. Amazing work! Will definitely be going back!!",
-  },
-  {
-    name: "Paula Carter",
-    quote:
-      "Highly recommend! He did an amazing job detailing my car, it looks and smells like new again. Super friendly and great service!",
-  },
-  {
-    name: "Kevin McGaghey",
-    quote:
-      "Picked up my 2024 Honda HR-V today... detailed and ceramic coated... I think my car looks better than when I picked it up new from the dealer.",
   },
 ];
 
@@ -492,7 +474,35 @@ function Home() {
             {BEFORE_AFTER.map((item) => (
               <Reveal key={item.id}>
                 <div className="group overflow-hidden rounded-2xl border border-border bg-white transition duration-300 hover:-translate-y-1 hover:border-ink/40 hover:shadow-xl">
-                  <BeforeAfterComparison item={item} />
+                  <div className="flex">
+                    <div className="relative flex-1 overflow-hidden">
+                      <img
+                        src={item.before}
+                        alt={`Before — ${item.label}`}
+                        className="h-40 w-full object-cover transition duration-500 group-hover:scale-105"
+                        loading="lazy"
+                      />
+
+                      <span className="absolute left-2 top-2 rounded-full bg-ink/80 px-2 py-0.5 text-[11px] font-bold text-white">
+                        Before
+                      </span>
+                    </div>
+
+                    <div className="w-px bg-brand/40" />
+
+                    <div className="relative flex-1 overflow-hidden">
+                      <img
+                        src={item.after}
+                        alt={`After — ${item.label}`}
+                        className="h-40 w-full object-cover transition duration-500 group-hover:scale-105"
+                        loading="lazy"
+                      />
+
+                      <span className="absolute right-2 top-2 rounded-full bg-brand px-2 py-0.5 text-[11px] font-bold text-white">
+                        After
+                      </span>
+                    </div>
+                  </div>
 
                   <div className="p-4">
                     <p className="text-sm font-semibold text-ink">
@@ -509,57 +519,6 @@ function Home() {
               </Reveal>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* Customer review highlights */}
-      <section className="mx-auto max-w-6xl px-4 py-12">
-        <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-end">
-          <div>
-            <p className="text-xs font-bold uppercase tracking-wide text-brand">
-              Customer Reviews
-            </p>
-            <h2 className="mt-1 text-2xl font-bold text-ink sm:text-3xl">
-              120+ 5-Star Google Reviews
-            </h2>
-          </div>
-          <Link
-            to="/reviews"
-            className="inline-flex items-center gap-1 text-sm font-semibold text-ink transition hover:text-brand"
-          >
-            Read all reviews <ArrowRight className="h-4 w-4" />
-          </Link>
-        </div>
-
-        <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {REVIEW_HIGHLIGHTS.map((review) => (
-            <article
-              key={review.name}
-              className="rounded-2xl border border-border bg-white p-5"
-            >
-              <div
-                className="flex gap-0.5 text-brand"
-                aria-label="5-star Google review"
-              >
-                {Array.from({ length: 5 }).map((_, index) => (
-                  <Star
-                    key={index}
-                    className="h-4 w-4"
-                    fill="currentColor"
-                    strokeWidth={0}
-                    aria-hidden="true"
-                  />
-                ))}
-              </div>
-              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                “{review.quote}”
-              </p>
-              <p className="mt-4 border-t border-border pt-3 text-sm font-semibold text-ink">
-                {review.name}
-              </p>
-              <p className="text-xs text-muted-foreground">Miramichi, NB</p>
-            </article>
-          ))}
         </div>
       </section>
 
@@ -748,51 +707,5 @@ function Home() {
         </div>
       </section>
     </main>
-  );
-}
-
-function BeforeAfterComparison({
-  item,
-}: {
-  item: (typeof BEFORE_AFTER)[number];
-}) {
-  const [position, setPosition] = useState(50);
-
-  return (
-    <div className="relative h-40 overflow-hidden bg-surface">
-      <img
-        src={item.before}
-        alt={`Before — ${item.label}`}
-        className="absolute inset-0 h-full w-full object-cover"
-        loading="lazy"
-      />
-      <img
-        src={item.after}
-        alt={`After — ${item.label}`}
-        className="absolute inset-0 h-full w-full object-cover"
-        style={{ clipPath: `inset(0 0 0 ${position}%)` }}
-        loading="lazy"
-      />
-      <span className="absolute left-2 top-2 z-10 rounded-full bg-ink/80 px-2 py-0.5 text-[11px] font-bold text-white">
-        Before
-      </span>
-      <span className="absolute right-2 top-2 z-10 rounded-full bg-brand px-2 py-0.5 text-[11px] font-bold text-white">
-        After
-      </span>
-      <span
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-y-0 z-10 w-0.5 bg-white shadow-md"
-        style={{ left: `${position}%` }}
-      />
-      <input
-        type="range"
-        min="0"
-        max="100"
-        value={position}
-        onChange={(event) => setPosition(Number(event.currentTarget.value))}
-        aria-label={`Compare before and after: ${item.label}`}
-        className="absolute inset-x-2 bottom-1 z-20 h-7 w-[calc(100%-1rem)] cursor-ew-resize accent-brand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand"
-      />
-    </div>
   );
 }

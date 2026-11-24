@@ -1,5 +1,3 @@
 - [x] Replace the qualification wizard with a compact AI Concierge chat experience
 - [x] Add accurate Prestige Shine knowledge and booking/contact guidance
 - [x] Verify responsive open/minimize behavior and typecheck
-- [ ] Add a before/after comparison control and real review highlights to the homepage
-- [ ] Add vehicle-size price selection for established Services page packages
