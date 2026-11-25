@@ -12,10 +12,6 @@ export type LeadEmailParams = {
   vehicle_make: string;
   vehicle_model: string;
   vehicle_year: string;
-  year: string;
-  make: string;
-  model: string;
-  service: string;
   vehicle_colour: string;
   requested_services: string;
   other_service: string;

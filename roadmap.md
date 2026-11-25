@@ -1,3 +1,3 @@
-- [x] Replace the qualification wizard with a compact AI Concierge chat experience
-- [x] Add accurate Prestige Shine knowledge and booking/contact guidance
-- [x] Verify responsive open/minimize behavior and typecheck
+- [ ] Clear preview typecheck and startup errors
+- [ ] Fix the lead notification parameter type mismatch
+- [ ] Restore the missing MCP SDK dependency and validate the preview
